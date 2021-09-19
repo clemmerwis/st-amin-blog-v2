@@ -19,12 +19,14 @@ function displayDate() {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
+        // sidebar menu dd fix
         $("#mobile-menu-wrap .slicknav_parent .slicknav_item").find("a").each(function(){
             var linkText = $(this).text();
             $(this).before(linkText + " " + '<i class="fa fa-angle-down"></i>');
             $(this).remove();
         });
 
+        // stop and start spin w/ hover
         $(".nav-options .nav-menu").find(".mainitem").each(function(){
             $(this).hover(
                 function() {
@@ -68,13 +70,22 @@ function displayDate() {
         });
     });
 
-    // Sign Up Form
+    // Create Account Form
     $('.signup-switch').on('click', function () {
         $('.signup-section').fadeIn(400);
     });
 
     $('.signup-close').on('click', function () {
         $('.signup-section').fadeOut(400);
+    });
+
+    // Login Form
+    $('.signup-switch-login').on('click', function () {
+        $('.signup-section-login').fadeIn(400);
+    });
+
+    $('.signup-login-close').on('click', function () {
+        $('.signup-section-login').fadeOut(400);
     });
 
     /*------------------

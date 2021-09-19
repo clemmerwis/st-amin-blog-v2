@@ -92,16 +92,51 @@
 
         <!-- Header Section Begin -->
         <header class="header-section">
-            <div class="ht-options">
+            <div class="topbar ht-options">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-8">
-                            <div class="ht-widget">
+                            {{-- <div class="ht-widget">
                                 <ul>
                                     <li class="signup-switch signup-open"><i class="fa fa-sign-out"></i> Login / Creat Account</li>
                                 </ul>
+                            </div> --}}
+                            <div class="ht-widget">
+                                <ul>
+                                    @guest
+                                        {{-- @if (Route::has('login')) --}}
+                                            <li class="signup-switch-login signup-login-open">
+                                                <a class="nav-link" href="#">
+                                                    <i class="fa fa-sign-out"></i>Login
+                                                </a>
+                                            </li>
+                                            <li class="signup-switch signup-open">
+                                                {{-- @if (Route::has('register')) --}}
+                                                    <a class="nav-link" href="#">Create Account</a>
+                                                {{-- @endif --}}
+                                            </li>
+                                        {{-- @endif --}}
+                                    @else
+                                        <li class="signup-switch signup-open">
+                                            Hello {{ Auth::user()->name }}
+                                            <i class="fa fa-sign-out"></i>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logoutForm').submit();">
+                                                &nbsp; Logout
+                                            </a>
+                                        </li>
+
+                                        <form id="logoutForm" action="#" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    @endguest
+                                </ul>
                             </div>
                         </div>
+
                         <div class="col-lg-6 col-md-4">
                             <div class="ht-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -122,7 +157,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nav-options">
+            <div id="siteNav" class="nav-options">
                 <div class="container">
                     <div class="humberger-menu humberger-open">
                         <i class="fa fa-bars"></i>
@@ -390,23 +425,37 @@
                 <div class="container">
                     <div class="signup-title">
                         <h2>Sign up</h2>
-                        <p>Fill out the form below to recieve a free and confidential</p>
                     </div>
                     <form action="#" class="signup-form">
+                        @csrf
                         <div class="sf-input-list">
-                            <input type="text" class="input-value" placeholder="User Name*">
+                            <input type="text" class="input-value" placeholder="Name">
+                            <input type="text" class="input-value" placeholder="Email Address">
                             <input type="text" class="input-value" placeholder="Password">
                             <input type="text" class="input-value" placeholder="Confirm Password">
-                            <input type="text" class="input-value" placeholder="Email Address">
-                            <input type="text" class="input-value" placeholder="Full Name">
-                        </div>
-                        <div class="radio-check">
-                            <label for="rc-agree">I agree with the term & conditions
-                                <input type="checkbox" id="rc-agree">
-                                <span class="checkbox"></span>
-                            </label>
                         </div>
                         <button type="submit"><span>REGISTER NOW</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up Section End -->
+
+        <!-- Sign Up Section Begin -->
+        <div class="signup-section-login">
+            <div class="signup-login-close"><i class="fa fa-close"></i></div>
+            <div class="signup-text">
+                <div class="container">
+                    <div class="signup-title">
+                        <h2>Login</h2>
+                    </div>
+                    <form action="#" class="login-form">
+                        @csrf
+                        <div class="sf-input-list">
+                            <input type="text" class="input-value" placeholder="Email Address">
+                            <input type="text" class="input-value" placeholder="Password">
+                        </div>
+                        <button type="submit"><span>Login Now</span></button>
                     </form>
                 </div>
             </div>

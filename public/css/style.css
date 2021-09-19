@@ -212,13 +212,13 @@ ol {
 	background: #d4983f;
 	letter-spacing: 2px;
 }
-  
+
 .primary-btn.border-btn, .border-btn.secondary-btn {
 	background: transparent;
 	border: 2px solid #d4983f;
 	color: #111111;
 }
-  
+
 .secondary-btn {
 	-webkit-transition: all, 0.3s;
 	-moz-transition: all, 0.3s;
@@ -228,12 +228,12 @@ ol {
 	border: 2px solid #d4983f;
 	background: transparent;
 }
-  
+
 .secondary-btn:hover {
 	border: 2px solid var(--primary);
 	background: rgba(186, 10, 10, 0.4);
 }
-  
+
 .secondary-btn.border-btn {
 	background: transparent;
 	border: 2px solid var(--primary);
@@ -244,13 +244,13 @@ ol {
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 }
-  
+
 .secondary-btn.border-btn:hover {
 	color: #ffffff;
 	background: rgba(212, 152, 63, 0.4);
 	border-color: #d4983f;
 }
-  
+
 .site-btn {
 	font-size: 15px;
 	color: #ffffff;
@@ -378,7 +378,7 @@ ol {
   Sign Up Form
 -----------------------*/
 
-.signup-section {
+.signup-section, .signup-section-login {
 	background: #0d0909;
 	position: fixed;
 	left: 0;
@@ -390,7 +390,7 @@ ol {
 	display: none;
 }
 
-.signup-section .signup-close {
+.signup-section .signup-close, .signup-section-login .signup-login-close {
 	height: 50px;
 	width: 50px;
 	border: 2px solid #e10000;
@@ -432,13 +432,13 @@ ol {
 	margin-bottom: 10px;
 }
 
-.signup-text .signup-form {
+.signup-text .signup-form, .signup-text .login-form {
 	width: 545px;
 	margin: 0 auto;
 	text-align: center;
 }
 
-.signup-text .signup-form .sf-input-list input {
+.signup-text .signup-form .sf-input-list input, .signup-text .login-form .sf-input-list input {
 	width: 100%;
 	height: 46px;
 	font-size: 14px;
@@ -455,48 +455,56 @@ ol {
 	transition: all 0.3s;
 }
 
-.signup-text .signup-form .sf-input-list input::-webkit-input-placeholder {
+.signup-text .signup-form .sf-input-list input::-webkit-input-placeholder,
+.signup-text .login-form .sf-input-list input::-webkit-input-placeholder {
 	color: #c4c4c4;
 	-webkit-transform: skewX(15deg);
 	transform: skewX(15deg);
 }
 
-.signup-text .signup-form .sf-input-list input::-moz-placeholder {
+.signup-text .signup-form .sf-input-list input::-moz-placeholder,
+.signup-text .login-form .sf-input-list input::-moz-placeholder  {
 	color: #c4c4c4;
 	-webkit-transform: skewX(15deg);
 	transform: skewX(15deg);
 }
 
-.signup-text .signup-form .sf-input-list input:-ms-input-placeholder {
-	color: #c4c4c4;
-	-webkit-transform: skewX(15deg);
-	-ms-transform: skewX(15deg);
-	transform: skewX(15deg);
-}
-
-.signup-text .signup-form .sf-input-list input::-ms-input-placeholder {
+.signup-text .signup-form .sf-input-list input:-ms-input-placeholder,
+.signup-text .login-form .sf-input-list input:-ms-input-placeholder {
 	color: #c4c4c4;
 	-webkit-transform: skewX(15deg);
 	-ms-transform: skewX(15deg);
 	transform: skewX(15deg);
 }
 
-.signup-text .signup-form .sf-input-list input::placeholder {
+.signup-text .signup-form .sf-input-list input::-ms-input-placeholder,
+.signup-text .login-form .sf-input-list input::-ms-input-placeholder {
 	color: #c4c4c4;
 	-webkit-transform: skewX(15deg);
 	-ms-transform: skewX(15deg);
 	transform: skewX(15deg);
 }
 
-.signup-text .signup-form .sf-input-list input:focus {
+.signup-text .signup-form .sf-input-list input::placeholder,
+.signup-text .login-form .sf-input-list input::placeholder {
+	color: #c4c4c4;
+	-webkit-transform: skewX(15deg);
+	-ms-transform: skewX(15deg);
+	transform: skewX(15deg);
+}
+
+.signup-text .signup-form .sf-input-list input:focus,
+.signup-text .login-form .sf-input-list input:focus {
 	border-color: #c20000;
 }
 
-.signup-text .signup-form .radio-check {
+.signup-text .signup-form .radio-check,
+.signup-text .login-form .radio-check {
 	margin-bottom: 30px;
 }
 
-.signup-text .signup-form .radio-check label {
+.signup-text .signup-form .radio-check label,
+.signup-text .login-form .radio-check label {
 	font-size: 14px;
 	color: #c4c4c4;
 	position: relative;
@@ -504,16 +512,19 @@ ol {
 	padding-left: 25px;
 }
 
-.signup-text .signup-form .radio-check label input {
+.signup-text .signup-form .radio-check label input,
+.signup-text .login-form .radio-check label input {
 	position: absolute;
 	visibility: hidden;
 }
 
-.signup-text .signup-form .radio-check label input:checked~.checkbox {
+.signup-text .signup-form .radio-check label input:checked~.checkbox,
+.signup-text .login-form .radio-check label input:checked~.checkbox {
 	background: #c4c4c4;
 }
 
-.signup-text .signup-form .radio-check label .checkbox {
+.signup-text .signup-form .radio-check label .checkbox,
+.signup-text .login-form .radio-check label .checkbox {
 	position: absolute;
 	left: 0;
 	top: 5px;
@@ -523,7 +534,8 @@ ol {
 	border-radius: 2px;
 }
 
-.signup-text .signup-form button {
+.signup-text .signup-form button,
+.signup-text .login-form button {
 	font-size: 14px;
 	color: #ffffff;
 	font-weight: 600;
@@ -537,7 +549,8 @@ ol {
 	transform: skewX(-15deg);
 }
 
-.signup-text .signup-form button span {
+.signup-text .signup-form button span,
+.signup-text .login-form button span {
 	display: inline-block;
 	-webkit-transform: skewX(15deg);
 	-ms-transform: skewX(15deg);
@@ -791,6 +804,16 @@ ol {
 /*---------------------
   Header
 -----------------------*/
+.ht-options .ht-widget ul li a {
+    padding: 0;
+    color: #c4c4c4;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ht-options .ht-widget ul li a:hover, .ht-options .ht-widget ul li a:hover i {
+    color: var(--primary);
+}
 
 .ht-options {
 	background: #080808;
@@ -801,7 +824,7 @@ ol {
 	font-size: 13px;
 	color: #c4c4c4;
 	list-style: none;
-	display: inline-block;
+	display: inline-flex;
 	margin-right: 30px;
 	position: relative;
 }
@@ -813,7 +836,9 @@ ol {
 .ht-options .ht-widget ul li i {
 	font-size: 14px;
 	color: #ffffff;
-	margin-right: 5px;
+	margin-left: 1rem;
+    display: grid;
+    place-items: center;
 }
 
 .ht-options .ht-widget ul li span {
@@ -1551,7 +1576,7 @@ ol {
 }
 
 /*----------------------
-  Update News Section 
+  Update News Section
 ------------------------*/
 
 .update-news-section {
@@ -2277,7 +2302,8 @@ ol {
 -----------------------*/
 
 .footer-section {
-	background: #080808;
+	/* background: #080808; */
+    background: linear-gradient(180deg, #fafafa, black 9%, black, rgba(113, 6, 6, 0.99));
 	padding-top: 60px;
 }
 
@@ -4456,7 +4482,7 @@ ol {
 @media (max-width: 991.8px) and (min-width: 576px) {
 	.container, .container-sm {
 		max-width: 98%;
-	}	
+	}
 }
 
 @media (min-width: 1575px) {
@@ -4536,7 +4562,7 @@ ol {
     left: 40%;
     background-size: contain;
     top: var(--icon-top);
-	
+
 }
 
 .nav-options .nav-menu ul li.stories-of-mirrors:after {
@@ -4548,7 +4574,7 @@ ol {
     left: 40%;
     background-size: contain;
     top: var(--icon-top);
-	
+
 }
 
 .nav-options .nav-menu ul li a.marketing:after {
@@ -4559,7 +4585,7 @@ ol {
     position: absolute;
     left: 40%;
     background-size: contain;
-    top: var(--icon-top);	
+    top: var(--icon-top);
 }
 
 .nav-options .nav-menu ul li.contact:after {
