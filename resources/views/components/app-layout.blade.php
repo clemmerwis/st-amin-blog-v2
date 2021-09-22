@@ -28,11 +28,11 @@
     </head>
     <body>
         <!-- Page Preloder -->
-        <div id="preloder">
+        {{-- <div id="preloder">
             <div class="loader">
                 <a href="#"><img src="img/SchmollThoughtsRoseBehindx300.png" alt="Company Logo"></a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Humberger Menu Begin -->
         <div class="humberger-menu-overlay"></div>
@@ -96,11 +96,6 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-8">
-                            {{-- <div class="ht-widget">
-                                <ul>
-                                    <li class="signup-switch signup-open"><i class="fa fa-sign-out"></i> Login / Creat Account</li>
-                                </ul>
-                            </div> --}}
                             <div class="ht-widget">
                                 <ul>
                                     @guest
@@ -418,7 +413,7 @@
         </footer>
         <!-- Footer Section End -->
 
-        <!-- Sign Up Section Begin -->
+        <!-- Register Section Begin -->
         <div class="signup-section">
             <div class="signup-close"><i class="fa fa-close"></i></div>
             <div class="signup-text">
@@ -446,16 +441,24 @@
             <div class="signup-login-close"><i class="fa fa-close"></i></div>
             <div class="signup-text">
                 <div class="container">
+                    @if (session('login_error'))
+                        <div id="failedLoginMessage" class="alert alert-danger">
+                            {{ session('login_error') }}
+                        </div>
+                    @endif
                     <div class="signup-title">
                         <h2>Login</h2>
                     </div>
-                    <form action="#" class="login-form">
+                    <form method="POST" action="{{ route('login') }}" autocomplete="off" class="login-form">
                         @csrf
                         <div class="sf-input-list">
-                            <input type="text" class="input-value" placeholder="Email Address">
-                            <input type="text" class="input-value" placeholder="Password">
+                            <input id="userEmail" type="email" class="input-value" name="email" value="" required autofocus placeholder="Email Address">
+                            <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+
+                            <input id="userPassword" type="password" class="input-value" name="password" required data-eye placeholder="Password">
+                            <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                         </div>
-                        <button type="submit"><span>Login Now</span></button>
+                        <button id="loginBtn" type="submit"><span>Login Now</span></button>
                     </form>
                 </div>
             </div>

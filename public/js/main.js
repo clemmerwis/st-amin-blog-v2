@@ -36,6 +36,11 @@ function displayDate() {
                 }
             );
         })
+
+        // if login fails, click sign up modal again
+        if( $('#failedLoginMessage').length ) {
+            $('.signup-switch-login').click();
+        }
     });
 
     /*------------------
