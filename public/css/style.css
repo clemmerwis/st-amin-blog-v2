@@ -836,7 +836,6 @@ ol {
 .ht-options .ht-widget ul li i {
 	font-size: 14px;
 	color: #ffffff;
-	margin-left: 1rem;
     display: grid;
     place-items: center;
 }

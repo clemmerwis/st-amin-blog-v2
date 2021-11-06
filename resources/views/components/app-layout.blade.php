@@ -38,13 +38,13 @@
         <div class="humberger-menu-overlay"></div>
         <div class="humberger-menu-wrapper">
             <div class="hw-logo">
-                <a href="{{ route('home') }}"><img src="img/SchmollThoughtsRoseBehindx300.png" alt=""></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt=""></a>
             </div>
             <div class="hw-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="./img/icons/Icon1_air.png" alt=""></span></li>
+                    <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/Icon1_air.png') }}" alt=""></span></li>
                     <li><a href="#">The Magazine <i class="fa fa-angle-down"></i></a>
-                        <span><img src="./img/icons/Icon2_Earth.png" alt=""></span>
+                        <span><img src="{{ asset('img/icons/Icon2_Earth.png') }}" alt=""></span>
                         <ul class="dropdown">
                             <li><a href="./categories-list.html">Ghost Stories</a></li>
                             <li><a href="./categories-grid.html">Art Gallery</a></li>
@@ -99,35 +99,49 @@
                             <div class="ht-widget">
                                 <ul>
                                     @guest
-                                        {{-- @if (Route::has('login')) --}}
-                                            <li class="signup-switch-login signup-login-open">
-                                                <a class="nav-link" href="#">
-                                                    <i class="fa fa-sign-out"></i>Login
-                                                </a>
-                                            </li>
-                                            <li class="signup-switch signup-open">
-                                                {{-- @if (Route::has('register')) --}}
-                                                    <a class="nav-link" href="#">Create Account</a>
-                                                {{-- @endif --}}
-                                            </li>
-                                        {{-- @endif --}}
-                                    @else
+                                        <li class="signup-switch-login signup-login-open">
+                                            <a class="nav-link" href="#">
+                                                <i class="fa fa-sign-out ml-3"></i>Login
+                                            </a>
+                                        </li>
                                         <li class="signup-switch signup-open">
-                                            Hello {{ Auth::user()->name }}
-                                            <i class="fa fa-sign-out"></i>
+                                            <a class="nav-link" href="#">Create Account</a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            Hello {{ Auth::user()->name }} !
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                @if (Auth::user()->is_admin == 1)
+                                                    Dashboard
+                                                @else
+                                                    My Profile
+                                                @endif
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logoutForm').submit();">
-                                                &nbsp; Logout
+                                                Logout<i class="fa fa-sign-out"></i>
                                             </a>
                                         </li>
 
-                                        <form id="logoutForm" action="#" method="POST" class="d-none">
+                                        <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
                                     @endguest
+                                    @if (Session::get('success'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success') }}
+                                        </div>
+                                    @endif
+                                    @if (Session::get('error'))
+                                        <div class="alert alert-danger">
+                                            {{ Session::get('error') }}
+                                        </div>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -147,7 +161,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{ route('home') }}"><img src="img/SchmollThoughtsRoseBehindx300.png" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +188,7 @@
                                     <div class="mw-post">
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-1.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-1.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach
@@ -187,7 +201,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-2.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-2.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">A new Borderlands 3 trailer introduces Moze and her...</a>
@@ -200,7 +214,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-3.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-3.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Teamfight Tactics is in chaos after today's patch...</a>
@@ -213,7 +227,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-4.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-4.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Borderlands 2 dev explains why there's mysterious
@@ -226,7 +240,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-5.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-5.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Capcom asks select fans to test new Resident Evil game</a>
@@ -253,7 +267,7 @@
                                     <div class="mw-post">
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-1.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-1.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach
@@ -266,7 +280,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-2.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-2.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">A new Borderlands 3 trailer introduces Moze and her...</a>
@@ -279,7 +293,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-3.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-3.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Teamfight Tactics is in chaos after today's patch...</a>
@@ -292,7 +306,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-4.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-4.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Borderlands 2 dev explains why there's mysterious
@@ -305,7 +319,7 @@
                                         </div>
                                         <div class="mw-post-item">
                                             <div class="mw-pic">
-                                                <img src="img/megamenu/mm-5.jpg" alt="">
+                                                <img src="{{ asset('img/megamenu/mm-5.jpg') }}" alt="">
                                             </div>
                                             <div class="mw-text">
                                                 <h6><a href="#">Capcom asks select fans to test new Resident Evil game</a>
@@ -419,24 +433,31 @@
             <div class="signup-text">
                 <div class="container">
                     <div class="signup-title">
-                        <h2>Sign up</h2>
+                        <h2>Register</h2>
                     </div>
-                    <form action="#" class="signup-form">
+                    <form method="POST" action="{{ route('register') }}" class="signup-form">
                         @csrf
                         <div class="sf-input-list">
-                            <input type="text" class="input-value" placeholder="Name">
-                            <input type="text" class="input-value" placeholder="Email Address">
-                            <input type="text" class="input-value" placeholder="Password">
-                            <input type="text" class="input-value" placeholder="Confirm Password">
+                            <input name="name" type="text" class="input-value" autofocus placeholder="Enter Name" value="{{ old('name') }}">
+                            <span class="text-danger">@error('name'){{ $message }}@enderror</span>
+
+                            <input name="email" type="text" class="input-value" placeholder="Enter Email Address" value="{{ old('email') }}">
+                            <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+
+                            <input name="password" type="password" class="input-value" placeholder="Enter Password" value="{{ old('password') }}">
+                            <span class="text-danger">@error('password'){{ $message }}@enderror</span>
+
+                            <input name="password_confirmation" type="password" class="input-value" placeholder="Enter Confirm Password" value="{{ old('password_confirmation') }}">
+                            <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
                         </div>
                         <button type="submit"><span>REGISTER NOW</span></button>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- Sign Up Section End -->
+        <!-- Register Section End -->
 
-        <!-- Sign Up Section Begin -->
+        <!-- Login Begin -->
         <div class="signup-section-login">
             <div class="signup-login-close"><i class="fa fa-close"></i></div>
             <div class="signup-text">
@@ -445,6 +466,14 @@
                         <div id="failedLoginMessage" class="alert alert-danger">
                             {{ session('login_error') }}
                         </div>
+                    @elseif (session('not_user'))
+                        <div id="failedLoginMessage" class="alert alert-danger">
+                            {{ session('not_user') }}
+                        </div>
+                    @elseif (session('not_admin'))
+                        <div id="failedLoginMessage" class="alert alert-danger">
+                            {{ session('not_admin') }}
+                        </div>
                     @endif
                     <div class="signup-title">
                         <h2>Login</h2>
@@ -452,10 +481,10 @@
                     <form method="POST" action="{{ route('login') }}" autocomplete="off" class="login-form">
                         @csrf
                         <div class="sf-input-list">
-                            <input id="userEmail" type="email" class="input-value" name="email" value="" required autofocus placeholder="Email Address">
+                            <input id="userEmail" type="email" class="input-value" name="email" required autofocus placeholder="Email Address" value="{{ old('email') }}">
                             <span class="text-danger">@error('email'){{ $message }}@enderror</span>
 
-                            <input id="userPassword" type="password" class="input-value" name="password" required data-eye placeholder="Password">
+                            <input id="userPassword" type="password" class="input-value" name="password" required data-eye placeholder="Password" value="{{ old('password') }}">
                             <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                         </div>
                         <button id="loginBtn" type="submit"><span>Login Now</span></button>
@@ -463,7 +492,7 @@
                 </div>
             </div>
         </div>
-        <!-- Sign Up Section End -->
+        <!-- Login Section End -->
 
         <!-- Search model Begin -->
         <div class="search-model">
@@ -477,13 +506,13 @@
         <!-- Search model end -->
 
         <!-- Js Plugins -->
-        <script src="{{ 'js/jquery-3.3.1.min.js' }}"></script>
-        <script src="{{ 'js/bootstrap.min.js' }}"></script>
-        <script src="{{ 'js/jquery.magnific-popup.min.js' }}"></script>
-        <script src="{{ 'js/circle-progress.min.js' }}"></script>
-        <script src="{{ 'js/jquery.barfiller.js' }}"></script>
-        <script src="{{ 'js/jquery.slicknav.js' }}"></script>
-        <script src="{{ 'js/owl.carousel.min.js' }}"></script>
-        <script src="{{ 'js/main.js' }}"></script>
+        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('js/circle-progress.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.barfiller.js') }}"></script>
+        <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
