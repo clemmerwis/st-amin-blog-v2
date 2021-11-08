@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +21,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
-    Auth::routes();
+    // Auth::routes();
     Route::get('/', function() { return view('index'); });
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 

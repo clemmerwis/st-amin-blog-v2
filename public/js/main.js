@@ -41,6 +41,10 @@ function displayDate() {
         if( $('#failedLoginMessage').length ) {
             $('.signup-switch-login').click();
         }
+
+        if( $('#failedRegisterMessage').length ) {
+            $('.signup-switch').click();
+        }
     });
 
     /*------------------

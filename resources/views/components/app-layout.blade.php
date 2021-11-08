@@ -109,11 +109,11 @@
                                         </li>
                                     @else
                                         <li>
-                                            Hello {{ Auth::user()->name }} !
+                                            Hello {{ auth()->user()->name }} !
                                         </li>
                                         <li>
                                             <a href="#">
-                                                @if (Auth::user()->is_admin == 1)
+                                                @if (auth()->user()->is_admin == 1)
                                                     Dashboard
                                                 @else
                                                     My Profile
@@ -132,16 +132,6 @@
                                             @csrf
                                         </form>
                                     @endguest
-                                    @if (Session::get('success'))
-                                        <div class="alert alert-success">
-                                            {{ Session::get('success') }}
-                                        </div>
-                                    @endif
-                                    @if (Session::get('error'))
-                                        <div class="alert alert-danger">
-                                            {{ Session::get('error') }}
-                                        </div>
-                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -432,23 +422,28 @@
             <div class="signup-close"><i class="fa fa-close"></i></div>
             <div class="signup-text">
                 <div class="container">
+                    @if (session('register_error'))
+                        <div id="failedRegisterMessage" class="alert alert-danger">
+                            {{ session('register_error') }}
+                        </div>
+                    @endif
                     <div class="signup-title">
                         <h2>Register</h2>
                     </div>
                     <form method="POST" action="{{ route('register') }}" class="signup-form">
                         @csrf
                         <div class="sf-input-list">
-                            <input name="name" type="text" class="input-value" autofocus placeholder="Enter Name" value="{{ old('name') }}">
                             <span class="text-danger">@error('name'){{ $message }}@enderror</span>
+                            <input name="name" type="text" class="input-value" autofocus placeholder="Enter Name" value="{{ old('name') }}">
 
-                            <input name="email" type="text" class="input-value" placeholder="Enter Email Address" value="{{ old('email') }}">
                             <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                            <input name="email" type="text" class="input-value" placeholder="Enter Email Address" value="{{ old('email') }}">
 
-                            <input name="password" type="password" class="input-value" placeholder="Enter Password" value="{{ old('password') }}">
                             <span class="text-danger">@error('password'){{ $message }}@enderror</span>
+                            <input name="password" type="password" class="input-value" placeholder="Enter Password">
 
-                            <input name="password_confirmation" type="password" class="input-value" placeholder="Enter Confirm Password" value="{{ old('password_confirmation') }}">
                             <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
+                            <input name="password_confirmation" type="password" class="input-value" placeholder="Repeat Password">
                         </div>
                         <button type="submit"><span>REGISTER NOW</span></button>
                     </form>
