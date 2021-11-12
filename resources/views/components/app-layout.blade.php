@@ -482,6 +482,10 @@
                             <input id="userPassword" type="password" class="input-value" name="password" required data-eye placeholder="Password" value="{{ old('password') }}">
                             <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                         </div>
+                        <div class="form-check mb-4">
+                            <input name="remember" type="checkbox" class="form-check-input" id="remember">
+                            <label for="remember" class="form-check-label text-white">Remember Me</label>
+                        </div>
                         <button id="loginBtn" type="submit"><span>Login Now</span></button>
                     </form>
                 </div>
