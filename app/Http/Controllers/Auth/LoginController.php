@@ -30,7 +30,7 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-        if ( auth()->attempt($request->only('email', 'password')) ) {
+        if ( auth()->attempt($request->only('email', 'password'), $request->password) ) {
             if ( auth()->user()->is_admin ) {
                 return redirect()->route('admin.dashboard');
             }
