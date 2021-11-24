@@ -17,6 +17,7 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return mixed
      */
+
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
@@ -25,7 +26,7 @@ class RedirectIfAuthenticated
             if( Auth::guard($guard)->check() && Auth::user()->is_admin == 1 ) {
                 return redirect()->route('admin.dashboard');
             }
-            elseif( Auth::guard($guard)->check() && Auth::user()->is_admin == 0 ) {
+            else {
                 return redirect()->route('user.profile');
             }
         }
