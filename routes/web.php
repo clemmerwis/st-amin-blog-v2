@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
-    // Auth::routes();
     Route::get('/', function() { return view('index'); });
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
@@ -40,3 +39,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHis
 Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function() {
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 });
+
+
+Route::get('/stories-of-mirrors', function () { return view('contact'); })->name('contact');

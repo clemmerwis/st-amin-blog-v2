@@ -1,3 +1,3 @@
-<x-app-layout>
+<x-admin-layout>
     <h1>Admin Dashboard: {{ Auth::user()->name }}</h1>
-</x-app-layout>
+</x-admin-layout>
