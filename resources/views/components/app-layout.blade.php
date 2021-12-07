@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
 
-        <!-- Styles -->
+        <!-- App Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -112,9 +112,9 @@
                                             Hello {{ auth()->user()->name }} !
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ route('admin.dashboard') }}">
                                                 @if (auth()->user()->is_admin == 1)
-                                                    Dashboard
+                                                Dashboard
                                                 @else
                                                     My Profile
                                                 @endif
