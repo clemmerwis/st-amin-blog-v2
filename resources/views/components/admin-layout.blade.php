@@ -35,6 +35,7 @@
         </div>
     </div> --}}
 
+
     {{ $slot }}
 
     <!-- JS Scripts-->
@@ -57,7 +58,6 @@
 
     <!-- Custom Js -->
     <script src="{{ asset('css/admin/assets/js/custom-scripts.js') }}"></script>
-
 
     <!-- Chart Js -->
     <script type="text/javascript" src="{{ asset('css/admin/assets/js/Chart.min.js') }}"></script>

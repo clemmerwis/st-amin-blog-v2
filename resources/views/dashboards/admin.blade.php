@@ -223,8 +223,16 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                            <a href="#"
+                                onclick="event.preventDefault();
+                                document.getElementById('logoutForm').submit();">
+                                <i class="fa fa-sign-out fa-fw"></i>Logout
+                            </a>
                         </li>
+                        <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

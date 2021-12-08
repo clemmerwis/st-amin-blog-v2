@@ -121,7 +121,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#"
+                                            <a  href="#"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('logoutForm').submit();">
                                                 Logout<i class="fa fa-sign-out"></i>
