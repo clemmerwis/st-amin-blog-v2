@@ -8,9 +8,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong><i class="icon fa fa-plane"></i>
-                        BRILLIANT</strong></a>
-
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <h3 class="admin-heading">Schmoll Thoughts</h3>
+                </a>
                 <div id="sideNav" href="">
                     <i class="fa fa-bars icon"></i>
                 </div>
@@ -320,8 +320,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li class="active">Data</li>
+                    <li class="active">Dashboard</li>
                 </ol>
 
             </div>

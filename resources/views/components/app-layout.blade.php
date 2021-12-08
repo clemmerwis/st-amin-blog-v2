@@ -151,7 +151,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt="Logo"></a>
                         </div>
                     </div>
                 </div>

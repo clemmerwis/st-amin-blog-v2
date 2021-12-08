@@ -109,7 +109,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #fff;
+	color: #d4983f;
 }
 
 ul,
@@ -4613,4 +4613,8 @@ ol {
 	100% {
 	  transform: rotateY(360deg);
 	}
-  }
+}
+
+.breadcrumb>.active {
+    color: #ba0a0a;
+}

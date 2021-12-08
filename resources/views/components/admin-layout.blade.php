@@ -13,6 +13,11 @@
 
     <!-- Admin Styles -->
     <link href="{{ asset('css/admin/assets/css/bootstrap.css') }}" rel="stylesheet" />
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rockville.css') }}">
+
     <!-- FontAwesome Styles-->
     <link href="{{ asset('css/admin/assets/css/font-awesome.css') }}" rel="stylesheet" />
     <!-- Morris Chart Styles-->
