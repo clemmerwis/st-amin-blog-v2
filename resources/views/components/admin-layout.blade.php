@@ -11,19 +11,17 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/plugins/images/favicon.png') }}">
 
-    <!-- App Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/barfiller.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/rockville.css') }}">
-
     <!-- Admin Styles -->
+    <link href="{{ asset('css/admin/assets/css/bootstrap.css') }}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ asset('css/admin/assets/css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="{{ asset('css/admin/assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="{{ asset('css/admin/assets/css/custom-styles.css') }}" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="{{ asset('css/admin/assets/js/Lightweight-Chart/cssCharts.css') }}">
 </head>
 
 <body>
@@ -36,9 +34,34 @@
             <div class="lds-pos"></div>
         </div>
     </div> --}}
+
     {{ $slot }}
 
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="{{ asset('css/admin/assets/js/jquery-1.10.2.js') }}"></script>
+    <!-- Bootstrap Js -->
+    <script src="{{ asset('css/admin/assets/js/bootstrap.min.js') }}"></script>
 
+    <!-- Metis Menu Js -->
+    <script src="{{ asset('css/admin/assets/js/jquery.metisMenu.js') }}"></script>
+    <!-- Morris Chart Js -->
+    <script src="{{ asset('css/admin/assets/js/morris/raphael-2.1.0.min.js') }}"></script>
+    <script src="{{ asset('css/admin/assets/js/morris/morris.js') }}"></script>
+
+
+	<script src="{{ asset('css/admin/assets/js/easypiechart.js') }}"></script>
+	<script src="{{ asset('css/admin/assets/js/easypiechart-data.js') }}"></script>
+
+	<script src="{{ asset('css/admin/assets/js/Lightweight-Chart/jquery.chart.js') }}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{ asset('css/admin/assets/js/custom-scripts.js') }}"></script>
+
+
+    <!-- Chart Js -->
+    <script type="text/javascript" src="{{ asset('css/admin/assets/js/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('css/admin/assets/js/chartjs.js') }}"></script>
 </body>
 
 </html>
