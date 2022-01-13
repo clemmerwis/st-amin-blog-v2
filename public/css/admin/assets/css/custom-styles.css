@@ -544,6 +544,17 @@ ul.nav.nav-second-level.collapse.in {background: #131212;}
     color: #d4983f;
 }
 
+/* Custom Edit - Added admin sidebar dropdown second and third level color highlight */
+.sidebar-collapse .nav-second-level > li > a:hover, .sidebar-collapse .nav-third-level > li > a:hover {
+    background: rgba(186, 10, 10, 0.18);
+}
+
+.sidebar-collapse .nav > li > a:has(.arrow):hover, .sidebar-collapse .nav > li > a:has(.arrow):focus {
+	background: #575757;
+    color: #d4983f;
+}
+/* End Edit */
+
 .navbar-side {
 	border:none;
 	background: #303030;
