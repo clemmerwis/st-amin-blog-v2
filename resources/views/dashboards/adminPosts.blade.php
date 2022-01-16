@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div id="wrapper" class="admin-page-wrapper">
+    <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -251,7 +251,7 @@
                 <ol class="breadcrumb">
                     <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
-                    <li class="active">Dashboard</li>
+                    <li class="active">Posts</li>
                 </ol>
             </div>
             <div id="page-inner">

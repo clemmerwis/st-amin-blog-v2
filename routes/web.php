@@ -32,13 +32,14 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
 
-Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function() {
+Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('posts', [AdminController::class, 'posts'])->name('admin.posts');
 });
 
-Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function() {
+Route::group(['prefix'=>'user', 'middleware'=>['isUser', 'auth', 'PreventBackHistory']], function() {
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
 
-Route::get('/stories-of-mirrors', function () { return view('contact'); })->name('contact');
+Route::get('/stories-of-mirrors', function () { return view('contact'); });

@@ -20,4 +20,9 @@ class AdminController extends Controller
     {
         return view('dashboards.admin');
     }
+
+    public function posts()
+    {
+        return view('dashboards.adminPosts');
+    }
 }
