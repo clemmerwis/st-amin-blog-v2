@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -41,5 +42,4 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser', 'auth', 'PreventBackHis
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
-
-Route::get('/stories-of-mirrors', function () { return view('contact'); });
+Route::get('/posts', [PostController::class, 'index'])->name('blog');

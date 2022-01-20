@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 
@@ -31,7 +31,5 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->count(2)->create();
-
-        Post::factory()->count(2)->create();
     }
 }

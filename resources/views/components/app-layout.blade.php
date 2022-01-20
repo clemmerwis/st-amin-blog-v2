@@ -12,8 +12,8 @@
         <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
 
         <!-- App Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -25,6 +25,22 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <style>
+            /* .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #111;
+                border-color: #ba0a0a;
+                border-top-width: 0;
+                border-left-width: 0;
+                border-right-width: 0;
+            }
+
+            .page-link {
+                border: 0;
+            } */
+        </style>
     </head>
     <body>
         <!-- Page Preloder -->

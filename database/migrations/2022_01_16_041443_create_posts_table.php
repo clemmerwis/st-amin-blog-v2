@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('body');
+            $table->text('excerpt')->nullable();
             $table->string('image_path')->nullable();
             $table->boolean('active')->default(true);
             $table->boolean('featured')->default(false);
@@ -26,6 +27,7 @@ class CreatePostsTable extends Migration
               ->references('id')->on('users')
               ->onDelete('cascade');
             $table->timestamps();
+            $table->timestamp('published_at')->nullable();
         });
     }
 

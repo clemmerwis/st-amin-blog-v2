@@ -5,18 +5,17 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use App\Models\Post;
 
-class DatabaseSeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(PostSeeder::class);
+        Post::factory()->count(15)->create();
     }
 }

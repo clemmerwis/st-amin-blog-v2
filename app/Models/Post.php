@@ -11,10 +11,18 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'body'
+        'title',
+        'slug',
+        'excerpt',
+        'image_path',
+        'active',
+        'featured',
+        'category',
     ];
 
-    public function user()
+    protected $with = ['author'];
+
+    public function author()
     {
         return $this->belongsTo(User::class);
     }
@@ -27,5 +35,10 @@ class Post extends Model
     public function likedBy(User $user)
     {
         return $this->likes->contains('user_id', $user->id);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

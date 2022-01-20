@@ -26,12 +26,15 @@ class PostFactory extends Factory
     {
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
-
+        $date = $this->faker->dateTimeBetween('-1 day' );
         return [
-            'author_id' => User::factory(), //Generates a User from factory and extracts id
-            'title' => $title, //Generates a fake sentence
+            'author_id' => 1,
+            'title' => $title,
             'slug' => $slug,
-            'body' => $this->faker->paragraph(30), //generates fake 30 paragraphs
+            'body' => $this->faker->paragraph(30),
+            'published_at' => $date,
+            'created_at'=> $date,
+            'updated_at'=> $date,
         ];
     }
 }
