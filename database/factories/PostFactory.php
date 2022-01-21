@@ -32,6 +32,8 @@ class PostFactory extends Factory
             'title' => $title,
             'slug' => $slug,
             'body' => $this->faker->paragraph(30),
+            'image_path' => 'img/categories-grid/cg-10.jpg',
+            'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
             'published_at' => $date,
             'created_at'=> $date,
             'updated_at'=> $date,

@@ -20,7 +20,7 @@
                     <div class="breadcrumb-text">
                         <h3>Contact us</h3>
                         <div class="bt-option">
-                            <a href="./home.html">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                             <span>Contact</span>
                         </div>
                     </div>
@@ -37,18 +37,17 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-1.jpg">
+                                <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
                                     <div class="label"><span>Reviews</span></div>
                                 </div>
                                 <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
+                                    <h5><a href="#">{{ $post->title }}</a></h5>
                                     <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                        <li>by <span>{{ $post->author->name }}</span></li>
+                                        <li><i class="fa fa-clock-o"></i> {{ $post->published_at }}</li>
                                         <li><i class="fa fa-comment-o"></i> 20</li>
                                     </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
+                                    <p>{{ $post->excerpt }}</p>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +207,6 @@
                     </div>
 
                     <div class="pagination-item">
-
                         <a href="#"><span>1</span></a>
                         <a href="#"><span>2</span></a>
                         <a href="#"><span>3</span></a>
