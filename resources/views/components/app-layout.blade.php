@@ -27,19 +27,9 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <style>
-            /* .page-item.active .page-link {
-                z-index: 3;
-                color: #fff;
-                background-color: #111;
-                border-color: #ba0a0a;
-                border-top-width: 0;
-                border-left-width: 0;
-                border-right-width: 0;
+            .page-item.active {
+                border-bottom: 2px solid;
             }
-
-            .page-link {
-                border: 0;
-            } */
         </style>
     </head>
     <body>

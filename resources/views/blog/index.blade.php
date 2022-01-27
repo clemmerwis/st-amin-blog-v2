@@ -1,27 +1,14 @@
 <x-app-layout>
-    @if ($posts->count())
-        @foreach ($posts as $post)
-            <div>
-                {{ $post->author->name }}
-                {{ $post->created_at->diffForHumans() }}
-            </div>
-        @endforeach
-
-        {{-- Pagination --}}
-        {!! $posts->links() !!}
-    @else
-        <p>There are no posts</p>
-    @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg spad" data-setbg="img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h3>Contact us</h3>
+                        <h3>Category: All</h3>
                         <div class="bt-option">
                             <a href="{{ route('home') }}">Home</a>
-                            <span>Contact</span>
+                            <span>Latest Posts</span>
                         </div>
                     </div>
                 </div>
@@ -35,183 +22,32 @@
             <div class="row">
                 <div class="col-lg-8 p-0">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
-                                    <div class="label"><span>Reviews</span></div>
+                        @if ($posts->count())
+                            @foreach ($posts as $post)
+                                <div class="col-lg-6">
+                                    <div class="cg-item">
+                                        <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
+                                            <div class="label"><span>Reviews</span></div>
+                                        </div>
+                                        <div class="cg-text">
+                                            <h5><a href="#">{{ $post->title }}</a></h5>
+                                            <ul>
+                                                <li>by <span>{{ $post->author->name }}</span></li>
+                                                <li><i class="fa fa-clock-o"></i> {{ $post->published_at->diffForHumans() }}</li>
+                                                <li><i class="fa fa-comment-o"></i> 20</li>
+                                            </ul>
+                                            <p>{{ $post->excerpt }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">{{ $post->title }}</a></h5>
-                                    <ul>
-                                        <li>by <span>{{ $post->author->name }}</span></li>
-                                        <li><i class="fa fa-clock-o"></i> {{ $post->published_at }}</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>{{ $post->excerpt }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-2.jpg">
-                                    <div class="label"><span>Windows</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-3.jpg">
-                                    <div class="label"><span>Hardware</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-4.jpg">
-                                    <div class="label"><span>Playstation</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-5.jpg">
-                                    <div class="label"><span>Reviews</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-6.jpg">
-                                    <div class="label"><span>Windows</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-7.jpg">
-                                    <div class="label"><span>Hardware</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-8.jpg">
-                                    <div class="label"><span>Playstation</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-9.jpg">
-                                    <div class="label"><span>Hardware</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cg-item">
-                                <div class="cg-pic set-bg" data-setbg="img/categories-grid/cg-10.jpg">
-                                    <div class="label"><span>Playstation</span></div>
-                                </div>
-                                <div class="cg-text">
-                                    <h5><a href="#">Teamfight Tactics is in chaos after today's patch...</a></h5>
-                                    <ul>
-                                        <li>by <span>Admin</span></li>
-                                        <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 20</li>
-                                    </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua suspendisse ultrices...</p>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <p>There are no posts</p>
+                        @endif
                     </div>
 
-                    <div class="pagination-item">
-                        <a href="#"><span>1</span></a>
-                        <a href="#"><span>2</span></a>
-                        <a href="#"><span>3</span></a>
-                        <a href="#"><span>Next</span></a>
-                    </div>
+                    {{-- Pagination --}}
+                    {!! $posts->links() !!}
                 </div>
                 <div class="col-lg-4 col-md-7 p-0">
                     <div class="sidebar-option">
@@ -223,22 +59,22 @@
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-facebook"></i></div>
                                     <span>Facebook</span>
-                                    <div class="follow">1,2k Follow</div>
+                                    <div class="follow">1.2k Follow</div>
                                 </li>
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-twitter"></i></div>
                                     <span>Twitter</span>
-                                    <div class="follow">1,2k Follow</div>
+                                    <div class="follow">1.2k Follow</div>
                                 </li>
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-youtube-play"></i></div>
                                     <span>Youtube</span>
-                                    <div class="follow">2,3k Subs</div>
+                                    <div class="follow">2.3k Subs</div>
                                 </li>
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-instagram"></i></div>
                                     <span>Instagram</span>
-                                    <div class="follow">2,6k Follow</div>
+                                    <div class="follow">2.6k Follow</div>
                                 </li>
                             </ul>
                         </div>

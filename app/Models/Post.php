@@ -20,6 +20,8 @@ class Post extends Model
         'category',
     ];
 
+    protected $dates = ['published_at'];
+
     protected $with = ['author'];
 
     public function author()
