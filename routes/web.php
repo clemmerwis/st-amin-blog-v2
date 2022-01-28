@@ -29,9 +29,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-
 Route::get('/contact', function () { return view('contact'); })->name('contact');
-
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -42,4 +40,4 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser', 'auth', 'PreventBackHis
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
-Route::get('/posts', [PostController::class, 'index'])->name('blog');
+Route::resource('posts', PostController::class);
