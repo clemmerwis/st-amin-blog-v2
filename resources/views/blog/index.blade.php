@@ -27,7 +27,7 @@
                                 <div class="col-lg-6">
                                     <div class="cg-item">
                                         <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
-                                            <div class="label"><span>Reviews</span></div>
+                                            <div class="label"><span>{{ $post->category->name }}</span></div>
                                         </div>
                                         <div class="cg-text">
                                             <h5><a href="#">{{ $post->title }}</a></h5>

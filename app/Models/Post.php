@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,30 +16,37 @@ class Post extends Model
         'image_path',
         'active',
         'featured',
-        'category',
+        'category_id',
     ];
 
     protected $dates = ['published_at'];
 
-    protected $with = ['author'];
+    protected $with = ['author', 'category'];
 
+    // One To Many (Inverse) / Belongs To
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function likes()
+    // One To Many (Inverse) / Belongs To
+    public function category()
     {
-        return $this->hasMany(Like::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function likedBy(User $user)
-    {
-        return $this->likes->contains('user_id', $user->id);
-    }
+    // public function likes()
+    // {
+    //     return $this->hasMany(Like::class);
+    // }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    // public function likedBy(User $user)
+    // {
+    //     return $this->likes->contains('user_id', $user->id);
+    // }
+
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class);
+    // }
 }
