@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Details Hero Section Begin -->
-    <section class="details-hero-section set-bg" data-setbg="../img/details/details-post-review.jpg">
+    <section class="details-hero-section set-bg" data-setbg="img/details/details-post.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -19,6 +19,7 @@
         </div>
     </section>
     <!-- Details Hero Section End -->
+
     <!-- Details Post Section Begin -->
     <section class="details-post-section spad">
         <div class="container">
@@ -36,135 +37,6 @@
                                 dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
                                 in. . Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
                         </div>
-                        <div class="dt-overall-rating">
-                            <div class="or-heading">
-                                <div class="or-item">
-                                    <div class="or-loader">
-                                        <div class="loader-circle-wrap">
-                                            <div class="loader-circle">
-                                                <span class="circle-progress-2" data-cpid="id-5" data-cpvalue="85"
-                                                    data-cpcolor="#c20000"></span>
-                                                <div class="review-point">
-                                                    <div>8.5</div>
-                                                    <span>AVERAGE SCORE</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="or-text">
-                                        <h5>Overall rating</h5>
-                                        <p>Holistic content e-tailers niches proactive blogospheres Cluetrain,
-                                            interfaces eyeballs, engage, e-business! Semantic–utilize mindshare, B2C
-                                            viral technologies functionalities intuitive real-time. Generate global
-                                            value-added podcasts, experiences value back-end blogospheres networkeffects
-                                            24/365. Sexy dot-com citizen-media extend architect bleeding-edge benchmark
-                                            dynamic.</p>
-                                    </div>
-                                </div>
-                                <div class="or-skill">
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-1" class="barfiller">
-                                            <span class="fill" data-percentage="80"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">8.0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-2" class="barfiller">
-                                            <span class="fill" data-percentage="80"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">8.0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-3" class="barfiller">
-                                            <span class="fill" data-percentage="78"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">7.8</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-4" class="barfiller">
-                                            <span class="fill" data-percentage="85"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">8.5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-5" class="barfiller">
-                                            <span class="fill" data-percentage="90"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">9.0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item">
-                                        <p>Design</p>
-                                        <div id="bar-6" class="barfiller">
-                                            <span class="fill" data-percentage="80"></span>
-                                            <div class="tipWrap" style="display: inline;">
-                                                <span class="tip"></span>
-                                                <span class="bar-point">9.7</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="or-qualities">
-                                <div class="qualities-item">
-                                    <p>The Goods</p>
-                                    <ul>
-                                        <li><i class="fa fa-check"></i> Ut enim veniam, quis nostrud exercitation.</li>
-                                        <li><i class="fa fa-check"></i> Irure dolor in reprehenderit in voluptate velit.
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Excepteur sint occaecat cupidatat proident.</li>
-                                        <li><i class="fa fa-check"></i> Sed ut perspiciatis unde omnis iste natus error.
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="qualities-item bad-item">
-                                    <p>The bads</p>
-                                    <ul>
-                                        <li><i class="fa fa-close"></i> Ut enim veniam, quis nostrud exercitation.</li>
-                                        <li><i class="fa fa-close"></i> Irure dolor in reprehenderit in voluptate velit.
-                                        </li>
-                                        <li><i class="fa fa-close"></i> Excepteur sint occaecat cupidatat proident.</li>
-                                        <li><i class="fa fa-close"></i> Sed ut perspiciatis unde omnis iste natus error.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="or-rating">
-                                <p><span>User Rating:</span> 4.5/5 ( 23 votes )</p>
-                                <div class="rating-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dt-desc-more">
-                            <p>Duis aute irure dolor inenim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo conslaboris nisi ut aliquip ex ea commodo consequat. Duis
-                                aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
                         <div class="dt-quote">
                             <p>“ It's these long and meandering character arcs that make my adventures feel so epic in
                                 scale, like if Game of Thrones was a high-fantasy anime.” - <span>Steven Jobs</span></p>
@@ -181,6 +53,40 @@
                                 in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                                 cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
+                        </div>
+                        <div class="dt-pic-item">
+                            <div class="dp-pic">
+                                <img src="img/details/dp-p.jpg" alt="">
+                            </div>
+                            <div class="dp-text">
+                                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                                    himenaeos. Mauris vel magna ex. Integer gravida tincidunt accumsan. Vestibulum nulla
+                                    mauris, condimentum id felis ac, volutpat volutpat mi. In vitae tempor velit of the
+                                    impenetrable foliage.</p>
+                                <ul>
+                                    <li>Ut enim ad minim veniam, quis nostrud exercitation. </li>
+                                    <li>Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                    <li>Excepteur sint occaecat cupidatat non proident.</li>
+                                    <li>Sed ut perspiciatis unde omnis iste natus error.</li>
+                                </ul>
+                                <p>Vestibulum commodo nulla eu augue tincidunt rutrum. Suspendisse interdum lacus in
+                                    ligula finibus luctus. Vivamus mollis libero vel orci finibus, sit amet malesuada
+                                    lectus aliquam. In auctor viverra eros. Maecenas elit mi, dictum et consectetur nec,
+                                    sollicitudin sed arcu.Curabitur tempor tempor pharetra.Sed imperdiet sem at nunc
+                                    luctus, sed cursus nulla mollis. Orci varius natoque penatibus et magnis dis
+                                    parturient montes, nascetur ridiculus mus porta tincidunt, purus enim laoreet.</p>
+                            </div>
+                        </div>
+                        <div class="dt-last-desc">
+                            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+                                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                                odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+                                nesciunt tempora incidunt ut labore . Neque porro quisquam est, qui dolorem ipsum quia
+                                dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi</p>
+                            <p>Duis aute irure dolor inenim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                nisi ut aliquip ex ea commodo conslaboris nisi ut aliquip ex ea commodo consequat. Duis
+                                aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div class="dt-tags">
                             <a href="#"><span>Gaming</span></a>
@@ -205,7 +111,7 @@
                                     <a href="#" class="rp-prev">
                                         <span>Prev</span>
                                         <div class="rp-pic">
-                                            <img src="../img/details/prev.jpg" alt="">
+                                            <img src="img/details/prev.jpg" alt="">
                                         </div>
                                         <div class="rp-text">
                                             <h6>The Real-Estate Developers Are the Enemy</h6>
@@ -220,7 +126,7 @@
                                     <a href="#" class="rp-next">
                                         <span>Next</span>
                                         <div class="rp-pic">
-                                            <img src="../img/details/next.jpg" alt="">
+                                            <img src="img/details/next.jpg" alt="">
                                         </div>
                                         <div class="rp-text">
                                             <h6>Montreal real estate: Bargains in cottage countrya</h6>
@@ -235,7 +141,7 @@
                         </div>
                         <div class="dt-author">
                             <div class="da-pic">
-                                <img src="../img/details/author-pic.jpg" alt="">
+                                <img src="img/details/author-pic.jpg" alt="">
                             </div>
                             <div class="da-text">
                                 <h5>Almil Hmaper</h5>
@@ -255,7 +161,7 @@
                             <h4>3 comment</h4>
                             <div class="dc-item">
                                 <div class="dc-pic">
-                                    <img src="../img/details/comment/comment-1.jpg" alt="">
+                                    <img src="img/details/comment/comment-1.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Brandon Kelley</h5>
@@ -268,7 +174,7 @@
                             </div>
                             <div class="dc-item reply-item">
                                 <div class="dc-pic">
-                                    <img src="../img/details/comment/comment-2.jpg" alt="">
+                                    <img src="img/details/comment/comment-2.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Brandon Kelley</h5>
@@ -281,7 +187,7 @@
                             </div>
                             <div class="dc-item">
                                 <div class="dc-pic">
-                                    <img src="../img/details/comment/comment-3.jpg" alt="">
+                                    <img src="img/details/comment/comment-3.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Matthew Nelson</h5>
@@ -342,7 +248,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="../img/trending/trending-5.jpg" alt="">
+                                    <img src="img/trending/trending-5.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
@@ -355,7 +261,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="../img/trending/trending-6.jpg" alt="">
+                                    <img src="img/trending/trending-6.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a></h6>
@@ -367,7 +273,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="../img/trending/trending-7.jpg" alt="">
+                                    <img src="img/trending/trending-7.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">This gaming laptop with a GTX 1660 Ti and 32GB of RAM is down...</a>
@@ -380,7 +286,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="../img/trending/trending-8.jpg" alt="">
+                                    <img src="img/trending/trending-8.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">Jalopy developer is making a game where you 'build stuff...</a></h6>
@@ -396,10 +302,10 @@
                                 <h5>Instagram</h5>
                             </div>
                             <div class="insta-pic">
-                                <img src="../img/instagram/ip-1.jpg" alt="">
-                                <img src="../img/instagram/ip-2.jpg" alt="">
-                                <img src="../img/instagram/ip-3.jpg" alt="">
-                                <img src="../img/instagram/ip-4.jpg" alt="">
+                                <img src="img/instagram/ip-1.jpg" alt="">
+                                <img src="img/instagram/ip-2.jpg" alt="">
+                                <img src="img/instagram/ip-3.jpg" alt="">
+                                <img src="img/instagram/ip-4.jpg" alt="">
                             </div>
                         </div>
                         <div class="best-of-post">

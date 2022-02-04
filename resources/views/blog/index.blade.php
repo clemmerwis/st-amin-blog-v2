@@ -27,7 +27,9 @@
                                 <div class="col-lg-6">
                                     <div class="cg-item">
                                         <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
-                                            <div class="label"><span>{{ $post->category->name }}</span></div>
+                                            @foreach($post->categories as $category)
+                                                <div class="label"><span>{{ $category->name }}</span></div>
+                                            @endforeach
                                         </div>
                                         <div class="cg-text">
                                             <h5><a href="#">{{ $post->title }}</a></h5>
@@ -45,7 +47,6 @@
                             <p>There are no posts</p>
                         @endif
                     </div>
-
                     {{-- Pagination --}}
                     {!! $posts->links() !!}
                 </div>

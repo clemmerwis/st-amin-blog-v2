@@ -16,23 +16,22 @@ class Post extends Model
         'image_path',
         'active',
         'featured',
-        'category_id',
     ];
 
     protected $dates = ['published_at'];
 
-    protected $with = ['author', 'category'];
+    protected $with = ['author', 'categories'];
 
-    // One To Many (Inverse) / Belongs To
+
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    // One To Many (Inverse) / Belongs To
-    public function category()
+
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'category_post')->withTimestamps();
     }
 
     // public function likes()

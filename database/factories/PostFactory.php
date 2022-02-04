@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -24,6 +25,8 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        // $categories = Category::factory()->count(10)->create();
+
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
         $date = $this->faker->dateTimeBetween('-1 day' );
@@ -35,7 +38,6 @@ class PostFactory extends Factory
             'image_path' => 'img/categories-grid/cg-10.jpg',
             'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
             'published_at' => $date,
-            'category_id' => $this->faker->numberBetween(1, 10),
             'created_at'=> $date,
             'updated_at'=> $date,
         ];

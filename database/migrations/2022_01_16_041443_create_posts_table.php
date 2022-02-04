@@ -27,15 +27,13 @@ class CreatePostsTable extends Migration
             $table->boolean('featured')->default(false);
 
             $table->foreignId('author_id')
-                ->constrained('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->constrained('users');
 
-            $table->foreignId('category_id')
-                ->constrained('categories')
-                ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->nullable();
+            // $table->foreignId('category_id')
+            //     ->constrained('categories')
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade')
+            //     ->nullable();
 
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
