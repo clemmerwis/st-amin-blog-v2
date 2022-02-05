@@ -17,9 +17,11 @@ class CreateCategoryPost extends Migration
             $table->foreignId('post_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
             $table->foreignId('category_id')->constrained('categories')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

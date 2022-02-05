@@ -52,6 +52,7 @@
                     <li><a href="#">The Magazine <i class="fa fa-angle-down"></i></a>
                         <span><img src="{{ asset('img/icons/Icon2_Earth.png') }}" alt=""></span>
                         <ul class="dropdown">
+                            <li><a href="./categories-list.html">All Latest Articles</a></li>
                             <li><a href="./categories-list.html">Ghost Stories</a></li>
                             <li><a href="./categories-grid.html">Art Gallery</a></li>
                             <li><a href="./typography.html">Health & Wellness</a></li>
@@ -120,7 +121,7 @@
                                         <li>
                                             <a href="{{ route('admin.dashboard') }}">
                                                 @if (auth()->user()->is_admin == 1)
-                                                Dashboard
+                                                    Dashboard
                                                 @else
                                                     My Profile
                                                 @endif
@@ -176,6 +177,7 @@
                             <li class="mega-menu spin mainitem"><a class="the-magazine" href="#"><span>The Magazine <i class="fa fa-angle-down"></i></span></a>
                                 <div class="megamenu-wrapper">
                                     <ul class="mw-nav">
+                                        <li><a href="{{ route('posts.index') }}"><span>All Latest Articles</span></a></li>
                                         <li><a href="#"><span>Ghost Stories</span></a></li>
                                         <li><a href="#"><span>Art Gallery</span></a></li>
                                         <li><a href="#"><span>Health & Wellness</span></a></li>

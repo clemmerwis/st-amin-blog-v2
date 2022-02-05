@@ -5,6 +5,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="details-hero-text">
+                        {{-- @foreach($post->categories as $category)
+                        @endforeach --}}
                         <div class="label"><span>Playstation</span></div>
                         <div class="label"><span>Hardware</span></div>
                         <h3>Jupiter Hell, the spiritual successor to a Doom roguelike week</h3>

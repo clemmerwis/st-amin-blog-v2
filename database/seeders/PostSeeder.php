@@ -19,10 +19,15 @@ class PostSeeder extends Seeder
     public function run()
     {
         for ($i=0; $i < 10; $i++) {
-            $cat = Category::inRandomOrder()->take(rand(1, 3))->get();
+            $cats = [];
+            $parentCategory = Category::where('id', '<=', 5)->inRandomOrder()->take(1)->get()[0];
+            $cats[] = $parentCategory;
+            $subcats = Category::find($parentCategory->id)->subcats;
+            $subcats = $subcats->random(rand(1,$subcats->count()));
+            $cats[] = $subcats;
             Post::factory()
                 ->count(1)
-                ->hasAttached([...$cat])
+                ->hasAttached([...$cats])
                 ->create();
         }
     }

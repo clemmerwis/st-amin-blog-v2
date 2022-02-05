@@ -14,7 +14,13 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'parent_id',
     ];
+
+    public function subcats()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 
     // One To Many / Has Many
     public function posts()

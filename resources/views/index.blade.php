@@ -305,6 +305,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="tabs-2" role="tabpanel">
                                 <div class="row">
                                     <div class="un-slider owl-carousel">
@@ -433,6 +434,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="tabs-3" role="tabpanel">
                                 <div class="row">
                                     <div class="un-slider owl-carousel">
@@ -561,6 +563,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="tabs-4" role="tabpanel">
                                 <div class="row">
                                     <div class="un-slider owl-carousel">

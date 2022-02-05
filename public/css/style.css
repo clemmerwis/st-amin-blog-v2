@@ -2501,6 +2501,7 @@ ol {
 	font-size: 15px;
 	color: #c20000;
 	display: inline-block;
+    font-weight: bolder;
 }
 
 /*---------------------
@@ -2531,6 +2532,19 @@ ol {
 	position: absolute;
 	left: 15px;
 	bottom: 15px;
+}
+
+.cg-item .cg-pic .label.label2 {
+    left: 145px;
+}
+
+.cg-item .cg-pic .label.label3 {
+    bottom: 55px;
+}
+
+.cg-item .cg-pic .label.label4 {
+    bottom: 55px;
+    left: 145px;
 }
 
 .cg-item .cg-pic .label span {

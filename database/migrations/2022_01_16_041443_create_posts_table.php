@@ -35,8 +35,8 @@ class CreatePostsTable extends Migration
             //     ->onDelete('cascade')
             //     ->nullable();
 
-            $table->timestamps();
             $table->timestamp('published_at')->nullable();
+            $table->timestamps();
         });
     }
 
