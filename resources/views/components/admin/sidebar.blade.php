@@ -6,7 +6,7 @@
             </li>
 
             <li>
-                <a class="{{ (request()->is('admin/posts')) ? 'active-menu' : '' }}" href="{{ route('admin.posts') }}"><i class="fa fa-table"></i> Posts</a>
+                <a class="{{ (request()->is('admin/posts')) ? 'active-menu' : '' }}" href="{{ route('admin.posts.index') }}"><i class="fa fa-table"></i> Posts</a>
             </li>
         </ul>
     </div>

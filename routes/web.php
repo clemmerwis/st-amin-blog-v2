@@ -32,9 +32,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
 Route::group(['prefix'=>'admin', 'as' => 'admin.', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
-
 });
 
 Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth', 'PreventBackHistory']], function() {

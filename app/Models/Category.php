@@ -14,8 +14,11 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'parent_id',
     ];
+
+    protected $with = ['subcats'];
 
     public function subcats()
     {

@@ -84,6 +84,5 @@ class CategorySeeder extends Seeder
             'slug' => 'peace',
             'parent_id' => 5,
         ]);
-        // Category::factory()->count(10)->create();
     }
 }

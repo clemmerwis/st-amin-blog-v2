@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\Detail;
 use App\Models\Category;
 use Faker\Generator as Faker;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 
@@ -18,7 +19,7 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 25; $i++) {
             $cats = [];
             $parentCategory = Category::where('id', '<=', 5)->inRandomOrder()->take(1)->get()[0];
             $cats[] = $parentCategory;
@@ -28,6 +29,7 @@ class PostSeeder extends Seeder
             Post::factory()
                 ->count(1)
                 ->hasAttached([...$cats])
+                ->forDetail(Detail::factory()->create())
                 ->create();
         }
     }

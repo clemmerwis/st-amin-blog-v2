@@ -20,7 +20,7 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
-    protected $with = ['author', 'categories'];
+    protected $with = ['author', 'categories', 'detail'];
 
 
     public function author()
@@ -32,6 +32,11 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_post')->withTimestamps();
+    }
+
+    public function detail()
+    {
+        return $this->hasOne(Detail::class, 'detail_id');
     }
 
     // public function likes()

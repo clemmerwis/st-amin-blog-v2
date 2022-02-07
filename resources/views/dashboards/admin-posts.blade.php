@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div id="wrapper">
+    <div id="wrapper" class="admin-page-wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">

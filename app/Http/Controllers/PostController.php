@@ -28,6 +28,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('blog.single', compact('post'));
+        $template = $post->detail->template_name;
+        $template = 'blog.single-' . $template;
+        return view($template, compact('post'));
     }
 }

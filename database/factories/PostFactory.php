@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+use App\Models\Detail;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 
 class PostFactory extends Factory
@@ -25,13 +26,12 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        // $categories = Category::factory()->count(10)->create();
-
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
         $date = $this->faker->dateTimeBetween('-1 day' );
         return [
             'author_id' => 1,
+            'detail_id' => Detail::factory(),
             'title' => $title,
             'slug' => $slug,
             'body' => $this->faker->paragraph(30),

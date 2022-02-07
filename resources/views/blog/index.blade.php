@@ -28,10 +28,10 @@
                                     <div class="cg-item">
                                         <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
                                             @foreach($post->categories as $category)
-                                                {{-- <div class="label label{{ $loop->iteration }}"><span>{{ $category->name }}</span></div> --}}
-                                                @if ($category->isTopCategory)
+                                                <div class="label label{{ $loop->iteration }}"><span>{{ $category->name }}</span></div>
+                                                {{-- @if ($category->parent === null)
                                                     <div class="label"><span>{{ $category->name }}</span></div>
-                                                @endif
+                                                @endif --}}
                                             @endforeach
                                         </div>
                                         <div class="cg-text">

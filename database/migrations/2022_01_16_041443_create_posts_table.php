@@ -26,8 +26,8 @@ class CreatePostsTable extends Migration
             $table->boolean('active')->default(true);
             $table->boolean('featured')->default(false);
 
-            $table->foreignId('author_id')
-                ->constrained('users');
+            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('detail_id')->constrained('details');
 
             // $table->foreignId('category_id')
             //     ->constrained('categories')

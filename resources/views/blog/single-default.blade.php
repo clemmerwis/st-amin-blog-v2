@@ -1,18 +1,17 @@
 <x-app-layout>
     <!-- Details Hero Section Begin -->
-    <section class="details-hero-section set-bg" data-setbg="img/details/details-post.jpg">
+    <section class="details-hero-section set-bg" data-setbg="../../img/details/details-post.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="details-hero-text">
-                        {{-- @foreach($post->categories as $category)
-                        @endforeach --}}
-                        <div class="label"><span>Playstation</span></div>
-                        <div class="label"><span>Hardware</span></div>
-                        <h3>Jupiter Hell, the spiritual successor to a Doom roguelike week</h3>
+                        @foreach($post->categories as $category)
+                            <div class="label"><span>{{ $category->name }}</span></div>
+                        @endforeach
+                        <h3>{{ $post->title }}</h3>
                         <ul>
-                            <li>by <span>Admin</span></li>
-                            <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                            <li>by <span>{{ $post->author->name }}</span></li>
+                            <li><i class="fa fa-clock-o"></i> {{ $post->published_at->diffForHumans() }}</li>
                             <li><i class="fa fa-comment-o"></i> 20</li>
                         </ul>
                     </div>
@@ -58,7 +57,7 @@
                         </div>
                         <div class="dt-pic-item">
                             <div class="dp-pic">
-                                <img src="img/details/dp-p.jpg" alt="">
+                                <img src="../img/details/dp-p.jpg" alt="">
                             </div>
                             <div class="dp-text">
                                 <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
@@ -113,7 +112,7 @@
                                     <a href="#" class="rp-prev">
                                         <span>Prev</span>
                                         <div class="rp-pic">
-                                            <img src="img/details/prev.jpg" alt="">
+                                            <img src="../img/details/prev.jpg" alt="">
                                         </div>
                                         <div class="rp-text">
                                             <h6>The Real-Estate Developers Are the Enemy</h6>
@@ -128,7 +127,7 @@
                                     <a href="#" class="rp-next">
                                         <span>Next</span>
                                         <div class="rp-pic">
-                                            <img src="img/details/next.jpg" alt="">
+                                            <img src="../img/details/next.jpg" alt="">
                                         </div>
                                         <div class="rp-text">
                                             <h6>Montreal real estate: Bargains in cottage countrya</h6>
@@ -143,7 +142,7 @@
                         </div>
                         <div class="dt-author">
                             <div class="da-pic">
-                                <img src="img/details/author-pic.jpg" alt="">
+                                <img src="../img/details/author-pic.jpg" alt="">
                             </div>
                             <div class="da-text">
                                 <h5>Almil Hmaper</h5>
@@ -163,7 +162,7 @@
                             <h4>3 comment</h4>
                             <div class="dc-item">
                                 <div class="dc-pic">
-                                    <img src="img/details/comment/comment-1.jpg" alt="">
+                                    <img src="../img/details/comment/comment-1.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Brandon Kelley</h5>
@@ -176,7 +175,7 @@
                             </div>
                             <div class="dc-item reply-item">
                                 <div class="dc-pic">
-                                    <img src="img/details/comment/comment-2.jpg" alt="">
+                                    <img src="../img/details/comment/comment-2.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Brandon Kelley</h5>
@@ -189,7 +188,7 @@
                             </div>
                             <div class="dc-item">
                                 <div class="dc-pic">
-                                    <img src="img/details/comment/comment-3.jpg" alt="">
+                                    <img src="../img/details/comment/comment-3.jpg" alt="">
                                 </div>
                                 <div class="dc-text">
                                     <h5>Matthew Nelson</h5>
@@ -250,7 +249,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="img/trending/trending-5.jpg" alt="">
+                                    <img src="../img/trending/trending-5.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
@@ -263,7 +262,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="img/trending/trending-6.jpg" alt="">
+                                    <img src="../img/trending/trending-6.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a></h6>
@@ -275,7 +274,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="img/trending/trending-7.jpg" alt="">
+                                    <img src="../img/trending/trending-7.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">This gaming laptop with a GTX 1660 Ti and 32GB of RAM is down...</a>
@@ -288,7 +287,7 @@
                             </div>
                             <div class="trending-item">
                                 <div class="ti-pic">
-                                    <img src="img/trending/trending-8.jpg" alt="">
+                                    <img src="../img/trending/trending-8.jpg" alt="">
                                 </div>
                                 <div class="ti-text">
                                     <h6><a href="#">Jalopy developer is making a game where you 'build stuff...</a></h6>
@@ -304,10 +303,10 @@
                                 <h5>Instagram</h5>
                             </div>
                             <div class="insta-pic">
-                                <img src="img/instagram/ip-1.jpg" alt="">
-                                <img src="img/instagram/ip-2.jpg" alt="">
-                                <img src="img/instagram/ip-3.jpg" alt="">
-                                <img src="img/instagram/ip-4.jpg" alt="">
+                                <img src="../img/instagram/ip-1.jpg" alt="">
+                                <img src="../img/instagram/ip-2.jpg" alt="">
+                                <img src="../img/instagram/ip-3.jpg" alt="">
+                                <img src="../img/instagram/ip-4.jpg" alt="">
                             </div>
                         </div>
                         <div class="best-of-post">
