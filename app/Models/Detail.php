@@ -9,8 +9,8 @@ class Detail extends Model
 {
     use HasFactory;
 
-    // public function post()
-    // {
-    //     return $this->belongsTo(Post::class, 'post_id');
-    // }
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'post_id');
+    }
 }

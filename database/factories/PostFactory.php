@@ -31,7 +31,6 @@ class PostFactory extends Factory
         $date = $this->faker->dateTimeBetween('-1 day' );
         return [
             'author_id' => 1,
-            'detail_id' => Detail::factory(),
             'title' => $title,
             'slug' => $slug,
             'body' => $this->faker->paragraph(30),

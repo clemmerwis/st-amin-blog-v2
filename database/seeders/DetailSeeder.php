@@ -26,5 +26,8 @@ class DetailSeeder extends Seeder
         //         ->forPost($item)
         //         ->create();
         // });
+        Detail::factory()
+            ->count(25)
+            ->forPost(Post::factory())
     }
 }

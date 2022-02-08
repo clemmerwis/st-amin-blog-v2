@@ -19,18 +19,20 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 25; $i++) {
+        for ($i=1; $i < 26; $i++) {
             $cats = [];
             $parentCategory = Category::where('id', '<=', 5)->inRandomOrder()->take(1)->get()[0];
             $cats[] = $parentCategory;
             $subcats = Category::find($parentCategory->id)->subcats;
             $subcats = $subcats->random(rand(1,$subcats->count()));
             $cats[] = $subcats;
-            Post::factory()
+            $post = Post::factory()
                 ->count(1)
                 ->hasAttached([...$cats])
-                ->forDetail(Detail::factory()->create())
                 ->create();
+            $post->each(function ($p) {
+                    $p->detail()->save(Detail::factory()->make());
+                });
         }
     }
 }

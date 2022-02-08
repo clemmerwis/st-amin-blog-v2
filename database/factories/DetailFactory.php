@@ -2,16 +2,14 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Post;
 use App\Models\Detail;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DetailFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
+    protected $model = Detail::class;
+
     public function definition()
     {
         // impliment later
