@@ -29,7 +29,7 @@ class PostSeeder extends Seeder
             $post = Post::factory()
                 ->count(1)
                 ->hasAttached([...$cats])
-                ->create();
+                ->create(['image_path' => 'img/categories-grid/cg-'. rand(1, 10) .'.jpg']);
             $post->each(function ($p) {
                     $p->detail()->save(Detail::factory()->make());
                 });

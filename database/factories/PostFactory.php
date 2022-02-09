@@ -26,15 +26,24 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $body = collect($this->faker->paragraphs(rand(5, 15)))
+        ->map(function($item){
+            return "<p>$item</p>";
+        })->toArray();
+        $body = implode($body);
+
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
+
         $date = $this->faker->dateTimeBetween('-1 day' );
+
         return [
             'author_id' => 1,
             'title' => $title,
             'slug' => $slug,
-            'body' => $this->faker->paragraph(30),
-            'image_path' => 'img/categories-grid/cg-10.jpg',
+            // 'body' => $this->faker->paragraph(30),
+            'body' => $body,
+            'image_path' => 'img/categories-grid/cg-1.jpg',
             'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
             'published_at' => $date,
             'created_at'=> $date,

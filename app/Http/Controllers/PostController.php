@@ -29,7 +29,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $template = $post->detail->template_name;
-        $template = 'blog.single-' . $template;
+        $template = 'blog.single-'.$template;
         return view($template, compact('post'));
     }
 }
