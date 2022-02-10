@@ -29,13 +29,10 @@
                                         <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
                                             @foreach($post->categories as $category)
                                                 <div class="label label{{ $loop->iteration }}"><span>{{ $category->name }}</span></div>
-                                                {{-- @if ($category->parent === null)
-                                                    <div class="label"><span>{{ $category->name }}</span></div>
-                                                @endif --}}
                                             @endforeach
                                         </div>
                                         <div class="cg-text">
-                                            <h5><a href="">{{ $post->title }}</a></h5>
+                                            <h5><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h5>
                                             <ul>
                                                 <li>by <span>{{ $post->author->name }}</span></li>
                                                 <li><i class="fa fa-clock-o"></i> {{ $post->published_at->diffForHumans() }}</li>

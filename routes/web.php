@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::model('posts', 'Post');
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Route::get('/', function() { return view('index'); });

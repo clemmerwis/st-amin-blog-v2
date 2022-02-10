@@ -25,11 +25,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
-        $template = $post->detail->template_name;
-        $template = 'blog.single-'.$template;
+        $post = Post::where('slug', $slug)->get()[0];
+        $template = 'blog.single-'.$post->detail->template_name;
         return view($template, compact('post'));
     }
 }
