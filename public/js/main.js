@@ -8,9 +8,6 @@
 ---------------------------------------------------------  */
 
 'use strict';
-function displayDate() {
-    console.log("test");
-}
 (function ($) {
     /*------------------
         Preloader
@@ -46,6 +43,13 @@ function displayDate() {
             $('.signup-switch').click();
         }
     });
+
+
+    $(document).ready(function () {
+        // $('#dataTables-example').dataTable();
+        console.log('test');
+    });
+
 
     /*------------------
         Background Set

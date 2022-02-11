@@ -18,15 +18,21 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rockville.css') }}">
 
-    <!-- FontAwesome Styles-->
+    <!-- FontAwesome Styles -->
     <link href="{{ asset('css/admin/assets/css/font-awesome.css') }}" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
+
+    <!-- Morris Chart Styles -->
     <link href="{{ asset('css/admin/assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
-    <!-- Custom Styles-->
+
+    <!-- Custom Styles -->
     <link href="{{ asset('css/admin/assets/css/custom-styles.css') }}" rel="stylesheet" />
-    <!-- Google Fonts-->
+
+    <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{{ asset('css/admin/assets/js/Lightweight-Chart/cssCharts.css') }}">
+
+    <!-- table styles -->
+    <link href="{{ asset('css/admin/assets/js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -39,7 +45,6 @@
             <div class="lds-pos"></div>
         </div>
     </div> --}}
-
 
     {{ $slot }}
 
@@ -61,12 +66,21 @@
 
 	<script src="{{ asset('css/admin/assets/js/Lightweight-Chart/jquery.chart.js') }}"></script>
 
+    <!-- data table scripts -->
+    <script src="{{ asset('css/admin/assets/js/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('css/admin/assets/js/dataTables/dataTables.bootstrap.js') }}"></script>
+
     <!-- Custom Js -->
     <script src="{{ asset('css/admin/assets/js/custom-scripts.js') }}"></script>
 
     <!-- Chart Js -->
-    <script type="text/javascript" src="{{ asset('css/admin/assets/js/Chart.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('css/admin/assets/js/chartjs.js') }}"></script>
+    <script src="{{ asset('css/admin/assets/js/chart.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            // $('#dataTables-example').dataTable();
+            console.log('test');
+        });
+    </script>
 </body>
 
 </html>

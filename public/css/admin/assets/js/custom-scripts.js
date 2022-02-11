@@ -9,10 +9,10 @@
     var mainApp = {
 
         initFunction: function () {
-            /*MENU 
+            /*MENU
             ------------------------------------*/
             $('#main-menu').metisMenu();
-			
+
             $(window).bind("load resize", function () {
                 if ($(this).width() < 768) {
                     $('div.sidebar-collapse').addClass('collapse')
@@ -59,12 +59,12 @@
                 labels: ['Series A', 'Series B'],
 				 barColors: [
     '#22a7f0','#1abc9c',
-    '#A8E9DC' 
+    '#A8E9DC'
   ],
                 hideHover: 'auto',
                 resize: true
             });
-	 
+
 
 
             /* MORRIS DONUT CHART
@@ -83,7 +83,7 @@
                 }],
 				   colors: [
     '#22a7f0','#1abc9c',
-    '#A8E9DC' 
+    '#A8E9DC'
   ],
                 resize: true
             });
@@ -172,8 +172,8 @@
 					  { y: '2023', a: 145, b: 155},
 					  { y: '2024', a: 160, b: 195}
 				],
-            
-				 
+
+
       xkey: 'y',
       ykeys: ['a', 'b'],
       labels: ['Total Income', 'Total Outcome'],
@@ -184,17 +184,17 @@
       pointFillColors:['#ffffff'],
       pointStrokeColors: ['black'],
       lineColors:['gray','#1abc9c']
-	  
+
             });
-           
-        
+
+
             $('.bar-chart').cssCharts({type:"bar"});
             $('.donut-chart').cssCharts({type:"donut"}).trigger('show-donut-chart');
             $('.line-chart').cssCharts({type:"line"});
 
             $('.pie-thychart').cssCharts({type:"pie"});
-       
-	 
+
+
         },
 
         initialization: function () {
@@ -206,18 +206,18 @@
     // Initializing ///
 
     $(document).ready(function () {
-        mainApp.initFunction(); 
+        mainApp.initFunction();
 		$("#sideNav").click(function(){
 			if($(this).hasClass('closed')){
 				$('.navbar-side').animate({left: '0px'});
 				$(this).removeClass('closed');
 				$('#page-wrapper').animate({'margin-left' : '260px'});
-				
+
 			}
 			else{
 			    $(this).addClass('closed');
 				$('.navbar-side').animate({left: '-260px'});
-				$('#page-wrapper').animate({'margin-left' : '0px'}); 
+				$('#page-wrapper').animate({'margin-left' : '0px'});
 			}
 		});
     });
