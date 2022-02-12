@@ -1,307 +1,272 @@
-<!-- /. ROW  -->
-<div class="row">
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="board">
-            <div class="panel panel-primary">
-                <div class="number">
-                    <h3>
-                        <h3>44,023</h3>
-                        <small>Daily Visits</small>
-                    </h3>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
-                </div>
+<div class="container-fluid p-0">
 
+    <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
+    <div class="row">
+        <div class="col-xl-6 col-xxl-5 d-flex">
+            <div class="w-100">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Sales</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="truck"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">2.382</h1>
+                                <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i>
+                                        -3.65% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Visitors</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">14.212</h1>
+                                <div class="mb-0">
+                                    <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i>
+                                        5.25% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Earnings</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">$21.300</h1>
+                                <div class="mb-0">
+                                    <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i>
+                                        6.65% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Orders</h5>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3">64</h1>
+                                <div class="mb-0">
+                                    <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i>
+                                        -2.25% </span>
+                                    <span class="text-muted">Since last week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-xxl-7">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Recent Movement</h5>
+                </div>
+                <div class="card-body py-3">
+                    <div class="chart chart-sm">
+                        <canvas id="chartjs-dashboard-line"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="board">
-            <div class="panel panel-primary">
-                <div class="number">
-                    <h3>
-                        <h3>32,850</h3>
-                        <small>Sales</small>
-                    </h3>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-shopping-cart fa-5x blue"></i>
-                </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
 
+                    <h5 class="card-title mb-0">Browser Usage</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-xs">
+                                <canvas id="chartjs-dashboard-pie"></canvas>
+                            </div>
+                        </div>
+
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Chrome</td>
+                                    <td class="text-end">4306</td>
+                                </tr>
+                                <tr>
+                                    <td>Firefox</td>
+                                    <td class="text-end">3801</td>
+                                </tr>
+                                <tr>
+                                    <td>IE</td>
+                                    <td class="text-end">1689</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Real-Time</h5>
+                </div>
+                <div class="card-body px-4">
+                    <div id="world_map" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+            <div class="card flex-fill">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Calendar</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="chart">
+                            <div id="datetimepicker-dashboard"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="board">
-            <div class="panel panel-primary">
-                <div class="number">
-                    <h3>
-                        <h3>56,150</h3>
-                        <small>Comments</small>
-                    </h3>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-comments fa-5x green"></i>
-                </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header">
 
+                    <h5 class="card-title mb-0">Latest Projects</h5>
+                </div>
+                <table class="table table-hover my-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="d-none d-xl-table-cell">Start Date</th>
+                            <th class="d-none d-xl-table-cell">End Date</th>
+                            <th>Status</th>
+                            <th class="d-none d-md-table-cell">Assignee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Project Apollo</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                        </tr>
+                        <tr>
+                            <td>Project Fireball</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-danger">Cancelled</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                        <tr>
+                            <td>Project Hades</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                        </tr>
+                        <tr>
+                            <td>Project Nitro</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-warning">In progress</span></td>
+                            <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                        </tr>
+                        <tr>
+                            <td>Project Phoenix</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                        <tr>
+                            <td>Project X</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                        </tr>
+                        <tr>
+                            <td>Project Romeo</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-success">Done</span></td>
+                            <td class="d-none d-md-table-cell">Christina Mason</td>
+                        </tr>
+                        <tr>
+                            <td>Project Wombat</td>
+                            <td class="d-none d-xl-table-cell">01/01/2021</td>
+                            <td class="d-none d-xl-table-cell">31/06/2021</td>
+                            <td><span class="badge bg-warning">In progress</span></td>
+                            <td class="d-none d-md-table-cell">William Harris</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Monthly Sales</h5>
+                </div>
+                <div class="card-body d-flex w-100">
+                    <div class="align-self-center chart chart-lg">
+                        <canvas id="chartjs-dashboard-bar"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="board">
-            <div class="panel panel-primary">
-                <div class="number">
-                    <h3>
-                        <h3>89,645</h3>
-                        <small>Daily Profits</small>
-                    </h3>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-user fa-5x yellow"></i>
-                </div>
-
-            </div>
-        </div>
-    </div>
 </div>
-
-<div class="row">
-    <div class="col-sm-6 col-xs-12">
-        <div class="panel panel-default chartJs">
-            <div class="panel-heading">
-                <div class="card-title">
-                    <div class="title">Line Chart</div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <canvas id="line-chart" class="chart"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-xs-12">
-        <div class="panel panel-default chartJs">
-            <div class="panel-heading">
-                <div class="card-title">
-                    <div class="title">Bar Chart</div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <canvas id="bar-chart" class="chart"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-6 col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body easypiechart-panel">
-                <h4>Profit</h4>
-                <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">82%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6 col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body easypiechart-panel">
-                <h4>Sales</h4>
-                <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">55%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6 col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body easypiechart-panel">
-                <h4>Customers</h4>
-                <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">84%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6 col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body easypiechart-panel">
-                <h4>No. of Visits</h4>
-                <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">46%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--/.row-->
-
-<div class="row">
-    <div class="col-md-5">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Line Chart
-            </div>
-            <div class="panel-body">
-                <div id="morris-line-chart"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-7">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Bar Chart Example
-            </div>
-            <div class="panel-body">
-                <div id="morris-bar-chart"></div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-md-9 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Area Chart
-            </div>
-            <div class="panel-body">
-                <div id="morris-area-chart"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Donut Chart Example
-            </div>
-            <div class="panel-body">
-                <div id="morris-donut-chart"></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-
-    </div>
-</div>
-<!-- /. ROW  -->
-
-<div class="row">
-    <div class="col-md-4 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Tasks Panel
-            </div>
-            <div class="panel-body">
-                <div class="list-group">
-
-                    <a href="#" class="list-group-item">
-                        <span class="badge">7 minutes ago</span>
-                        <i class="fa fa-fw fa-comment"></i> Commented on a post
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <span class="badge">16 minutes ago</span>
-                        <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <span class="badge">36 minutes ago</span>
-                        <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <span class="badge">1 hour ago</span>
-                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <span class="badge">1.23 hour ago</span>
-                        <i class="fa fa-fw fa-user"></i> A new user has added
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <span class="badge">yesterday</span>
-                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                    </a>
-                </div>
-                <div class="text-right">
-                    <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="col-md-8 col-sm-12 col-xs-12">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Responsive Table Example
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>S No.</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>User Name</th>
-                                <th>Email ID.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>John15482</td>
-                                <td>name@site.com</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Kimsila</td>
-                                <td>Marriye</td>
-                                <td>Kim1425</td>
-                                <td>name@site.com</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Rossye</td>
-                                <td>Nermal</td>
-                                <td>Rossy1245</td>
-                                <td>name@site.com</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Richard</td>
-                                <td>Orieal</td>
-                                <td>Rich5685</td>
-                                <td>name@site.com</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Jacob</td>
-                                <td>Hielsar</td>
-                                <td>Jac4587</td>
-                                <td>name@site.com</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Wrapel</td>
-                                <td>Dere</td>
-                                <td>Wrap4585</td>
-                                <td>name@site.com</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- /. ROW  -->

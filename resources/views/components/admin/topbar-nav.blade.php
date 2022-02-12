@@ -1,240 +1,178 @@
-<nav class="navbar navbar-default top-navbar" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <h3 class="admin-heading">Schmoll Thoughts</h3>
-        </a>
-        <div id="sideNav" href="">
-            <i class="fa fa-bars icon"></i>
-        </div>
-    </div>
+<nav class="navbar navbar-expand navbar-light navbar-bg">
+    <a class="sidebar-toggle js-sidebar-toggle">
+        <i class="hamburger align-self-center"></i>
+    </a>
 
-    <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-messages">
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Doe</strong>
-                            <span class="pull-right text-muted">
-                                <em>Today</em>
-                            </span>
-                        </div>
-                        <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Smith</strong>
-                            <span class="pull-right text-muted">
-                                <em>Yesterday</em>
-                            </span>
-                        </div>
-                        <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Smith</strong>
-                            <span class="pull-right text-muted">
-                                <em>Yesterday</em>
-                            </span>
-                        </div>
-                        <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>Read All Messages</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-messages -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-tasks">
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 1</strong>
-                                <span class="pull-right text-muted">60% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar"
-                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (success)</span>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav navbar-align">
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                    <div class="position-relative">
+                        <i class="align-middle" data-feather="bell"></i>
+                        <span class="indicator">4</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+                    <div class="dropdown-menu-header">
+                        4 New Notifications
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-danger" data-feather="alert-circle"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Update completed</div>
+                                    <div class="text-muted small mt-1">Restart server 12 to complete the
+                                        update.
+                                    </div>
+                                    <div class="text-muted small mt-1">30m ago</div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 2</strong>
-                                <span class="pull-right text-muted">28% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-info" role="progressbar"
-                                    aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
-                                    <span class="sr-only">28% Complete</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-warning" data-feather="bell"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Lorem ipsum</div>
+                                    <div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
+                                        hendrerit et.</div>
+                                    <div class="text-muted small mt-1">2h ago</div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 3</strong>
-                                <span class="pull-right text-muted">60% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-warning" role="progressbar"
-                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-primary" data-feather="home"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">Login from 192.186.1.8</div>
+                                    <div class="text-muted small mt-1">5h ago</div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 4</strong>
-                                <span class="pull-right text-muted">85% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" role="progressbar"
-                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-                                    <span class="sr-only">85% Complete (danger)</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <i class="text-success" data-feather="user-plus"></i>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">New connection</div>
+                                    <div class="text-muted small mt-1">Christina accepted your request.
+                                    </div>
+                                    <div class="text-muted small mt-1">14h ago</div>
                                 </div>
                             </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-menu-footer">
+                        <a href="#" class="text-muted">Show all notifications</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+                    <div class="position-relative">
+                        <i class="align-middle" data-feather="message-square"></i>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+                    <div class="dropdown-menu-header">
+                        <div class="position-relative">
+                            4 New Messages
                         </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All Tasks</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-tasks -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-comment fa-fw"></i> New Comment
-                            <span class="pull-right text-muted small">4 min</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                            <span class="pull-right text-muted small">12 min</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-envelope fa-fw"></i> Message Sent
-                            <span class="pull-right text-muted small">4 min</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-tasks fa-fw"></i> New Task
-                            <span class="pull-right text-muted small">4 min</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                            <span class="pull-right text-muted small">4 min</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-alerts -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#"
-                        onclick="event.preventDefault();
-                        document.getElementById('logoutForm').submit();">
-                        <i class="fa fa-sign-out fa-fw"></i>Logout
-                    </a>
-                </li>
-                <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </ul>
-            <!-- /.dropdown-user -->
-        </li>
-        <!-- /.dropdown -->
-    </ul>
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <img src="{{ asset('css/admin/assets/img/avatars/avatar-5.jpg') }}" class="avatar img-fluid rounded-circle"
+                                        alt="Vanessa Tucker">
+                                </div>
+                                <div class="col-10 ps-2">
+                                    <div class="text-dark">Vanessa Tucker</div>
+                                    <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+                                        tortor.</div>
+                                    <div class="text-muted small mt-1">15m ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <img src="{{ asset('css/admin/assets/img/avatars/avatar-2.jpg') }}" class="avatar img-fluid rounded-circle"
+                                        alt="William Harris">
+                                </div>
+                                <div class="col-10 ps-2">
+                                    <div class="text-dark">William Harris</div>
+                                    <div class="text-muted small mt-1">Curabitur ligula sapien euismod
+                                        vitae.
+                                    </div>
+                                    <div class="text-muted small mt-1">2h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <img src="{{ asset('css/admin/assets/img/avatars/avatar-4.jpg') }}" class="avatar img-fluid rounded-circle"
+                                        alt="Christina Mason">
+                                </div>
+                                <div class="col-10 ps-2">
+                                    <div class="text-dark">Christina Mason</div>
+                                    <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+                                    </div>
+                                    <div class="text-muted small mt-1">4h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <img src="{{ asset('css/admin/assets/img/avatars/avatar-3.jpg') }}" class="avatar img-fluid rounded-circle"
+                                        alt="Sharon Lessman">
+                                </div>
+                                <div class="col-10 ps-2">
+                                    <div class="text-dark">Sharon Lessman</div>
+                                    <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+                                        posuere ac, mattis non.</div>
+                                    <div class="text-muted small mt-1">5h ago</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-menu-footer">
+                        <a href="#" class="text-muted">Show all messages</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                    <i class="align-middle" data-feather="settings"></i>
+                </a>
+
+                <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                    <img src="{{ asset('css/admin/assets/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span
+                        class="text-dark">Charles Hall</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+                            data-feather="user"></i> Profile</a>
+                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>
+                        Analytics</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i>
+                        Settings & Privacy</a>
+                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help
+                        Center</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Log out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
-<!--/. NAV TOP  -->

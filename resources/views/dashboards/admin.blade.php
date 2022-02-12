@@ -3,24 +3,28 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/plugins/images/favicon.png') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="{{ asset('css/admin/assets/img/icons/icon-48x48.png') }}" />
 
-    @if (!isset($active))
-        <x-admin.head/>
+    <link href="{{ asset('css/admin/assets/css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    {{-- @if (!isset($active))
+    <x-admin.head />
     @else
-        @if ($active === 'Posts')
-            <x-admin.head-posts/>
-        {{-- @elseif ($active === 'Users')
-            <x-admin.innerpage-users/> --}}
-        @endif
-    @endif
+    @if ($active === 'Posts')
+    <x-admin.head-posts /> --}}
+    {{-- @elseif ($active === 'Users')
+    <x-admin.innerpage-users /> --}}
+    {{-- @endif
+    @endif --}}
 </head>
+
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -32,11 +36,10 @@
         </div>
     </div> --}}
 
-    {{-- <x-admin.page :posts="$posts"/> --}}
-    <div id="wrapper" class="admin-page-wrapper">
-        <x-admin.topbar-nav/>
+    {{-- <div id="wrapper" class="admin-page-wrapper">
+        <x-admin.topbar-nav />
 
-        <x-admin.sidebar-nav/>
+        <x-admin.sidebar-nav />
 
         <div id="page-wrapper">
             <div class="header">
@@ -52,33 +55,85 @@
 
             <div id="page-inner">
                 @if (!isset($active))
-                    <x-admin.innerpage/>
+                <x-admin.innerpage />
                 @else
-                    @if ($active === 'Posts')
-                        <x-admin.innerpage-posts/>
-                    {{-- @elseif ($active === 'Users')
-                        <x-admin.innerpage-users/> --}}
-                    @endif
+                @if ($active === 'Posts')
+                <x-admin.innerpage-posts :posts="$posts" />
+                {{-- @elseif ($active === 'Users')
+                <x-admin.innerpage-users /> --}}
+                {{-- @endif
                 @endif
 
                 <footer>
                     <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
-                </footer>
-            </div>
+                </footer> --}}
+                {{--
+            </div> --}}
             <!-- /. PAGE INNER  -->
-        </div>
+            {{--
+        </div> --}}
         <!-- /. PAGE WRAPPER  -->
-    </div>
+        {{--
+    </div> --}}
     <!-- /. WRAPPER  -->
+    <div class="wrapper">
+        <x-admin.sidebar-nav />
+
+        <div class="main">
+            <x-admin.topbar-nav />
+
+            <main class="content">
+                @if (!isset($active))
+                    <x-admin.innerpage />
+                @else
+                    @if ($active === 'Posts')
+                        <x-admin.innerpage-posts :posts="$posts" />
+                    {{-- @elseif ($active === 'Users')
+                        <x-admin.innerpage-users /> --}}
+                    @endif
+                @endif
+            </main>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted" href="https://adminkit.io/"
+                                    target="_blank"><strong>AdminKit</strong></a> &copy;
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 
     @if (!isset($active))
-        <x-admin.footerscripts/>
+        <x-admin.footerscripts />
     @else
         @if ($active === 'Posts')
-            <x-admin.footerscripts-posts/>
-        {{-- @elseif ($active === 'Users')
-            <x-admin.innerpage-users/> --}}
+            <x-admin.footerscripts-posts />
+            {{-- @elseif ($active === 'Users')
+            <x-admin.innerpage-users /> --}}
         @endif
     @endif
 </body>
+
 </html>
