@@ -16,12 +16,15 @@
 
 <script src="{{ asset('css/admin/assets/js/Lightweight-Chart/jquery.chart.js') }}"></script>
 
-<!-- data table scripts -->
-<script src="{{ asset('css/admin/assets/js/dataTables/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('css/admin/assets/js/dataTables/dataTables.bootstrap.js') }}"></script>
-
 <!-- Custom Js -->
 <script src="{{ asset('css/admin/assets/js/custom-scripts.js') }}"></script>
 
+
+<script>
+    $(document).ready(function () {
+        console.log('hey');
+    });
+</script>
 <!-- Chart Js -->
 <script src="{{ asset('css/admin/assets/js/chart.min.js') }}"></script>
+<script src="{{ asset('css/admin/assets/js/chartjs.js') }}"></script>

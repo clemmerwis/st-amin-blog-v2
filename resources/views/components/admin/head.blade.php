@@ -17,6 +17,3 @@
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="{{ asset('css/admin/assets/js/Lightweight-Chart/cssCharts.css') }}">
-
-<!-- table styles -->
-<link href="{{ asset('css/admin/assets/js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
