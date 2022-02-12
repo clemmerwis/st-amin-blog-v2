@@ -1,4 +1,3 @@
-
 <!-- /. ROW  -->
 <div class="row">
     <div class="col-md-3 col-sm-12 col-xs-12">
@@ -102,8 +101,7 @@
         <div class="panel panel-default">
             <div class="panel-body easypiechart-panel">
                 <h4>Profit</h4>
-                <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span
-                        class="percent">82%</span>
+                <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">82%</span>
                 </div>
             </div>
         </div>
@@ -112,8 +110,7 @@
         <div class="panel panel-default">
             <div class="panel-body easypiechart-panel">
                 <h4>Sales</h4>
-                <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span
-                        class="percent">55%</span>
+                <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">55%</span>
                 </div>
             </div>
         </div>
@@ -122,8 +119,7 @@
         <div class="panel panel-default">
             <div class="panel-body easypiechart-panel">
                 <h4>Customers</h4>
-                <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span
-                        class="percent">84%</span>
+                <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">84%</span>
                 </div>
             </div>
         </div>
@@ -132,8 +128,7 @@
         <div class="panel panel-default">
             <div class="panel-body easypiechart-panel">
                 <h4>No. of Visits</h4>
-                <div class="easypiechart" id="easypiechart-red" data-percent="46"><span
-                        class="percent">46%</span>
+                <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">46%</span>
                 </div>
             </div>
         </div>
