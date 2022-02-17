@@ -15,9 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('published_at', 'desc');
+        $posts = Post::orderBy('published_at', 'desc')->get();
         $active = 'Posts';
-        // return view('dashboards.admin-posts', compact('posts'));
         return view('dashboards.admin', compact('posts', 'active'));
     }
 

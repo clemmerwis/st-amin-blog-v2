@@ -23,59 +23,14 @@
     <x-admin.innerpage-users /> --}}
     {{-- @endif
     @endif --}}
+    <style>
+        tbody th:first-child {
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    {{-- <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div> --}}
-
-    {{-- <div id="wrapper" class="admin-page-wrapper">
-        <x-admin.topbar-nav />
-
-        <x-admin.sidebar-nav />
-
-        <div id="page-wrapper">
-            <div class="header">
-                <h1 class="page-header">
-                    Dashboard <small>Welcome {{ auth()->user()->name }}</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
-                    <li class="active">{{ $active ?? 'Dashboard'}}</li>
-                </ol>
-            </div>
-
-            <div id="page-inner">
-                @if (!isset($active))
-                <x-admin.innerpage />
-                @else
-                @if ($active === 'Posts')
-                <x-admin.innerpage-posts :posts="$posts" />
-                {{-- @elseif ($active === 'Users')
-                <x-admin.innerpage-users /> --}}
-                {{-- @endif
-                @endif
-
-                <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
-                </footer> --}}
-                {{--
-            </div> --}}
-            <!-- /. PAGE INNER  -->
-            {{--
-        </div> --}}
-        <!-- /. PAGE WRAPPER  -->
-        {{--
-    </div> --}}
-    <!-- /. WRAPPER  -->
     <div class="wrapper">
         <x-admin.sidebar-nav />
 
@@ -87,7 +42,7 @@
                     <x-admin.innerpage />
                 @else
                     @if ($active === 'Posts')
-                        <x-admin.innerpage-posts :posts="$posts" />
+                        <x-admin.innerpage-posts :posts="$posts"/>
                     {{-- @elseif ($active === 'Users')
                         <x-admin.innerpage-users /> --}}
                     @endif
