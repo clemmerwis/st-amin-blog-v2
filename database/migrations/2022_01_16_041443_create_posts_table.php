@@ -28,12 +28,6 @@ class CreatePostsTable extends Migration
 
             $table->foreignId('author_id')->constrained('users');
 
-            // $table->foreignId('category_id')
-            //     ->constrained('categories')
-            //     ->onUpdate('cascade')
-            //     ->onDelete('cascade')
-            //     ->nullable();
-
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
