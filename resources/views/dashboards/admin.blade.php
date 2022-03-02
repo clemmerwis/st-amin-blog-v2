@@ -92,7 +92,7 @@
             <x-admin.innerpage-users /> --}}
         @endif
     @endif
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
