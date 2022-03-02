@@ -42,7 +42,10 @@
                     <x-admin.innerpage />
                 @else
                     @if ($active === 'Posts')
-                        <x-admin.innerpage-posts :posts="$posts"/>
+                        <div id="app">
+                            <innerpage-posts></innerpage-posts>
+                        </div>
+                        {{-- <x-admin.innerpage-posts :posts="$posts"/> --}}
                     {{-- @elseif ($active === 'Users')
                         <x-admin.innerpage-users /> --}}
                     @endif
@@ -89,6 +92,7 @@
             <x-admin.innerpage-users /> --}}
         @endif
     @endif
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
