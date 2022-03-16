@@ -56,7 +56,7 @@
         },
         mounted() {
             axios.get('/api/posts').then(response => {
-                this.posts = response.data;
+                this.posts = response.data.data;
             });
         }
     }
