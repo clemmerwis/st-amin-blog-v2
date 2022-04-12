@@ -71,7 +71,7 @@
         },
         methods: {
             async list(page=1){
-                await axios.get(`/api/posts?page=${page}`).then(({data})=>{
+                await axios.get(`/api/admin/posts?page=${page}`).then(({data})=>{
                     this.posts = data
                 }).catch(({ response })=>{
                     console.error(response)

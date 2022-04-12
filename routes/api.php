@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('posts', [\App\Http\Controllers\Api\Admin\PostController::class, 'index']);
+Route::get('admin/posts', [\App\Http\Controllers\Api\Admin\PostController::class, 'index']);
