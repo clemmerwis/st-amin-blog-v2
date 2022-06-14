@@ -8,7 +8,7 @@
                         <h3>Category: All</h3>
                         <div class="bt-option">
                             <a href="{{ route('home') }}">Home</a>
-                            <span>Latest Posts</span>
+                            <span>Latest Articles</span>
                         </div>
                     </div>
                 </div>

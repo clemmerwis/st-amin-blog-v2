@@ -5,9 +5,6 @@
             <div class="row">
                 <div class="hero">
                     <div class="box grid">
-                        <div class="title">
-                            <h2 >welcome, a witch dwells here</h2>
-                        </div>
                         <div class="box__left">
                             <a href="#">The Book</a>
                         </div>
@@ -16,9 +13,6 @@
                         </div>
                         <div class="box__right">
                             <a href="#">Web Consulting</a>
-                        </div>
-                        <div class="box__bottom">
-                            <a href="#">The Magazine</a>
                         </div>
                     </div>
                     <div class="st">
