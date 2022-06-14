@@ -35,7 +35,7 @@ class PostFactory extends Factory
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
 
-        $date = $this->faker->dateTimeBetween('-1 day' );
+        $date = $this->faker->dateTimeBetween('-5 day' );
 
         return [
             'author_id' => 1,
