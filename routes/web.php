@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,7 +31,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
 Route::group(['prefix'=>'admin', 'as' => 'admin.', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
 });
 
@@ -41,6 +39,6 @@ Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth'
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
-Route::resource('posts', PostController::class)->only([
+Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
     'index', 'show'
 ]);
