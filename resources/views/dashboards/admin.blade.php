@@ -24,7 +24,7 @@
     {{-- @endif
     @endif --}}
     <style>
-        tbody th:first-child {
+        tbody th {
             vertical-align: middle;
         }
 
