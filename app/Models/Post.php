@@ -19,8 +19,6 @@ class Post extends Model
         'published_at'
     ];
 
-    // protected $dates = ['published_at'];
-
     protected $casts = [
         'published_at' => 'datetime',
     ];
