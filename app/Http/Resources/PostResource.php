@@ -20,7 +20,7 @@ class PostResource extends JsonResource
             'slug' => $this->slug,
             'active' => $this->active,
             'featured' => $this->featured,
-            'published_at' => $this->published_at->toDateString(),
+            'published_at' => $this->published_at->format('M-d-y H:i'),
         ];
     }
 }
