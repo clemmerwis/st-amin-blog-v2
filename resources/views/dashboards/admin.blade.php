@@ -27,6 +27,11 @@
         tbody th:first-child {
             vertical-align: middle;
         }
+
+        /* admin sideabr - overwrite vuetify link color */
+        #app .v-application #sidebar a:not(:hover) {
+            color: rgba(233,236,239,.5);
+        }
     </style>
 </head>
 
