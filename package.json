@@ -27,6 +27,11 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
-        "vuetify": "^2.6.7"
+        "@mdi/font": "^6.5.95",
+        "@tinymce/tinymce-vue": "^3.2.0",
+        "moment": "^2.29.1",
+        "tinymce": "^5.10.3",
+        "vue": "^2.6.14",
+        "vuetify": "^2.6.3"
     }
 }
