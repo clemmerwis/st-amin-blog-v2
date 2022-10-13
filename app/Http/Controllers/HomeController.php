@@ -6,18 +6,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
     public function index()
     {
+        // need to load in a lot in the future
         return view('index');
     }
 }

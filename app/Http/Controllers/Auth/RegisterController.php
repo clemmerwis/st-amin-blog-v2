@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // auth logic only included for future use if needed
+        // auth logic only included for future use if needed... I think this is being used now?
         if ( auth()->attempt($request->only('email', 'password')) ) {
             if ( auth()->user()->is_admin ) {
                 return redirect()->route('admin.dashboard');
