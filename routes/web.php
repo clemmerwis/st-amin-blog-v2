@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// do I need this to make route model binding work? I don't think so... verify then remove if possible
-Route::model('posts', 'Post');
-
 // home login and register
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Route::get('/', function() { return view('index'); });
@@ -37,11 +34,13 @@ Route::group(['prefix'=>'admin', 'as' => 'admin.', 'middleware'=>['isAdmin', 'au
 
 // user pages
 Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth', 'PreventBackHistory']], function() {
-    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
 });
 
+// posts
 Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
     'index', 'show'
 ]);
 
+// contact page
 Route::get('/contact', function () { return view('contact'); })->name('contact');

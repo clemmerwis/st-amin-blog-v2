@@ -37,7 +37,7 @@
 
 <body>
     <div id="app">
-        <v-app app>
+        <v-app>
             <div class="wrapper">
                 <x-admin.sidebar-nav />
 

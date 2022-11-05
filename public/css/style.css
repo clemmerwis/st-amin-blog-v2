@@ -963,10 +963,10 @@ ol {
     padding: 24px 30px 24px 30px;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-	transition-delay: 0.25s;
+    -webkit-transition: all 0s;
+    -o-transition: all 0s; 
+    transition: all 0s;
+	transition-delay: 0s;
 }
 
 .nav-options .nav-menu ul li .megamenu-wrapper .mw-nav {
@@ -1139,7 +1139,8 @@ ol {
 	visibility: visible;
 	top: 361px;
 	/* transition enter */
-	transition-delay: 0s;
+    transition-delay: 0.15s !important;
+    transition: 0.2s;
 }
 
 .nav-options .nav-menu ul li:hover .dropdown {
