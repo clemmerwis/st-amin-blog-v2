@@ -4531,7 +4531,7 @@ ol {
 
 .nav-options .nav-menu ul li.home:after {
 	content: "";
-    background: url(../img/icons/Icon1_air.png) no-repeat;
+    background: url(../img/icons/icon1-air.png) no-repeat;
     height: 100%;
     width: var(--icon-width);
     position: absolute;
@@ -4542,7 +4542,7 @@ ol {
 
 .nav-options .nav-menu ul li a.the-magazine:after {
 	content: "";
-    background: url(../img/icons/Icon2_Earth.png) no-repeat;
+    background: url(../img/icons/icon2-earth.png) no-repeat;
     height: 100%;
     width: var(--icon-width);
     position: absolute;
@@ -4554,7 +4554,7 @@ ol {
 
 .nav-options .nav-menu ul li.stories-of-mirrors:after {
 	content: "";
-    background: url(../img/icons/Icon7_YinYang.png) no-repeat;
+    background: url(../img/icons/icon7-yinyang.png) no-repeat;
     height: 100%;
     width: var(--icon-width);
     position: absolute;
@@ -4566,7 +4566,7 @@ ol {
 
 .nav-options .nav-menu ul li a.marketing:after {
 	content: "";
-    background: url(../img/icons/Icon4_Water.png) no-repeat;
+    background: url(../img/icons/icon4-water.png) no-repeat;
     height: 100%;
     width: var(--icon-width);
     position: absolute;
@@ -4577,7 +4577,7 @@ ol {
 
 .nav-options .nav-menu ul li.contact:after {
 	content: "";
-    background: url(../img/icons/Icon5_Triquetra.png) no-repeat;
+    background: url(../img/icons/icon5-triquetra.png) no-repeat;
     height: 100%;
     width: var(--icon-width);
     position: absolute;

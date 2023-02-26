@@ -48,9 +48,9 @@
             </div>
             <div class="hw-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/Icon1_air.png') }}" alt=""></span></li>
+                    <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/icon1-air.png') }}" alt=""></span></li>
                     <li><a href="#">The Magazine <i class="fa fa-angle-down"></i></a>
-                        <span><img src="{{ asset('img/icons/Icon2_Earth.png') }}" alt=""></span>
+                        <span><img src="{{ asset('img/icons/icon2-earth.png') }}" alt=""></span>
                         <ul class="dropdown">
                             <li><a href="./categories-list.html">All Latest Articles</a></li>
                             <li><a href="./categories-list.html">Ghost Stories</a></li>
@@ -59,9 +59,9 @@
                             <li><a href="./details-post-default.html">Magick</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Stories of Mirrors</a><span><img src="./img/icons/Icon7_YinYang.png" alt=""></span></li>
+                    <li><a href="#">Stories of Mirrors</a><span><img src="{{ asset('img/icons/icon7-yinyang.png') }}" alt=""></span></li>
                     <li><a href="#">Marketing <i class="fa fa-angle-down"></i></a>
-                        <span><img src="./img/icons/Icon4_Water.png" alt=""></span>
+                        <span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span>
                         <ul class="dropdown">
                             <li><a href="#">Reviews</a></li>
                             <li><a href="#">Features</a></li>
@@ -70,7 +70,7 @@
                             <li><a href="#">Best Of</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('contact') }}">Contact </a><span><img src="./img/icons/Icon5_Triquetra.png" alt=""></span></li>
+                    <li><a href="{{ route('contact') }}">Contact </a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
                 </ul>
             </div>
             <div id="mobile-menu-wrap"></div>

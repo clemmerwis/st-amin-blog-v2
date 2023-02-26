@@ -9,7 +9,7 @@
                             <a href="#">The Book</a>
                         </div>
                         <div class="box__center">
-                            <img src="img/hero/owl400.png" alt="golden owl">
+                            <img src="img/hero/owlx400.png" alt="golden owl">
                         </div>
                         <div class="box__right">
                             <a href="#">Web Consulting</a>
