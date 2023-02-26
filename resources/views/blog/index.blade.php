@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg spad" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
