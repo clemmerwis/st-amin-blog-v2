@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,10 +38,10 @@ Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth'
     Route::get('profile', [UserController::class, 'profile'])->name('profile');
 });
 
-// posts
-Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
+// posts - show uses slug rather than id
+Route::resource('posts', PostController::class)->only([
     'index', 'show'
-]);
+])->parameters(['posts' => 'slug']);
 
 // contact page
 Route::get('/contact', function () { return view('contact'); })->name('contact');
