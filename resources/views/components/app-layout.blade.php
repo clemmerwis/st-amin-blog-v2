@@ -36,7 +36,7 @@
         <!-- Page Preloder -->
         {{-- <div id="preloder">
             <div class="loader">
-                <a href="#"><img src="img/SchmollThoughtsRoseBehindx300.png" alt="Company Logo"></a>
+                <a href="#"><img src="img/logos/schmoll-thoughts-rose-behind-x300.png" alt="Company Logo"></a>
             </div>
         </div> --}}
 
@@ -44,7 +44,7 @@
         <div class="humberger-menu-overlay"></div>
         <div class="humberger-menu-wrapper">
             <div class="hw-logo">
-                <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt=""></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt=""></a>
             </div>
             <div class="hw-menu mobile-menu">
                 <ul>
@@ -158,7 +158,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{ route('home') }}"><img src="{{ asset('img/SchmollThoughtsRoseBehindx300.png') }}" alt="Logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt="Logo"></a>
                         </div>
                     </div>
                 </div>
@@ -350,7 +350,7 @@
                     <div class="col-lg-4">
                         <div class="footer-about">
                             <div class="fa-logo">
-                                <a href="{{ route('home') }}"><img src="img/SchmollThoughtsRoseBehindx300.png" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                 labore et dolore magna aliqua lacus vel facilisis.</p>
