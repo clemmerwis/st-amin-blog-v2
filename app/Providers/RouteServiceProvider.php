@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Global route parameter Constraints
+        Route::pattern('id', '[0-9]+');
+        Route::pattern('slug', '^[a-z0-9]+(?:-[a-z0-9]+)*$');
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
