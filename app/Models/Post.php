@@ -25,12 +25,10 @@ class Post extends Model
 
     protected $with = ['author', 'categories', 'detail'];
 
-
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
     }
-
 
     public function categories()
     {

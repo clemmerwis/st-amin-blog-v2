@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use \App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 // admin pages
 Route::group(['prefix'=>'admin', 'as' => 'admin.', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
     Route::get('dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-    Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+    Route::resource('posts', Admin\PostController::class);
 });
 
 // user pages

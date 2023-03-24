@@ -1,5 +1,6 @@
 <?php
 
+use \App\Http\Controllers\Api\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('admin/posts', [\App\Http\Controllers\Api\Admin\PostController::class, 'index']);
+Route::get('admin/posts', [Admin\PostController::class, 'index'])->name('api.posts.index');
