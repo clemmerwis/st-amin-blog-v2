@@ -49,8 +49,8 @@
                             <x-admin.innerpage />
                         @else
                             @if ($active === 'Posts')
-
-                                    <innerpage-posts></innerpage-posts>
+                                    <test-test></test-test>
+                                    {{-- <innerpage-posts></innerpage-posts> --}}
 
                                 {{-- <x-admin.innerpage-posts :posts="$posts"/> --}}
                             {{-- @elseif ($active === 'Users')

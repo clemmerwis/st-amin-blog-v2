@@ -5,28 +5,21 @@
  */
 require('./bootstrap');
 
-import Vue from 'vue'
-import vuetify from './plugins/vuetify';
+import { createApp } from 'vue'
+import vuetify from './plugins/vuetify'
+import innerpagePosts from './components/Admin/Posts/Index'
+import testTest from './components/Admin/Posts/Test'
+import Vue3EasyDataTable from 'vue3-easy-data-table'
+import 'vue3-easy-data-table/dist/style.css'
 
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-Vue.component('innerpage-posts', require('./components/Admin/Posts/Index.vue').default)
-// Vue.component('pagination', require('laravel-vue-pagination'));
+const app = createApp({})
+app.use(vuetify)
 
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-const app = new Vue({
-    el: '#app',
-    vuetify
-});
+app.component('innerpage-posts', innerpagePosts)
+app.component('test-test', testTest)
+app.component( 'easy-data-table', Vue3EasyDataTable);
+
+
+app.mount('#app')

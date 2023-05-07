@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.25",
         "bootstrap": "^4.6.0",
         "deepmerge": "^4.2.2",
         "jquery": "^3.6",
@@ -22,16 +22,17 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "~1.32",
         "sass-loader": "^11.1.1",
-        "vue": "^2.5.1",
-        "vue-loader": "^15.9.8",
+        "vue-loader": "^17.0.0",
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
         "@mdi/font": "^6.5.95",
-        "@tinymce/tinymce-vue": "^3.2.0",
+        "@tinymce/tinymce-vue": "^5.0.0",
         "moment": "^2.29.1",
         "tinymce": "^5.10.3",
-        "vue": "^2.6.14",
-        "vuetify": "^2.6.3"
+        "vue": "^3.2.47",
+        "vue-loader": "^17.0.0",
+        "vue3-easy-data-table": "^1.5.34",
+        "vuetify": "^3.1.12"
     }
 }
