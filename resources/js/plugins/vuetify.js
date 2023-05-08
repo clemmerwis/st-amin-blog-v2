@@ -3,7 +3,7 @@ import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-
+import{ aliases } from 'vuetify/iconsets/mdi';
 import '@mdi/font/css/materialdesignicons.css';
 
 export default createVuetify({
@@ -25,6 +25,12 @@ export default createVuetify({
                     light: '#EAEAEA'
                 }
             },
+        },
+    },
+    icons: {
+        aliases: {
+            ...aliases,
+            danger: 'mdi-alert',
         },
     },
     defaults: {
@@ -94,6 +100,11 @@ export default createVuetify({
                     start: false,
                 },
             },
+        },
+        VAutocomplete: {
+            color: 'info',
+            variant: 'outlined',
+            density: 'compact',
         },
     },
 });

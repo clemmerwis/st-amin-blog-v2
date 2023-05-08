@@ -9,8 +9,14 @@ use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return PostResource::collection(Post::orderBy('published_at', 'desc')->paginate(10));
+        // Option to paginate a specified number of rows
+        $rowsPerPage = $request->query('limit', 10);
+
+        return PostResource::collection(
+            Post::orderBy('id', 'desc')
+                            ->paginate(request('page') ? $rowsPerPage : 10000)
+        );
     }
 }
