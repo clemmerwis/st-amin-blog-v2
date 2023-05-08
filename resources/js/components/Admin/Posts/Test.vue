@@ -3,24 +3,73 @@
 </template>
  
 <script>
-import pagination from 'laravel-vue-pagination'
 export default {
-    name: "test",
     data() {
         return {
-            posts: {
-                type: Object,
-                default: null
-            }
+            loading: true,
+
+            // ia data table
+            posts: [],
+            serverOptions: {
+                page: 1,
+                rowsPerPage: 10,
+                sortBy: '',
+                sortType: 'desc',
+            },
+            serverItemsLength: 0,
+            rowsPerPageOptions: {
+                rowItems: [10,25,50,100],
+            },
+            headers: [
+                    {
+                        text: 'Id',
+                        value: 'id',
+                        sortable: true
+                    },
+                    {
+                        text: 'Title',
+                        value: 'title',
+                        sortable: true
+                    },
+                    {
+                        text: 'Slug',
+                        value: 'slug',
+                        sortable: true
+                    },
+                    {
+                        text: 'Active',
+                        value: 'active',
+                        sortable: true
+                    },
+                    {
+                        text: 'Featured',
+                        value: 'featured',
+                        sortable: true
+                    },
+                    {
+                        text: 'Published At',
+                        value: 'published_at',
+                        sortable: true
+                    },
+                ],
         }
     },
-    mounted() {
-        this.list();
+    created() {
+        this.loadFromServer();
     },
     methods: {
-        async list(page = 1) {
-            await axios.get(`/api/admin/posts?page=${page}`).then(({ data }) => {
-                this.posts = data
+        async loadFromServer(page) {
+            this.loading = true
+            // Defaults to page one after search
+            if (page) {
+                this.serverOptions.page = page;
+            }
+            let query = `page=${this.serverOptions.page}`;
+            query = query + `&limit=${this.serverOptions.rowsPerPage}`
+
+            let self = this;
+            await axios.get(`/api/admin/posts?${query}`).then(({ data }) => {
+                self.posts = data
             }).catch(({ response }) => {
                 console.error(response)
             })
