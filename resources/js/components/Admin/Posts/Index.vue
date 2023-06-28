@@ -49,8 +49,8 @@
 
 <script>
     export default {
-        name:"index",
-        data() {
+        name: 'index',
+        data () {
             return {
                 posts: {
                     type: Object,
@@ -58,14 +58,14 @@
                 }
             }
         },
-        mounted() {
-            this.list();
-        },
+        mounted () {
+            this.list()
+    },
         methods: {
-            async list(page=1){
-                await axios.get(`/api/admin/posts?page=${page}`).then(({data})=>{
+            async list (page = 1) {
+                await axios.get(`/api/admin/posts?page=${page}`).then(({ data }) => {
                     this.posts = data
-                }).catch(({ response })=>{
+                }).catch(({ response }) => {
                     console.error(response)
                 })
             }

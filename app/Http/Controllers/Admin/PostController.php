@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -16,7 +15,17 @@ class PostController extends Controller
     public function index()
     {
         $active = 'Posts';
-        return view('dashboards.admin', compact('active'));
+
+        $records = [
+            ['id' => 1, 'name' => 'Record 1'],
+            ['id' => 2, 'name' => 'Record 2'],
+            ['id' => 3, 'name' => 'Record 3'],
+        ];
+
+        return view('dashboards.admin', [
+            'active' => $active,
+            'records' => $records,
+        ]);
     }
 
     /**

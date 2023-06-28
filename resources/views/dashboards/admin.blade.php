@@ -44,12 +44,12 @@
                 <div class="main">
                     <x-admin.topbar-nav />
 
-                    <main class="content">
+                    <main class="content" v-cloak>
                         @if (!isset($active))
                             <x-admin.innerpage />
                         @else
                             @if ($active === 'Posts')
-                                    <test-test></test-test>
+                                    <testy-test :table-data="{{json_encode($records)}}"></testy-test>
                                     {{-- <innerpage-posts></innerpage-posts> --}}
 
                                 {{-- <x-admin.innerpage-posts :posts="$posts"/> --}}
