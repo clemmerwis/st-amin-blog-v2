@@ -49,8 +49,8 @@
                             <x-admin.innerpage />
                         @else
                             @if ($active === 'Posts')
-                                    <testy-test :table-data="{{json_encode($records)}}"></testy-test>
-                                    {{-- <innerpage-posts></innerpage-posts> --}}
+                                    {{-- <testy-test :table-data="{{json_encode($records)}}"></testy-test> --}}
+                                    <innerpage-posts :records="{{json_encode($records)}}"></innerpage-posts>
 
                                 {{-- <x-admin.innerpage-posts :posts="$posts"/> --}}
                             {{-- @elseif ($active === 'Users')

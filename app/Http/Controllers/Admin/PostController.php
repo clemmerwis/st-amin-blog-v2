@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource records.
      *
      * @return \Illuminate\Http\Response
      */
@@ -16,11 +18,10 @@ class PostController extends Controller
     {
         $active = 'Posts';
 
-        $records = [
-            ['id' => 1, 'name' => 'Record 1'],
-            ['id' => 2, 'name' => 'Record 2'],
-            ['id' => 3, 'name' => 'Record 3'],
-        ];
+        // all records
+        $records = Post::all();
+
+        $records = PostResource::collection($records);
 
         return view('dashboards.admin', [
             'active' => $active,

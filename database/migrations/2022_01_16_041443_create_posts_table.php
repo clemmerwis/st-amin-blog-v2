@@ -21,7 +21,6 @@ class CreatePostsTable extends Migration
 
             $table->text('body');
             $table->text('excerpt')->nullable();
-            $table->string('image_path')->nullable();
 
             $table->boolean('active')->default(true);
             $table->boolean('featured')->default(false);

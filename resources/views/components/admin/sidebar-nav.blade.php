@@ -14,9 +14,11 @@
 <!-- /. NAV SIDE  -->
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
-            <span class="align-middle">AdminKit</span>
-        </a>
+        <div class="sidebar-brand" href="index.html" style="display: grid;">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt="" style="place-self: center; max-width: 200px;">
+            </a>
+        </div>
 
         <ul class="sidebar-nav">
             {{-- <li class="sidebar-header">

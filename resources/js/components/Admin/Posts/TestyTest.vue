@@ -55,7 +55,7 @@
                     terms: "",
                 },
 
-                records: [],
+                records: this.tableData?.records || [],
                 busy: true,
             };
         },
