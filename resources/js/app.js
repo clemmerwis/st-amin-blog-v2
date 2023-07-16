@@ -3,20 +3,20 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import './bootstrap'
-import { createApp } from 'vue'
-import vuetify from './plugins/vuetify'
+import './bootstrap';
+import { createApp } from 'vue';
+import vuetify from './plugins/vuetify';
 
-import innerpagePosts from './components/Admin/Posts/Index'
-import TestyTest from './components/Admin/Posts/TestyTest'
-import Vue3EasyDataTable from 'vue3-easy-data-table'
-import 'vue3-easy-data-table/dist/style.css'
+import innerpagePosts from './components/Admin/Posts/Index';
+import adminPostEdit from './components/Admin/Posts/Edit';
+import Vue3EasyDataTable from 'vue3-easy-data-table';
+import 'vue3-easy-data-table/dist/style.css';
 
-const app = createApp({})
-app.use(vuetify)
+const app = createApp({});
+app.use(vuetify);
 
-app.component('innerpage-posts', innerpagePosts)
-app.component('testy-test', TestyTest)
-app.component('easy-data-table', Vue3EasyDataTable)
+app.component('innerpage-posts', innerpagePosts);
+app.component('admin-post-edit', adminPostEdit);
+app.component('easy-data-table', Vue3EasyDataTable);
 
-app.mount('#app')
+app.mount('#app');

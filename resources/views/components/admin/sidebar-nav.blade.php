@@ -32,7 +32,7 @@
                 </a>
             </li>
 
-            <li class="sidebar-item {{ (request()->is('admin/posts')) ? 'active' : '' }}">
+            <li class="sidebar-item {{ (request()->is('admin/posts*')) ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('admin.posts.index') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Posts</span>
                 </a>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PostResource;
+use App\Http\Resources\PostIndexResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -19,13 +19,13 @@ class PostController extends Controller
         $active = 'Posts';
 
         // all records
-        $records = Post::all();
+        $posts = Post::all();
 
-        $records = PostResource::collection($records);
+        $posts = PostIndexResource::collection($posts);
 
         return view('dashboards.admin', [
             'active' => $active,
-            'records' => $records,
+            'posts' => $posts,
         ]);
     }
 
@@ -56,20 +56,28 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        // 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Post  $post
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $active = 'PostEdit';
+
+        // $post = new AdminPostShowResource($post);
+        $post = new PostIndexResource($post);
+        
+        return view('dashboards.admin', [
+            'active' => $active,
+            'post' => $post,
+        ]);
     }
 
     /**

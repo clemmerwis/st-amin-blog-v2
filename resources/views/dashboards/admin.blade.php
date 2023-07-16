@@ -45,18 +45,21 @@
                     <x-admin.topbar-nav />
 
                     <main class="content" v-cloak>
-                        @if (!isset($active))
-                            <x-admin.innerpage />
-                        @else
-                            @if ($active === 'Posts')
-                                    {{-- <testy-test :table-data="{{json_encode($records)}}"></testy-test> --}}
-                                    <innerpage-posts :records="{{json_encode($records)}}"></innerpage-posts>
+                        <div class="container-fluid p-0">
 
-                                {{-- <x-admin.innerpage-posts :posts="$posts"/> --}}
-                            {{-- @elseif ($active === 'Users')
-                                <x-admin.innerpage-users /> --}}
-                            @endif
-                        @endif
+                            @switch($active ?? null)
+                                @case('Posts')
+                                    <innerpage-posts :posts="{{ json_encode($posts) }}"></innerpage-posts>                                    
+                                    @break
+                                @case('PostEdit')
+                                    <admin-post-edit :post="{{ json_encode($post) }}"></admin-post-detail>
+                                    @break
+                                @default
+                                    <x-admin.innerpage />
+                            @endswitch
+                            
+                        </div>
+                        
                     </main>
 
                     <footer class="footer">
@@ -91,14 +94,19 @@
             </div>
         </v-app>
     </div>
-    @if (!isset($active))
-        <x-admin.footerscripts />
+    @if (isset($active)) 
+        @switch($active ?? null)
+            @case('Posts')
+                <x-admin.footerscripts-posts />                               
+                @break
+            @case('PostEdit')
+                <x-admin.footerscripts-posts />
+                @break
+            @default
+                <x-admin.footerscripts />
+        @endswitch
     @else
-        @if ($active === 'Posts')
-            <x-admin.footerscripts-posts />
-            {{-- @elseif ($active === 'Users')
-            <x-admin.innerpage-users /> --}}
-        @endif
+        <x-admin.footerscripts />
     @endif
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

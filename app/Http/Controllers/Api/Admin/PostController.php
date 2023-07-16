@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PostResource;
+use App\Http\Resources\PostIndexResource;
 
 class PostController extends Controller
 {
@@ -14,7 +14,7 @@ class PostController extends Controller
         // Option to paginate a specified number of rows
         $rowsPerPage = $request->query('limit', 10);
 
-        return PostResource::collection(
+        return PostIndexResource::collection(
             Post::orderBy('id', 'desc')
                             ->paginate(request('page') ? $rowsPerPage : 10000)
         );

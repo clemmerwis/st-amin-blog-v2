@@ -1,16 +1,30 @@
 <template>
-    <easy-data-table
-        class="data-table"
-        :headers="headers"
-        :items="records || []"
-        :sort-by="options.sortBy"
-        :sort-type="options.sortType"
-        :rows-per-page="options.rowsPerPage"
-        :search-value="search.terms"
-        :loading="busy"
-        alternating
-        @click-row="rowClick"
-    ></easy-data-table>
+    <h1 class="h3 mb-3">Posts / List</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <easy-data-table
+                        class="data-table"
+                        :headers="headers"
+                        :items="posts || []"
+                        :sort-by="options.sortBy"
+                        :sort-type="options.sortType"
+                        :rows-per-page="options.rowsPerPage"
+                        :search-value="search.terms"
+                        :loading="busy"
+                        alternating
+                        @click-row="rowClick"
+                    >
+                        <template #item-published_at="item">
+                            {{ convertedTime(item.published_at) }}
+                        </template>
+                    </easy-data-table>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -21,7 +35,7 @@
             EasyDataTable,
         },
         props: {
-            records: {
+            posts: {
                 type: Object,
                 required: false,
                 default() {
@@ -84,7 +98,27 @@
 
         methods: {
             rowClick(record) {
-                window.open(`/admin/posts/${record.id}`);
+                window.open(`/admin/posts/${record.id}/edit`);
+            },
+            convertedTime(time) {
+                // Split the date and time
+                const dateTimeParts = time.split(" ");
+                const datePart = dateTimeParts[0];
+                const militaryTime = dateTimeParts[1];
+
+                // Convert the military time to normal time format
+                const timeParts = militaryTime.split(":");
+                const hour = parseInt(timeParts[0]);
+                const minute = parseInt(timeParts[1]);
+
+                const period = hour >= 12 ? "PM" : "AM";
+                const convertedHour = hour % 12 === 0 ? 12 : hour % 12;
+                const convertedTime = `${convertedHour}:${minute
+                    .toString()
+                    .padStart(2, "0")}${period}`;
+
+                // Combine the formatted date and converted time with separator
+                return `${datePart} @ ${convertedTime}`;
             },
         },
     };
