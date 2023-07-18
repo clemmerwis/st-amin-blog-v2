@@ -1,236 +1,59 @@
 <template>
     <h1 class="h3 mb-3">Posts / Detail</h1>
 
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Input</h5>
-                </div>
-                <div class="card-body">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Input"
-                    />
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Textarea</h5>
-                </div>
-                <div class="card-body">
-                    <textarea
-                        class="form-control"
-                        rows="2"
-                        placeholder="Textarea"
-                    ></textarea>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Checkboxes</h5>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <label class="form-check">
+    <div class="my-grid">
+        <div class="area-one">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Title</h5>
+                        </div>
+                        <div class="card-body">
                             <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
+                                type="text"
+                                class="form-control"
+                                placeholder="Input"
                             />
-                            <span class="form-check-label">
-                                Option one is this and that&mdash;be sure to
-                                include why it's great
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                disabled
-                            />
-                            <span class="form-check-label">
-                                Option two is disabled
-                            </span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value="option1"
-                            />
-                            <span class="form-check-label"> 1 </span>
-                        </label>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value="option2"
-                            />
-                            <span class="form-check-label"> 2 </span>
-                        </label>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value="option3"
-                                disabled
-                            />
-                            <span class="form-check-label"> 3 </span>
-                        </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Read only</h5>
-                </div>
-                <div class="card-body">
-                    <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Readonly input"
-                        readonly
-                    />
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Slug</h5>
+                        </div>
+                        <div class="card-body">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Input"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Radios</h5>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <label class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                value="option1"
-                                name="radios-example"
-                                checked
-                            />
-                            <span class="form-check-label">
-                                Option one is this and that&mdash;be sure to
-                                include why it's great
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                value="option2"
-                                name="radios-example"
-                            />
-                            <span class="form-check-label">
-                                Option two can be something else and selecting
-                                it will deselect option one
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                value="option3"
-                                name="radios-example"
-                                disabled
-                            />
-                            <span class="form-check-label">
-                                Option three is disabled
-                            </span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="inline-radios-example"
-                                value="option1"
-                            />
-                            <span class="form-check-label"> 1 </span>
-                        </label>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="inline-radios-example"
-                                value="option2"
-                            />
-                            <span class="form-check-label"> 2 </span>
-                        </label>
-                        <label class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="inline-radios-example"
-                                value="option3"
-                                disabled
-                            />
-                            <span class="form-check-label"> 3 </span>
-                        </label>
+        <div class="area-two">
+            <div class="d-flex justify-content-end gap-3">
+                <div class="card flex-basis-0 flex-grow-1">
+                    <div class="card-body">
+                        <v-switch
+                            v-model="active"
+                            color="success"
+                            label="Active"
+                        ></v-switch>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Selects</h5>
-                </div>
-                <div class="card-body">
-                    <select class="form-select mb-3">
-                        <option selected>Open this select menu</option>
-                        <option>One</option>
-                        <option>Two</option>
-                        <option>Three</option>
-                    </select>
-
-                    <select multiple class="form-control">
-                        <option>One</option>
-                        <option>Two</option>
-                        <option>Three</option>
-                        <option>Four</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Disabled</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Disabled input</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Disabled input"
-                            disabled
-                        />
+                <div class="card flex-basis-0 flex-grow-1">
+                    <div class="card-body">
+                        <v-switch
+                            v-model="featured"
+                            color="primary"
+                            label="Featured"
+                        ></v-switch>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Disabled select menu</label>
-                        <select class="form-control" disabled>
-                            <option>Disabled select</option>
-                        </select>
-                    </div>
-                    <label class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            disabled
-                        />
-                        <span class="form-check-label"> Can't check this </span>
-                    </label>
                 </div>
             </div>
         </div>
@@ -251,8 +74,44 @@
         data() {
             return {
                 record: this.post || {},
-                content: "test",
+                active: true,
+                featured: false,
             };
         },
     };
 </script>
+
+<style scoped>
+    .flex-basis-0 {
+        flex-basis: 0px;
+    }
+
+    .fit-content {
+        max-width: fit-content;
+    }
+
+    .my-grid {
+        display: grid;
+        grid-template-areas:
+            "... ... ... two"
+            "one one one one";
+        grid-template-columns: repeat(3, 1fr) 2fr;
+        grid-row-gap: 0.5rem;
+        grid-column-gap: 1rem;
+    }
+
+    .area-one {
+        grid-area: one;
+    }
+    .area-two {
+        grid-area: two;
+    }
+
+    @media (max-width: 768px) {
+        .my-grid {
+            grid-template-areas:
+                "one one one one one one one one"
+                "... ... ... ... ... ... two two";
+        }
+    }
+</style>

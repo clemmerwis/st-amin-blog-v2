@@ -2,7 +2,8 @@
 <html dir="ltr" lang="en">
 
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -14,6 +15,8 @@
     <link href="{{ asset('css/admin/assets/css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <title>Admin | Dashboard</title>
+
     {{-- @if (!isset($active))
     <x-admin.head />
     @else
@@ -24,6 +27,10 @@
     {{-- @endif
     @endif --}}
     <style>
+        html {
+            overflow-y: hidden !important;
+        }
+
         tbody th {
             vertical-align: middle;
         }
@@ -31,6 +38,12 @@
         /* admin sideabr - overwrite vuetify link color */
         #app .v-application #sidebar a:not(:hover) {
             color: rgba(233,236,239,.5);
+        }
+
+        @media (max-width: 767px) {
+            .content {
+                width: 100%;
+            }
         }
     </style>
 </head>
