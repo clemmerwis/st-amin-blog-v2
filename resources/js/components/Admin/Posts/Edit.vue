@@ -4,7 +4,7 @@
     <div class="my-grid">
         <div class="area-one">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Title</h5>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Slug</h5>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="area-two">
-            <div class="d-flex justify-content-end gap-3">
+            <div class="d-md-flex justify-content-md-end gap-md-3">
                 <div class="card flex-basis-0 flex-grow-1">
                     <div class="card-body">
                         <v-switch
@@ -95,7 +95,7 @@
         grid-template-areas:
             "... ... ... two"
             "one one one one";
-        grid-template-columns: repeat(3, 1fr) 2fr;
+        grid-template-columns: repeat(3, 1fr) minmax(auto, max-content);
         grid-row-gap: 0.5rem;
         grid-column-gap: 1rem;
     }
@@ -107,11 +107,20 @@
         grid-area: two;
     }
 
+    .area-two .card-body {
+        min-width: 180px;
+        padding: 1em;
+    }
+
     @media (max-width: 768px) {
         .my-grid {
             grid-template-areas:
-                "one one one one one one one one"
-                "... ... ... ... ... ... two two";
+                "two ..."
+                "one one";
+            grid-template-columns: minmax(auto, max-content) 1fr;
+        }
+        .area-two .card-body {
+            max-width: 180px;
         }
     }
 </style>

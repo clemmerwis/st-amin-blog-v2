@@ -31,6 +31,11 @@
             overflow-y: hidden !important;
         }
 
+        .container-fluid {
+            max-width: 1450px;
+            margin: auto;
+        }
+
         tbody th {
             vertical-align: middle;
         }
