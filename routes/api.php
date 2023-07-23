@@ -19,4 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('admin/posts', [Admin\PostController::class, 'index'])->name('api.posts.index');
+// Route::get('admin/posts', [Admin\PostController::class, 'index'])->name('api.posts.index');
+Route::prefix('admin')->group(function () {
+    Route::apiResource('posts', Admin\PostController::class)->names([
+        'index' => 'api.posts.index',
+        'store' => 'api.posts.store',
+        'show' => 'api.posts.show',
+        'update' => 'api.posts.update',
+        'destroy' => 'api.posts.destroy',
+    ]);
+});

@@ -1,46 +1,49 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=3000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "@vue/compiler-sfc": "^3.2.47",
-        "axios": "^0.25",
-        "bootstrap": "^4.6.0",
-        "deepmerge": "^4.2.2",
-        "eslint": "^8.43.0",
-        "eslint-config-standard": "^17.1.0",
-        "eslint-plugin-import": "^2.27.5",
-        "eslint-plugin-n": "^16.0.1",
-        "eslint-plugin-promise": "^6.1.1",
-        "eslint-plugin-vue": "^9.15.1",
-        "jquery": "^3.6",
-        "laravel-mix": "^6.0.49",
-        "laravel-vue-pagination": "^2.1.0",
-        "lodash": "^4.17.19",
-        "popper.js": "^1.16.1",
-        "postcss": "^8.1.14",
-        "prettier": "^2.8.8",
-        "resolve-url-loader": "^4.0.0",
-        "sass": "~1.32",
-        "sass-loader": "^11.1.1",
-        "vue-eslint-parser": "^8.3.0",
-        "vue-loader": "^17.0.1",
-        "vue-template-compiler": "^2.6.14"
-    },
-    "dependencies": {
-        "@mdi/font": "^6.5.95",
-        "@tinymce/tinymce-vue": "^5.0.0",
-        "moment": "^2.29.1",
-        "tinymce": "^5.10.3",
-        "vue": "^3.2.47",
-        "vue3-easy-data-table": "^1.5.42",
-        "vuetify": "^3.1.12"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=3000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.47",
+    "axios": "^0.25",
+    "bootstrap": "^4.6.0",
+    "deepmerge": "^4.2.2",
+    "eslint": "^8.43.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.15.1",
+    "jquery": "^3.6",
+    "laravel-mix": "^6.0.49",
+    "laravel-vue-pagination": "^2.1.0",
+    "lodash": "^4.17.19",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.1.14",
+    "prettier": "^2.8.8",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "~1.32",
+    "sass-loader": "^11.1.1",
+    "vue-eslint-parser": "^8.3.0",
+    "vue-loader": "^17.0.1",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "dependencies": {
+    "@mdi/font": "^6.5.95",
+    "@tinymce/tinymce-vue": "^5.0.0",
+    "moment": "^2.29.1",
+    "tinymce": "^5.10.3",
+    "vue": "^3.2.47",
+    "vue3-easy-data-table": "^1.5.42",
+    "vuetify": "^3.1.12"
+  }
 }

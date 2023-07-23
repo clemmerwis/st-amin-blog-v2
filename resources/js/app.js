@@ -7,6 +7,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import vuetify from './plugins/vuetify';
 
+import MyAlert from './components/MyAlert.vue';
 import innerpagePosts from './components/Admin/Posts/Index';
 import adminPostEdit from './components/Admin/Posts/Edit';
 import Vue3EasyDataTable from 'vue3-easy-data-table';
@@ -15,6 +16,7 @@ import 'vue3-easy-data-table/dist/style.css';
 const app = createApp({});
 app.use(vuetify);
 
+app.component('my-alert', MyAlert);
 app.component('innerpage-posts', innerpagePosts);
 app.component('admin-post-edit', adminPostEdit);
 app.component('easy-data-table', Vue3EasyDataTable);

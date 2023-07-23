@@ -13,6 +13,8 @@ class Post extends Model
 
     protected $casts = [
         'published_at' => 'datetime',
+        'featured' => 'boolean',
+        'active' => 'boolean'
     ];
 
     protected $with = ['author', 'categories', 'detail'];

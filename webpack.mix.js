@@ -12,15 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .vue().version()
+    .vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps()
-    .options({
-        autoprefixer: {
-            options: {
-                browsers: [
-                    'last 3 versions',
-                ]
-            }
-        }
-    });
+    .sourceMaps();

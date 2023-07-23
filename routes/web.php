@@ -31,7 +31,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 // admin pages
 Route::group(['prefix'=>'admin', 'as' => 'admin.', 'middleware'=>['isAdmin', 'auth', 'PreventBackHistory']], function() {
     Route::get('dashboard', [Admin\AdminController::class, 'dashboard'])->name('dashboard');
-    Route::resource('posts', Admin\PostController::class);
+    Route::resource('posts', Admin\PostController::class)->only(['index', 'create', 'edit']);
 });
 
 // user pages
