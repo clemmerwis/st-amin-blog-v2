@@ -1,7 +1,9 @@
 <template>
     <h6 v-if="isPublished" class="small">(published)</h6>
     <h1 class="h3 mb-3">Posts / Detail</h1>
+
     <my-alert :setup="alert" @clear="() => (alert = {})"></my-alert>
+
     <v-toolbar color="light" class="mb-5">
         <v-spacer></v-spacer>
         <v-btn color="info" :loading="isProcessing" @click="update">
@@ -9,6 +11,7 @@
             Update
         </v-btn>
     </v-toolbar>
+
     <v-form
         ref="form"
         v-model="valid"
@@ -26,6 +29,7 @@
                             <div class="card-body">
                                 <v-text-field
                                     v-model="record.title"
+                                    name="title"
                                     clearable
                                     :rules="[rules.required]"
                                     required
@@ -41,6 +45,7 @@
                             <div class="card-body">
                                 <v-text-field
                                     v-model="record.slug"
+                                    name="slug"
                                     clearable
                                     :rules="[rules.required]"
                                     required
@@ -56,6 +61,7 @@
                             <div class="card-body">
                                 <v-textarea
                                     v-model="record.excerpt"
+                                    name="excerpt"
                                     clearable
                                 ></v-textarea>
                             </div>
@@ -74,6 +80,7 @@
                             <div class="card-body">
                                 <v-text-field
                                     v-model="record.image_path"
+                                    name="image_path"
                                     clearable
                                 ></v-text-field>
                             </div>
@@ -87,6 +94,7 @@
                                 <div class="card-body">
                                     <v-switch
                                         v-model="record.active"
+                                        name="active"
                                         color="success"
                                         label="Active"
                                     ></v-switch>
@@ -99,6 +107,7 @@
                                 <div class="card-body">
                                     <v-switch
                                         v-model="record.featured"
+                                        name="featured"
                                         color="primary"
                                         label="Featured"
                                     ></v-switch>
@@ -166,42 +175,15 @@
 
                 // check form
                 if (this.validate()) {
-                    let formData = new FormData();
-
-                    // shorten
-                    let files = this.payload.image_path;
-
-                    // populate formData
-                    for (let key in this.payload) {
-                        // append files (set to skip for now)
-                        if (key === "image_path" && false) {
-                            if (files !== null || !files.length < 1) {
-                                // each image needs a unique key
-                                for (let i = 0; i < files.length; i++) {
-                                    formData.append(
-                                        "featured_image_attachments[]",
-                                        files[i],
-                                        files[i].name
-                                    );
-                                }
-                            }
-                        } else {
-                            // append form properties
-                            formData.append(key, this.payload[key]);
-                        }
-                    }
-
-                    for (const entry of formData.entries()) {
-                        const [key, value] = entry;
-                        console.log(`Key: ${key}, Value: ${value}`);
-                    }
-
                     // submit form
                     return axios
-                        .put(`/api/admin/posts/${this.payload.id}`, formData, {
-                            headers: {
-                                "Content-Type": "multipart/form-data",
-                            },
+                        .put(`/api/admin/posts/${this.payload.id}`, {
+                            title: this.payload.title,
+                            slug: this.payload.slug,
+                            active: this.payload.active,
+                            featured: this.payload.featured,
+                            image_path: this.payload.image_path,
+                            excerpt: this.payload.excerpt,
                         })
                         .then(() => {
                             this.processing = false;
