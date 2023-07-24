@@ -26,14 +26,12 @@ class PostController extends Controller
         // Log the values of fields in the request
         Log::info('Request Data:', $request->all());
 
-        // $request->validate([
-        //     'image_path' => 'nullable',
-        //     'active'     => 'required',
-        //     'featured'   => 'required',
-        //     'title'      => 'required',
-        //     'slug'       => 'required',
-        //     'excerpt'    => 'nullable',
-        // ]);
+        $request->validate([
+            'active'     => 'required',
+            'featured'   => 'required',
+            'title'      => 'required',
+            'slug'       => 'required',
+        ]);
 
         // limit what we are saving (no attachments)
         $payload = $request->only([

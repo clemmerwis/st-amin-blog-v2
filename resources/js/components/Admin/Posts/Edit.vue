@@ -142,7 +142,7 @@
                 rules: {
                     required: (value) => !!value || "Required",
                 },
-                payload: {},
+                payload: null,
             };
         },
         computed: {
@@ -165,33 +165,29 @@
             resetValidation() {
                 this.$refs.form.resetValidation();
             },
-            update() {
+            async update() {
                 this.processing = true;
                 // reset validations
                 this.errors = {};
                 this.alert = {};
 
-                this.payload = this.record;
+                // build payload
+                this.payload = await this.getPayload();
 
                 // check form
                 if (this.validate()) {
                     // submit form
                     return axios
-                        .put(`/api/admin/posts/${this.payload.id}`, {
-                            title: this.payload.title,
-                            slug: this.payload.slug,
-                            active: this.payload.active,
-                            featured: this.payload.featured,
-                            image_path: this.payload.image_path,
-                            excerpt: this.payload.excerpt,
+                        .post(`/api/admin/posts/${this.record.id}`, this.payload, {
+                            headers: {
+                                "Content-Type": "multipart/form-data",
+                            },
                         })
                         .then(() => {
                             this.processing = false;
 
                             // alert user
-                            this.alert = {
-                                message: "Challenge created successfully",
-                            };
+                            this.alert = { message: "Post updated successfully" };
 
                             // this.reset();
                             // this.resetValidation();
@@ -225,6 +221,44 @@
 
                     return false;
                 }
+            },
+            async getPayload() {
+                // limit payload fields
+                const payload = {
+                    id: this.record.id,
+                    title: this.record.title,
+                    slug: this.record.slug,
+                    active: this.record.active ? 1 : 0,
+                    featured: this.record.featured ? 1 : 0,
+                    image_path: this.record.image_path,
+                    excerpt: this.record.excerpt,
+                };
+
+                let formData = new FormData();
+                formData.append("_method", "put"); // This is method spoofing for PUT
+
+                // populate formData
+                for (let key in payload) {
+                    // append files
+                    if (key === "files" && payload[key]?.length) {
+                        // shorten
+                        let files = payload.files;
+
+                        // each image needs a unique key
+                        for (let i = 0; i < files?.length; i++) {
+                            formData.append(
+                                "attachments[]",
+                                files[i],
+                                files[i].name
+                            );
+                        }
+                    } else {
+                        // append form properties
+                        formData.append(key, payload[key]);
+                    }
+                }
+
+                return formData;
             },
         },
     };
