@@ -1,5 +1,5 @@
 <template>
-    <section v-if="show">
+    <section v-if="show" class="mb-3">
         <v-alert
             variant="tonal"
             density="compact"

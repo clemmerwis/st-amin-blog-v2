@@ -21,11 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('admin/posts', [Admin\PostController::class, 'index'])->name('api.posts.index');
 Route::prefix('admin')->group(function () {
-    Route::apiResource('posts', Admin\PostController::class)->names([
+    Route::apiResource('posts', Admin\PostController::class)->except('update')->names([
         'index' => 'api.posts.index',
         'store' => 'api.posts.store',
         'show' => 'api.posts.show',
-        'update' => 'api.posts.update',
+        // 'update' => 'api.posts.update',
         'destroy' => 'api.posts.destroy',
     ]);
+
+    // define update route as post for formData files
+    Route::post('posts/{post}', [Admin\PostController::class, 'update'])->name('api.posts.update');
 });

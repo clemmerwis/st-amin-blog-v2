@@ -23,9 +23,6 @@ class PostController extends Controller
 
     public function update(Request $request, post $post)
     {
-        // Log the values of fields in the request
-        Log::info('Request Data:', $request->all());
-
         $request->validate([
             'active'     => 'required',
             'featured'   => 'required',
@@ -33,9 +30,18 @@ class PostController extends Controller
             'slug'       => 'required',
         ]);
 
-        // limit what we are saving (no attachments)
+        // Log the values of fields in the request
+        Log::info('Request Data:', $request->all());
+
+        $file = $request->file('image_featured');
+        Log::info('File Details:', [$request->hasFile('image_featured')]);
+        // save image
+        if($file) {
+            $post->addMediaFromRequest('image_featured')->toMediaCollection('featured-images');
+        }
+
+        // limit payload (no image)
         $payload = $request->only([
-            'image_path',
             'active',
             'featured',
             'title',

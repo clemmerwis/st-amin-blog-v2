@@ -78,11 +78,15 @@
                                 <h5 class="card-title mb-0">Featured Image</h5>
                             </div>
                             <div class="card-body">
-                                <v-text-field
-                                    v-model="record.image_path"
-                                    name="image_path"
+                                <v-file-input
+                                    v-model="record.image_featured"
+                                    name="image_featured"
+                                    accept="image/*"
                                     clearable
-                                ></v-text-field>
+                                    placeholder="Click to upload file"
+                                    prepend-icon="mdi-paperclip"
+                                >
+                                </v-file-input>
                             </div>
                         </div>
                     </div>
@@ -230,28 +234,18 @@
                     slug: this.record.slug,
                     active: this.record.active ? 1 : 0,
                     featured: this.record.featured ? 1 : 0,
-                    image_path: this.record.image_path,
+                    image_featured: this.record.image_featured,
                     excerpt: this.record.excerpt,
                 };
 
                 let formData = new FormData();
-                formData.append("_method", "put"); // This is method spoofing for PUT
 
                 // populate formData
                 for (let key in payload) {
-                    // append files
-                    if (key === "files" && payload[key]?.length) {
-                        // shorten
-                        let files = payload.files;
-
-                        // each image needs a unique key
-                        for (let i = 0; i < files?.length; i++) {
-                            formData.append(
-                                "attachments[]",
-                                files[i],
-                                files[i].name
-                            );
-                        }
+                    // append image
+                    if (key === "image_featured" && payload[key]) {
+                        formData.append(key, payload[key][0]);
+                        console.log(payload[key][0]);
                     } else {
                         // append form properties
                         formData.append(key, payload[key]);
