@@ -88,6 +88,7 @@
                                     prepend-icon="mdi-image"
                                     :loading="isProcessing"
                                     @change="updateFeaturedImage($event)"
+                                    @click:clear="clearFileInput"
                                 >
                                 </v-file-input>
                                 <div class="row justify-content-end">
@@ -265,7 +266,13 @@
                     excerpt: this.record.excerpt,
                 };
 
-                if (!this.urlFeaturedImg) {
+                // clear the media
+                if (!this.urlFeaturedImg && this.featuredImg.length === 0) {
+                    payload.image_featured = "clear";
+                }
+
+                // new image
+                if (!this.urlFeaturedImg && this.featuredImg.length !== 0) {
                     payload.image_featured = this.featuredImg;
                 }
 
@@ -275,7 +282,11 @@
                 for (let key in payload) {
                     // append image
                     if (key === "image_featured" && payload[key]) {
-                        formData.append(key, payload[key][0]);
+                        if (payload[key] !== "clear") {
+                            formData.append(key, payload[key][0]);
+                        } else {
+                            formData.append(key, payload[key]);
+                        }
                     } else {
                         // append properties
                         formData.append(key, payload[key]);
@@ -288,6 +299,11 @@
             updateFeaturedImage(event) {
                 this.urlFeaturedImg = null;
                 this.featuredImg = Array.from(event.target.files);
+            },
+            clearFileInput() {
+                this.urlFeaturedImg = null;
+                this.featuredImg = [];
+                console.log("ran");
             },
 
             getFeaturedImage() {
