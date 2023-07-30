@@ -305,11 +305,11 @@
                         }
                         this.featuredImg = featuredImg;
 
-                        this.urlFeaturedImg = "\\" + response.data.urlFeaturedImg;
-                        this.urlFeaturedImg = response.data.urlFeaturedImg.replace(
-                            "localhost",
-                            ""
-                        );
+                        let urlFeaturedImg = response.data.urlFeaturedImg;
+                        urlFeaturedImg = urlFeaturedImg.replace("localhost", "");
+                        urlFeaturedImg = urlFeaturedImg.replace("127.0.0.1", "");
+
+                        this.urlFeaturedImg = urlFeaturedImg;
 
                         this.processing = false;
                     })
