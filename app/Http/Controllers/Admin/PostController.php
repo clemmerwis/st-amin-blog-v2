@@ -56,7 +56,7 @@ class PostController extends Controller
         
         return view('dashboards.admin', [
             'active' => $active,
-            'post' => $post,
+            'post'   => $post,
         ]);
     }
 }

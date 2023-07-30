@@ -33,13 +33,6 @@ class PostController extends Controller
         // Log the values of fields in the request
         Log::info('Request Data:', $request->all());
 
-        $file = $request->file('image_featured');
-        Log::info('File Details:', [$request->hasFile('image_featured')]);
-        // save image
-        if($file) {
-            $post->addMediaFromRequest('image_featured')->toMediaCollection('featured-images');
-        }
-
         // limit payload (no image)
         $payload = $request->only([
             'active',
@@ -60,6 +53,15 @@ EOT;
 
         // update post
         $post->update($payload);
+
+        // save image
+        $file = $request->file('image_featured');
+        Log::info('File Details:', [$request->hasFile('image_featured')]);
+        if($file) {
+            // clear collection because each post can only have one featured image
+            $post->clearMediaCollection('featured-images');
+            $post->addMediaFromRequest('image_featured')->toMediaCollection('featured-images');
+        }
 
         return response()->json(['ok' => true], 201);
     }

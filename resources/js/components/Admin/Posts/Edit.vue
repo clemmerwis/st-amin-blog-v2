@@ -79,14 +79,31 @@
                             </div>
                             <div class="card-body">
                                 <v-file-input
-                                    v-model="record.image_featured"
+                                    :key="featuredImg.length"
+                                    v-model="featuredImg"
                                     name="image_featured"
                                     accept="image/*"
                                     clearable
                                     placeholder="Click to upload file"
-                                    prepend-icon="mdi-paperclip"
+                                    prepend-icon="mdi-image"
+                                    :loading="isProcessing"
+                                    @change="updateFeaturedImage($event)"
                                 >
                                 </v-file-input>
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <v-btn
+                                            v-if="urlFeaturedImg"
+                                            class="no-underline mt-5"
+                                            :href="urlFeaturedImg"
+                                            target="_blank"
+                                            color="info"
+                                            size="x-small"
+                                        >
+                                            View Image
+                                        </v-btn>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,11 +160,16 @@
                 valid: false,
                 processing: false,
                 record: this.post || {},
+                featuredImg: [],
+                urlFeaturedImg: null,
                 rules: {
                     required: (value) => !!value || "Required",
                 },
                 payload: null,
             };
+        },
+        created() {
+            this.getFeaturedImage();
         },
         computed: {
             isProcessing() {
@@ -169,6 +191,7 @@
             resetValidation() {
                 this.$refs.form.resetValidation();
             },
+
             async update() {
                 this.processing = true;
                 // reset validations
@@ -194,7 +217,7 @@
                             this.alert = { message: "Post updated successfully" };
 
                             // this.reset();
-                            // this.resetValidation();
+                            this.resetValidation();
 
                             // Reload the page
                             // window.location.reload();
@@ -234,9 +257,12 @@
                     slug: this.record.slug,
                     active: this.record.active ? 1 : 0,
                     featured: this.record.featured ? 1 : 0,
-                    image_featured: this.record.image_featured,
                     excerpt: this.record.excerpt,
                 };
+
+                if (!this.urlFeaturedImg) {
+                    payload.image_featured = this.featuredImg;
+                }
 
                 let formData = new FormData();
 
@@ -245,14 +271,55 @@
                     // append image
                     if (key === "image_featured" && payload[key]) {
                         formData.append(key, payload[key][0]);
-                        console.log(payload[key][0]);
                     } else {
-                        // append form properties
+                        // append properties
                         formData.append(key, payload[key]);
                     }
                 }
 
                 return formData;
+            },
+
+            updateFeaturedImage(event) {
+                this.urlFeaturedImg = null;
+                this.featuredImg = Array.from(event.target.files);
+            },
+
+            getFeaturedImage() {
+                this.processing = true;
+
+                return axios
+                    .get(`/api/featured-image/${this.record.id}`)
+                    .then((response) => {
+                        const featuredImg = [response.data.featuredImg];
+                        // set Laravel Media image name to match normal js file object name
+                        for (let i = 0; i < featuredImg.length; i++) {
+                            if (featuredImg[i].file_name) {
+                                featuredImg[i].name = featuredImg[i].file_name;
+                            }
+                        }
+                        this.featuredImg = featuredImg;
+
+                        this.urlFeaturedImg = "\\" + response.data.urlFeaturedImg;
+                        this.urlFeaturedImg = response.data.urlFeaturedImg.replace(
+                            "localhost",
+                            ""
+                        );
+
+                        this.processing = false;
+                    })
+                    .catch(({ response }) => {
+                        this.processing = false;
+
+                        // field validation errors (server-side)
+                        this.errors = this.errors?.errors;
+
+                        // alert user
+                        this.alert = {
+                            title: "Featured Image Error",
+                            ...response?.data,
+                        };
+                    });
             },
         },
     };

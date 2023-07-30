@@ -50,6 +50,10 @@
                 width: 100%;
             }
         }
+
+        .no-underline {
+            text-decoration: none !important;
+        }
     </style>
 </head>
 
@@ -70,7 +74,7 @@
                                     <innerpage-posts :posts="{{ json_encode($posts) }}"></innerpage-posts>                                    
                                     @break
                                 @case('PostEdit')
-                                    <admin-post-edit :post="{{ json_encode($post) }}"></admin-post-detail>
+                                    <admin-post-edit :post="{{ json_encode($post) }}"></admin-post-edit>
                                     @break
                                 @default
                                     <x-admin.innerpage />
