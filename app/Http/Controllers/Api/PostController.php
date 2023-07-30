@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function getFeaturedImage(Post $post)
     {
-        $featuredImg = $post->getFirstMedia('featured-images')->toArray();
+        $featuredImg = $post->getFirstMedia('featured-images')?->toArray() ?? [];
         $urlFeaturedImg = $post->getFirstMediaUrl('featured-images');
 
 

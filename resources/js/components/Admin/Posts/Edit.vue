@@ -200,7 +200,8 @@
 
                 // build payload
                 this.payload = await this.getPayload();
-
+                try {
+                } catch (error) {}
                 // check form
                 if (this.validate()) {
                     // submit form
@@ -219,6 +220,10 @@
                             // this.reset();
                             this.resetValidation();
 
+                            // fetch featured image after the next DOM update
+                            this.$nextTick(() => {
+                                this.getFeaturedImage();
+                            });
                             // Reload the page
                             // window.location.reload();
                         })
