@@ -53,7 +53,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Body</h5>
+                            </div>
+                            <div class="card-body">
+                                <ckeditor
+                                    :editor="editor"
+                                    v-model="editorData"
+                                ></ckeditor>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Excerpt</h5>
@@ -144,6 +159,7 @@
 </template>
 
 <script>
+    import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
     export default {
         props: {
             post: {
@@ -156,6 +172,8 @@
         },
         data() {
             return {
+                editor: ClassicEditor,
+                editorData: "",
                 errors: {},
                 alert: {},
                 valid: false,
@@ -171,6 +189,7 @@
         },
         created() {
             this.getFeaturedImage();
+            this.editorData = this.record.body;
         },
         computed: {
             isProcessing() {
@@ -199,12 +218,11 @@
                 this.errors = {};
                 this.alert = {};
 
-                // build payload
-                this.payload = await this.getPayload();
-                try {
-                } catch (error) {}
                 // check form
-                if (this.validate()) {
+                if (await this.validate()) {
+                    // build payload
+                    this.payload = await this.getPayload();
+
                     // submit form
                     return axios
                         .post(`/api/admin/posts/${this.record.id}`, this.payload, {
@@ -264,6 +282,7 @@
                     active: this.record.active ? 1 : 0,
                     featured: this.record.featured ? 1 : 0,
                     excerpt: this.record.excerpt,
+                    body: this.editorData,
                 };
 
                 // clear the media

@@ -15,13 +15,14 @@ class PostDetailResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'active' => $this->active,
-            'excerpt' => $this->excerpt,
-            'image_path' => $this->image_path,
-            'featured' => $this->featured,
+            'id'           => $this->id,
+            'title'        => $this->title,
+            'slug'         => $this->slug,
+            'active'       => $this->active,
+            'excerpt'      => $this->excerpt,
+            'body'         => $this->body,
+            'image_path'   => $this->image_path,                          // test then erase me, not needed for image to work with spatie
+            'featured'     => $this->featured,
             'published_at' => $this->published_at->format('M-d-Y H:i'),
         ];
     }

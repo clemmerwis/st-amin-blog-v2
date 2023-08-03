@@ -12,10 +12,12 @@ import innerpagePosts from './components/Admin/Posts/Index';
 import adminPostEdit from './components/Admin/Posts/Edit';
 import Vue3EasyDataTable from 'vue3-easy-data-table';
 import 'vue3-easy-data-table/dist/style.css';
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
 
 const app = createApp({});
 app.use(vuetify);
-
+app.use(CKEditor);
 app.component('my-alert', MyAlert);
 app.component('innerpage-posts', innerpagePosts);
 app.component('admin-post-edit', adminPostEdit);
