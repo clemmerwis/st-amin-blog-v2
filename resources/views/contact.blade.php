@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h3>Contact us</h3>
+                        <h3>Contact</h3>
                         <div class="bt-option">
                             <a href="./home.html">Home</a>
                             <span>Contact</span>
@@ -24,9 +24,7 @@
                 <div class="col-lg-12">
                     <div class="contact-text">
                         <div class="contact-title">
-                            <h3>Contact us</h3>
-                            <p>My experience with Realy is absolutely positive. The themes are beautifully<br />
-                                designed and well documented. Realy theme provides quick support.</p>
+                            <p>Erase me? Or say something here.</p>
                         </div>
                         <div class="contact-form">
                             <div class="dt-leave-comment">

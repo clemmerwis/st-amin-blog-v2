@@ -42,6 +42,7 @@
 
         <!-- Humberger Menu Begin -->
         <div class="humberger-menu-overlay"></div>
+        {{-- @include('partials.nav-mobil-magazine') --}}
         <div class="humberger-menu-wrapper">
             <div class="hw-logo">
                 <a href="{{ route('home') }}"><img src="{{ asset('img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt=""></a>
@@ -49,28 +50,9 @@
             <div class="hw-menu mobile-menu">
                 <ul>
                     <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/icon1-air.png') }}" alt=""></span></li>
-                    <li><a href="#">The Magazine <i class="fa fa-angle-down"></i></a>
-                        <span><img src="{{ asset('img/icons/icon2-earth.png') }}" alt=""></span>
-                        <ul class="dropdown">
-                            <li><a href="./categories-list.html">All Latest Articles</a></li>
-                            <li><a href="./categories-list.html">Ghost Stories</a></li>
-                            <li><a href="./categories-grid.html">Art Gallery</a></li>
-                            <li><a href="./typography.html">Health & Wellness</a></li>
-                            <li><a href="./details-post-default.html">Magick</a></li>
-                        </ul>
-                    </li>
                     <li><a href="#">Stories of Mirrors</a><span><img src="{{ asset('img/icons/icon7-yinyang.png') }}" alt=""></span></li>
-                    <li><a href="#">Marketing <i class="fa fa-angle-down"></i></a>
-                        <span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span>
-                        <ul class="dropdown">
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Where I shop</a></li>
-                            <li><a href="#">Floreography</a></li>
-                            <li><a href="#">Best Of</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ route('contact') }}">Contact </a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
+                    <li><a href="#">The Author</a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
+                    <li><a href="{{ route('contact') }}">contact</a><span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span></li>
                 </ul>
             </div>
             <div id="mobile-menu-wrap"></div>
@@ -168,11 +150,18 @@
                     <div class="humberger-menu humberger-open">
                         <i class="fa fa-bars"></i>
                     </div>
-                    <div class="nav-search search-switch">
+                    {{-- <div class="nav-search search-switch">
                         <i class="fa fa-search"></i>
-                    </div>
+                    </div> --}}
                     <div class="nav-menu">
+                        {{-- @include('partials.nav-magazine') --}}
                         <ul>
+                            <li class="active home spin mainitem"><a href="{{ route('home') }}"><span>Home</span></a></li>
+                            <li class="stories-of-mirrors spin mainitem"><a href="#"><span>Stories of Mirrors</span></a></li>
+                            <li class="contact spin mainitem"><a href="{{ route('contact') }}"><span>The Author</span></a></li>
+                            <li class="spin mainitem"><a class="marketing" href="{{ route('contact') }}"><span>Contact</span></a></li>
+                        </ul>
+                        {{-- <ul>
                             <li class="active home spin mainitem"><a href="{{ route('home') }}"><span>Home</span></a></li>
                             <li class="mega-menu spin mainitem"><a class="the-magazine" href="#"><span>The Magazine <i class="fa fa-angle-down"></i></span></a>
                                 <div class="megamenu-wrapper">
@@ -332,7 +321,7 @@
                                 </div>
                             </li>
                             <li class="contact spin mainitem"><a href="{{ route('contact') }}"><span>Contact</span></a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
@@ -502,14 +491,14 @@
         <!-- Login Section End -->
 
         <!-- Search model Begin -->
-        <div class="search-model">
+        {{-- <div class="search-model">
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <div class="search-close-switch">+</div>
                 <form class="search-model-form">
                     <input type="text" id="search-input" placeholder="Search here.....">
                 </form>
             </div>
-        </div>
+        </div> --}}
         <!-- Search model end -->
 
         <!-- Js Plugins -->
