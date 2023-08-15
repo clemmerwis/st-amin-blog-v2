@@ -5,15 +5,11 @@
             <div class="row">
                 <div class="hero">
                     <div class="box grid">
-                        <div class="box__left">
-                            <a href="#">The Book</a>
-                        </div>
+                
                         <div class="box__center">
                             <img src="img/hero/owlx400.png" alt="golden owl">
                         </div>
-                        <div class="box__right">
-                            <a href="#">Web Consulting</a>
-                        </div>
+                
                     </div>
                     <div class="st">
                         <div>
@@ -29,9 +25,6 @@
                     <div class="butts">
                         <div>
                             <a class="secondary-btn" href="#">Draw Tarot Card</a>
-                        </div>
-                        <div>
-                            <a class="secondary-btn border-btn" href="#">Recieve a Spell</a>
                         </div>
                     </div>
                 </div>
