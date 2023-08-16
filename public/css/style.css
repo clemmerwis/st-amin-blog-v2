@@ -4771,3 +4771,7 @@ ol {
 .breadcrumb > .active {
   color: #ba0a0a;
 }
+
+.staggered-grid .col-lg-6:nth-child(even) {
+  margin-top: 50px;
+}
