@@ -1297,7 +1297,7 @@ ol {
   gap: clamp(2rem, calc(1rem + 2vw), 5rem);
   align-items: center;
   justify-content: center;
-  transform: translateX(-1vw);
+  transform: translateX(-0.5vw);
   margin-bottom: 1.5rem;
   margin-top: 1rem;
 }
