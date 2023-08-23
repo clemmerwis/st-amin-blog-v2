@@ -14,14 +14,14 @@
                 </div>
                 <div class="st">
                     <div>
-                        <h1 class="hero-heading">Schmoll</h1>
+                        <h1 class="hero-heading">Stories</h1>
                     </div>
                     <div>
-                        <h1 class="hero-heading">Thoughts</h1>
+                        <span class="hero-heading">of</span>
                     </div>
-                </div>
-                <div class="tagline">
-                    <p>Words are Spells, that's why it's called spelling...</p>
+                    <div>
+                        <h1 class="hero-heading">Mirrors</h1>
+                    </div>
                 </div>
                 <div class="butts">
                     <div>

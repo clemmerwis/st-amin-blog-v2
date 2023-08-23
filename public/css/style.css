@@ -1295,26 +1295,26 @@ ol {
 .st {
   display: flex;
   gap: clamp(2rem, calc(1rem + 2vw), 5rem);
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-1vw);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
-.st div {
-  width: 100%;
-}
-
-.st div:nth-child(1) {
-  display: flex;
-  justify-content: flex-end;
-}
-
-@media (min-width: 380px) {
-  .st div:nth-child(1) .hero-heading {
-    padding-right: calc(1rem + 2vw);
+@media (max-width: 768px) {
+  .st {
+    gap: clamp(1.5rem, 1rem, 5rem);
   }
 }
 
-.st div:nth-child(2) {
-  display: flex;
-  justify-content: flex-start;
+@media (min-width: 420px) {
+  .st div:nth-child(1) .hero-heading {
+    padding-right: calc(1rem + 1vw);
+  }
+  .st div:nth-child(3) .hero-heading {
+    padding-left: calc(1rem + 1vw);
+  }
 }
 
 .hero-heading {
@@ -1322,6 +1322,7 @@ ol {
   font-family: "Rockville Solid Regular";
   margin-bottom: 20px;
   margin-top: 22px;
+  line-height: 1.45;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(to bottom, #774f27, #f5da7d 56%, #774f27);

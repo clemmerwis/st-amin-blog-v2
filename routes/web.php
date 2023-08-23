@@ -39,10 +39,9 @@ Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth'
     Route::get('profile', [UserController::class, 'profile'])->name('profile');
 });
 
-// posts - show uses slug rather than id
-Route::resource('posts', PostController::class)->only([
-    'index', 'show'
-])->parameters(['posts' => 'slug']);
+// blog & book
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 // contact page
 Route::get('/contact', function () { return view('contact'); })->name('contact');

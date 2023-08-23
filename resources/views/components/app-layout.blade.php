@@ -157,7 +157,7 @@
                         {{-- @include('partials.nav-magazine') --}}
                         <ul>
                             <li class="active home spin mainitem"><a href="{{ route('home') }}"><span>Home</span></a></li>
-                            <li class="stories-of-mirrors spin mainitem"><a href="#"><span>Stories of Mirrors</span></a></li>
+                            <li class="stories-of-mirrors spin mainitem"><a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}"><span>Stories of Mirrors</span></a></li>
                             <li class="contact spin mainitem"><a href="{{ route('contact') }}"><span>The Author</span></a></li>
                             <li class="spin mainitem"><a class="marketing" href="{{ route('contact') }}"><span>Contact</span></a></li>
                         </ul>

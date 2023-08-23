@@ -5,11 +5,21 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h3>Category: All</h3>
-                        <div class="bt-option">
-                            <a href="{{ route('home') }}">Home</a>
-                            <span>Latest Articles</span>
-                        </div>
+                        @if ($posts->first()->categories->first()->slug == "stories-of-mirrors")
+                            <h3>Stories of Mirrors: All Chapters</h3>
+
+                            <div class="bt-option">
+                                <a href="{{ route('home') }}">Home</a>
+                                <span>Stories of Mirrors</span>
+                            </div>
+                        @else
+                            <h3>Category: All</h3>
+
+                            <div class="bt-option">
+                                <a href="{{ route('home') }}">Home</a>
+                                <span>Latest Articles</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -32,7 +42,15 @@
                                             @endforeach
                                         </div>
                                         <div class="cg-text">
-                                            <h5><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h5>
+                                            <h5>
+                                                <a  href="{{ route('posts.show', [
+                                                        $post->slug, 
+                                                        'category' => optional($post->categories->first())->slug, 
+                                                        'subcategory' => optional(optional($post->categories->first())->subcats->first())->slug
+                                                    ]) }}">
+                                                {{ $post->title }}
+                                                </a>
+                                            </h5>                                            
                                             <ul>
                                                 <li>by <span>{{ $post->author->name }}</span></li>
                                                 <li><i class="fa fa-clock-o"></i> {{ $post->published_at->diffForHumans() }}</li>
