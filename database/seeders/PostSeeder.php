@@ -26,13 +26,15 @@ class PostSeeder extends Seeder
             $subcats = Category::find($parentCategory->id)->subcats;
             $subcats = $subcats->random(rand(1,$subcats->count()));
             $cats[] = $subcats;
+
             $post = Post::factory()
                 ->count(1)
                 ->hasAttached([...$cats])
                 ->create(['image_path' => 'img/categories-grid/cg-'. rand(1, 10) .'.jpg']);
+
             $post->each(function ($p) {
-                    $p->detail()->save(Detail::factory()->make());
-                });
+                $p->detail()->save(Detail::factory()->make());
+            });
         }
     }
 }

@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Auth;
 */
 // home login and register
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
-    Route::get('/', function() { return view('index'); });
+    Route::get('/', function() { 
+        return redirect()->route('home'); 
+    });
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
     Route::post('/login', [LoginController::class, 'login'])->name('login');

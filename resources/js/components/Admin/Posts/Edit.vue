@@ -114,7 +114,7 @@
                                             :href="urlFeaturedImg"
                                             target="_blank"
                                             color="info"
-                                            size="x-small"
+                                            size="small"
                                         >
                                             View Image
                                         </v-btn>

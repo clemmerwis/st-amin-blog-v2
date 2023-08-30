@@ -17,29 +17,29 @@
         $("#preloder").delay(200).fadeOut("slow");
 
         // sidebar menu dd fix
-        $("#mobile-menu-wrap .slicknav_parent .slicknav_item").find("a").each(function(){
+        $("#mobile-menu-wrap .slicknav_parent .slicknav_item").find("a").each(function () {
             var linkText = $(this).text();
             $(this).before(linkText + " " + '<i class="fa fa-angle-down"></i>');
             $(this).remove();
         });
 
         // stop and start spin w/ hover
-        $(".nav-options .nav-menu").find(".mainitem").each(function(){
+        $(".nav-options .nav-menu").find(".mainitem").each(function () {
             $(this).hover(
-                function() {
-                    $(this).removeClass( "spin" );
-                }, function() {
-                    $(this).addClass( "spin" );
+                function () {
+                    $(this).removeClass("spin");
+                }, function () {
+                    $(this).addClass("spin");
                 }
             );
         })
 
         // if login fails, click sign up modal again
-        if( $('#failedLoginMessage').length ) {
+        if ($('#failedLoginMessage').length) {
             $('.signup-switch-login').click();
         }
 
-        if( $('#failedRegisterMessage').length ) {
+        if ($('#failedRegisterMessage').length) {
             $('.signup-switch').click();
         }
     });
@@ -54,9 +54,11 @@
     /*------------------
         Background Set
     --------------------*/
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
+    $(document).ready(function () {
+        $('.set-bg').each(function () {
+            var bg = $(this).data('setbg');
+            $(this).css('background-image', 'url(' + bg + ')');
+        });
     });
 
     // Humberger Menu
@@ -102,8 +104,8 @@
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true

@@ -47,14 +47,7 @@ export default createVuetify({
             variant: 'outlined',
             density: 'compact'
         },
-        VBtn: {
-            size: 'small',
 
-            VIcon: {
-                size: 'small',
-                start: true
-            }
-        },
         VToolbar: {
             height: 60,
 

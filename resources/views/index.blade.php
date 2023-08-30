@@ -44,102 +44,32 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h5>Stories of Mirrors</h5>
+                    <p class="mt-2"><i class="fa fa-pencil"></i> Author: Erica Schmoll</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="lp-slider owl-carousel">
+                @foreach($posts as $post)
+                {{-- {{ dd($post->getFirstMediaUrl('featured-images')) }} --}}
                 <div class="col-lg-3">
                     <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg"></div>
+                        <!-- Keeping the image source as is for now - later get with spatie -->
+                        <div class="lp-pic set-bg" data-setbg="{{ $post->getFirstMediaUrl('featured-images') }}"></div>
+                        
                         <div class="lp-text">
-                            <h6><a href="#">Chapter 1</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
+                            <h6>
+                                <!-- using category as title -->
+                                <a href="{{ route('posts.show', $post->slug) }}">{{ $post->categories[1]->name }}</a>
+                                <p>{{ $post->title }}</p>
+                            </h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 2</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 3</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 4</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 5</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 6</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <div class="lp-pic set-bg" data-setbg="./img/stories-of-mirrors/woman-wearing-red-thumbnail.jpg">
-
-                        </div>
-                        <div class="lp-text">
-                            <h6><a href="#">Chapter 7</a></h6>
-                            <ul>
-                                <li><i class="fa fa-pencil"></i> Author: Erica Schmoll</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+        
     </div>
 </section>
 <!-- Latest Preview Section End -->
