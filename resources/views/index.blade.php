@@ -55,7 +55,7 @@
                 <div class="col-lg-3">
                     <div class="lp-item">
                         <!-- Keeping the image source as is for now - later get with spatie -->
-                        <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMediaUrl('featured-images')) }}"></div>
+                        <div class="lp-pic set-bg" data-setbg="{{ url($post->getFirstMediaUrl('featured-images')) }}"></div>
                         
                         <div class="lp-text">
                             <h6>
