@@ -55,11 +55,7 @@
                 <div class="col-lg-3">
                     <div class="lp-item">
                         <!-- Keeping the image source as is for now - later get with spatie -->
-                        @php
-                            $mediaURL = $post->getFirstMediaUrl('featured-images');
-                            $cleanURL = str_replace('127.0.0.1', '', $mediaURL);
-                        @endphp
-                        <div class="lp-pic set-bg" data-setbg="{{ url($cleanURL) }}"></div>
+                        <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMediaUrl('featured-images')) }}"></div>
                         
                         <div class="lp-text">
                             <h6>
