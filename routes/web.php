@@ -43,7 +43,8 @@ Route::group(['prefix'=>'user', 'as' => 'user.', 'middleware'=>['isUser', 'auth'
 
 // blog & book
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('posts/{category}/{slug}', [PostController::class, 'show'])->name('posts.show');
+
 
 // contact page
 Route::get('/contact', function () { return view('contact'); })->name('contact');

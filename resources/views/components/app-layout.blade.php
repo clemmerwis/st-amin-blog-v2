@@ -45,7 +45,7 @@
         {{-- @include('partials.nav-mobil-magazine') --}}
         <div class="humberger-menu-wrapper">
             <div class="hw-logo">
-                <a href="{{ route('home') }}"><img src="{{ asset('img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt=""></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt=""></a>
             </div>
             <div class="hw-menu mobile-menu">
                 <ul>
@@ -336,10 +336,10 @@
         <footer class="footer-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-6">
                         <div class="footer-about">
                             <div class="fa-logo">
-                                <a href="{{ route('home') }}"><img src="img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                 labore et dolore magna aliqua lacus vel facilisis.</p>
@@ -351,38 +351,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-md-6">
                         <div class="editor-choice">
                             <div class="section-title">
-                                <h5>About Me</h5>
+                                <h5>About Erica </h5>
                             </div>
                             <div class="ec-item">
                                 <div class="ec-text">
-                                    <img src="img/trending/editor-1.jpg" alt="">
+                                    <img src="/img/trending/editor-1.jpg" alt="">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lacus vel facilisis.</p>
 
                                     <p>Hendrerit gravida rutrum quisque non. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Turpis cursus in hac habitasse platea dictumst.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tags-cloud">
-                            <div class="section-title">
-                                <h5>Tags Cloud</h5>
-                            </div>
-                            <div class="tag-list">
-                                <a href="#"><span>Gaming</span></a>
-                                <a href="#"><span>Platform</span></a>
-                                <a href="#"><span>Playstation</span></a>
-                                <a href="#"><span>Hardware</span></a>
-                                <a href="#"><span>Reviews</span></a>
-                                <a href="#"><span>Simulation</span></a>
-                                <a href="#"><span>Strategy</span></a>
-                                <a href="#"><span>Scientific</span></a>
-                                <a href="#"><span>References</span></a>
-                                <a href="#"><span>Role-playing</span></a>
-                                <a href="#"><span>Adventurea</span></a>
                             </div>
                         </div>
                     </div>

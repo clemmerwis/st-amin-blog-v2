@@ -341,8 +341,11 @@
                         this.featuredImg = featuredImg;
 
                         let urlFeaturedImg = response.data.urlFeaturedImg;
-                        urlFeaturedImg = urlFeaturedImg.replace("localhost", "");
-                        urlFeaturedImg = urlFeaturedImg.replace("127.0.0.1", "");
+                        let urlObj = new URL(urlFeaturedImg);
+                        this.urlFeaturedImg =
+                            urlObj.pathname +
+                            (urlObj.search || "") +
+                            (urlObj.hash || "");
 
                         this.urlFeaturedImg = urlFeaturedImg;
 

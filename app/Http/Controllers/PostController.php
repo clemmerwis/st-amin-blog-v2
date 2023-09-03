@@ -37,29 +37,18 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string $category (optional)
-     * @param  string $subcategory (optional)
+     * @param  string $category
      * @param  string $slug
      * @return \Illuminate\View\View
      */
-    public function show(Request $request, $slug)
+    public function show($category, $slug)
     {
-        $category = $request->query('category');
-        $subcategory = $request->query('subcategory');
-    
         $post = Post::where('slug', $slug)
-            ->when($category, function ($query, $category) {
-                return $query->whereHas('categories', function ($q) use ($category) {
-                    $q->where('slug', $category);
-                });
+            ->whereHas('categories', function ($q) use ($category) {
+                $q->where('slug', $category);
             })
-            ->when($subcategory, function ($query, $subcategory) {
-                return $query->whereHas('categories.subcats', function ($q) use ($subcategory) {
-                    $q->where('slug', $subcategory);
-                });
-            })
-            ->first();
-    
+            ->firstOrFail();
+
         $template = 'blog.single-' . $post->detail->template_name;
         return view($template, compact('post'));
     }

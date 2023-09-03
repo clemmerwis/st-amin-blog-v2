@@ -3131,10 +3131,20 @@ ol {
 .contact-form .dt-related-post .rp-prev span {
   display: block;
   font-size: 14px;
-  color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 15px;
+
+  /* Gradient color */
+  background: -webkit-linear-gradient(to bottom, #774f27, #f5da7d 56%, #774f27);
+  background: linear-gradient(to bottom, #774f27, #f5da7d 56%, #774f27);
+
+  /* Use the background to define the color of the text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Make the text transparent to show the gradient */
+  color: transparent;
 }
 
 .details-text .dt-related-post .rp-prev .rp-pic,
@@ -3203,10 +3213,20 @@ ol {
 .contact-form .dt-related-post .rp-next span {
   display: block;
   font-size: 14px;
-  color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 15px;
+
+  /* Gradient color */
+  background: -webkit-linear-gradient(white, #c20000);
+  background: linear-gradient(white, #c20000);
+
+  /* Use the background to define the color of the text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Make the text transparent to show the gradient */
+  color: transparent;
 }
 
 .details-text .dt-related-post .rp-next .rp-pic,
@@ -3263,6 +3283,73 @@ ol {
   top: 0;
   content: "/";
   color: #666666;
+}
+
+.rp-next {
+  /* Ensure that the background covers the full link */
+  display: block;
+  position: relative;
+}
+
+.rp-next::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; /* Place below text and other content */
+
+  /* Initial gradient background */
+  background: linear-gradient(
+    to bottom right,
+    hsla(0, 50%, 100%, 0.8),
+    transparent 32%
+  );
+
+  /* Fully transparent initially */
+  opacity: 0;
+
+  /* Transition to make the hover effect smooth */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.rp-next:hover::before {
+  opacity: 1; /* Show the gradient on hover */
+}
+
+.rp-prev {
+  /* Ensure that the background covers the full link */
+  display: block;
+  position: relative;
+}
+
+.rp-prev::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; /* Place below text and other content */
+
+  /* Initial gradient background */
+  background: linear-gradient(
+    to bottom left,
+    #774f27,
+    hsla(46.5deg, 85.71%, 72.55%, 0.5),
+    transparent 32%
+  );
+
+  /* Fully transparent initially */
+  opacity: 0;
+
+  /* Transition to make the hover effect smooth */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.rp-prev:hover::before {
+  opacity: 1; /* Show the gradient on hover */
 }
 
 .details-text .dt-author,

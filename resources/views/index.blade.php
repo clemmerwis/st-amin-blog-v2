@@ -51,21 +51,21 @@
         <div class="row">
             <div class="lp-slider owl-carousel">
                 @foreach($posts as $post)
-                {{-- {{ dd($post->getFirstMediaUrl('featured-images')) }} --}}
-                <div class="col-lg-3">
-                    <div class="lp-item">
-                        <!-- Keeping the image source as is for now - later get with spatie -->
-                        <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMediaUrl('featured-images')) }}"></div>
-                        
-                        <div class="lp-text">
-                            <h6>
-                                <!-- using category as title -->
-                                <a href="{{ route('posts.show', $post->slug) }}">{{ $post->categories[1]->name }}</a>
-                                <p>{{ $post->title }}</p>
-                            </h6>
-                        </div>
+                    <div class="col-lg-3">
+                        <a href="{{ route('posts.show', ['category' => $post->categories->first()->slug, 'slug' => $post->slug]) }}">
+                            <div class="lp-item">
+                                <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMedia('featured-images')?->getUrl('thumb')) }}"></div>
+                                
+                                <div class="lp-text">
+                                    <h6>
+                                        <!-- using category as title -->
+                                        <a>{{ $post->categories[1]->name }}</a>
+                                        <p>{{ $post->title }}</p>
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
