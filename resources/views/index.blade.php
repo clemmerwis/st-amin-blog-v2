@@ -59,7 +59,7 @@
                                 <div class="lp-text">
                                     <h6>
                                         <!-- using category as title -->
-                                        <a>{{ $post->categories[1]->name }}</a>
+                                        <span class="text-white">{{ $post->categories[1]->name }}</span>
                                         <p>{{ $post->title }}</p>
                                     </h6>
                                 </div>

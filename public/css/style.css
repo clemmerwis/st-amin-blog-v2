@@ -1615,7 +1615,7 @@ ol {
   margin-bottom: 4px;
 }
 
-.lp-item .lp-text h6 a {
+.lp-item .lp-text h6 span {
   color: #ffffff;
   line-height: 22px;
   font-weight: 700;
