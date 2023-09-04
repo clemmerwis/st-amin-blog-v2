@@ -19,31 +19,49 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i < 26; $i++) {
+        for ($i=1; $i <= 6; $i++) {
+            // $chapterCategory = Category::firstOrCreate(['name' => "Chapter $i"]);
+            $chapterCategory = Category::where('name', "Chapter $i")->firstOrFail();
+
+            $post = Post::factory()->create();
+            $post->categories()->attach([$chapterCategory->id, 3]);
+            $post->detail()->save(Detail::factory()->make());
+        }
+
+        $requiredCategoryIds = [1, 2, 4, 5];
+        shuffle($requiredCategoryIds);
+        
+        for ($i=1; $i <= 15; $i++) {
             $cats = [];
-            // get parent category
-            $parentCategory = Category::where('id', '<=', 5)->inRandomOrder()->take(1)->get()[0];
+            // get parent category but not 3, because 3 = stories of mirrors
+            if ($i <= 4) {
+                // Ensure we get each category for the first 4 iterations
+                $parentCategory = Category::findOrFail($requiredCategoryIds[$i - 1]);
+            } else {
+                // Randomly select a category for the remaining iterations
+                $parentCategory = Category::whereIn('id', [1, 2, 4, 5])
+                    ->inRandomOrder()
+                    ->first();
+            }
+            
             $cats[] = $parentCategory;
             // get parent category's subcategories
             $subcats = Category::find($parentCategory->id)->subcats;
-            if ($parentCategory->slug === 'stories-of-mirrors') {
-                // selct one random subcat
-                $subcats = $subcats->random();
-            }
-            else {
-                // select random amount of random subcats
-                $subcats = $subcats->random(rand(1,$subcats->count()));
-            }
+
+            $subcats = $subcats->random(rand(1,$subcats->count()));
+    
+            
 
             $cats[] = $subcats;
 
-            $post = Post::factory()
+            $posts = Post::factory()
                 ->count(1)
-                ->hasAttached([...$cats]);
+                ->hasAttached([...$cats])
+                ->create();
 
-            $post->each(function ($p) {
+            foreach ($posts as $p) {
                 $p->detail()->save(Detail::factory()->make());
-            });
+            }
         }
     }
 }

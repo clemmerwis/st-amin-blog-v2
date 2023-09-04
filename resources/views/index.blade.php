@@ -52,14 +52,25 @@
             <div class="lp-slider owl-carousel">
                 @foreach($posts as $post)
                     <div class="col-lg-3">
-                        <a href="{{ route('posts.show', ['category' => $post->categories->first()->slug, 'slug' => $post->slug]) }}">
+                        @php
+                            // get the subcat-- which will be the one that has a parent_id
+                            $subcat = $post->categories->first(function ($category) {
+                                return $category->parent_id !== null;
+                            });
+
+                            // get the parent category
+                            $parentCat = $post->categories->first(function ($category) {
+                                return $category->parent_id === null;
+                            });
+                        @endphp
+                        <a href="{{ route('posts.show', ['category' => $parentCat->slug, 'slug' => $post->slug]) }}">
                             <div class="lp-item">
                                 <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMedia('featured-images')?->getUrl('thumb')) }}"></div>
                                 
                                 <div class="lp-text">
                                     <h6>
                                         <!-- using category as title -->
-                                        <span class="text-white">{{ $post->categories[1]->name }}</span>
+                                        <span class="text-white">{{ $subcat->name }}</span>
                                         <p>{{ $post->title }}</p>
                                     </h6>
                                 </div>

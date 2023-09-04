@@ -30,6 +30,7 @@ class PostController extends Controller
             })
             ->orderBy('published_at', 'desc')
             ->paginate(10);
+        
             
         return view('blog.index', compact('posts'));
     }

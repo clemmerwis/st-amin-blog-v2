@@ -39,31 +39,24 @@ class CategorySeeder extends Seeder
             'slug' => 'user-submitted',
             'parent_id' => 1,
         ]);
-        Category::factory()->create([
-            'name' => 'My Stories',
-            'slug' => 'my-stories',
-            'parent_id' => 1,
-        ]);
-        Category::factory()->create([
-            'name' => 'Nature',
-            'slug' => 'nature',
-            'parent_id' => 2,
-        ]);
-        Category::factory()->create([
-            'name' => 'Digital',
-            'slug' => 'digital',
-            'parent_id' => 2,
-        ]);
-        Category::factory()->create([
-            'name' => 'Chapter 1',
-            'slug' => 'chapter-one',
-            'parent_id' => 3,
-        ]);
-        Category::factory()->create([
-            'name' => 'Chapter 2',
-            'slug' => 'chapter-two',
-            'parent_id' => 3,
-        ]);
+
+        $chapters = [
+            'one' => 'Chapter 1',
+            'two' => 'Chapter 2',
+            'three' => 'Chapter 3',
+            'four' => 'Chapter 4',
+            'five' => 'Chapter 5',
+            'six' => 'Chapter 6'
+        ];
+        
+        foreach ($chapters as $slug => $name) {
+            Category::factory()->create([
+                'name' => $name,
+                'slug' => 'chapter-' . $slug,
+                'parent_id' => 3,
+            ]);
+        }
+        
         Category::factory()->create([
             'name' => 'Yoga',
             'slug' => 'yoga',
@@ -83,6 +76,11 @@ class CategorySeeder extends Seeder
             'name' => 'Peace',
             'slug' => 'peace',
             'parent_id' => 5,
+        ]);
+        Category::factory()->create([
+            'name' => 'Test',
+            'slug' => 'test',
+            'parent_id' => 2,
         ]);
     }
 }
