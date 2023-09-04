@@ -42,7 +42,6 @@ class PostFactory extends Factory
             'slug' => $slug,
 
             'body' => $body,
-            'image_path' => 'img/categories-grid/cg-1.jpg',
 
             'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
             'published_at' => $createdAt,

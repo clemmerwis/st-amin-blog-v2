@@ -28,6 +28,13 @@ class Post extends Model implements HasMedia
             ->width(400);
     }
 
+    // how to use: $post->featured_image_url
+    public function getFeaturedImageUrlAttribute()
+    {
+        return $this->getFirstMediaUrl('featured-images') ? 
+            asset($this->getFirstMediaUrl('featured-images')) : asset('img/categories-list/cl-1.jpg');
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');

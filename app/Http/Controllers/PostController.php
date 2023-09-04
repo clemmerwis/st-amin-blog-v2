@@ -23,7 +23,7 @@ class PostController extends Controller
                     $query->where('slug', $category);
                 });
             }, function ($query) {
-                // This part is executed when $category is null or false
+                // When no category parameter is provided, return all posts except stories-of-mirrors
                 return $query->whereDoesntHave('categories', function ($query) {
                     $query->where('slug', 'stories-of-mirrors');
                 });
@@ -49,6 +49,7 @@ class PostController extends Controller
             })
             ->firstOrFail();
 
+        // blog.single-default 
         $template = 'blog.single-' . $post->detail->template_name;
         return view($template, compact('post'));
     }

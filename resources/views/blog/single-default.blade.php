@@ -29,8 +29,9 @@
                             <p>{{ $post->excerpt }}</p>
                         </div>
                         <div class="dt-item">
-                            <h5>You Can Buy For Less Than A College Degree</h5>
-                            {!! str_replace(['{', '}'], '', $post->body) !!}
+                            {{-- right now h5 are set by css to be the default stylistic headings for this page --}}
+                            {{-- <h5>You Can Buy For Less Than A College Degree</h5> --}}
+                            {!! $post->body !!}
                         </div>
                         <div class="dt-share mt-3">
                             <div class="ds-title">Share</div>

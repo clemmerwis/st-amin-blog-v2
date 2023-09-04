@@ -20,8 +20,7 @@ class PostDetailResource extends JsonResource
             'slug'         => $this->slug,
             'active'       => $this->active,
             'excerpt'      => $this->excerpt,
-            'body'         => $this->body,
-            'image_path'   => $this->image_path,                          // test then erase me, not needed for image to work with spatie
+            'body'         => $this->body,                         // test then erase me, not needed for image to work with spatie
             'featured'     => $this->featured,
             'published_at' => $this->published_at->format('M-d-Y H:i'),
         ];

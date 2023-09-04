@@ -21,16 +21,25 @@ class PostSeeder extends Seeder
     {
         for ($i=1; $i < 26; $i++) {
             $cats = [];
+            // get parent category
             $parentCategory = Category::where('id', '<=', 5)->inRandomOrder()->take(1)->get()[0];
             $cats[] = $parentCategory;
+            // get parent category's subcategories
             $subcats = Category::find($parentCategory->id)->subcats;
-            $subcats = $subcats->random(rand(1,$subcats->count()));
+            if ($parentCategory->slug === 'stories-of-mirrors') {
+                // selct one random subcat
+                $subcats = $subcats->random();
+            }
+            else {
+                // select random amount of random subcats
+                $subcats = $subcats->random(rand(1,$subcats->count()));
+            }
+
             $cats[] = $subcats;
 
             $post = Post::factory()
                 ->count(1)
-                ->hasAttached([...$cats])
-                ->create(['image_path' => 'img/categories-grid/cg-'. rand(1, 10) .'.jpg']);
+                ->hasAttached([...$cats]);
 
             $post->each(function ($p) {
                 $p->detail()->save(Detail::factory()->make());

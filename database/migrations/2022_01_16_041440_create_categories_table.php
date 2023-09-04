@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
 
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('image_path')->nullable();
 
             $table->unsignedBigInteger('parent_id')->nullable();
 

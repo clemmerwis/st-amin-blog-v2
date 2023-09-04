@@ -36,7 +36,7 @@
                             @foreach ($posts as $post)
                                 <div class="col-lg-6">
                                     <div class="cg-item">
-                                        <div class="cg-pic set-bg" data-setbg="{{ $post->image_path }}">
+                                        <div class="cg-pic set-bg" data-setbg="{{ $post->featured_image_url }}">
                                             @foreach($post->categories as $category)
                                                 <div class="label label{{ $loop->iteration }}"><span>{{ $category->name }}</span></div>
                                             @endforeach
@@ -53,7 +53,7 @@
                                             </h5>                                            
                                             <ul>
                                                 <li>by <span>{{ $post->author->name }}</span></li>
-                                                <li><i class="fa fa-clock-o"></i> {{ $post->published_at->diffForHumans() }}</li>
+                                                <li><i class="fa fa-clock-o"></i> {{ $post->published_at->format('F jS, Y') }}</li>
                                                 <li><i class="fa fa-comment-o"></i> 20</li>
                                             </ul>
                                             <p>{{ $post->excerpt }}</p>
