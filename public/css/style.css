@@ -2844,6 +2844,15 @@ ol {
   text-transform: uppercase;
 }
 
+.details-hero-text h3 + ul {
+  background: hsla(0, 100%, 0%, 1);
+  padding: 1rem;
+}
+
+.details-hero-text h3 + ul li {
+  color: #ff8b8b;
+}
+
 .details-hero-text h3,
 .details-text .dt-title-gallery h3,
 .contact-form .dt-title-gallery h3 {
@@ -2853,6 +2862,8 @@ ol {
   text-transform: uppercase;
   margin-top: 18px;
   margin-bottom: 8px;
+  background: hsla(0deg, 100%, 38.04%, 50%);
+  padding: 1rem;
 }
 
 .details-hero-text ul li,
@@ -3147,6 +3158,15 @@ ol {
   color: transparent;
 }
 
+.details-text .dt-related-post .rp-prev:hover span,
+.contact-form .dt-related-post .rp-prev:hover span {
+  background: linear-gradient(to bottom, white, #f5da7d, #774f27);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .details-text .dt-related-post .rp-prev .rp-pic,
 .contact-form .dt-related-post .rp-prev .rp-pic {
   float: left;
@@ -3226,6 +3246,14 @@ ol {
   background-clip: text;
 
   /* Make the text transparent to show the gradient */
+  color: transparent;
+}
+
+.details-text .dt-related-post .rp-next:hover span,
+.contact-form .dt-related-post .rp-next:hover span {
+  background: linear-gradient(white 39%, #c20000);
+  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 

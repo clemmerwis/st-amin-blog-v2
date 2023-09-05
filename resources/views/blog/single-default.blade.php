@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Details Hero Section Begin -->
-    <section class="details-hero-section set-bg" data-setbg="{{ $post->getFirstMediaUrl('featured-images') ? asset($post->getFirstMediaUrl('featured-images')) : asset('img/details/details-post.jpg') }}">
+    <section class="details-hero-section set-bg" data-setbg="{{ $post->getFirstMediaUrl('featured-images') ? asset($post->getFirstMediaUrl('featured-images')) : asset('/img/hero/hero-1.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
