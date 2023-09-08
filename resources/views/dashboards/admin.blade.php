@@ -71,10 +71,10 @@
 
                             @switch($active ?? null)
                                 @case('Posts')
-                                    <innerpage-posts :posts="{{ json_encode($posts) }}"></innerpage-posts>                                    
+                                    <innerpage-posts :posts="{{ json_encode($posts) }}" :cats="{{ json_encode($categories) }}"></innerpage-posts>                                    
                                     @break
                                 @case('PostEdit')
-                                    <admin-post-edit :post="{{ json_encode($post) }}"></admin-post-edit>
+                                    <admin-post-edit :post="{{ json_encode($post) }}" :cats="{{ json_encode($categories) }}"></admin-post-edit>
                                     @break
                                 @default
                                     <x-admin.innerpage />

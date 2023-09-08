@@ -2,13 +2,27 @@
     <h1 class="h3 mb-3">Posts / List</h1>
 
     <div class="row">
+        <div class="col-md-6 ml-auto">
+            <v-toolbar
+                style="background-color: hsla(0deg, 0%, 100%, 0.5)"
+                class="px-2 mb-3"
+            >
+                <v-select
+                    :items="allCategories"
+                    item-value="id"
+                    item-text="name"
+                    label="Filter by Category"
+                    v-model="selectedCategory"
+                ></v-select>
+            </v-toolbar>
+        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <easy-data-table
                         class="data-table"
                         :headers="headers"
-                        :items="posts || []"
+                        :items="filteredPosts || []"
                         :sort-by="options.sortBy"
                         :sort-type="options.sortType"
                         :rows-per-page="options.rowsPerPage"
@@ -42,6 +56,13 @@
                     return {};
                 },
             },
+            cats: {
+                type: Object,
+                required: false,
+                default() {
+                    return {};
+                },
+            },
         },
         data() {
             return {
@@ -52,6 +73,7 @@
                     sortBy: "",
                     sortType: "desc",
                 },
+
                 headers: [
                     {
                         text: "ID",
@@ -64,8 +86,8 @@
                         sortable: true,
                     },
                     {
-                        text: "Slug",
-                        value: "slug",
+                        text: "Category",
+                        value: "category",
                         sortable: true,
                     },
                     {
@@ -85,6 +107,10 @@
                     },
                 ],
 
+                // for category selector dropdown
+                selectedCategory: "All", // initially no category is selected
+                allCategories: null,
+
                 search: {
                     terms: "",
                 },
@@ -93,7 +119,20 @@
         },
 
         created() {
+            this.allCategories = ["All", ...this.cats];
             this.busy = false;
+        },
+
+        computed: {
+            filteredPosts() {
+                if (this.selectedCategory && this.selectedCategory !== "All") {
+                    return this.posts.filter((post) => {
+                        return post.category === this.selectedCategory;
+                    });
+                } else {
+                    return this.posts;
+                }
+            },
         },
 
         methods: {

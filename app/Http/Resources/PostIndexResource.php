@@ -21,6 +21,13 @@ class PostIndexResource extends JsonResource
             'active' => $this->active,
             'featured' => $this->featured,
             'published_at' => $this->published_at->format('M-d-Y H:i'),
+            'category' => $this->whenLoaded('categories', function() {
+                $mainCategory = $this->categories->filter(function ($category) {
+                    return is_null($category->parent_id); // only keep categories without a parent ID
+                })->first();
+            
+                return $mainCategory ? $mainCategory->name : null; // return the name of the main category, or null if none exists
+            }),
         ];
     }
 }
