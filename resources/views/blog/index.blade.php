@@ -37,15 +37,26 @@
                                 <div class="col-lg-6">
                                     <div class="cg-item">
                                         <div class="cg-pic set-bg" data-setbg="{{ $post->featured_image_url }}">
+                                            @php
+                                                // get the parent category
+                                                $parentCat = $post->categories->first(function ($category) {
+                                                    return $category->parent_id === null;
+                                                });
+                                            @endphp
+                                            <div class="label label1"><span>{{ $parentCat->name }}</span></div>
                                             @foreach($post->categories as $category)
-                                                <div class="label label{{ $loop->iteration }}"><span>{{ $category->name }}</span></div>
+                                                @if($parentCat && $category->id === $parentCat->id)
+                                                    @continue
+                                                @endif
+                                                {{-- loop->iteration plus 1 to account for manually added parent category --}}
+                                                <div class="label label{{ $loop->iteration+1 }}"><span>{{ $category->name }}</span></div>
                                             @endforeach
                                         </div>
                                         <div class="cg-text">
                                             <h5>
                                                 <a  href="{{ route('posts.show', [
                                                         $post->slug, 
-                                                        'category' => optional($post->categories->first())->slug, 
+                                                        'category' => optional($parentCat)->slug,
                                                         'subcategory' => optional(optional($post->categories->first())->subcats->first())->slug
                                                     ]) }}">
                                                 {{ $post->title }}

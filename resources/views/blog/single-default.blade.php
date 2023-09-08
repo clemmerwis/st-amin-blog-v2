@@ -5,7 +5,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="details-hero-text">
+                        @php
+                            // get the parent category
+                            $parentCat = $post->categories->first(function ($category) {
+                                return $category->parent_id === null;
+                            });
+                        @endphp
+                        <div class="label"><span>{{ $parentCat->name }}</span></div>
                         @foreach($post->categories as $category)
+                            @if($parentCat && $category->id === $parentCat->id)
+                                @continue
+                            @endif
                             <div class="label"><span>{{ $category->name }}</span></div>
                         @endforeach
                         <h3>{{ $post->title }}</h3>
