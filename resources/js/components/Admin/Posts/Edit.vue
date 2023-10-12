@@ -61,8 +61,8 @@
                             </div>
                             <div class="card-body">
                                 <ckeditor
-                                    :editor="editor"
                                     v-model="editorData"
+                                    :editor="editor"
                                 ></ckeditor>
                             </div>
                         </div>
@@ -122,7 +122,43 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Featured GIF</h5>
+                            </div>
+                            <div class="card-body">
+                                <v-file-input
+                                    :key="featuredGif.length"
+                                    v-model="featuredGif"
+                                    name="gif_featured"
+                                    accept="image/gif"
+                                    clearable
+                                    placeholder="Click to upload file"
+                                    prepend-icon="mdi-image"
+                                    :loading="isProcessing"
+                                    @change="updateFeaturedGif($event)"
+                                    @click:clear="clearGifInput"
+                                >
+                                </v-file-input>
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <v-btn
+                                            v-if="urlFeaturedGif"
+                                            class="no-underline mt-5"
+                                            :href="urlFeaturedGif"
+                                            target="_blank"
+                                            color="info"
+                                            size="small"
+                                        >
+                                            View Image
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="col-md-6 offset-md-1">
                         <div class="d-md-flex justify-content-md-end gap-md-3">
                             <div
@@ -151,6 +187,63 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="d-md-flex justify-content-md-end gap-md-3">
+                            <div class="card flex-basis-0 flex-grow-1">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        Main Category
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <v-select
+                                        v-model="selectedMainCategory"
+                                        :items="mainCategories"
+                                        item-value="id"
+                                        item-text="name"
+                                        label="Main Category"
+                                        @change="handleMainCategoryChange"
+                                    ></v-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div
+                                class="card-header d-flex flex-row w-100 justify-content-between"
+                            >
+                                <h5 class="card-title mb-0">Sub Categories</h5>
+                            </div>
+
+                            <div v-if="isProcessing" class="loading-indicator">
+                                Loading...
+                            </div>
+
+                            <div v-else>
+                                <div
+                                    v-for="(
+                                        chunk, chunkIndex
+                                    ) in subCategoriesChunks"
+                                    :key="chunkIndex"
+                                >
+                                    <div
+                                        class="d-md-flex flex-row justify-content-md-end gap-md-3"
+                                    >
+                                        <div
+                                            v-for="subCategory in chunk"
+                                            :key="subCategory.id"
+                                            class="flex-basis-0 flex-grow-1"
+                                        >
+                                            <v-checkbox
+                                                v-model="selectedSubCategories"
+                                                :label="subCategory.name"
+                                                :value="subCategory.name"
+                                            ></v-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,6 +262,13 @@
                     return {};
                 },
             },
+            cats: {
+                type: Object,
+                required: false,
+                default() {
+                    return {};
+                },
+            },
         },
         data() {
             return {
@@ -181,15 +281,19 @@
                 record: this.post || {},
                 featuredImg: [],
                 urlFeaturedImg: null,
+                featuredGif: [],
+                urlFeaturedGif: null,
                 rules: {
                     required: (value) => !!value || "Required",
                 },
                 payload: null,
+
+                // for category selector dropdown
+                selectedMainCategory: "",
+                selectedSubCategories: [""],
+                mainCategories: [],
+                subCategories: [],
             };
-        },
-        created() {
-            this.getFeaturedImage();
-            this.editorData = this.record.body;
         },
         computed: {
             isProcessing() {
@@ -198,6 +302,50 @@
             isPublished() {
                 return this.record.published_at !== null;
             },
+            subCategoriesApiUrl() {
+                return `/api/categories/${this.selectedMainCategory}/children`;
+            },
+            subCategoriesChunks() {
+                if (!Array.isArray(this.subCategories)) {
+                    return [];
+                }
+
+                const chunkSize = 4;
+                return this.subCategories.reduce((resultArray, item, index) => {
+                    const chunkIndex = Math.floor(index / chunkSize);
+
+                    if (!resultArray[chunkIndex]) {
+                        resultArray[chunkIndex] = [];
+                    }
+
+                    resultArray[chunkIndex].push(item);
+
+                    return resultArray;
+                }, []);
+            },
+        },
+        watch: {
+            subCategoriesApiUrl(newUrl) {
+                this.fetchSubCategories(newUrl);
+            },
+        },
+        created() {
+            this.mainCategories = ["All", ...this.cats];
+
+            this.subCategories = this.getSubCategories();
+
+            this.selectedMainCategory = this.record.category.find(
+                (category) => category.parent_id === null
+            ).name;
+
+            this.selectedSubCategories = this.record.category
+                .filter((category) => category.parent_id !== null)
+                .map((category) => category.name);
+
+            this.getFeaturedImage();
+            this.getFeaturedGif();
+
+            this.editorData = this.record.body;
         },
         methods: {
             async validate() {
@@ -212,6 +360,34 @@
                 this.$refs.form.resetValidation();
             },
 
+            handleMainCategoryChange() {
+                this.fetchSubCategories(this.subCategoriesApiUrl);
+            },
+
+            async fetchSubCategories(url) {
+                this.processing = true;
+
+                try {
+                    const response = await axios.get(url);
+                    this.subCategories = response.data;
+                } catch (error) {
+                    console.error("Failed to fetch subcategories:", error);
+                } finally {
+                    this.processing = false;
+                }
+            },
+
+            async getSubCategories() {
+                try {
+                    const response = await axios.get("/api/categories/sub");
+                    return response.data;
+                } catch (error) {
+                    console.error("Failed to fetch subcategories:", error);
+                    return [];
+                }
+            },
+
+            // TODO clear subcategories that don't belong to selectedMainCategory when submitting
             async update() {
                 this.processing = true;
                 // reset validations
@@ -274,6 +450,11 @@
                 }
             },
             async getPayload() {
+                let combinedCategories = [
+                    this.selectedMainCategory,
+                    ...this.selectedSubCategories,
+                ];
+
                 // limit payload fields
                 const payload = {
                     id: this.record.id,
@@ -285,7 +466,7 @@
                     body: this.editorData,
                 };
 
-                // clear the media
+                // set image_featured to clear so the backend will clear the media on the model
                 if (!this.urlFeaturedImg && this.featuredImg.length === 0) {
                     payload.image_featured = "clear";
                 }
@@ -295,21 +476,44 @@
                     payload.image_featured = this.featuredImg;
                 }
 
+                // set gif_featured to clear so the backend will clear the media on the model
+                if (!this.urlFeaturedGif && this.featuredGif.length === 0) {
+                    payload.gif_featured = "clear";
+                }
+
+                // new gif
+                if (!this.urlFeaturedGif && this.featuredGif.length !== 0) {
+                    payload.gif_featured = this.featuredGif;
+                }
+
                 let formData = new FormData();
 
                 // populate formData
                 for (let key in payload) {
-                    // append image
+                    // append image_featured
                     if (key === "image_featured" && payload[key]) {
                         if (payload[key] !== "clear") {
                             formData.append(key, payload[key][0]);
                         } else {
                             formData.append(key, payload[key]);
                         }
+                    }
+                    // append gif_featured
+                    else if (key === "gif_featured" && payload[key]) {
+                        if (payload[key] !== "clear") {
+                            formData.append(key, payload[key][0]);
+                        } else {
+                            formData.append(key, payload[key]);
+                        }
                     } else {
-                        // append properties
+                        // append other properties
                         formData.append(key, payload[key]);
                     }
+                }
+
+                // append array of category names to formData
+                for (let i = 0; i < combinedCategories.length; i++) {
+                    formData.append("categories[]", combinedCategories[i]);
                 }
 
                 return formData;
@@ -322,7 +526,15 @@
             clearFileInput() {
                 this.urlFeaturedImg = null;
                 this.featuredImg = [];
-                console.log("ran");
+            },
+
+            updateFeaturedGif(event) {
+                this.urlFeaturedGif = null;
+                this.featuredGif = Array.from(event.target.files);
+            },
+            clearGifInput() {
+                this.urlFeaturedGif = null;
+                this.featuredGif = [];
             },
 
             getFeaturedImage() {
@@ -348,6 +560,46 @@
                             (urlObj.hash || "");
 
                         this.urlFeaturedImg = urlFeaturedImg;
+
+                        this.processing = false;
+                    })
+                    .catch(({ response }) => {
+                        this.processing = false;
+
+                        // field validation errors (server-side)
+                        this.errors = this.errors?.errors;
+
+                        // alert user
+                        this.alert = {
+                            title: "Featured Image Error",
+                            ...response?.data,
+                        };
+                    });
+            },
+
+            getFeaturedGif() {
+                this.processing = true;
+
+                return axios
+                    .get(`/api/featured-gif/${this.record.id}`)
+                    .then((response) => {
+                        const featuredGif = [response.data.featuredGif];
+                        // set Laravel Media image name to match normal js file object name
+                        for (let i = 0; i < featuredGif.length; i++) {
+                            if (featuredGif[i].file_name) {
+                                featuredGif[i].name = featuredGif[i].file_name;
+                            }
+                        }
+                        this.featuredGif = featuredGif;
+
+                        let urlFeaturedGif = response.data.urlFeaturedGif;
+                        let urlObj = new URL(urlFeaturedGif);
+                        this.urlFeaturedGif =
+                            urlObj.pathname +
+                            (urlObj.search || "") +
+                            (urlObj.hash || "");
+
+                        this.urlFeaturedGif = urlFeaturedGif;
 
                         this.processing = false;
                     })
@@ -394,7 +646,7 @@
         grid-area: two;
     }
     .area-three {
-        grid-area: three;
+        grid-area: thr;
     }
 
     .area-two .vuetify-switch {

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostIndexResource;
+use App\Models\Category;
+use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
@@ -17,31 +18,49 @@ class PostController extends Controller
 
         return PostIndexResource::collection(
             Post::orderBy('id', 'desc')
-                            ->paginate(request('page') ? $rowsPerPage : 10000)
+                ->paginate(request('page') ? $rowsPerPage : 10000)
         );
     }
 
     public function update(Request $request, post $post)
     {
         $request->validate([
-            'active'   => 'required',
-            'featured' => 'required',
-            'title'    => 'required',
-            'slug'     => 'required',
-            'body'     => 'required'
+            'active'     => 'required',
+            'featured'   => 'required',
+            'title'      => 'required',
+            'slug'       => 'required',
+            'body'       => 'required',
+            'categories' => 'required|array',
         ]);
 
-        // Log the values of fields in the request
-        Log::info('Request Data:', [$request->input('image_featured')]);
+        // Extract categories from the request and ensure they're in an array format
+        $categoryNames = $request->input('categories');
+        if (!is_array($categoryNames)) {
+            $categoryNames = json_decode($categoryNames, true);
+        }
 
-        // limit payload (no image)
+        // Convert category names to their corresponding IDs
+        $categoryIds = Category::whereIn('name', $categoryNames)
+            ->pluck('id')
+            ->toArray();
+
+        // Sync categories to the post
+        $post->categories()->sync($categoryIds);
+
+        // Log the values of fields in the request
+        Log::info('Request Data Image:', [$request->input('image_featured')]);
+
+        // Log the values of fields in the request
+        Log::info('Request Data GIF:', [$request->input('gif_featured')]);
+
+        // limit payload
         $payload = $request->only([
             'active',
             'featured',
             'title',
             'slug',
             'excerpt',
-            'body'
+            'body',
         ]);
 
         // update post
@@ -49,15 +68,27 @@ class PostController extends Controller
 
         if ($request->input('image_featured') === "clear") {
             $post->clearMediaCollection('featured-images');
-        }
-        else {
+        } else {
             // save image
             $file = $request->file('image_featured');
             // Log::info('File Details:', [$request->hasFile('image_featured')]);
-            if($file) {
+            if ($file) {
                 // clear collection because each post can only have one featured image
                 $post->clearMediaCollection('featured-images');
                 $post->addMediaFromRequest('image_featured')->toMediaCollection('featured-images');
+            }
+        }
+
+        if ($request->input('gif_featured') === "clear") {
+            $post->clearMediaCollection('featured-gifs');
+        } else {
+            // save gif
+            $file = $request->file('gif_featured');
+            // Log::info('File Details:', [$request->hasFile('image_featured')]);
+            if ($file) {
+                // clear collection because each post can only have one featured gif
+                $post->clearMediaCollection('featured-gifs');
+                $post->addMediaFromRequest('gif_featured')->toMediaCollection('featured-gifs');
             }
         }
 

@@ -15,17 +15,18 @@ class PostIndexResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'active' => $this->active,
-            'featured' => $this->featured,
-            'published_at' => $this->published_at->format('M-d-Y H:i'),
-            'category' => $this->whenLoaded('categories', function() {
+            'id'           => $this->id,
+            'title'        => $this->title,
+            'slug'         => $this->slug,
+            'active'       => $this->active,
+            'featured'     => $this->featured,
+            'published_at' => optional($this->published_at->format('M-d-Y')),
+            'updated_at'   => optional($this->updated_at)->format('M-d-Y H:i'),
+            'category'     => $this->whenLoaded('categories', function () {
                 $mainCategory = $this->categories->filter(function ($category) {
-                    return is_null($category->parent_id); // only keep categories without a parent ID
+                    return is_null($category->parent_id); // only keep parent category
                 })->first();
-            
+
                 return $mainCategory ? $mainCategory->name : null; // return the name of the main category, or null if none exists
             }),
         ];

@@ -8,11 +8,11 @@
                 class="px-2 mb-3"
             >
                 <v-select
+                    v-model="selectedCategory"
                     :items="allCategories"
-                    item-value="id"
+                    item-value="name"
                     item-text="name"
                     label="Filter by Category"
-                    v-model="selectedCategory"
                 ></v-select>
             </v-toolbar>
         </div>
@@ -31,8 +31,8 @@
                         alternating
                         @click-row="rowClick"
                     >
-                        <template #item-published_at="item">
-                            {{ convertedTime(item.published_at) }}
+                        <template #item-updated_at="item">
+                            {{ convertedTime(item.updated_at) }}
                         </template>
                     </easy-data-table>
                 </div>
@@ -101,8 +101,13 @@
                         sortable: true,
                     },
                     {
-                        text: "Published At",
+                        text: "Published",
                         value: "published_at",
+                        sortable: true,
+                    },
+                    {
+                        text: "Updated At",
+                        value: "updated_at",
                         sortable: true,
                     },
                 ],
@@ -118,11 +123,6 @@
             };
         },
 
-        created() {
-            this.allCategories = ["All", ...this.cats];
-            this.busy = false;
-        },
-
         computed: {
             filteredPosts() {
                 if (this.selectedCategory && this.selectedCategory !== "All") {
@@ -135,11 +135,20 @@
             },
         },
 
+        created() {
+            this.allCategories = ["All", ...this.cats];
+            this.busy = false;
+        },
+
         methods: {
             rowClick(record) {
                 window.open(`/admin/posts/${record.id}/edit`);
             },
             convertedTime(time) {
+                if (!time) {
+                    return "N/A"; // Return a placeholder or any indication for not available dates
+                }
+
                 // Split the date and time
                 const dateTimeParts = time.split(" ");
                 const datePart = dateTimeParts[0];
