@@ -22,7 +22,7 @@ class PostDetailResource extends JsonResource
             'excerpt'      => $this->excerpt,
             'body'         => $this->body,
             'featured'     => $this->featured,
-            'published_at' => $this->published_at->format('M-d-Y H:i'),
+            'published_at' => optional($this->published_at)->format('M-d-Y H:i'),
             'category'     => $this->categories,
         ];
     }

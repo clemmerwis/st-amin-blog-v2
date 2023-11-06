@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PostIndexResource;
 use App\Http\Resources\PostDetailResource;
+use App\Http\Resources\PostIndexResource;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -28,9 +28,9 @@ class PostController extends Controller
         $posts = PostIndexResource::collection($posts);
 
         return view('dashboards.admin', [
-            'active' => $active,
-            'posts' => $posts,
-            'categories' => $categories
+            'active'     => $active,
+            'posts'      => $posts,
+            'categories' => $categories,
         ]);
     }
 
@@ -44,7 +44,6 @@ class PostController extends Controller
         //
     }
 
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -55,16 +54,15 @@ class PostController extends Controller
     {
         $active = 'PostEdit';
 
-        // $post = new AdminPostShowResource($post);
         $post = new PostDetailResource($post);
 
         // parent categories
         $categories = Category::whereNull('parent_id')->pluck('name')->toArray();
-        
+
         return view('dashboards.admin', [
-            'active' => $active,
-            'post'   => $post,
-            'categories' => $categories
+            'active'     => $active,
+            'post'       => $post,
+            'categories' => $categories,
         ]);
     }
 }

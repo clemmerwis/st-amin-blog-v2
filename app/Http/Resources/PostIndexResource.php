@@ -20,7 +20,7 @@ class PostIndexResource extends JsonResource
             'slug'         => $this->slug,
             'active'       => $this->active,
             'featured'     => $this->featured,
-            'published_at' => optional($this->published_at->format('M-d-Y')),
+            'published_at' => optional($this->published_at)->format('M-d-Y'),
             'updated_at'   => optional($this->updated_at)->format('M-d-Y H:i'),
             'category'     => $this->whenLoaded('categories', function () {
                 $mainCategory = $this->categories->filter(function ($category) {

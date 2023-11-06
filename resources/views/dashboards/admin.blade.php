@@ -2,8 +2,8 @@
 <html dir="ltr" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -42,7 +42,7 @@
 
         /* admin sideabr - overwrite vuetify link color */
         #app .v-application #sidebar a:not(:hover) {
-            color: rgba(233,236,239,.5);
+            color: rgba(233, 236, 239, .5);
         }
 
         @media (max-width: 767px) {
@@ -71,17 +71,29 @@
 
                             @switch($active ?? null)
                                 @case('Posts')
-                                    <innerpage-posts :posts="{{ json_encode($posts) }}" :cats="{{ json_encode($categories) }}"></innerpage-posts>                                    
-                                    @break
+                                    <innerpage-posts :posts="{{ json_encode($posts) }}"
+                                        :cats="{{ json_encode($categories) }}"></innerpage-posts>
+                                @break
+
                                 @case('PostEdit')
-                                    <admin-post-edit :post="{{ json_encode($post) }}" :cats="{{ json_encode($categories) }}"></admin-post-edit>
-                                    @break
+                                    <admin-post-edit :post="{{ json_encode($post) }}"
+                                        :cats="{{ json_encode($categories) }}"></admin-post-edit>
+                                @break
+
+                                @case('Categories')
+                                    <innerpage-category :categories="{{ json_encode($categories) }}"></innerpage-category>
+                                @break
+
+                                @case('CategoryEdit')
+                                    <admin-category-edit :category="{{ json_encode($category) }}"></admin-category-edit>
+                                @break
+
                                 @default
                                     <x-admin.innerpage />
                             @endswitch
-                            
+
                         </div>
-                        
+
                     </main>
 
                     <footer class="footer">
@@ -96,13 +108,16 @@
                                 <div class="col-6 text-end">
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
-                                            <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+                                            <a class="text-muted" href="https://adminkit.io/"
+                                                target="_blank">Support</a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+                                            <a class="text-muted" href="https://adminkit.io/" target="_blank">Help
+                                                Center</a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+                                            <a class="text-muted" href="https://adminkit.io/"
+                                                target="_blank">Privacy</a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
@@ -116,14 +131,24 @@
             </div>
         </v-app>
     </div>
-    @if (isset($active)) 
+    @if (isset($active))
         @switch($active ?? null)
             @case('Posts')
-                <x-admin.footerscripts-posts />                               
-                @break
+                <x-admin.footerscripts-posts />
+            @break
+
             @case('PostEdit')
                 <x-admin.footerscripts-posts />
-                @break
+            @break
+
+            @case('Categories')
+                <x-admin.footerscripts-posts />
+            @break
+
+            @case('CategoryEdit')
+                <x-admin.footerscripts-posts />
+            @break
+
             @default
                 <x-admin.footerscripts />
         @endswitch
