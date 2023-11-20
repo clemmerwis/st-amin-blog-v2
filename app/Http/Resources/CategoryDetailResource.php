@@ -16,7 +16,7 @@ class CategoryDetailResource extends JsonResource
     {
         return [
             'id'         => $this->id,
-            'name'       => $this->title,
+            'name'       => $this->name,
             'slug'       => $this->slug,
             'parent_id'  => $this->parent_id ?? null,
             'created_at' => optional($this->created_at)->format('M-d-Y'),

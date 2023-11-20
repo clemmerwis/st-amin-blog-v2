@@ -31,4 +31,11 @@ class CategoryController extends Controller
 
         return response()->json($subCategories ?? []);
     }
+
+    public function getAllParentCategories()
+    {
+        $parentCategories = Category::whereNull('parent_id')->get();
+
+        return response()->json($parentCategories);
+    }
 }

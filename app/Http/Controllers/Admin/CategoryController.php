@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $active = 'Categories';
 
-        // all records
+        // get categories organized alphabetically and with parent categories first.
         $categories = Category::with('parent')->orderByRaw('ISNULL(parent_id) DESC, parent_id ASC, name ASC')->get();
 
         $categories = CategoryIndexResource::collection($categories);
@@ -43,14 +43,14 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Category  $post
+     * @param  Category  $category
      * @return \Illuminate\View\View
      */
-    public function edit(Category $post)
+    public function edit(Category $category)
     {
         $active = 'CategoryEdit';
 
-        $category = new CategoryDetailResource($post);
+        $category = new CategoryDetailResource($category);
 
         return view('dashboards.admin', [
             'active'   => $active,
