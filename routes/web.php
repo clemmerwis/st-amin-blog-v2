@@ -46,4 +46,11 @@ Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{category}/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 // contact page
-Route::get('/contact', function () {return view('contact');})->name('contact');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+// author page
+Route::get('/author', function () {
+    return view('author');
+})->name('author');

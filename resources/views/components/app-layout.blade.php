@@ -51,7 +51,7 @@
                 <ul>
                     <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/icon1-air.png') }}" alt=""></span></li>
                     <li><a href="#">Stories of Mirrors</a><span><img src="{{ asset('img/icons/icon7-yinyang.png') }}" alt=""></span></li>
-                    <li><a href="#">The Author</a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
+                    <li><a href="{{ route('author') }}">The Author</a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
                     <li><a href="{{ route('contact') }}">contact</a><span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span></li>
                 </ul>
             </div>
@@ -158,7 +158,7 @@
                         <ul>
                             <li class="active home spin mainitem"><a href="{{ route('home') }}"><span>Home</span></a></li>
                             <li class="stories-of-mirrors spin mainitem"><a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}"><span>Stories of Mirrors</span></a></li>
-                            <li class="contact spin mainitem"><a href="{{ route('contact') }}"><span>The Author</span></a></li>
+                            <li class="contact spin mainitem"><a href="{{ route('author') }}"><span>The Author</span></a></li>
                             <li class="spin mainitem"><a class="marketing" href="{{ route('contact') }}"><span>Contact</span></a></li>
                         </ul>
                         {{-- <ul>

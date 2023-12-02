@@ -24,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="contact-text">
                         <div class="contact-title">
-                            <p>Erase me? Or say something here.</p>
+                            <p>Send the Author message : )</p>
                         </div>
                         <div class="contact-form">
                             <div class="dt-leave-comment">
