@@ -63,7 +63,6 @@
             </div>
             <div class="hw-social">
                 <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
             </div>
@@ -337,57 +336,30 @@
         <!-- Footer Section Begin -->
         <footer class="footer-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row justify-center">
+                    <div class="col-auto">
                         <div class="footer-about">
                             <div class="fa-logo">
-                                <a href="{{ route('home') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
+                                <a href="{{ route('author') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua lacus vel facilisis.</p>
-                            <div class="fa-social">
+                            <div class="d-flex justify-center fa-social fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="editor-choice">
-                            <div class="section-title">
-                                <h5>About Erica </h5>
-                            </div>
-                            <div class="ec-item">
-                                <div class="ec-text">
-                                    <img src="/img/trending/editor-1.jpg" alt="">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lacus vel facilisis.</p>
-
-                                    <p>Hendrerit gravida rutrum quisque non. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Turpis cursus in hac habitasse platea dictumst.</p>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="copyright-area">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="ca-text">
+                        <div class="col-12">
+                            <div class="d-flex justify-center ca-text">
                                 <p>
                                     Copyright &copy;
                                     <script>document.write(new Date().getFullYear());</script>
-                                    All rights reserved | This template is made with
-                                    <i class="fa fa-heart" aria-hidden="true"></i> by
-                                    <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    All rights reserved |
+                                    <a href="{{ route('author') }}">Schmoll Thoughts Productions</a>
                                 </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="ca-links">
-                                <a href="#">About</a>
-                                <a href="#">Subscribe</a>
-                                <a href="#">Contact</a>
-                                <a href="#">Support</a>
                             </div>
                         </div>
                     </div>

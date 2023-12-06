@@ -4951,6 +4951,9 @@ ol {
   margin-bottom: 5rem;
   overflow: hidden; /* Hide the overflow to ensure the extended corners are clipped */
 }
+.about-profile-header p {
+  text-align: left;
+}
 .about-profile-header h2 {
   font-family: "Montserrat", sans-serif;
   color: hsl(0deg 89.74% 32.94%);
@@ -4997,4 +5000,59 @@ ol {
 
 .about-profile-header.spad .container {
   background: hsla(0deg, 89.74%, 5.94%, 1);
+}
+
+.about-profile-header .specialh3 + p:not(.notme),
+.about-profile-header .specialh3 + p + p {
+  margin-bottom: 3rem;
+}
+
+.about-profile-header .specialh3 {
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 0.6rem;
+  color: white;
+}
+
+.about-profile-header .smallh3 {
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  margin-bottom: 5rem;
+}
+
+.mb2rem {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb3rem {
+  margin-bottom: 3rem !important;
+}
+
+.smallh3.mb2rem span {
+  position: relative;
+  margin-right: 20px;
+}
+
+.smallh3.mb2rem span:after {
+  content: " • "; /* Styled dot */
+  position: absolute;
+  right: -15px; /* Adjust this value to position the dot correctly */
+  top: 0; /* Align the dot with the top of the text */
+}
+
+.smallh3.mb2rem span:last-child {
+  margin-right: 0; /* No additional margin for the last item */
+}
+
+.smallh3.mb2rem span:last-child:after {
+  content: ""; /* No dot after the last item */
+}
+
+.about-page-link {
+  color: hsla(0deg, 100%, 83.94%, 0.5);
+}
+
+.about-page-link:hover {
+  color: #d4983f;
 }
