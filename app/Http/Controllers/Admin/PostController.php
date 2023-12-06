@@ -41,7 +41,15 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $active = 'PostCreate';
+
+        // parent categories
+        $categories = Category::whereNull('parent_id')->pluck('name')->toArray();
+
+        return view('dashboards.admin', [
+            'active'     => $active,
+            'categories' => $categories,
+        ]);
     }
 
     /**

@@ -54,3 +54,33 @@ Route::get('/contact', function () {
 Route::get('/author', function () {
     return view('author');
 })->name('author');
+
+// api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
+Route::prefix('api')->middleware('auth')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->except('update')->names([
+            'index'   => 'api.admin.posts.index',
+            'store'   => 'api.admin.posts.store',
+            'show'    => 'api.admin.posts.show',
+            'destroy' => 'api.admin.posts.destroy',
+        ]);
+        // Define "update" route as "post" route so that formData can work with files
+        Route::post('posts/{post}', [\App\Http\Controllers\Api\Admin\PostController::class, 'update'])->name('api.posts.update');
+
+        Route::apiResource('categories', \App\Http\Controllers\Api\Admin\CategoryController::class)->except('update')->names([
+            'index'   => 'api.admin.categories.index',
+            'store'   => 'api.admin.categories.store',
+            'show'    => 'api.admin.categories.show',
+            'destroy' => 'api.admin.categories.destroy',
+        ]);
+        // Define "update" route as "post" route so that formData can work with files
+        Route::post('categories/{category}', [\App\Http\Controllers\Api\Admin\CategoryController::class, 'update'])->name('api.categories.update');
+    });
+
+    Route::get('featured-image/{post}', [\App\Http\Controllers\Api\PostController::class, 'getFeaturedImage'])->name('api.posts.featured-image');
+    Route::get('featured-gif/{post}', [\App\Http\Controllers\Api\PostController::class, 'getFeaturedGif'])->name('api.posts.featured-gif');
+
+    Route::get('categories/sub', [\App\Http\Controllers\Api\CategoryController::class, 'getAllSubCategories'])->name('api.categories.sub');
+    Route::get('categories/{category_name}/children', [\App\Http\Controllers\Api\CategoryController::class, 'getChildCategories'])->name('api.categories.children');
+    Route::get('categories/main', [\App\Http\Controllers\Api\CategoryController::class, 'getAllParentCategories'])->name('api.categories.parents');
+});

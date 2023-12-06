@@ -2,6 +2,17 @@
     <h1 class="h3 mb-3">Posts / List</h1>
 
     <div class="row">
+        <div class="col-auto mt-2">
+            <v-btn
+                class="no-underline"
+                color="info"
+                target="_blank"
+                :loading="busy"
+                :href="`/admin/posts/create`"
+            >
+                Create Post
+            </v-btn>
+        </div>
         <div class="col-md-6 ml-auto">
             <v-toolbar
                 style="background-color: hsla(0deg, 0%, 100%, 0.5)"
