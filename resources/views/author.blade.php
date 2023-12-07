@@ -39,14 +39,14 @@
                     <h3 class="specialh3">Stories of Miracles and Mysteries:</h3>
                     <p>Everyone I meet has a tale to share, a story about something that defies explanation. My book, 'Stories of Mirrors,' is a collection of my own true interactions with the spiritual realm. These narratives are more than mere stories; they are windows into a world that exists just beyond the reach of conventional understanding.</p>
 
-                    <h3 class="specialh3">Roots in the Northwood’s:</h3>
-                    <p>Raised in the Wisconsin Northwood’s, my childhood home was a blacksmith's shop turned homestead, dating back to the late 1890s. This place, a conduit for energy, sits at the intersection of supernatural lines, shaping my perception of the world and beyond.</p>
+                    <h3 class="specialh3">Roots in the Northwood's:</h3>
+                    <p>Raised in the Wisconsin Northwood's, my childhood home was a blacksmith's shop turned homestead, dating back to the late 1890s. This place, a conduit for energy, sits at the intersection of supernatural lines, shaping my perception of the world and beyond.</p>
 
                     <h3 class="specialh3">A Unique Approach to Storytelling:</h3>
                     <p>This book will be released in a blog style, chapter by chapter, inviting readers to embark on this journey with me. It's an exploration of the unknown, an invitation to keep an open mind and a sense of humor.</p>
 
                     <h3 class="specialh3">Join Me:</h3>
-                    <p>So, this is where we'll start. Welcome to my website, a portal to the extraordinary. Let’s unlock the secrets hidden in the tales of old and the patterns of our reality.</p>
+                    <p>So, this is where we'll start. Welcome to my website, a portal to the extraordinary. Let's unlock the secrets hidden in the tales of old and the patterns of our reality.</p>
 
                     <h3 class="specialh3 mb-5">Contact Info:</h3>
                     <p class="notme"><strong>Phone:</strong> <a class="about-page-link" href="tel:715-212-5574">715-212-5574</a></p>
@@ -58,7 +58,7 @@
                     <h3 class="specialh3">My Message to the World:</h3>
                     <p>Our reality is akin to the constructs and limitations found in computers. We humans are like sponges, unconsciously assimilating information and energy. Together, we form a supercomputer capable of interacting with the intangible. Understanding who we are and where we come from is crucial – that's why 'Stories of Mirrors' is a reflection of my past, an effort to trace steps, review codes, read languages, and uncover the truth hidden in tales.</p>
 
-                    <h3 class="specialh3">What’s Happening Here?</h3>
+                    <h3 class="specialh3">What's Happening Here?</h3>
                     <p>Our collective energy and power are infinite and unstoppable. Each race contributes its unique frequency and energy. Understanding this is key to unlocking our collective potential.</p>
 
                     <p>Reach out and touch faith.</p>
