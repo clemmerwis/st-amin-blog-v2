@@ -102,7 +102,7 @@
                                             Hello {{ auth()->user()->name }} !
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.dashboard') }}">
+                                            <a href="{{ route('admin.posts.index') }}">
                                                 @if (auth()->user()->is_admin == 1)
                                                     Dashboard
                                                 @else

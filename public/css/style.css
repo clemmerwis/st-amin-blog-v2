@@ -4945,11 +4945,10 @@ ol {
 .about-profile-header {
   background-color: #6f0606;
   color: white;
-  padding: 60px 0;
+  padding: 60px 0 50px;
   position: relative;
   text-align: center;
-  margin-bottom: 5rem;
-  overflow: hidden; /* Hide the overflow to ensure the extended corners are clipped */
+  margin-bottom: 3rem;
 }
 .about-profile-header p {
   text-align: left;
@@ -4972,13 +4971,14 @@ ol {
 .about-profile-header::after {
   content: "";
   position: absolute;
-  bottom: -25px; /* Adjust as needed, negative value to position it outside the element */
+  bottom: -0.1%;
   left: 50%;
-  transform: translateX(-50%); /* Center the pseudo-element */
-  width: 150%; /* Increase width to create a more pronounced curve */
-  height: 100px;
-  background: inherit;
-  border-radius: 100px / 50px; /* Adjust the radius to control the curvature */
+  transform: translate(-50%, -52%);
+  width: 100vw;
+  height: 10vh;
+  background: #6f0606;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
   display: block;
 }
 .about-profile-header .profile-image {
@@ -5000,6 +5000,7 @@ ol {
 
 .about-profile-header.spad .container {
   background: hsla(0deg, 89.74%, 5.94%, 1);
+  padding-bottom: 5rem;
 }
 
 .about-profile-header .specialh3 + p:not(.notme),
