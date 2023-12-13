@@ -96,6 +96,10 @@
                                     <admin-category-edit :category="{{ json_encode($category) }}"></admin-category-edit>
                                 @break
 
+                                @case('CategoryCreate')  
+                                    <admin-category-create></admin-category-create>
+                                @break
+
                                 @default
                                     <x-admin.innerpage />
                             @endswitch

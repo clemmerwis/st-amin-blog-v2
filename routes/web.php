@@ -55,7 +55,10 @@ Route::get('/author', function () {
     return view('author');
 })->name('author');
 
-// api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
+
+////////// API SEction //////////
+//  api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
+//////////
 Route::prefix('api')->middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->except('update')->names([

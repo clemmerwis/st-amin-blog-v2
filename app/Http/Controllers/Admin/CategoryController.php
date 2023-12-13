@@ -36,8 +36,12 @@ class CategoryController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        //
+    {   
+        $active = 'CategoryCreate';
+
+        return view('dashboards.admin', [
+            'active'   => $active
+        ]);
     }
 
     /**

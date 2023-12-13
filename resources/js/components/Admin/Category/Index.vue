@@ -2,6 +2,19 @@
     <h1 class="h3 mb-3">Categories / List</h1>
 
     <div class="row">
+        <div class="col-auto mt-2 mb-6">
+            <v-btn
+                class="no-underline"
+                color="info"
+                target="_blank"
+                :loading="busy"
+                :href="`/admin/categories/create`"
+            >
+                Create Post
+            </v-btn>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
