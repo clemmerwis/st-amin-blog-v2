@@ -2,40 +2,37 @@
 
     <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
 
-    <div class="row">
-        <div class="col-12 d-flex">
-            <div class="card flex-fill">
+    <div class="row">      
+        <div class="col-md-6">
+            <div class="card">
                 <div class="card-header">
-
-                    <h5 class="card-title mb-0">ToDo List</h5>
+                    <h5 class="card-title mb-0">Name</h5>
                 </div>
-                <table class="table table-hover my-0">
-                    <thead>
-                        <tr>
-                            <th>Task</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Project Apollo</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                        </tr>
-                        <tr>
-                            <td>Project Fireball</td>
-
-                            <td><span class="badge bg-danger">Cancelled</span></td>
-                        </tr>
-                        <tr>
-                            <td>Project Hades</td>
-                            <td><span class="badge bg-success">Done</span></td>
-                        </tr>
-                        <tr>
-                            <td>Project Nitro</td>
-                            <td><span class="badge bg-warning">In progress</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-body">
+                    <v-text-field
+                        v-model="record.name"
+                        name="name"
+                        clearable
+                        :rules="[rules.required]"
+                        required
+                    ></v-text-field>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Slug</h5>
+                </div>
+                <div class="card-body">
+                    <v-text-field
+                        v-model="record.slug"
+                        name="slug"
+                        clearable
+                        :rules="[rules.required]"
+                        required
+                    ></v-text-field>
+                </div>
             </div>
         </div>
     </div>

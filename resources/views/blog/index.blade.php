@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/gradient-about.png">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -13,11 +13,11 @@
                                 <span>Stories of Mirrors</span>
                             </div>
                         @else
-                            <h3>Category: All</h3>
+                            <h3>Stories of Mirrors: All Chapters</h3>
 
                             <div class="bt-option">
                                 <a href="{{ route('home') }}">Home</a>
-                                <span>Latest Articles</span>
+                                <span>Stories of Mirrors: Chapter Selection</span>
                             </div>
                         @endif
                     </div>

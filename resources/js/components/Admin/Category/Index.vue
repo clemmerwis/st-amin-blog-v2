@@ -10,7 +10,7 @@
                 :loading="busy"
                 :href="`/admin/categories/create`"
             >
-                Create Post
+                Create Category
             </v-btn>
         </div>
     </div>

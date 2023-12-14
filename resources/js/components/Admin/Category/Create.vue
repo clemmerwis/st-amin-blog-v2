@@ -160,7 +160,7 @@
 
                             // Redirect to the edit page
                             const newCategoryId = response.data.id;
-                            window.location.href = `/admin/posts/${newCategoryId}/edit`;
+                            window.location.href = `/admin/categories/${newCategoryId}/edit`;
                         })
                         .catch(({ response }) => {
                             if (response) {

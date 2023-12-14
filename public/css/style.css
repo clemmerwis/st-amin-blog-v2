@@ -2627,7 +2627,7 @@ ol {
 
 .cg-item .cg-pic .label.label4 {
   bottom: 55px;
-  left: 145px;
+  /* left: 145px; */
 }
 
 .cg-item .cg-pic .label span {
@@ -5001,6 +5001,8 @@ ol {
 .about-profile-header.spad .container {
   background: hsla(0deg, 89.74%, 5.94%, 1);
   padding-bottom: 5rem;
+  border-top-right-radius: 5rem;
+  border-top-left-radius: 5rem;
 }
 
 .about-profile-header .specialh3 + p:not(.notme),
