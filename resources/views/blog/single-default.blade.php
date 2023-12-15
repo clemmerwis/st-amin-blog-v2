@@ -56,7 +56,7 @@
                         </div>
                         <div class="dt-related-post">
                             <div class="row">
-                                @if($prevNext['prev'])
+                                @if($prevNext['prev']['url'])
                                     <div class="col-lg-6">
                                         <a href="{{ $prevNext['prev']['url'] }}" class="rp-prev">
                                             <span>Prev</span>
@@ -72,7 +72,7 @@
                                         </a>
                                     </div>
                                 @endif
-                                @if($prevNext['next'])
+                                @if($prevNext['next']['url'])
                                     <div class="col-lg-6">
                                         <a href="{{ $prevNext['next']['url'] }}" class="rp-next">
                                             <span>Next</span>
