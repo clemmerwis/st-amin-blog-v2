@@ -28,11 +28,24 @@ class Post extends Model implements HasMedia
             ->width(400);
     }
 
-    // how to use: $post->featured_image_url
+    // how to use accessors example: $post->featured_image_url
     public function getFeaturedImageUrlAttribute()
     {
         return $this->getFirstMediaUrl('featured-images') ? 
             asset($this->getFirstMediaUrl('featured-images')) : asset('img/categories-list/cl-1.jpg');
+    }
+
+    public function getFeaturedImageThumbUrlAttribute()
+    {
+        return $this->getFirstMedia('featured-images') 
+            ? $this->getFirstMedia('featured-images')->getUrl('thumb') 
+            : asset('img/categories-list/cl-1.jpg');
+    }
+
+    public function getFeaturedGifUrlAttribute()
+    {
+        return $this->getFirstMediaUrl('featured-gifs') ? 
+            asset($this->getFirstMediaUrl('featured-gifs')) : asset('img/hero/red.gif');
     }
 
     public function author()

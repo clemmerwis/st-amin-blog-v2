@@ -23,11 +23,22 @@
                         <h1 class="hero-heading">Mirrors</h1>
                     </div>
                 </div>
-                <div class="butts">
-                    <div>
-                        <a class="secondary-btn" href="#">Read the Book</a>
+                @if($posts->isNotEmpty())
+                    @php
+                        $firstPostSlug = $posts->first()->slug; // Get the slug of the first post
+                    @endphp
+
+                    <div class="butts">
+                        <div>
+                            <!-- Use the slug in the route -->
+                            <a class="secondary-btn"
+                            href="{{ route('posts.show', ['category' => 'stories-of-mirrors', 'slug' => $firstPostSlug]) }}">
+                            Read the Book</a>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <p>No posts available.</p>
+                @endif
             </div>
         </div>
     </div>
@@ -65,7 +76,7 @@
                         @endphp
                         <a href="{{ route('posts.show', ['category' => $parentCat->slug, 'slug' => $post->slug]) }}">
                             <div class="lp-item">
-                                <div class="lp-pic set-bg" data-setbg="{{ asset($post->getFirstMedia('featured-images')?->getUrl('thumb')) }}"></div>
+                                <div class="lp-pic set-bg" data-setbg="{{ asset($post->featured_image_thumb_url) }}"></div>
                                 
                                 <div class="lp-text">
                                     <h6>
