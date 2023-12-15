@@ -56,34 +56,38 @@
                         </div>
                         <div class="dt-related-post">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <a href="#" class="rp-prev">
-                                        <span>Prev</span>
-                                        <div class="rp-pic">
-                                            <img src="../img/details/prev.jpg" alt="">
-                                        </div>
-                                        <div class="rp-text">
-                                            <h6>The Real-Estate Developers Are the Enemy</h6>
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                            </ul>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-6">
-                                    <a href="#" class="rp-next">
-                                        <span>Next</span>
-                                        <div class="rp-pic">
-                                            <img src="../img/details/next.jpg" alt="">
-                                        </div>
-                                        <div class="rp-text">
-                                            <h6>Montreal real estate: Bargains in cottage countrya</h6>
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                            </ul>
-                                        </div>
-                                    </a>
-                                </div>
+                                @if($prevNext['prev'])
+                                    <div class="col-lg-6">
+                                        <a href="{{ $prevNext['prev']['url'] }}" class="rp-prev">
+                                            <span>Prev</span>
+                                            <div class="rp-pic">
+                                                <img src="../img/details/prev.jpg" alt="">
+                                            </div>
+                                            <div class="rp-text">
+                                                <h6>{{ $prevNext['prev']['title'] }}</h6>
+                                                <ul>
+                                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                                </ul>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
+                                @if($prevNext['next'])
+                                    <div class="col-lg-6">
+                                        <a href="{{ $prevNext['next']['url'] }}" class="rp-next">
+                                            <span>Next</span>
+                                            <div class="rp-pic">
+                                                <img src="../img/details/next.jpg" alt="">
+                                            </div>
+                                            <div class="rp-text">
+                                                <h6>{{ $prevNext['next']['title'] }}</h6>
+                                                <ul>
+                                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                                </ul>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

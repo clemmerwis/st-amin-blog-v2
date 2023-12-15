@@ -49,9 +49,38 @@ class PostController extends Controller
                 $q->where('slug', $category);
             })
             ->firstOrFail();
+        
+        // Find the next post (published after the current post)
+        $nextPost = Post::where('published_at', '>', $post->published_at)
+            ->whereHas('categories', function ($q) use ($category) {
+                $q->where('slug', $category);
+            })
+            ->orderBy('published_at', 'asc')
+            ->first();
+        
+        // Find the previous post (published before the current post)
+        $prevPost = Post::where('published_at', '<', $post->published_at)
+            ->whereHas('categories', function ($q) use ($category) {
+                $q->where('slug', $category);
+            })
+            ->orderBy('published_at', 'desc')
+            ->first();
 
+        // Prepare the prevNext array
+        $prevNext = [
+            'prev' => [
+                'url' => $prevPost ? route('posts.show', ['category' => $category, 'slug' => $prevPost->slug]) : null,
+                'title' => $prevPost ? $prevPost->title : null,
+            ],
+            'next' => [
+                'url' => $nextPost ? route('posts.show', ['category' => $category, 'slug' => $nextPost->slug]) : null,
+                'title' => $nextPost ? $nextPost->title : null,
+            ],
+        ];
+        
         // blog.single-default 
         $template = 'blog.single-' . $post->detail->template_name;
-        return view($template, compact('post'));
+        
+        return view($template, compact('post', 'prevNext'));
     }
 }
