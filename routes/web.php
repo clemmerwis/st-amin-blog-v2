@@ -25,6 +25,9 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
     });
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.page');
+
     Route::post('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

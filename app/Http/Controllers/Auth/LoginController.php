@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('auth.login'); // Make sure this view exists in your resources/views/auth directory
+    }
+
     public function login(Request $request)
     {
         // rather than use "$this->validate",

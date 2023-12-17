@@ -10,6 +10,9 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboards.admin');
+        // return view('dashboards.admin');
+        
+        // Redirect to the admin posts index page
+        return redirect()->route('admin.posts.index');
     }
 }

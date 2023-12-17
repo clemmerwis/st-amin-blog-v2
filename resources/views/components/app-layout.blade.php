@@ -80,16 +80,7 @@
                         <div class="col-lg-6 col-md-8">
                             <div class="ht-widget">
                                 <ul>
-                                    @guest
-                                        <li class="signup-switch-login signup-login-open">
-                                            <a class="nav-link" href="#">
-                                                <i class="fa fa-sign-out ml-3"></i>Login
-                                            </a>
-                                        </li>
-                                        <li class="signup-switch signup-open">
-                                            <a class="nav-link" href="#">Create Account</a>
-                                        </li>
-                                    @else
+                                    @auth
                                         <li>
                                             Hello {{ auth()->user()->name }} !
                                         </li>
@@ -113,7 +104,7 @@
                                         <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
-                                    @endguest
+                                    @endauth
                                 </ul>
                             </div>
                         </div>

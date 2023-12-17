@@ -101,6 +101,11 @@
         $('.signup-section-login').fadeOut(400);
     });
 
+    // manually trigger on page that shows login form 
+    if ($('.signup-section-login').data('page') === 'login') {
+        $('.signup-section-login').fadeIn(400);
+    }
+
     /*------------------
         Navigation
     --------------------*/
