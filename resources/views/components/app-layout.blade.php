@@ -113,7 +113,6 @@
                             <div class="ht-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-vimeo"></i></a>
                                 <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>

@@ -556,11 +556,6 @@
                                 <div class="follow">1,2k Follow</div>
                             </li>
                             <li>
-                                <div class="sm-icon"><i class="fa fa-vimeo"></i></div>
-                                <span>Vimeo</span>
-                                <div class="follow">2,3k Subs</div>
-                            </li>
-                            <li>
                                 <div class="sm-icon"><i class="fa fa-instagram"></i></div>
                                 <span>Instagram</span>
                                 <div class="follow">2,6k Follow</div>
