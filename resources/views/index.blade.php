@@ -68,7 +68,6 @@
                             $subcat = $post->categories->first(function ($category) {
                                 return $category->parent_id !== null;
                             });
-
                             // get the parent category
                             $parentCat = $post->categories->first(function ($category) {
                                 return $category->parent_id === null;
@@ -81,7 +80,7 @@
                                 <div class="lp-text">
                                     <h6>
                                         <!-- using category as title -->
-                                        <span class="text-white">{{ $subcat->name }}</span>
+                                        <span class="text-white">{{ $subcat?->name }}</span>
                                         <p>{{ $post->title }}</p>
                                     </h6>
                                 </div>

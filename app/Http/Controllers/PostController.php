@@ -28,7 +28,7 @@ class PostController extends Controller
                     $query->where('slug', 'stories-of-mirrors');
                 });
             })
-            ->orderBy('published_at', 'desc')
+            ->orderBy('published_at', 'Asc')
             ->paginate(10);
         
             

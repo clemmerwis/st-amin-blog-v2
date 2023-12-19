@@ -15,7 +15,7 @@ class HomeController extends Controller
                 $query->where('slug', 'stories-of-mirrors');
             })
             ->with('media')  // eager load media !!this is not the images collection name e.g., 'featured-image'
-            ->orderBy('published_at', 'desc')
+            ->orderBy('published_at', 'Asc')
             ->get();
         
         return view('index', compact('posts'));

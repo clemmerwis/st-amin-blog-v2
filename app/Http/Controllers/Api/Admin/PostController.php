@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\PostIndexResource;
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\Detail;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\PostIndexResource;
 
 class PostController extends Controller
 {
@@ -55,7 +56,11 @@ class PostController extends Controller
             'body',
         ]));
         $post->author_id = auth()->user()->id;
+        $post->published_at = now();
         $post->save();
+
+        $detail = new Detail();
+        $post->detail()->save($detail);
 
         // Sync categories to the new post
         $post->categories()->sync($categoryIds);
