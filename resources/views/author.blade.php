@@ -63,7 +63,7 @@
 
                     <p>Reach out and touch faith.</p>
 
-                    <a class="btn about-page-btn mb-5" href="#">
+                    <a class="btn about-page-btn mb-5" href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">
                         <span>Read Stories of Mirrors</span>
                     </a>
                     <div class="ht-social d-flex justify-content-center">

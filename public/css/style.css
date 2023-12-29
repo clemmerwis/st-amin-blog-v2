@@ -1586,6 +1586,13 @@ ol {
   position: relative;
 }
 
+/* Media query for screen sizes of 479 pixels and below */
+@media only screen and (max-width: 479px) {
+  .lp-item .lp-pic {
+    height: 275px;
+  }
+}
+
 .lp-item .lp-pic .review-loader {
   background: rgba(0, 0, 0, 0.5);
   display: inline-block;
@@ -2623,6 +2630,10 @@ ol {
 
 .cg-item .cg-pic .label.label3 {
   bottom: 100px;
+}
+
+.SoM-blog .cg-item .cg-pic .label.label3 {
+  bottom: 55px !important;
 }
 
 .cg-item .cg-pic .label.label4 {

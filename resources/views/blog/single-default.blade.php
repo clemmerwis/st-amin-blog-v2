@@ -49,9 +49,7 @@
                                 <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </div>
                         </div>
                         <div class="dt-related-post">
@@ -65,9 +63,6 @@
                                             </div>
                                             <div class="rp-text">
                                                 <h6>{{ $prevNext['prev']['title'] }}</h6>
-                                                <ul>
-                                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                                </ul>
                                             </div>
                                         </a>
                                     </div>
@@ -81,9 +76,6 @@
                                             </div>
                                             <div class="rp-text">
                                                 <h6>{{ $prevNext['next']['title'] }}</h6>
-                                                <ul>
-                                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                                </ul>
                                             </div>
                                         </a>
                                     </div>

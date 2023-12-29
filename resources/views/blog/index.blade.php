@@ -27,7 +27,7 @@
     </section>
     <!-- Breadcrumb Section End -->
     <!-- Categories Grid Section Begin -->
-    <section class="categories-grid-section spad">
+    <section class="categories-grid-section spad {{ $posts->first() && $posts->first()->categories->first()->slug == 'stories-of-mirrors' ? 'SoM-blog' : '' }}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -68,11 +68,6 @@
                                                 {{ $post->title }}
                                                 </a>
                                             </h5>                                            
-                                            <ul>
-                                                <li>by <span>{{ $post->author->name }}</span></li>
-                                                <li><i class="fa fa-clock-o"></i> {{ $post->published_at->format('F jS, Y') }}</li>
-                                                <li><i class="fa fa-comment-o"></i> 20</li>
-                                            </ul>
                                             <p>{{ $post->excerpt }}</p>
                                         </div>
                                     </div>
