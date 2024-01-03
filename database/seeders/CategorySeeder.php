@@ -18,6 +18,21 @@ class CategorySeeder extends Seeder
             'name' => 'Stories of Mirrors',
             'slug' => 'stories-of-mirrors',
         ]);
+
+        $chapters = [
+            'one' => 'Chapter 1',
+            'two' => 'Chapter 2',
+            'three' => 'Chapter 3',
+            'four' => 'Chapter 4',
+        ];
+        
+        foreach ($chapters as $slug => $name) {
+            Category::factory()->create([
+                'name' => $name,
+                'slug' => 'chapter-' . $slug,
+                'parent_id' => 1,
+            ]);
+        }
         // Category::factory()->create([
         //     'name' => 'Ghost Stories',
         //     'slug' => 'ghost-stories',
@@ -40,28 +55,11 @@ class CategorySeeder extends Seeder
         //     'parent_id' => 1,
         // ]);
 
-        // $chapters = [
-        //     'one' => 'Chapter 1',
-        //     'two' => 'Chapter 2',
-        //     'three' => 'Chapter 3',
-        //     'four' => 'Chapter 4',
-        //     'five' => 'Chapter 5',
-        //     'six' => 'Chapter 6'
-        // ];
-        
-        // foreach ($chapters as $slug => $name) {
-        //     Category::factory()->create([
-        //         'name' => $name,
-        //         'slug' => 'chapter-' . $slug,
-        //         'parent_id' => 3,
-        //     ]);
-        // }
-
-        Category::factory()->create([
-            'name' => 'Chapter 1',
-            'slug' => 'chapter-one',
-            'parent_id' => 1,
-        ]);
+        // Category::factory()->create([
+        //     'name' => 'Chapter 1',
+        //     'slug' => 'chapter-one',
+        //     'parent_id' => 1,
+        // ]);
         
         // Category::factory()->create([
         //     'name' => 'Yoga',

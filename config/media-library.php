@@ -57,7 +57,7 @@ return [
     /*
      * The class that contains the strategy for determining a media file's path.
      */
-    'path_generator'                            => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    'path_generator'                            => App\Services\MediaLibrary\CustomPathGenerator::class,
 
     /*
      * When urls to files get generated, this class will be called. Use the default
@@ -218,5 +218,5 @@ return [
      * You can specify a prefix for that is used for storing all media.
      * If you set this to `/my-subdir`, all your media will be stored in a `/my-subdir` directory.
      */
-    'prefix'                                    => env('MEDIA_PREFIX', ''),
+    'prefix'                                    => env('MEDIA_PREFIX', '/uploads'),
 ];
