@@ -547,18 +547,12 @@
                         <ul>
                             <li>
                                 <div class="sm-icon"><i class="fa fa-facebook"></i></div>
-                                <span>Facebook</span>
-                                <div class="follow">1,2k Follow</div>
-                            </li>
-                            <li>
-                                <div class="sm-icon"><i class="fa fa-twitter"></i></div>
-                                <span>Twitter</span>
-                                <div class="follow">1,2k Follow</div>
                             </li>
                             <li>
                                 <div class="sm-icon"><i class="fa fa-instagram"></i></div>
-                                <span>Instagram</span>
-                                <div class="follow">2,6k Follow</div>
+                            </li>
+                            <li>
+                                <div class="sm-icon"><a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a></div>
                             </li>
                         </ul>
                     </div>

@@ -17,6 +17,7 @@
     </section>
     <!-- Breadcrumb Section End -->
 
+
     <!-- Contact Section Begin -->
     <section class="contact-section spad">
         <div class="container">
@@ -24,19 +25,28 @@
                 <div class="col-lg-12">
                     <div class="contact-text">
                         <div class="contact-title">
-                            <p>Send the Author message : )</p>
+                            <p>Send the Author a message : )</p>
                         </div>
                         <div class="contact-form">
                             <div class="dt-leave-comment">
-                                <form action="#">
+                                <form action="{{ route('contact.submit') }}" method="POST">
+                                    @csrf
                                     <div class="input-list">
-                                        <input type="text" placeholder="Name">
-                                        <input type="text" placeholder="Email">
-                                        <input type="text" placeholder="Website">
+                                        <input type="text" name="name" placeholder="Name">
+                                        <input type="text" name="email" placeholder="Email">
                                     </div>
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea name="message" placeholder="Message"></textarea>
                                     <button type="submit">Submit</button>
                                 </form>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

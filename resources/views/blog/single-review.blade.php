@@ -100,10 +100,8 @@
                             <div class="ds-links">
                                 <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                         <div class="dt-related-post">
@@ -151,10 +149,8 @@
                                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 <div class="da-links">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -223,23 +219,12 @@
                             <ul>
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-facebook"></i></div>
-                                    <span>Facebook</span>
-                                    <div class="follow">1,2k Follow</div>
-                                </li>
-                                <li>
-                                    <div class="sm-icon"><i class="fa fa-twitter"></i></div>
-                                    <span>Twitter</span>
-                                    <div class="follow">1,2k Follow</div>
-                                </li>
-                                <li>
-                                    <div class="sm-icon"><i class="fa fa-youtube-play"></i></div>
-                                    <span>Youtube</span>
-                                    <div class="follow">2,3k Subs</div>
                                 </li>
                                 <li>
                                     <div class="sm-icon"><i class="fa fa-instagram"></i></div>
-                                    <span>Instagram</span>
-                                    <div class="follow">2,6k Follow</div>
+                                </li>
+                                <li>
+                                    <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>                                
                                 </li>
                             </ul>
                         </div>

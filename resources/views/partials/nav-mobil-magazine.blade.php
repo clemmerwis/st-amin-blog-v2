@@ -35,9 +35,8 @@
     </div>
     <div class="hw-social">
         <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-youtube-play"></i></a>
         <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
     </div>
     <div class="hw-insta-media">
         <div class="section-title">

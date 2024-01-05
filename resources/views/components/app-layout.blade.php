@@ -61,13 +61,13 @@
             <div class="hw-copyright">
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script>
-                All rights reserved |
+                All Rights Reserved |
                 <a class="about-page-link" href="{{ route('author') }}">Schmoll Thoughts Productions</a>
             </div>
             <div class="hw-social">
                 <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
             </div>
         </div>
         <!-- Humberger Menu End -->
@@ -326,8 +326,8 @@
                             </div>
                             <div class="d-flex justify-center fa-social fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -58,6 +59,8 @@ Route::get('/author', function () {
     return view('author');
 })->name('author');
 
+// contact page form submitted
+Route::post('/contact', [ContactController::class, 'handleContactForm'])->name('contact.submit');
 
 ////////// API SEction //////////
 //  api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
