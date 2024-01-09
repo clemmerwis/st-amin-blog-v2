@@ -104,6 +104,7 @@ class PostController extends Controller
             'slug'       => 'required',
             'body'       => 'required',
             'categories' => 'required|array',
+            'published_at' => 'nullable|date',
         ]);
 
         // Extract categories from the request and ensure they're in an array format
@@ -120,6 +121,11 @@ class PostController extends Controller
         // Sync categories to the post
         $post->categories()->sync($categoryIds);
 
+        // Convert 'published_at' to actual null if it's an empty string or 'null'
+        if (empty($request->input('published_at')) || $request->input('published_at') === 'null') {
+            $request->merge(['published_at' => null]);
+        }
+
         // Log the values of fields in the request
         Log::info('Request Data Image:', [$request->input('image_featured')]);
 
@@ -134,6 +140,7 @@ class PostController extends Controller
             'slug',
             'excerpt',
             'body',
+            'published_at'
         ]);
 
         // update post

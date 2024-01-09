@@ -1,6 +1,6 @@
 <template>
     <h6 v-if="isPublished" class="small">(published)</h6>
-    <h1 class="h3 mb-3">Posts / Detail</h1>
+    <h1 class="h3 mb-3">Posts / Detail ID:{{ record.id }}</h1>
 
     <my-alert :setup="alert" @clear="() => (alert = {})"></my-alert>
 
@@ -161,6 +161,32 @@
 
                     <div class="col-md-6 offset-md-1">
                         <div class="d-md-flex justify-content-md-end gap-md-3">
+                            <div class="card flex-basis-0 flex-grow-1">
+                                <div class="card-body">
+                                    <v-text-field
+                                        v-model="publishDate"
+                                        name="published Date"
+                                        type="date"
+                                        label="Published Date"
+                                        clearable
+                                        cursor
+                                    ></v-text-field>
+                                </div>
+                            </div>
+
+                            <div class="card flex-basis-0 flex-grow-1">
+                                <div class="card-body">
+                                    <v-select
+                                        v-model="publishHour"
+                                        :items="hours"
+                                        label="Published Hour"
+                                        name="published_hour"
+                                    ></v-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-md-flex justify-content-md-end gap-md-3">
                             <div
                                 class="card flex-basis-0 flex-grow-1 vuetify-switch"
                             >
@@ -272,6 +298,34 @@
         },
         data() {
             return {
+                publishHour: null,
+                publishDate: null,
+                hours: [
+                    "12am",
+                    "1am",
+                    "2am",
+                    "3am",
+                    "4am",
+                    "5am",
+                    "6am",
+                    "7am",
+                    "8am",
+                    "9am",
+                    "10am",
+                    "11am",
+                    "12pm",
+                    "1pm",
+                    "2pm",
+                    "3pm",
+                    "4pm",
+                    "5pm",
+                    "6pm",
+                    "7pm",
+                    "8pm",
+                    "9pm",
+                    "10pm",
+                    "11pm",
+                ],
                 editor: ClassicEditor,
                 editorData: "",
                 errors: {},
@@ -330,6 +384,12 @@
             },
         },
         created() {
+            this.publishDate = this.convertToDatePickerFormat(
+                this.record.published_at
+            );
+
+            this.publishHour = this.convertToHourFormat(this.record.published_at);
+
             this.mainCategories = ["All", ...this.cats];
 
             this.subCategories = this.getSubCategories();
@@ -348,6 +408,48 @@
             this.editorData = this.record.body;
         },
         methods: {
+            convertToHourFormat(dateTimeStr) {
+                // Split the date string to get the time part
+                const timePart = dateTimeStr.split(" ")[1];
+                if (!timePart) return "";
+
+                // Extract the hour part from the time
+                let hour = parseInt(timePart.split(":")[0], 10);
+                const isPM = hour >= 12;
+
+                // Convert to 12-hour format and add AM/PM
+                hour = hour % 12;
+                hour = hour === 0 ? 12 : hour; // Convert 0 to 12 for 12AM
+
+                return `${hour}${isPM ? "pm" : "am"}`;
+            },
+            convertToDatePickerFormat(dateTimeStr) {
+                // Parse the date string and create a Date object
+                const months = {
+                    Jan: "01",
+                    Feb: "02",
+                    Mar: "03",
+                    Apr: "04",
+                    May: "05",
+                    Jun: "06",
+                    Jul: "07",
+                    Aug: "08",
+                    Sep: "09",
+                    Oct: "10",
+                    Nov: "11",
+                    Dec: "12",
+                };
+                const parts = dateTimeStr.split(/-| |:/);
+                const year = parts[2];
+                const month = months[parts[0]];
+                const day = parts[1].padStart(2, "0");
+
+                // Construct the date in YYYY-MM-DD format
+                const formattedDate = `${year}-${month}-${day}`;
+
+                return formattedDate;
+            },
+
             async validate() {
                 const { valid } = await this.$refs.form.validate();
 
@@ -385,6 +487,46 @@
                     console.error("Failed to fetch subcategories:", error);
                     return [];
                 }
+            },
+
+            convertTo24Hour(hour12) {
+                if (!hour12) return "";
+
+                const [hour, period] = hour12.match(/\d+|\D+/g);
+                let hour24 = parseInt(hour, 10);
+
+                if (period.toLowerCase() === "pm" && hour24 < 12) {
+                    hour24 += 12;
+                } else if (period.toLowerCase() === "am" && hour24 === 12) {
+                    hour24 = 0;
+                }
+
+                // Return the hour in "HH:MM:SS" format
+                return `${hour24.toString().padStart(2, "0")}:00:00`;
+            },
+
+            formatDateForCarbon(dateString) {
+                // Trim the string to a standard datetime format (YYYY-MM-DD HH:MM:SS)
+                const trimmedDateString = dateString
+                    .split(":")
+                    .slice(0, 3)
+                    .join(":");
+
+                const date = new Date(trimmedDateString);
+
+                // Check for invalid dates
+                if (isNaN(date.getTime())) {
+                    return null; // or return an appropriate fallback
+                }
+
+                const year = date.getFullYear();
+                const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-indexed
+                const day = date.getDate().toString().padStart(2, "0");
+                const hours = date.getHours().toString().padStart(2, "0");
+                const minutes = date.getMinutes().toString().padStart(2, "0");
+                const seconds = date.getSeconds().toString().padStart(2, "0");
+
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
             },
 
             // TODO clear subcategories that don't belong to selectedMainCategory when submitting
@@ -455,6 +597,17 @@
                     ...this.selectedSubCategories,
                 ];
 
+                // Convert 12-hour format to 24-hour format
+                const hour24 = this.convertTo24Hour(this.publishHour);
+
+                console.log(hour24);
+
+                // Combine publishDate and publishHour
+                const publishedAt =
+                    this.publishDate && hour24
+                        ? `${this.publishDate} ${hour24}`
+                        : null;
+
                 // limit payload fields
                 const payload = {
                     id: this.record.id,
@@ -464,7 +617,12 @@
                     featured: this.record.featured ? 1 : 0,
                     excerpt: this.record.excerpt,
                     body: this.editorData,
+                    published_at: publishedAt,
                 };
+
+                console.log(payload.published_at);
+
+                this.formatDateForCarbon(payload.published_at);
 
                 // set image_featured to clear so the backend will clear the media on the model
                 if (!this.urlFeaturedImg && this.featuredImg.length === 0) {
