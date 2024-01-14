@@ -9,6 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $active = "home";
+
         // Fetch posts where category slug is 'stories-of-mirrors'
         $posts = Post::where('active', '1')
             ->whereHas('categories', function ($query) {
@@ -18,6 +20,6 @@ class HomeController extends Controller
             ->orderBy('published_at', 'Asc')
             ->get();
         
-        return view('index', compact('posts'));
+        return view('index', compact('posts', 'active'));
     }
 }

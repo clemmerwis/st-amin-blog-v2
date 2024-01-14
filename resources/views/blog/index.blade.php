@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :active="$active">
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/gradient-about.png">
         <div class="container">

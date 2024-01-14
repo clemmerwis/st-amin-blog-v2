@@ -15,6 +15,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        $active = 'SoM';
+        
         $category = $request->get('category');
         
         $posts = Post::where('active', '1')
@@ -32,7 +34,7 @@ class PostController extends Controller
             ->paginate(10);
         
             
-        return view('blog.index', compact('posts'));
+        return view('blog.index', compact('posts', 'active'));
     }
 
     /**

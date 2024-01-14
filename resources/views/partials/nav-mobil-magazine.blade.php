@@ -31,7 +31,7 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="hw-copyright">
-        Copyright © 2019 Colorlib Inc. All rights reserved
+        Copyright © 2019 Colorlib Inc. All Rights Reserved
     </div>
     <div class="hw-social">
         <a href="#"><i class="fa fa-facebook"></i></a>
