@@ -42,11 +42,7 @@
                                                 return $category->parent_id === null;
                                             });
                                         @endphp
-                                        <a  href="{{ route('posts.show', [
-                                                $post->slug, 
-                                                'category' => optional($parentCat)->slug,
-                                                'subcategory' => optional(optional($post->categories->first())->subcats->first())->slug
-                                            ]) }}">
+                                        <a href="{{ route('posts.show', ['category' => $parentCat->slug, 'slug' => $post->slug]) }}">
                                             <div class="cg-pic set-bg" data-setbg="{{ $post->featured_image_url }}">
                                                 <div class="label label1"><span>{{ $parentCat->name }}</span></div>
                                                 @foreach($post->categories as $category)

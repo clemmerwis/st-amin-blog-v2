@@ -17,7 +17,11 @@ class DetailFactory extends Factory
         // $random_index = rand(0, 2);
         // $template_name = $template_options[$random_index];
         return [
-            'template_name' => 'default'
+            'template_name' => 'default',
+            'seo_meta' => $this->faker->randomElement([null, [
+                'title' => $this->faker->sentence,
+                'description' => $this->faker->paragraph,
+            ]]),
         ];
     }
 }

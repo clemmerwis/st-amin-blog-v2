@@ -27,41 +27,41 @@
         <meta name="twitter:description" content="A brief description of your content, giving users a reason to click through.">
         <meta name="twitter:image" content="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}"> --}}
 
-        @if($active == 'home')
-            <x-meta-tags 
-                title="Schmoll Thoughts - Home" 
-                keywords="stories of mirrors book, witchcraft, supernatural, ghost stories" 
-                description="Read Stories of Mirrors" 
-                author="schmollthoughts.com" 
-                ogTitle="Schmoll Thoughts - Home" 
-                ogDescription="Read Stories of Mirrors" 
-                ogImage="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
-                ogUrl="{{ url()->current() }}" 
-                ogSiteName="Schmoll Thoughts" 
-                twitterCard="summary_large_image" 
-                twitterTitle="Schmoll Thoughts | Stories of Mirrors book" 
-                twitterDescription="Read Stories of Mirrors"
-                twitterImage="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
-            />
-        @endif
-
-        @if($active == 'SoM')
-            <x-meta-tags 
-                title="Stories of Mirrors - All Chapters"
-                keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
-                description="Read Stories of Mirrors - select a chapter"
-                author="schmollthoughts.com"
-                ogTitle="Stories of Mirrors - All Chapters"
-                ogDescription="Read Stories of Mirrors"
-                ogImage="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
-                ogUrl="{{ url()->current() }}" 
-                ogSiteName="Schmoll Thoughts"
-                twitterCard="summary_large_image"
-                twitterTitle="Schmoll Thoughts | Stories of Mirrors book" 
-                twitterDescription="Read Stories of Mirrors" 
-                twitterImage="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
-            />
-        @endif
+        @isset($active)
+            @if($active == 'home')
+                <x-meta-tags 
+                    title="Schmoll Thoughts - Home" 
+                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories" 
+                    description="Read Stories of Mirrors" 
+                    author="schmollthoughts.com" 
+                    ogTitle="Schmoll Thoughts - Home" 
+                    ogDescription="Read Stories of Mirrors" 
+                    ogImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
+                    ogUrl="https://stories-of-mirrors.com" 
+                    ogSiteName="Schmoll Thoughts" 
+                    twitterCard="summary_large_image" 
+                    twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
+                    twitterDescription="Read Stories of Mirrors"
+                    twitterImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
+                />
+            @elseif($active == 'SoM')
+                <x-meta-tags 
+                    title="Stories of Mirrors - All Chapters"
+                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
+                    description="Read Stories of Mirrors - Chapter Selection"
+                    author="schmollthoughts.com"
+                    ogTitle="Stories of Mirrors - Chapter Selection"
+                    ogDescription="Read Stories of Mirrors"
+                    ogImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
+                    ogUrl="https://stories-of-mirrors.com/posts?category=stories-of-mirrors" 
+                    ogSiteName="Schmoll Thoughts"
+                    twitterCard="summary_large_image"
+                    twitterTitle="Stories of Mirrors | Author: Erica Schmoll" 
+                    twitterDescription="Read Stories of Mirrors" 
+                    twitterImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png"
+                />
+            @endif
+        @endisset
     
 
         <meta name="robots" content="index, follow">

@@ -1,4 +1,25 @@
 <x-app-layout>
+    <!-- Extract SEO Data -->
+    @php
+        $seoMeta = $post->detail->seo_meta ?? [];
+    @endphp
+
+    <!-- SEO Meta Tags -->
+    <x-meta-tags 
+        title="{{ $seoMeta['title'] ?? 'Default Title' }}" 
+        keywords="{{ $seoMeta['keywords'] ?? 'default, keywords' }}" 
+        description="{{ $seoMeta['description'] ?? 'Default description' }}" 
+        author="schmollthoughts.com" 
+        ogTitle="{{ $seoMeta['ogTitle'] ?? 'Default OG Title' }}" 
+        ogDescription="{{ $seoMeta['ogDescription'] ?? 'Default OG Description' }}" 
+        ogImage="{{ $seoMeta['ogImage'] ?? asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
+        ogUrl="{{ url()->current() }}" 
+        ogSiteName="Schmoll Thoughts" 
+        twitterCard="summary_large_image" 
+        twitterTitle="{{ $seoMeta['twitterTitle'] ?? 'Default Twitter Title' }}" 
+        twitterDescription="{{ $seoMeta['twitterDescription'] ?? 'Default Twitter Description' }}"
+        twitterImage="{{ $seoMeta['twitterImage'] ?? asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" 
+    />
     <!-- Details Hero Section Begin -->
     <section class="details-hero-section set-bg" data-setbg="{{ $post->featured_gif_url }}">
         <div class="container">

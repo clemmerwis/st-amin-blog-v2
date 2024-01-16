@@ -18,6 +18,8 @@ class CreateDetailsTable extends Migration
 
             $table->string('template_name')->default('default');
 
+            $table->json('seo_meta')->nullable();
+
             $table->foreignId('post_id')->constrained('posts');
             $table->timestamps();
         });
