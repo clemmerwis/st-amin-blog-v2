@@ -23,14 +23,14 @@ class PostController extends Controller
         // all records
         $posts = Post::all();
         // parent categories
-        $categories = Category::whereNull('parent_id')->pluck('name')->toArray();
+        $parentCategories = Category::whereNull('parent_id')->pluck('name')->toArray();
 
         $posts = PostIndexResource::collection($posts);
 
         return view('dashboards.admin', [
             'active'     => $active,
             'posts'      => $posts,
-            'categories' => $categories,
+            'categories' => $parentCategories,
         ]);
     }
 
@@ -44,11 +44,11 @@ class PostController extends Controller
         $active = 'PostCreate';
 
         // parent categories
-        $categories = Category::whereNull('parent_id')->pluck('name')->toArray();
+        $parentCategories = Category::whereNull('parent_id')->pluck('name')->toArray();
 
         return view('dashboards.admin', [
             'active'     => $active,
-            'categories' => $categories,
+            'categories' => $parentCategories,
         ]);
     }
 
@@ -65,12 +65,12 @@ class PostController extends Controller
         $post = new PostDetailResource($post);
 
         // parent categories
-        $categories = Category::whereNull('parent_id')->pluck('name')->toArray();
+        $parentCategories = Category::whereNull('parent_id')->pluck('name')->toArray();
 
         return view('dashboards.admin', [
             'active'     => $active,
             'post'       => $post,
-            'categories' => $categories,
+            'categories' => $parentCategories,
         ]);
     }
 }

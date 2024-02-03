@@ -1,6 +1,6 @@
 <template>
     <h6 v-if="isPublished" class="small">(published)</h6>
-    <h1 class="h3 mb-3">Posts / Detail ID:{{ record.id }}</h1>
+    <h1 class="h3 mb-3">Posts / Detail: {{ record.title }}</h1>
 
     <my-alert :setup="alert" @clear="() => (alert = {})"></my-alert>
 
@@ -18,6 +18,48 @@
         :disabled="isProcessing"
         @submit.prevent="update"
     >
+        <v-expansion-panels v-model="panel" :class="['mb-8', getSeoWidth]">
+            <v-expansion-panel>
+                <v-expansion-panel-title> SEO Meta </v-expansion-panel-title>
+                <v-expansion-panel-text>
+                    <v-container>
+                        <v-row>
+                            <v-col cols="12" sm="6">
+                                <v-text-field
+                                    v-model="record.detail.seo_meta.title"
+                                    label="SEO Title"
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-text-field
+                                    v-model="record.detail.seo_meta.description"
+                                    label="SEO Description"
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" sm="6">
+                                <v-text-field
+                                    v-model="record.detail.seo_meta.keywords"
+                                    label="SEO Keywords"
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-text-field
+                                    v-model="record.detail.seo_meta.author"
+                                    label="SEO Author"
+                                    clearable
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </v-expansion-panel-text>
+            </v-expansion-panel>
+        </v-expansion-panels>
+
         <div class="my-grid">
             <div class="area-one">
                 <div class="row">
@@ -341,6 +383,7 @@
                     required: (value) => !!value || "Required",
                 },
                 payload: null,
+                panel: [],
 
                 // for category selector dropdown
                 selectedMainCategory: "",
@@ -377,6 +420,19 @@
                     return resultArray;
                 }, []);
             },
+            getSeoWidth() {
+                // if panel is set to 0, then make add the css class w-50, else be nothing
+                let width = this.panel === 0 ? "w-100" : "w-25";
+                console.log(width);
+                return width;
+            },
+            panelClasses() {
+                // Always apply 'mb-8' and conditionally apply 'w-50' based on the panel state
+                return {
+                    "mb-8": true,
+                    "w-50": !this.panel.includes(0),
+                };
+            },
         },
         watch: {
             subCategoriesApiUrl(newUrl) {
@@ -394,11 +450,11 @@
 
             this.subCategories = this.getSubCategories();
 
-            this.selectedMainCategory = this.record.category.find(
+            this.selectedMainCategory = this.record.categories.find(
                 (category) => category.parent_id === null
             ).name;
 
-            this.selectedSubCategories = this.record.category
+            this.selectedSubCategories = this.record.categories
                 .filter((category) => category.parent_id !== null)
                 .map((category) => category.name);
 
@@ -600,13 +656,14 @@
                 // Convert 12-hour format to 24-hour format
                 const hour24 = this.convertTo24Hour(this.publishHour);
 
-                console.log(hour24);
-
                 // Combine publishDate and publishHour
                 const publishedAt =
                     this.publishDate && hour24
                         ? `${this.publishDate} ${hour24}`
                         : null;
+
+                // Extract SEO meta data
+                const seoMeta = this.record.detail.seo_meta || {};
 
                 // limit payload fields
                 const payload = {
@@ -618,9 +675,12 @@
                     excerpt: this.record.excerpt,
                     body: this.editorData,
                     published_at: publishedAt,
+                    // seo
+                    seo_title: seoMeta.title || "",
+                    seo_description: seoMeta.description || "",
+                    seo_keywords: seoMeta.keywords || "",
+                    seo_author: seoMeta.author || "",
                 };
-
-                console.log(payload.published_at);
 
                 this.formatDateForCarbon(payload.published_at);
 
@@ -779,6 +839,9 @@
 </script>
 
 <style scoped>
+    .v-expansion-panels {
+        transition: width 0.3s ease-in-out;
+    }
     .flex-basis-0 {
         flex-basis: 0px;
     }

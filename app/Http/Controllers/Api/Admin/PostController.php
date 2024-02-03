@@ -105,6 +105,11 @@ class PostController extends Controller
             'body'       => 'required',
             'categories' => 'required|array',
             'published_at' => 'nullable|date',
+            // seo
+            'seo_title'     => 'nullable|string',
+            'seo_description' => 'nullable|string',
+            'seo_keywords'  => 'nullable|string',
+            'seo_author'    => 'nullable|string'
         ]);
 
         // Extract categories from the request and ensure they're in an array format
@@ -126,11 +131,11 @@ class PostController extends Controller
             $request->merge(['published_at' => null]);
         }
 
-        // Log the values of fields in the request
-        Log::info('Request Data Image:', [$request->input('image_featured')]);
+        // // Log the values of fields in the request
+        // Log::info('Request Data Image:', [$request->input('image_featured')]);
 
-        // Log the values of fields in the request
-        Log::info('Request Data GIF:', [$request->input('gif_featured')]);
+        // // Log the values of fields in the request
+        // Log::info('Request Data GIF:', [$request->input('gif_featured')]);
 
         // limit payload
         $payload = $request->only([
@@ -140,10 +145,31 @@ class PostController extends Controller
             'slug',
             'excerpt',
             'body',
-            'published_at'
+            'published_at',
         ]);
 
-        // update post
+        $seoData = $request->only([
+            'seo_title',
+            'seo_description',
+            'seo_keywords',
+            'seo_author',
+        ]);
+        $seoMeta = [
+            'title' => $seoData["seo_title"] ?? '',
+            'keywords' => $seoData["seo_keywords"] ?? '',
+            'description' => $seoData["seo_description"] ?? '',
+            'author' => $seoData["seo_author"] ?? '',
+
+            'ogTitle' => $seoData["seo_title"] ?? '',
+            'ogDescription' => $seoData["seo_description"] ?? '',
+            'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/" . ($payload['slug']),
+            
+            'twitterTitle' => $seoData["seo_title"] ?? '',
+            'twitterDescription' => $seoData["seo_description"] ?? '',
+        ];
+
+        $post->detail->seo_meta = $seoMeta;
+        $post->detail->save();
         $post->update($payload);
 
         if ($request->input('image_featured') === "clear") {

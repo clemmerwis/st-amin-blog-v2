@@ -7,62 +7,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        {{-- <!-- SEO meta -->
-        <title>{{ config('app.name', 'Schmoll Thoughts') }} - Home</title>
-        <meta name="keywords" content="stories of mirrors book, witchcraft, supernatural, ghost stories, " />
-        <meta name="description" content="Read Stories of Mirrors" />
-        <meta name="author" content="schmollthoughts.com" />
-
-        <!-- Social meta -->
-        <meta property="og:title" content="{{ config('app.name', 'Schmoll Thoughts') }} - Home">
-        <meta property="og:description" content="Read Stories of Mirrors">
-        <meta property="og:image" content="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}">
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="{{ config('app.name', 'Schmoll Thoughts') }}">
-
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Schmoll Thoughts | Stories of Mirrors book">
-        <meta name="twitter:description" content="A brief description of your content, giving users a reason to click through.">
-        <meta name="twitter:image" content="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}"> --}}
+        @stack('seoMeta')
 
         @isset($active)
             @if($active == 'home')
                 <x-meta-tags 
-                    title="Schmoll Thoughts - Home" 
-                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories" 
+                    title="Stories of Mirrors - Home" 
                     description="Read Stories of Mirrors" 
-                    author="schmollthoughts.com" 
-                    ogTitle="Schmoll Thoughts - Home" 
+                    author="schmollthoughts.com"
+                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories" 
+
+                    ogTitle="Stories of Mirrors - Home" 
                     ogDescription="Read Stories of Mirrors" 
-                    ogImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
                     ogUrl="https://stories-of-mirrors.com" 
-                    ogSiteName="Schmoll Thoughts" 
-                    twitterCard="summary_large_image" 
+                   
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Read Stories of Mirrors"
-                    twitterImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
                 />
             @elseif($active == 'SoM')
                 <x-meta-tags 
                     title="Stories of Mirrors - All Chapters"
-                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
                     description="Read Stories of Mirrors - Chapter Selection"
                     author="schmollthoughts.com"
+                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
+
                     ogTitle="Stories of Mirrors - Chapter Selection"
                     ogDescription="Read Stories of Mirrors"
-                    ogImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png" 
                     ogUrl="https://stories-of-mirrors.com/posts?category=stories-of-mirrors" 
-                    ogSiteName="Schmoll Thoughts"
-                    twitterCard="summary_large_image"
-                    twitterTitle="Stories of Mirrors | Author: Erica Schmoll" 
+                 
+                    twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Read Stories of Mirrors" 
-                    twitterImage="https://stories-of-mirrors.com/img/schmoll-thoughts-rose-behind-x300.png"
                 />
             @endif
         @endisset
-    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://stories-of-mirrors.com/img/logos/schmoll-thoughts-rose-behind-x300.png">
+
+        <meta property="og:image" content="https://stories-of-mirrors.com/img/logos/schmoll-thoughts-rose-behind-x300.png">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Schmoll Thoughts">
 
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

@@ -75,12 +75,12 @@
 
                             @switch($active ?? null)
                                 @case('Posts')
-                                    <innerpage-posts :posts="{{ json_encode($posts) }}" 
+                                    <innerpage-posts :posts="{{ json_encode($posts) }}"
                                         :cats="{{ json_encode($categories) }}"></innerpage-posts>
                                 @break
 
                                 @case('PostEdit')
-                                    <admin-post-edit :post="{{ json_encode($post) }}" 
+                                    <admin-post-edit :post="{{ json_encode($post) }}"
                                         :cats="{{ json_encode($categories) }}"></admin-post-edit>
                                 @break
 
@@ -92,11 +92,11 @@
                                     <innerpage-category :categories="{{ json_encode($categories) }}"></innerpage-category>
                                 @break
 
-                                @case('CategoryEdit')  
+                                @case('CategoryEdit')
                                     <admin-category-edit :category="{{ json_encode($category) }}"></admin-category-edit>
                                 @break
 
-                                @case('CategoryCreate')  
+                                @case('CategoryCreate')
                                     <admin-category-create></admin-category-create>
                                 @break
 
