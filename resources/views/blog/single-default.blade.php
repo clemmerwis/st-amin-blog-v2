@@ -70,12 +70,18 @@
                         <div class="dt-share mt-3">
                             <div class="ds-title">Share</div>
                             <div class="ds-links">
-                                <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoMeta['ogUrl']) }}" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                    <i class="fa fa-facebook"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                                <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
                                 <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
+                        
                         <div class="dt-related-post">
                             <div class="row">
                                 @if($prevNext['prev']['url'])
@@ -105,26 +111,6 @@
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-7">
-                    <div class="sidebar-option">
-                        <div class="social-media">
-                            <div class="section-title">
-                                <h5>Social media</h5>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div class="sm-icon"><i class="fa fa-facebook"></i></div>
-                                </li>
-                                <li>
-                                    <div class="sm-icon"><i class="fa fa-instagram"></i></div>
-                                </li>
-                                <li>
-                                    <div class="sm-icon"><a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a></div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

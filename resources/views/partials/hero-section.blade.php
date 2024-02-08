@@ -546,10 +546,20 @@
                         </div>
                         <ul>
                             <li>
-                                <div class="sm-icon"><i class="fa fa-facebook"></i></div>
+                                <div class="sm-icon">                        
+                                    <a href="https://www.facebook.com/sharer/sharer/YourPageURL" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                        <i class="fa fa-facebook"></i>
+                                        <span class="sr-only">Facebook</span>
+                                    </a>
+                                </div>
                             </li>
                             <li>
-                                <div class="sm-icon"><i class="fa fa-instagram"></i></div>
+                                <div class="sm-icon">
+                                    <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        <span class="sr-only">Instagram</span>
+                                    </a>
+                                </div>
                             </li>
                             <li>
                                 <div class="sm-icon"><a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a></div>

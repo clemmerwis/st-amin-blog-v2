@@ -104,7 +104,8 @@ class PostSeeder extends Seeder
                         'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
 
                         'twitterTitle' => "Fever",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",                    ];
+                        'twitterDescription' => "Chapter $i: Stories of Mirrors",                    
+                    ];
                     break;
             }
 
