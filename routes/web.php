@@ -60,7 +60,7 @@ Route::get('/author', function () {
 })->name('author');
 
 // contact page form submitted
-Route::post('/contact', [ContactController::class, 'handleContactForm'])->name('contact.submit');
+Route::post('/contact', ContactController::class)->name('contact.submit');
 
 ////////// API SEction //////////
 //  api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
