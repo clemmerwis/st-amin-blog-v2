@@ -29,7 +29,7 @@ class ContactFormSubmitted extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@storiesofmirroes.com', 'Stories of Mirrors Contact Form')
+        return $this->from('erica@storiesofmirrors.com', 'Stories of Mirrors Contact Form')
             ->replyTo($this->data['email'], $this->data['name'])
             ->subject('Stories of Mirrors Contact Form Submission')
             ->view('emails.contact', ['data' => $this->data]);
