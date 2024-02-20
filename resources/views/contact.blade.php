@@ -1,4 +1,14 @@
 <x-app-layout>
+    <!-- Flash Message Display Begin -->
+    @if(session('success'))
+    <div class="container mt-4">
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    </div>
+    @endif
+    <!-- Flash Message Display End -->
+    
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/breadcrumb-bg.jpg">
         <div class="container">
