@@ -106,11 +106,11 @@
                 <a class="about-page-link" href="{{ route('author') }}">Schmoll Thoughts Productions</a>
             </div>
             <div class="hw-social">
-                <a href="https://www.facebook.com/sharer/sharer/YourPageURL" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                     <i class="fa fa-facebook"></i>
                     <span class="sr-only">Facebook</span>
                 </a>
-                <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
                     <i class="fa fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
                 </a>
@@ -158,11 +158,11 @@
 
                         <div class="col-lg-6 col-md-4">
                             <div class="ht-social">
-                                <a href="https://www.facebook.com/sharer/sharer/YourPageURL" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
                                 </a>
-                                <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
@@ -378,11 +378,11 @@
                                 <a href="{{ route('author') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
                             <div class="d-flex justify-center fa-social fa-social">
-                                <a href="https://www.facebook.com/sharer/sharer/YourPageURL" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
                                 </a>
-                                <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>

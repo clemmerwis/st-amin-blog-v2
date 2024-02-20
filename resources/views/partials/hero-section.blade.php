@@ -547,7 +547,7 @@
                         <ul>
                             <li>
                                 <div class="sm-icon">                        
-                                    <a href="https://www.facebook.com/sharer/sharer/YourPageURL" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                    <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                                         <i class="fa fa-facebook"></i>
                                         <span class="sr-only">Facebook</span>
                                     </a>
@@ -555,7 +555,7 @@
                             </li>
                             <li>
                                 <div class="sm-icon">
-                                    <a href="https://www.instagram.com/YourProfileName" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                    <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
                                         <i class="fa fa-instagram" aria-hidden="true"></i>
                                         <span class="sr-only">Instagram</span>
                                     </a>

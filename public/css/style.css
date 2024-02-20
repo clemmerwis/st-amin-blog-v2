@@ -5016,11 +5016,6 @@ ol {
   border-top-left-radius: 5rem;
 }
 
-.about-profile-header .specialh3 + p:not(.notme),
-.about-profile-header .specialh3 + p + p {
-  margin-bottom: 3rem;
-}
-
 .about-profile-header .specialh3 {
   font-size: 16px;
   text-align: left;
