@@ -41,7 +41,7 @@
                         As a writer, designer, and technologist, I've always been fascinated by the constant interplay between code and creativity. In "Stories of Mirrors," I've strived to encapsulate this relationship, creating a space where stories transcend their traditional medium to reflect the multifaceted nature of human experience. It's a project that stands at the intersection of the past and the future, drawing on timeless themes and narratives while employing the latest in web design and interactive storytelling techniques.
                     </p>
                     <p>
-                        This book, released in a blog-style format, is a testament to the power of digital innovation in storytelling. It's design ed not just to showcase my skills in writing, design, and technology, but to inspire others to consider how stories can be told in new and exciting ways. In a world where technology constantly reshapes our lives, "Stories of Mirrors" is an invitation to look at the familiar from a fresh perspective, to see not just what is, but what could be.
+                        This book, released in a blog-style format, is a testament to the power of digital innovation in storytelling. It's designed not just to showcase my skills in writing, design, and technology, but to inspire others to consider how stories can be told in new and exciting ways. In a world where technology constantly reshapes our lives, "Stories of Mirrors" is an invitation to look at the familiar from a fresh perspective, to see not just what is, but what could be.
                     </p>
                     <p class="mb3rem">
                         Thank you for joining me. Whether you're here for the stories, the design, or the technology, I hope you find something that resonates with you, something that sparks your own creativity and curiosity. Welcome to a world where the only limit is the breadth of our imaginations.
@@ -80,8 +80,15 @@
                         </a>
                         <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
                     </div>
+                    <div class="d-flex flex-column" style="max-width: max-content;">
+                        <h3 class="specialh3 mb-5" style="margin-top: 5rem">Contact Info:</h3>
+                        <div class="d-flex" style="gap: 1rem">
+                            <p class="notme"><strong>Phone:</strong> <a class="about-page-link" href="tel:715-212-5574">715-212-5574</a></p>
+                            <p><strong>Email:</strong> <a class="about-page-link" href="mailto:erica@schmollthoughts.com">erica@storiesofmirrors.com</a></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div>   
         </div>
     </section>
     <!-- Profile Header Section End -->
