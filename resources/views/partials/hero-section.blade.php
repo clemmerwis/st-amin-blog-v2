@@ -562,7 +562,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="sm-icon"><a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a></div>
+                                <div class="sm-icon"><a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a></div>
                             </li>
                         </ul>
                     </div>

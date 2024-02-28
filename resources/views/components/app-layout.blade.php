@@ -11,21 +11,21 @@
 
         @isset($active)
             @if($active == 'home')
-                <x-meta-tags 
-                    title="Stories of Mirrors - Home" 
-                    description="Read Stories of Mirrors" 
+                <x-meta-tags
+                    title="Stories of Mirrors - Home"
+                    description="Read Stories of Mirrors"
                     author="schmollthoughts.com"
-                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories" 
+                    keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
                     ogTitle="Stories of Mirrors - Home" 
-                    ogDescription="Read Stories of Mirrors" 
-                    ogUrl="https://stories-of-mirrors.com" 
+                    ogDescription="Read Stories of Mirrors"
+                    ogUrl="https://storiesofmirrors.com"
                    
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Read Stories of Mirrors"
                 />
             @elseif($active == 'SoM')
-                <x-meta-tags 
+                <x-meta-tags
                     title="Stories of Mirrors - All Chapters"
                     description="Read Stories of Mirrors - Chapter Selection"
                     author="schmollthoughts.com"
@@ -33,17 +33,17 @@
 
                     ogTitle="Stories of Mirrors - Chapter Selection"
                     ogDescription="Read Stories of Mirrors"
-                    ogUrl="https://stories-of-mirrors.com/posts?category=stories-of-mirrors" 
+                    ogUrl="https://storiesofmirrors.com/posts?category=stories-of-mirrors"
                  
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
-                    twitterDescription="Read Stories of Mirrors" 
+                    twitterDescription="Read Stories of Mirrors"
                 />
             @endif
         @endisset
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://stories-of-mirrors.com/img/logos/schmoll-thoughts-rose-behind-x300.png">
+        <meta name="twitter:image" content="https://storiesofmirrors.com/img/logos/schmoll-thoughts-rose-behind.png">
 
-        <meta property="og:image" content="https://stories-of-mirrors.com/img/logos/schmoll-thoughts-rose-behind-x300.png">
+        <meta property="og:image" content="https://storiesofmirrors.com/img/logos/schmoll-thoughts-rose-behind.png">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Schmoll Thoughts">
 
@@ -114,7 +114,7 @@
                     <i class="fa fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
                 </a>
-                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
             </div>
         </div>
         <!-- Humberger Menu End -->
@@ -166,7 +166,7 @@
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
-                                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                     </div>
@@ -386,7 +386,7 @@
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
-                                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                     </div>

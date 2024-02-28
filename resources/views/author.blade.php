@@ -78,13 +78,13 @@
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                             <span class="sr-only">Instagram</span>
                         </a>
-                        <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                        <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                     </div>
                     <div class="d-flex flex-column" style="max-width: max-content;">
                         <h3 class="specialh3 mb-5" style="margin-top: 5rem">Contact Info:</h3>
                         <div class="d-flex" style="gap: 1rem">
                             <p class="notme"><strong>Phone:</strong> <a class="about-page-link" href="tel:715-212-5574">715-212-5574</a></p>
-                            <p><strong>Email:</strong> <a class="about-page-link" href="mailto:erica@schmollthoughts.com">erica@storiesofmirrors.com</a></p>
+                            <p><strong>Email:</strong> <a class="about-page-link" href="mailto:erica@storiesofmirrors.com">erica@storiesofmirrors.com</a></p>
                         </div>
                     </div>
                 </div>

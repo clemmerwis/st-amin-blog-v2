@@ -101,7 +101,7 @@
                                 <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                         <div class="dt-related-post">
@@ -150,7 +150,7 @@
                                 <div class="da-links">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>
+                                    <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
                                     <div class="sm-icon"><i class="fa fa-instagram"></i></div>
                                 </li>
                                 <li>
-                                    <a href="mailto:erica@schmollthoughts.com"><i class="fa fa-envelope-o"></i></a>                                
+                                    <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>                                
                                 </li>
                             </ul>
                         </div>
