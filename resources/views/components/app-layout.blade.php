@@ -41,9 +41,9 @@
             @endif
         @endisset
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://storiesofmirrors.com/img/logos/schmoll-thoughts-rose-behind.png">
+        <meta name="twitter:image" content="https://storiesofmirrors.com/img/logos/SchmollThoughtsRoseBehind.png">
 
-        <meta property="og:image" content="https://storiesofmirrors.com/img/logos/schmoll-thoughts-rose-behind.png">
+        <meta property="og:image" content="https://storiesofmirrors.com/img/logos/SchmollThoughtsRoseBehind.png">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Schmoll Thoughts">
 
