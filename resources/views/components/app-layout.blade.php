@@ -13,7 +13,7 @@
             @if($active == 'home')
                 <x-meta-tags
                     title="Stories of Mirrors - Home"
-                    description="Read Stories of Mirrors"
+                    description="Click here to embark on the journey within - Read the book: Stories of Mirrors"
                     author="schmollthoughts.com"
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
@@ -41,9 +41,9 @@
             @endif
         @endisset
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://storiesofmirrors.com/img/logos/SchmollThoughtsRoseBehind.png">
+        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/mirrorOwl.jpg">
 
-        <meta property="og:image" content="https://storiesofmirrors.com/img/logos/SchmollThoughtsRoseBehind.png">
+        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/mirrorOwl.jpg">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Schmoll Thoughts">
 
