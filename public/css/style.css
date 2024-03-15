@@ -2948,7 +2948,8 @@ ol {
 }
 
 .details-text .dt-quote,
-.contact-form .dt-quote {
+.contact-form .dt-quote,
+.dt-item blockquote {
   background: #680606;
   padding: 26px 25px 24px 30px;
   position: relative;
@@ -2957,7 +2958,8 @@ ol {
 }
 
 .details-text .dt-quote:after,
-.contact-form .dt-quote:after {
+.contact-form .dt-quote:after,
+.dt-item blockquote:after {
   position: absolute;
   left: -2px;
   top: -2px;
@@ -2969,6 +2971,7 @@ ol {
 }
 
 .details-text .dt-quote p,
+.dt-item blockquote p, 
 .contact-form .dt-quote p {
   font-size: 16px;
   color: #ffffff;
@@ -2979,6 +2982,7 @@ ol {
 }
 
 .details-text .dt-quote p span,
+.dt-item blockquote p span, 
 .contact-form .dt-quote p span {
   color: #c20000;
 }

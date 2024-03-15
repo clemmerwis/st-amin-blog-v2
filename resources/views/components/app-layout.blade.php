@@ -18,11 +18,11 @@
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
                     ogTitle="Stories of Mirrors - Home" 
-                    ogDescription="Read Stories of Mirrors"
+                    ogDescription="Click here to embark on the journey within - Read the book: Stories of Mirrors"
                     ogUrl="https://storiesofmirrors.com"
                    
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
-                    twitterDescription="Read Stories of Mirrors"
+                    twitterDescription="Click here to embark on the journey within - Read the book: Stories of Mirrors"
                 />
             @elseif($active == 'SoM')
                 <x-meta-tags

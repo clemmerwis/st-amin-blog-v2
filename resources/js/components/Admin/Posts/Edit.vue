@@ -105,6 +105,7 @@
                                 <ckeditor
                                     v-model="editorData"
                                     :editor="editor"
+                                    @input="handleShortcode"
                                 ></ckeditor>
                             </div>
                         </div>
@@ -516,6 +517,23 @@
             },
             resetValidation() {
                 this.$refs.form.resetValidation();
+            },
+
+            handleShortcode(event) {
+                let content = event.editor.getData();
+
+                const shortcodeReplacements = {
+                    "[blockquote]": '<blockquote class="dt-quote">',
+                    "[/blockquote]": "</blockquote>",
+                };
+
+                // Replace shortcodes with HTML tags
+                Object.keys(shortcodeReplacements).forEach((shortcode) => {
+                    const html = shortcodeReplacements[shortcode];
+                    content = content.split(shortcode).join(html);
+                });
+
+                event.editor.setData(content);
             },
 
             handleMainCategoryChange() {
