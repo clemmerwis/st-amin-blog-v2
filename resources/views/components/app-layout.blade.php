@@ -190,10 +190,10 @@
                         <i class="fa fa-search"></i>
                     </div> --}}
                     <div class="nav-menu">
-                        {{-- @include('partials.nav-magazine') --}}
                         <ul>
                             <li class="active home spin mainitem"><a href="{{ route('home') }}"><span>Home</span></a></li>
                             <li class="stories-of-mirrors spin mainitem"><a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}"><span>Stories of Mirrors</span></a></li>
+                            @include('partials.nav-magazine')
                             <li class="contact spin mainitem"><a href="{{ route('author') }}"><span>The Author</span></a></li>
                             <li class="spin mainitem"><a class="marketing" href="{{ route('contact') }}"><span>Contact</span></a></li>
                         </ul>
