@@ -8,4 +8,3 @@
         <li><a href="./details-post-default.html">Magick</a></li>
     </ul>
 </li>
-            

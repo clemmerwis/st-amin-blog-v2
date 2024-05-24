@@ -23,25 +23,13 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
-            'name'      => 'required',
-            'slug'      => 'required',
-            'parent_id' => 'nullable'
+        $data = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+            'slug' => 'required|string|max:255|unique:categories,slug',
+            'parent_id' => 'nullable|integer|exists:categories,id'
         ]);
-
-        // Explicitly set parent_id to null if it's 'null'
-        if ($request->input('parent_id') === 'null') {
-            $payload['parent_id'] = null;
-        }
-
-        // Create new category
-        $categoryData = ($request->only([
-            'name',
-            'slug',
-            'parent_id'
-        ]));
         
-        $category = new Category($categoryData);
+        $category = new Category($data);
         $category->save();
         
         // Return response with the ID of the newly created post

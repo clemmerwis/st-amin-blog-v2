@@ -196,26 +196,32 @@
                         (cat) => cat.name === categoryName
                     );
                     return foundCategory.id;
-                } else {
-                    return null;
                 }
+                return null;
             },
 
             async getPayload() {
+                // Convert selectedCategory to parent_id
+                const parent_id = this.selectedCategory
+                    ? this.convertSelectedCategoryNameToId(this.selectedCategory)
+                    : null;
+
                 // limit payload fields
                 const payload = {
                     name: this.record.name,
                     slug: this.record.slug,
-                    parent_id: this.convertSelectedCategoryNameToId(
-                        this.selectedCategory
-                    ),
+                    parent_id: parent_id,
                 };
 
                 let formData = new FormData();
 
                 // populate formData
                 for (let key in payload) {
-                    formData.append(key, payload[key]);
+                    if (payload[key] !== null) {
+                        formData.append(key, payload[key]);
+                    } else {
+                        formData.append(key, ""); // laravel converts empty string to null
+                    }
                 }
 
                 return formData;
@@ -226,15 +232,11 @@
                 await axios
                     .get("/api/categories/main")
                     .then((response) => {
+                        console.log("test", response);
                         self.mainCategories = response.data.map((cat) => ({
                             id: cat.id,
                             name: cat.name,
                         }));
-
-                        const foundCategory = this.mainCategories.find(
-                            (cat) => cat.id === this.category.parent_id
-                        );
-                        this.selectedCategory = foundCategory.name;
                     })
                     .catch((error) => {
                         console.error("Error fetching main categories:", error);
