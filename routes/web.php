@@ -67,23 +67,21 @@ Route::post('/contact', ContactController::class)->name('contact.submit');
 //////////
 Route::prefix('api')->middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->except('update')->names([
+        Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->names([
             'index'   => 'api.admin.posts.index',
             'store'   => 'api.admin.posts.store',
             'show'    => 'api.admin.posts.show',
+            'update'  => 'api.admin.posts.update',
             'destroy' => 'api.admin.posts.destroy',
         ]);
-        // Define "update" route as "post" route so that formData can work with files
-        Route::post('posts/{post}', [\App\Http\Controllers\Api\Admin\PostController::class, 'update'])->name('api.posts.update');
 
-        Route::apiResource('categories', \App\Http\Controllers\Api\Admin\CategoryController::class)->except('update')->names([
+        Route::apiResource('categories', \App\Http\Controllers\Api\Admin\CategoryController::class)->names([
             'index'   => 'api.admin.categories.index',
             'store'   => 'api.admin.categories.store',
             'show'    => 'api.admin.categories.show',
+            'update'  => 'api.admin.categories.update',
             'destroy' => 'api.admin.categories.destroy',
         ]);
-        // Define "update" route as "post" route so that formData can work with files
-        Route::post('categories/{category}', [\App\Http\Controllers\Api\Admin\CategoryController::class, 'update'])->name('api.categories.update');
     });
 
     Route::get('featured-image/{post}', [\App\Http\Controllers\Api\PostController::class, 'getFeaturedImage'])->name('api.posts.featured-image');

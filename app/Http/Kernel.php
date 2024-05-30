@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'formdata' => \App\Http\Middleware\HandleFormData::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'isAdmin' => \App\Http\Middleware\isAdminMiddleware::class,
         'isUser' => \App\Http\Middleware\isUserMiddleware::class,

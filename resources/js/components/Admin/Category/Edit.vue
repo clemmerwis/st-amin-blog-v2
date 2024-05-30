@@ -248,6 +248,9 @@
 
                 let formData = new FormData();
 
+                // Add method spoofing for PUT request
+                formData.append("_method", "PUT");
+
                 // populate formData
                 for (let key in payload) {
                     formData.append(key, payload[key]);
