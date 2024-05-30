@@ -44,12 +44,7 @@ class CategoryController extends Controller
             'parent_id' => 'nullable',
         ]);
 
-        // Explicitly set parent_id to null if it's 'null'
-        if ($request->input('parent_id') === 'null') {
-            $payload['parent_id'] = null;
-        }
-
-        // If the category is being converted from a parent (parent_id = null) to a child (parent_id != null), 
+        // If the category is being converted from a parent (parent_id === null) to a child (parent_id !== null), 
         // then first update its children
         if ($request->input('parent_id') !== null && $category->parent_id === null) {
             // Get all categories that have this category as their parent

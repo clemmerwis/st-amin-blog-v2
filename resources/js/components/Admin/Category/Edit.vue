@@ -253,6 +253,7 @@
 
                 // populate formData
                 for (let key in payload) {
+                    console.log(payload[key]);
                     formData.append(key, payload[key]);
                 }
 
