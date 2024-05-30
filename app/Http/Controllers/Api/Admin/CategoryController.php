@@ -73,4 +73,17 @@ class CategoryController extends Controller
 
         return response()->json(['ok' => true], 201);
     }
+    
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+
+        // Disassociate the category from posts if necessary
+        $category->posts()->detach();
+
+        // Delete the category
+        $category->delete();
+
+        return response()->json(['message' => 'Category deleted successfully']);
+    }
 }

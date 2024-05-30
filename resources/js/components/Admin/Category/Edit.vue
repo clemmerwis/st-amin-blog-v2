@@ -4,6 +4,15 @@
     <my-alert :setup="alert" @clear="() => (alert = {})"></my-alert>
 
     <v-toolbar color="light" class="mb-5">
+        <v-btn
+            color="danger"
+            size="small"
+            :loading="isProcessing"
+            @click="deleteCategory"
+        >
+            <v-icon color="white">mdi-delete</v-icon>
+            Delete Category
+        </v-btn>
         <v-spacer></v-spacer>
         <v-btn color="info" :loading="isProcessing" @click="update">
             <v-icon icon="mdi-plus" color="white"></v-icon>
@@ -197,6 +206,25 @@
                 }
             },
 
+            async deleteCategory() {
+                if (!confirm("Pleasse Confirm category deletion.")) {
+                    return;
+                }
+
+                this.processing = true;
+
+                try {
+                    await axios.delete(`/api/admin/categories/${this.record.id}`);
+                    this.alert = { message: "Category deleted successfully" };
+
+                    window.location.href = `/admin/categories`;
+                } catch (error) {
+                    this.alert = { message: "Failed to delete category" };
+                    console.error("Failed to delete category:", error);
+                } finally {
+                    this.processing = false;
+                }
+            },
             convertSelectedCategoryNameToId(categoryName) {
                 if (this.record.parent_id !== null) {
                     const foundCategory = this.mainCategories.find(
@@ -241,7 +269,12 @@
                         const foundCategory = this.mainCategories.find(
                             (cat) => cat.id === this.category.parent_id
                         );
-                        this.selectedCategory = foundCategory.name;
+
+                        if (foundCategory) {
+                            this.selectedCategory = foundCategory.name;
+                        } else {
+                            this.selectedCategory = ""; // Set a default value or handle the case when no match is found
+                        }
                     })
                     .catch((error) => {
                         console.error("Error fetching main categories:", error);
