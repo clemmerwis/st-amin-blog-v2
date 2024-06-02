@@ -59,18 +59,16 @@
                     </div>
                 </div>
             </div>
-            <!-- Button to Add Parent ID Field -->
-            <div v-if="record.parent_id === null">
-                <v-btn color="info" size="small" @click="addParentId">
-                    Convert this Main category into a Sub Category
-                </v-btn>
+            <div v-if="!record.parent_id" class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Main Category</h5>
+                    </div>
+                    <!-- display subcategories here -->
+                </div>
             </div>
-            <!-- Button to Remove Parent ID Field -->
-            <div v-if="record.parent_id !== null" class="col-md-6">
-                <v-btn color="info" size="small" @click="removeParentId">
-                    Convert this Sub Category into a Main Category
-                </v-btn>
-
+            <div v-if="record.parent_id" class="col-md-6">
+                <!-- Change parent category -->
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">Parent Category</h5>
