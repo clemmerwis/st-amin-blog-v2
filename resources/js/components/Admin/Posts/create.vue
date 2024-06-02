@@ -275,7 +275,7 @@
                     slug: "",
                     body: "",
                     excerpt: "",
-                    active: false,
+                    active: true,
                     featured: false,
                     category: [],
                 },
