@@ -25,12 +25,13 @@ class PostController extends Controller
                     $query->where('slug', $category);
                 });
             }, function ($query) {
-                // When no category parameter is provided, return all posts except stories-of-mirrors
+                // When no category parameter is provided, return all posts EXCEPT stories-of-mirrors
+                // in future also make it avoid author's reflections maybe
                 return $query->whereDoesntHave('categories', function ($query) {
                     $query->where('slug', 'stories-of-mirrors');
                 });
             })
-            ->orderBy('published_at', 'Asc')
+            ->orderBy('published_at', 'asc')
             ->paginate(10);
         
             

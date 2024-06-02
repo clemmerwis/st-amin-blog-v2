@@ -1,4 +1,4 @@
-<li class="mega-menu spin mainitem"><a class="the-magazine" href="#"><span>The Magazine <i class="fa fa-angle-down"></i></span></a>
+<li class="mega-menu spin mainitem"><a class="the-magazine" href="{{ route('posts.index') }}"><span>The Magazine <i class="fa fa-angle-down"></i></span></a>
     <div class="megamenu-wrapper">
         <ul class="mw-nav">
             <li><a href="{{ route('posts.index') }}"><span>All Latest Articles</span></a></li>
