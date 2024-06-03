@@ -154,6 +154,30 @@ ol {
   background-position: center;
 }
 
+.magazine-breadcrumb-section.set-bg {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 64%;
+}
+
+.magazine-breadcrumb-section.set-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+}
+
+.magazine-breadcrumb-section.set-bg .container {
+    position: relative;
+    z-index: 10;
+}
+
 .spad {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -2630,11 +2654,7 @@ ol {
 }
 
 .cg-item .cg-pic .label.label3 {
-  bottom: 100px;
-}
-
-.SoM-blog .cg-item .cg-pic .label.label3 {
-  bottom: 55px !important;
+  bottom: 55px;
 }
 
 .cg-item .cg-pic .label.label4 {

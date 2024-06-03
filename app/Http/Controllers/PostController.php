@@ -15,9 +15,13 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $active = 'SoM';
-        
         $category = $request->get('category');
+
+        if ($category == 'stories-of-mirrors') {
+            $active = 'SoM';
+        } else {
+            $active = 'magazine';
+        }
         
         $posts = Post::where('active', '1')
             ->when($category, function ($query, $category) {

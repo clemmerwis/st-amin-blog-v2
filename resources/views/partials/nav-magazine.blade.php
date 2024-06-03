@@ -2,10 +2,9 @@
     <div class="megamenu-wrapper">
         <ul class="mw-nav">
             <li><a href="{{ route('posts.index') }}"><span>All Latest Articles</span></a></li>
-            <li><a href="#"><span>Ghost Stories</span></a></li>
-            <li><a href="#"><span>Art Gallery</span></a></li>
-            <li><a href="#"><span>Health & Wellness</span></a></li>
-            <li><a href="#"><span>Magick</span></a></li>
+            @foreach ($subcats as $subcat)
+                <li><a href="#"><span>{{ $subcat->name }}</span></a></li>
+            @endforeach
         </ul>
         <div class="mw-post">
             <div class="mw-post-item">

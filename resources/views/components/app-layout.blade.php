@@ -38,6 +38,20 @@
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Read Stories of Mirrors"
                 />
+            @elseif($active == 'magazine')
+                <x-meta-tags
+                    title="Stories of Mirrors | Witch Magazine of Wellness & Healing"
+                    description="Explore the latest edition of Stories of Mirrors Magazine"
+                    author="schmollthoughts.com"
+                    keywords="stories of mirrors magazine, witchcraft, supernatural, ghost stories, healing & wellness"
+
+                    ogTitle="Stories of Mirrors | Witch Magazine of Wellness & Healing"
+                    ogDescription="Explore the latest edition of Stories of Mirrors Magazine"
+                    ogUrl="https://storiesofmirrors.com/posts"
+
+                    twitterTitle="Stories of Mirrors | Witch Magazine of Wellness & Healing"
+                    twitterDescription="Explore the latest edition of Stories of Mirrors Magazine"
+                />
             @endif
         @endisset
         <meta name="twitter:card" content="summary_large_image">

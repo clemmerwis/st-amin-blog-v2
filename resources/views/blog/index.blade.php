@@ -1,26 +1,10 @@
 <x-app-layout :active="$active">
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/gradient-about.png">
+    <section class="breadcrumb-section set-bg spad {{ $active != 'SoM' ? 'magazine-breadcrumb-section' : '' }}" data-setbg="{{ $active == 'SoM' ? 'img/bg/gradient-about.png' : 'img/stories-of-mirrors/witches.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <div class="breadcrumb-text">
-                        @if ($posts->first()->categories->first()->slug == "stories-of-mirrors")
-                            <h3>Stories of Mirrors: All Chapters</h3>
-
-                            <div class="bt-option">
-                                <a href="{{ route('home') }}">Home</a>
-                                <span>Stories of Mirrors</span>
-                            </div>
-                        @else
-                            <h3>Stories of Mirrors: All Chapters</h3>
-
-                            <div class="bt-option">
-                                <a href="{{ route('home') }}">Home</a>
-                                <span>Stories of Mirrors: Chapter Selection</span>
-                            </div>
-                        @endif
-                    </div>
+                    @include('partials.breadcrumb')
                 </div>
             </div>
         </div>
