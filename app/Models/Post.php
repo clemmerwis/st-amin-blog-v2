@@ -37,7 +37,7 @@ class Post extends Model implements HasMedia
 
     public function getFeaturedImageThumbUrlAttribute()
     {
-        return $this->getFirstMedia('featured-images') 
+        return $this->getFirstMedia('featured-images')
             ? $this->getFirstMedia('featured-images')->getUrl('thumb') 
             : asset('img/categories-list/cl-1.jpg');
     }
@@ -56,6 +56,11 @@ class Post extends Model implements HasMedia
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_post')->withTimestamps();
+    }
+
+    public function getParentcatAttribute()
+    {
+        return $this->categories->firstWhere('parent_id', null);
     }
 
     public function detail()

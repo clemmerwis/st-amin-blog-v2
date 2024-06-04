@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,12 +17,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $category = $request->get('category');
-
-        if ($category == 'stories-of-mirrors') {
-            $active = 'SoM';
-        } else {
-            $active = 'magazine';
-        }
+        
+        $active = $category === 'stories-of-mirrors' ? 'SoM' : 'magazine';
         
         $posts = Post::where('active', '1')
             ->when($category, function ($query, $category) {
@@ -29,7 +26,7 @@ class PostController extends Controller
                     $query->where('slug', $category);
                 });
             }, function ($query) {
-                // When no category parameter is provided, return all posts EXCEPT stories-of-mirrors
+                // when category is null, return all posts EXCEPT stories-of-mirrors
                 // in future also make it avoid author's reflections maybe
                 return $query->whereDoesntHave('categories', function ($query) {
                     $query->where('slug', 'stories-of-mirrors');
@@ -37,7 +34,6 @@ class PostController extends Controller
             })
             ->orderBy('published_at', 'asc')
             ->paginate(10);
-        
             
         return view('blog.index', compact('posts', 'active'));
     }

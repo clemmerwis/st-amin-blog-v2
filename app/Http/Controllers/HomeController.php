@@ -12,9 +12,6 @@ class HomeController extends Controller
     {
         $active = "home";
 
-        // Fetch subcategories of 'Magazine'
-        $subcats = Category::where('name', 'Magazine')->first()->subcats;
-
         // Fetch posts where category slug is 'stories-of-mirrors'
         $posts = Post::where('active', '1')
             ->whereHas('categories', function ($query) {
@@ -24,16 +21,6 @@ class HomeController extends Controller
             ->orderBy('published_at', 'asc')
             ->get();
         
-        // Fetch latest posts excluding 'stories-of-mirrors' category
-        $latest = Post::where('active', '1')
-            ->whereDoesntHave('categories', function ($query) {
-                $query->where('slug', 'stories-of-mirrors');
-            })
-            ->with('media')
-            ->orderBy('published_at', 'desc')
-            ->take(5)  // Assuming you want to show the 5 latest posts
-            ->get();
-        
-        return view('index', compact('posts', 'subcats', 'latest', 'active'));
+        return view('index', compact('posts', 'active'));
     }
 }

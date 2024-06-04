@@ -1,4 +1,4 @@
-<x-app-layout :active="$active" :posts="$posts" :subcats="$subcats" :latest="$latest">
+<x-app-layout :active="$active" :posts="$posts">
     {{-- @include('partials.hero-section') --}}
     <!-- Hero Section Begin -->
     <section class="hero-section">
