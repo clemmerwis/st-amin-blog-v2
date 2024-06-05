@@ -5,9 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Detail;
 use App\Models\Post;
-use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class PostSeeder extends Seeder
 {
@@ -17,110 +15,210 @@ class PostSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
+    {
+        $this->createChapterPosts();
+        $this->createMagazinePosts();
+    }
+
+    private function createChapterPosts()
+    {
         for ($i = 1; $i <= 4; $i++) {
             $chapterCategory = Category::where('name', "Chapter $i")->firstOrFail();
 
-            // Use a switch or if-else statement to assign different content, titles, slugs, and excerpts
             switch ($i) {
                 case 1:
-                    $title   = "The Unsleeping Lamp";
-                    $slug    = "the-unsleeping-lamp";
+                    $title = "The Unsleeping Lamp";
+                    $slug = "the-unsleeping-lamp";
                     $excerpt = "March Early 90s, Marshfield & Dancy, Wisconsin";
                     $content = <<<EOT
-                    <p>It was spring break in northern Wisconsin, and my sister and I were getting ready for a field trip. Dad was taking us on an adventure to see Grandma. The drive was about twenty minutes, with snow still on the ground, and we knew there was a good chance of seeing grazing bison along the way. Dad hopped into the full-size van, equipped with bucket seats and a banging sound system. As always, before hitting the road, Dad did the routine "pat down": joint holder in the visor, a six-pack of Miller High Life in the cooler, lighter, cigarettes, and water for the kids.</p><p>Dad put in our favorite cassette, exclaiming, "Let's go harass Grandma - rock 'n' roll!" Vannie pulled out of the red granite driveway, and he turned up the tunes, belting out, "The trees went by, the cold was unstoppable, Dad hit cruise control, and you rubbed your eyes…"</p><p>The bison, those gregarious beasts, were located outside of Rozellville. Our favorite was the largest one, whom we named Minos. This massive bull stood over six feet tall, covered in long shaggy brown fur. His strong shoulders held his hump and blocky head, adorned with a large mop of hair. Minos had two black horns curving upward, a mane, a long beard, short stocky legs, and huge black circular hooves. Vannie slowed down as we approached the bison, and Sarah and I waved to them, calling out their names as if they knew who we were, as we always did.</p><p>The chariot carried us onward to Marshfield, specifically Cedar Rail Court on 6th Street. Vannie rolled into the parking lot, and Dad reminded us to play it cool. After Grandpa passed away, Grandma didn't like being alone in the house they once owned. She sold it and moved to a senior community to be closer to her sister. Dad was still on "watch" duty at the senior living community. One of the residents had called the police, reporting a "handsome man" peeing in the bushes outside of the building. Dad's side of the story was that he was locked out of the building while visiting his dear mother and couldn't hold it any longer after having too many beers. A fine was promptly mailed.</p><p>Dad grabbed the cooler, and Sarah was in charge of our beverages. My tasks were to open doors, smile at the ladies at the front desk, and call Grandma on the intercom to get buzzed in. I picked up the telephone receiver, and as I raised my right hand, the damn phone bit me with a solid blue electric zap. "What the hell!" I accidentally let out as my heart skipped a beat. I received a stern look from Dad and punched in her room number 222, holding the phone to my ear. The phone hummed with a grim cadence: zig, ziz, zig. Grandma didn't answer.</p><p>"Ope, your mother just called down, Dennis," the nurse behind the desk buzzed us in.</p><p>Quickly hanging up the phone, I smiled, waved, and held the door for everyone.</p><p>As we passed the nurse, she said, "Such sweet girls, always coming to see your Grandma," and without missing a beat, she added, "Hello, Buddha," with a wink.</p><p>"Ladies," Dad greeted with a nod and a smile.</p><p>Sarah and I glanced at each other. All the ladies had a crush on Dad, which we found gross.</p><p>Smack! The elevator button was pressed, and ching! The elevator door replied as we all piled in. After a few moments, the elevator jerked upward. Something tickled my left arm, and the hair on the back of my neck stood up. My attention was quickly grabbed by Dad and Sarah discussing Super Mario World and secret exit locations. The elevator door opened, and I rushed ahead, wanting to be the first to give Grandma a hug. I pushed the door open, swooped around the corner in the kitchen, and slid into the living room. Grandma was sitting in her wheelchair in front of the TV, her head cocked backward, limp, mouth open, and her face a scarlet gray.</p><p>I touched her arm; she was warm. "Dad!" was all I could say.</p><p>My father grabbed her, lifted her, and laid her on the floor. "Pull the emergency cord!" he commanded.</p><p>My sister and I darted around, finding every cord to pull, knowing this wasn't a test. The alarm sounded, and the white light flickered, indicating that help was on the way. I propped the door open in preparation. As Grandmother lay on the ground, her mouth opened and closed in slow motion. I noticed that she didn't have her dentures in. I clutched my heart, feeling it rip in shooting pain.</p><p>One of the nurses burst in, and suddenly the room was flooded with people. The paramedics arrived, and they opened Grandma's shirt, rubbing the cardiac arrest paddles together. I closed my eyes and covered my mouth with both hands.</p><p>"Lucille, Lucille, can you open your eyes?" After a long pause with no response, the paramedic said sternly, "Clear." Grandma's chest heaved unnaturally upward; her fragile body returned to the floor, and a soft-toned gurgling sound emanated from her throat. She was no longer moving. The paramedics swiftly loaded her up and informed my father that they were taking her to Marshfield Hospital.</p><p>The room emptied out after Grandma was taken away. The TV was still on, no sound but could see the Fraggles dancing on the screen. My father picked up the phone and called my Great Aunt. "I'm going up to the hospital right now," is all I remember Dad saying.</p><p>After Dad hung up the phone, he walked to the TV to turn it off. As he lifted his left hand, "God damn it" slipped out, as he, too, was zapped with an electric blue shock.</p><p>*************************************************************************************</p><p>"You're in charge, Stumpy," Dad calmly dictated to me, handing over a $20 bill. "I'm dropping you two off at Hardee's. I gotta go to the hospital and check on Grandma."</p><p>My heart sank - Hardee's was a few blocks down from the clinic on the corner of Ives and Central Avenue. I prayed that someone we knew would be there; I didn't want us to be alone. I didn't want to be in charge; I was scared.</p><p>Sarah and I got out of the van. "Be careful, see you in a little bit. Love you guys," Dad added.</p><p>"Love you too," Sarah and I mumbled in unison.</p><p>As we walked in, I looked behind the counter and saw Patti smiling back at us. Thank God, I thought, seeing her familiar face.</p><p>"How are you girls doing today? Where's your Dad?" she asked immediately.</p><p>Any other day, I would have been annoyed by the question about Father's whereabouts, but today I didn't mind. I was glad someone recognized us. We weren't alone, and Sarah and I felt safe from death, for now.</p><p>"Dad is at the hospital. I think Grandma died," I whispered softly. I didn't know why I told her, said it out loud. I shouldn't have, especially in front of Sarah, not without knowing for sure.</p><p>Shocked, Patti replied, "Oh my God, are you okay? Um, what can I get you? Are you alright?" Her eyes filled with tears, and her voice cracked with confusion and sadness.</p><p>It wasn't just our Grandma who had died; it was Marshfield's Lucille. An era had ended with what I claimed. The family had operated a speakeasy during prohibition, founded Bey's Bar, and brought organized sporting events to the community. But it was their spirits, strength, and love; their hearts always open to anyone needing it that made the family infamous in this small Wisconsin town.</p><p>"You can get anything you want today sweetheart," Patti said.</p><p>"Two chocolate shakes and two French fries, please," I ordered.</p><p>"You girls go sit down at your booth over there, and I'll bring this out to you," Patti stated. When I tried to hand her a $20 bill to pay, she shook her head no and said, "Put that back in your pocket, sweetheart."</p><p>We removed our coats and sat down at the table. Sarah stared into my eyes, leaned forward, and asked quietly, "Do you really think Grandma is gone?"</p><p>"Yeah, I do," I muttered and then broke eye contact.</p><p>“So Grandma isn’t going to be here for my birthday party?” Sarah quickly followed up with.</p><p>"I don't think so, Sarah," I said with a trembling voice. Her birthday was yesterday, her party just days away, and as I spoke, I turned to look directly at her.</p><p>She looked down at the table, and then back up into my eyes. "What happened to Grandma? What was she trying to say? Why did Dad say he was going to check on Grandma?" Sarah rapidly fired off her questions.</p><p>I was trying hard not to cry or frighten her. I wanted Dad to be there. Before I could respond, Patti placed the baskets of fries and the larger-than-life chocolate milkshakes in front of us. "You need ketchup? I brought ketchup," she added and sat down next to Sarah.</p><p>"Thank you," I responded. Sarah and I didn't say much, but we were thankful that Patti stayed with us.</p><p>Word spread quickly, and people started glancing over and speaking in hushed tones. I could feel their sympathy and hear their pain. Thankfully, the chocolate shake helped to numb the emotional turmoil.</p><p>Sarah and I finished up. "We're going to go out and wait for Dad," I quietly said to Patti. Sarah threw out the garbage, placed the tray and basket on top of the bin, and we zipped up our coats, bundling up.</p><p>"One second," Patti quickly walked toward us, grabbed my shoulders, and said, "We'll keep an eye on you. Be careful." She hugged me tightly, and then hugged Sarah.</p><p>We staked out on the sidewalk, waiting, as the wind blasted us with its full force. "This sucks," Sarah muttered, her teeth chattering.</p><p>"Stand by me. I'll block the wind for ya," I replied, my own voice chattering in Morse code. Sarah grabbed my right arm and put hers through mine, standing side by side, together by each.</p><p>I looked to my left and saw a yellow cab with checkers on it at the stop sign. Then my gaze turned to the back seat, where Grandma was waving at Sarah and me.</p><p>My sister tugged violently at my arm. "Erica, do you see Grandma?!"</p><p>"Look away, look away right now!" I urgently instructed. I didn't know what to do. We looked down, and when I looked back up, the cab had driven off.</p><p>"You saw Grandma too, didn't you?" Sarah cried out.</p><p>I confirmed, "Yeah."</p><p>Vannie arrived, and I whipped open the sliding door. "Dad, Dad! We saw Grandma. Are we going to see Grandma?!" my sister exclaimed. My father turned back but had no words.</p><p>Without pause, Sarah continued, "We saw Grandma. Is she okay? Erica said Grandma died, but we saw her. Tell em, Erica." Sarah hoped that by telling him, Grandma would come back.</p><p>Confused by what Sarah was saying, Dad swallowed before responding, "Grandma is in Heaven, girls."</p><p>My eyes filled with tears as I looked at Sarah, who was already crying. I couldn't see Dad's eyes because he was wearing sunglasses, but he looked at us as if we had seen a ghost.</p><p>Dad got out, closed the sliding door, and hopped back in. He sparked up a joint and cracked open a beer, something he would normally wait to do a bit outside of town. He kept the windows up, so we could breathe in the secondhand smoke, and it worked. We stopped crying, and suddenly I could hear Mr. Petty playing into sound.<br>************************************************************************************<br>Mother and Father took turns rooming with us at night, and Sarah and I went back to sharing a bedroom. When everyone went to sleep, I checked to make sure they were all breathing and prayed my grief to the darkness.</p><p>The house mourned, with the air heavy with the scent of lilacs. Footsteps pacing in the hallway on the second floor could be heard. A recurring dream played in my mind: I'm in the backseat of my grandparents' car on a cold winter night, heavy snow falling. We're driving down a hill, with gaunt black branches casting shadows on both sides of the road as the gold light flickers off the bark. My Grandma is in the front seat, on the passenger side, her head tilted down. There is no driver.</p><p>Months went by, and although Sarah and I were still sharing a room, Mom and Dad didn't need to room with us anymore. One late night, feeling thirsty, I shuffled to get out of bed.</p><p>Before I could reach Sarah, her muffled voice emerged from under the blanket. "Are you going to get water?"</p><p>"How did you know?" I softly replied.</p><p>"Can you bring me some?" she asked.</p><p>"Of course," I smiled as I responded.</p><p>Fumbling through the hallway, the third or fourth stair announced my presence. I stopped dead in my tracks - I heard no movement. I tiptoed down the stairs, cautiously proceeding through the hallway and dining room, and arrived at the light over the kitchen sink. I turned on the faucet, letting the water run for a few minutes, and noticed a dim light coming from the living room. I had passed through the living room moments ago, and no one was up. That damn stair had given me away; Dad was awake.</p><p>"Lame," I let out. Dad was going to give me a speech about drinking too much water and being out of bed. My plan was not to talk back but to return and confront him at dawn when he was weak. For now, I would fold. I finished gulping my cup of water and mentally prepared myself for the inevitable. I set Sarah's cup on the dining room table so Dad wouldn't see me smuggling water and turned right into the living room to confront Dad, mano a mano. As I walked in, it wasn't Dad sitting there but Grandma. She was sitting where she always had, on the recliner side of the sectional next to the table with the touch lamp. She was looking down, rubbing her hands together as she did when she dried our hair while we laid our heads on her lap. The electricity surged through the lamp, and the light shade emitted golden light that intensified. Grandma put her hands down on her lap; she was finished and ready to dry my hair now. She rose her head, looked me in the eyes, and they flickered gold. My heart filled with this messianic energy, this laser force that trembled through my body, directly into my forehead, eyes, and lips. I breathed in her internal love. Tears filled my eyes, and although Grandma's mouth didn't move, I could hear her voice singing prayers in my heart. Grandma Lucille shimmered in the golden light and, as if someone was calling her, she looked to her right, my left ear rang, and then she became the light.</p><p>Clutching my heart with both hands, I somehow mouthed through tears, "I love you, Grandma."</p><p>I don't know how long I stood there or how I even made it back to bed, but this much I do remember: I left the unsleeping lamp on for Dad. Turning off lights was his thing anyway.</p>
+                    <p>It was spring break in northern Wisconsin, and my sister and I were getting ready for a field trip...</p>
                     EOT;
                     $seoMeta = [
                         'title' => "The Unsleeping Lamp",
                         'keywords' => "enchanted forest, adventure, travel, nature",
                         'description' => "Chapter $i: Stories of Mirrors",
                         'author' => "Erica Schmoll",
-
                         'ogTitle' => "The Unsleeping Lamp",
                         'ogDescription' => "Chapter $i: Stories of Mirrors",
                         'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-
                         'twitterTitle' => "The Unsleeping Lamp",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",                    
+                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
                     ];
                     break;
                 case 2:
-                    $title   = "Unincorporated";
-                    $slug    = "unincorporated";
+                    $title = "Unincorporated";
+                    $slug = "unincorporated";
                     $excerpt = "Home";
                     $content = <<<EOT
-                    <p>I was raised in the Northwoods of Wisconsin, in an unincorporated town named Dancy. This charming community still preserves remnants of its past, including an old train depot, schoolhouse, grocery store, and saloon from the late 1880s. Dancy's location at the edge of the George W Mead State Wildlife Area, resting on a bedrock of granite and quartz, with lakes and underground rivers flowing through, gives it an eerie allure that leaves a lasting impression.</p><p>&nbsp;</p><p>The George W Mead State Wildlife Area is a vast sanctuary spanning over 33,000 acres of wetlands, grasslands, and forests, boasting 273 cataloged species of birds, a variety of mammals, reptiles, amphibians, and insects. With more than 80 miles of hiking and recreational trails right in my backyard, I grew up learning to respect and appreciate nature's beauty from a young age.</p><p>&nbsp;</p><p>However, the Native Americans believe that the land is cursed, and legends suggest that it is wise to leave the woods before sundown. They even coined the phrase "foggy in the boggy" to remind people to keep a vigilant eye out for both deer and apparitions in the fields.</p><p>&nbsp;</p><p>The region has a tumultuous history, marked by one of the bloodiest battles between Natives and Settlers over access and control of natural resources and wildlife in the territories of Lake DuBay, Dancy, Knowlton, Eau Pleine, George W Mead, and Rozellville. It is said to be a bird migration path stop and home to owls, the only creatures capable of living alongside ghosts.</p><p>&nbsp;</p><p>While not exploring the woods, I spent my childhood at Lake DuBay, a reservoir on the Wisconsin River covering 6,700 acres and featuring a dam generating hydroelectric power. The DuBay Park on County Hwy E holds cherished memories of family gatherings, softball games, paddle boating, biking, swimming, and where I experienced my first taste of love.</p><p>&nbsp;</p><p>The winding Hwy E leads to Ocean Spray Cranberries farming and the impressive dam. Standing on the dock, witnessing the water's power when the gates open, is a mesmerizing experience, absorbing the clean energy with no consequence.</p><p>&nbsp;</p><p>Dancy is a whirlwind of renewable energy, with endless quarries of rock and pools of water, and the railroad line adds to the town's unique character whenever a train passes through.</p><p>&nbsp;</p><p>The homestead I grew up in dates back to the early 1880s, with the home itself constructed in 1891 as a Blacksmith Shop operated by a male soldier. Situated at the intersection of supernatural lines, the property serves as a conduit for mysterious energies. Along these lines, certain individuals can hear and harness pockets of concentrated energy.</p><p>&nbsp;</p><p>I firmly believe that the male spirit occupying this property personally summoned my Mother. It is not uncommon for holy structures to draw or seek out families to inhabit them, and this home seems to embody such spiritual connections.</p>
+                    <p>I was raised in the Northwoods of Wisconsin, in an unincorporated town named Dancy...</p>
                     EOT;
                     $seoMeta = [
                         'title' => "Unincorporated",
                         'keywords' => "enchanted forest, adventure, travel, nature",
                         'description' => "Chapter $i: Stories of Mirrors",
                         'author' => "Erica Schmoll",
-
                         'ogTitle' => "Unincorporated",
                         'ogDescription' => "Chapter $i: Stories of Mirrors",
                         'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-
                         'twitterTitle' => "Unincorporated",
                         'twitterDescription' => "Chapter $i: Stories of Mirrors",
                     ];
                     break;
                 case 3:
-                    $title   = "Divining Glass";
-                    $slug    = "divining-glass";
+                    $title = "Divining Glass";
+                    $slug = "divining-glass";
                     $excerpt = "April 1985";
                     $content = <<<EOT
-                    <p>At the time, my family was renting an old farmhouse on Curve Road, just outside of Mosinee, Wisconsin. Before we moved in, the place had a rather unusual history - it used to be a snake farm. The previous owner, a redneck of sorts, decided to give up raising serpents and released some of them in the dirt cellar while letting the rest roam freely on the property.</p><p>&nbsp;</p><p>My mother was determined to find a different home, wanting to get away from the Hainey place as soon as possible.</p><p>*************************************************************************************</p><p>I was only four years old, sitting in the back seat of the Bronco on the passenger side, behind my mother, who kept an eye on my one-year-old sister. My father was driving, and the car hummed quietly as it traveled down the familiar road, heading home for the first time. We slowed down on Highway 34 South, turned right onto Hwy County C, and clapped over the railroad tracks before making another right onto Old Dancy Road, 2375. Our new home stood as the third house on the left, a majestic white Victorian house with a weathered wood exterior, decorative trim, a steep multi-faceted roof, and a one-story wrap-around porch surrounded by a moat of purple lilacs and green land. My mother was immediately enchanted by the property, knowing it would provide the space she needed to care for her family. When my father turned off the truck, the owner of the property, Jim, greeted us, dressed in what appeared to be a Hunter S. Thompson drug collection outfit, complete with an Archangel Michael pendant.</p><p>&nbsp;</p><p>Jim introduced himself with a chuckle, saying, "Hello folks, I'm the gatekeeper. Let's go in and take a look."</p><p>&nbsp;</p><p>We all entered through the back porch as Jim began to explain the details of the house. He informed us that the house was old, and though some parts of the electricity had been updated, not all rooms had access to it. The plumbing required careful use, as it was installed after the house was constructed and located in a closet off the kitchen. He also mentioned a 2-seater shitter outside on the property for use. Jim humorously added that the house would slightly move when the train passed by on the nearby railroad tracks, and that the basement would have a puddle of water each spring in the back corner. He emphasized the importance of staying indoors in the garage when the nearby granite and quartz pit was blasting to avoid any rock debris.</p><p>&nbsp;</p><p>As my father inquired about the neighbors, Jim smiled and shared some colorful descriptions. He mentioned some interesting characters living up the road, referring to them as "crazy Indians" with dream catchers, wind chimes, and beer cans everywhere. Despite their rowdiness, he assured us that they were good folks. Jim also spoke of another neighbor living two houses down with a young girl, all part of the backwoods community.</p><p>&nbsp;</p><p>While Jim and my parents were conversing, I couldn't resist exploring the house on my own. I ran through the first floor and into the front parlor, where emerald green wallpaper adorned the walls, decorated with white and pink flowers. Looking out of the handmade glass window with lead panes, I noticed the illusion of rippling water on the railroad tracks as the train passed by. A doorway off the parlor led to the entrance hall, taking me upstairs to a prepossessing tower room. Brown wallpaper with white and yellow flowers adorned this chamber, along with a walk-in closet and the entryway to the attic. Three separate windows faced south, between the first and second window from the left, on the wall, an antiqued gold rectangle mirror with carved wood trim caught my eye.</p><p>&nbsp;</p><p>I stood before the mirror, the sunshine filling the room, when suddenly I heard footsteps in the hallway. As the footsteps reached the doorway of the bedroom, they stopped, but no one was there.</p><p>*************************************************************************************</p><p>As we rode back to the Hainey place, crossing the lake, my dad turned on the radio. The new home needed some work, but it was undeniably magical.</p><p>&nbsp;</p><p>"What room are you going to choose, Erica?" my mom asked.</p><p>&nbsp;</p><p>As the older sister, I was given the responsibility of deciding which bedroom my sister Sarah and I would share. Mom and Dad would have their room, and the rest of the space would be for indoor farming.</p><p>&nbsp;</p><p>Mom turned around and looked at me in the back seat, asking, "You liked the room with the mirror, didn't you?"</p><p>&nbsp;</p><p>I nodded, replying softly, "Yes."</p>
+                    <p>At the time, my family was renting an old farmhouse on Curve Road, just outside of Mosinee, Wisconsin...</p>
                     EOT;
                     $seoMeta = [
                         'title' => "Divining Glass",
                         'keywords' => "enchanted forest, adventure, travel, nature",
                         'description' => "Chapter $i: Stories of Mirrors",
                         'author' => "Erica Schmoll",
-
                         'ogTitle' => "Divining Glass",
                         'ogDescription' => "Chapter $i: Stories of Mirrors",
                         'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-           
                         'twitterTitle' => "Divining Glass",
                         'twitterDescription' => "Chapter $i: Stories of Mirrors",
                     ];
                     break;
                 case 4:
-                    $title   = "Fever";
-                    $slug    = "fever";
+                    $title = "Fever";
+                    $slug = "fever";
                     $excerpt = "Memorial Day Weekend, May 1985";
                     $content = <<<EOT
-                    <p>The timing of our move put us directly in the blossoming of spring. The property was lush with apple, plum, and pine trees, surrounded by lilacs, tiger lilies, lilies of the valley, and raspberry bushes. Pollen floated everywhere, cloaking everything in a fine dust.</p><p>&nbsp;</p><p>After Mom and I finished cleaning and organizing the two bedrooms, Sarah and Harley (our family dog) were napping, and Dad was busy attending to his sea of green, putting the final touches to the lighting system and grow rooms in order.</p><p>&nbsp;</p><p>"A clean home is a happy home," Dad boasted from the top of the steps, playfully acting as if he commanded his Queens to clean the castle.</p><p>&nbsp;</p><p>My Mother rolled her eyes, "Thank you for your approval, Ming," she replied with a smile.</p><p>&nbsp;</p><p>As dinner time approached and the weekend turned cold and rainy, I began to feel unwell. With all the moving, cleaning, and being outside surrounded by pollen, I had developed a fever, as usual. I always seemed to have a fever.</p><p>&nbsp;</p><p>"Mom, I wanna lay down," I mumbled.</p><p>&nbsp;</p><p>"Go on up, I'll be there in a few to check on you," Mother replied in her soft and comforting tone.</p><p>&nbsp;</p><p>I took my Monchhichi and headed upstairs to our bedroom. Sarah's crib was next to the wall, and both of our beds ran west to east. As I laid my head down on the pillow, I could see out of the far right window, overlooking the neighbor's backyard.</p><p>&nbsp;</p><p>A few hours passed, and Mom put Sarah to bed before coming to check on me.</p><p>&nbsp;</p><p>"Sit up, sweetie," she gently held a cup of water to my lips and placed her other hand on my forehead, "Awe, you are so warm. Lay back down," she murmured, kissing me before tucking me in. "I'll be back to check on you."</p><p>&nbsp;</p><p>As I lay on my back because of the cool cloth on my forehead, I began to drift off to sleep. However, I always fell asleep and ended up sleeping on my right side. I turned, causing the cool rag and the relief it brought to slip off my forehead. I opened my eyes slightly.</p><p>&nbsp;</p><p>There it was a rough hand but only the palm, fingertips, wrist, and forearm, no body; it was a cloudy, several feet off the ground. The fog inside the hand was swirling as it reached for me. I couldn't hold back the fear, and I cried out, letting out a blood-curdling scream, "DADDDDDDDD!!!"</p><p>&nbsp;</p><p>The mist lingered for a moment and then dissipated. The rain outside was pounding on the roof, but Sarah remained sound asleep. My father and mother rushed into the room, swinging the bedroom door open and turning on the light.</p><p>&nbsp;</p><p>At the time, my parents thought it was simply a new house, a storm, my fever, and me being a child with a vivid imagination. However, for me, it was the first paranormal event in my life, where I saw a spirit, or part of a spirit, with my own eyes.</p><p>&nbsp;</p>
+                    <p>The timing of our move put us directly in the blossoming of spring...</p>
                     EOT;
                     $seoMeta = [
                         'title' => "Fever",
                         'keywords' => "enchanted forest, adventure, travel, nature",
                         'description' => "Chapter $i: Stories of Mirrors",
                         'author' => "Erica Schmoll",
-
                         'ogTitle' => "Fever",
                         'ogDescription' => "Chapter $i: Stories of Mirrors",
                         'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-
                         'twitterTitle' => "Fever",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",                    
+                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
                     ];
                     break;
             }
 
-            // Create the post with the factory and set the properties
             $post = Post::factory()->create([
-                'title'   => $title,
-                'slug'    => $slug,
+                'title' => $title,
+                'slug' => $slug,
                 'excerpt' => $excerpt,
-                'body'    => $content,
+                'body' => $content,
             ]);
 
-            // Assign categories to the post
             $post->categories()->attach([1, $chapterCategory->id]);
 
-            // Save the post detail with custom SEO data
+            $post->detail()->save(Detail::factory()->make([
+                'seo_meta' => $seoMeta
+            ]));
+        }
+    }
+
+    private function createMagazinePosts()
+    {
+        $magazineCategories = [
+            1 => 'Health & Healing',
+            2 => 'Spells & Energy',
+            3 => 'Tech & Web',
+            4 => 'Useful Apparel'
+        ];
+
+        for ($i = 1; $i <= 4; $i++) {
+            $magazineCategory = Category::where('name', $magazineCategories[$i])->firstOrFail();
+
+            switch ($i) {
+                case 1:
+                    $title = "Health & Healing Guide";
+                    $slug = "health-healing-guide";
+                    $excerpt = "Explore the best practices for maintaining health and healing.";
+                    $content = <<<EOT
+                    <p>Welcome to the Health & Healing guide. This article will explore the best practices for maintaining health and healing...</p>
+                    EOT;
+                    $seoMeta = [
+                        'title' => "Health & Healing Guide",
+                        'keywords' => "health, healing, wellness, guide",
+                        'description' => "Comprehensive guide to health and healing practices.",
+                        'author' => "Author Name",
+                        'ogTitle' => "Health & Healing Guide",
+                        'ogDescription' => "Comprehensive guide to health and healing practices.",
+                        'ogUrl' => "https://magazine-website.com/posts/health-healing-guide",
+                        'twitterTitle' => "Health & Healing Guide",
+                        'twitterDescription' => "Comprehensive guide to health and healing practices.",
+                    ];
+                    break;
+                case 2:
+                    $title = "Spells & Energy Techniques";
+                    $slug = "spells-energy-techniques";
+                    $excerpt = "Discover powerful spells and energy techniques.";
+                    $content = <<<EOT
+                    <p>This article delves into powerful spells and energy techniques that can enhance your spiritual practices...</p>
+                    EOT;
+                    $seoMeta = [
+                        'title' => "Spells & Energy Techniques",
+                        'keywords' => "spells, energy, techniques, magic",
+                        'description' => "Discover powerful spells and energy techniques for spiritual enhancement.",
+                        'author' => "Author Name",
+                        'ogTitle' => "Spells & Energy Techniques",
+                        'ogDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
+                        'ogUrl' => "https://magazine-website.com/posts/spells-energy-techniques",
+                        'twitterTitle' => "Spells & Energy Techniques",
+                        'twitterDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
+                    ];
+                    break;
+                case 3:
+                    $title = "Latest in Tech & Web";
+                    $slug = "latest-tech-web";
+                    $excerpt = "Stay updated with the latest trends in technology and the web.";
+                    $content = <<<EOT
+                    <p>Stay updated with the latest trends and advancements in technology and the web...</p>
+                    EOT;
+                    $seoMeta = [
+                        'title' => "Latest in Tech & Web",
+                        'keywords' => "technology, web, trends, updates",
+                        'description' => "The latest trends and advancements in technology and the web.",
+                        'author' => "Author Name",
+                        'ogTitle' => "Latest in Tech & Web",
+                        'ogDescription' => "The latest trends and advancements in technology and the web.",
+                        'ogUrl' => "https://magazine-website.com/posts/latest-tech-web",
+                        'twitterTitle' => "Latest in Tech & Web",
+                        'twitterDescription' => "The latest trends and advancements in technology and the web.",
+                    ];
+                    break;
+                case 4:
+                    $title = "Useful Apparel Tips";
+                    $slug = "useful-apparel-tips";
+                    $excerpt = "Find out the best tips and tricks for useful apparel.";
+                    $content = <<<EOT
+                    <p>Discover the best tips and tricks for choosing and using useful apparel in your daily life...</p>
+                    EOT;
+                    $seoMeta = [
+                        'title' => "Useful Apparel Tips",
+                        'keywords' => "apparel, tips, clothing, fashion",
+                        'description' => "Best tips and tricks for choosing and using useful apparel.",
+                        'author' => "Author Name",
+                        'ogTitle' => "Useful Apparel Tips",
+                        'ogDescription' => "Best tips and tricks for choosing and using useful apparel.",
+                        'ogUrl' => "https://magazine-website.com/posts/useful-apparel-tips",
+                        'twitterTitle' => "Useful Apparel Tips",
+                        'twitterDescription' => "Best tips and tricks for choosing and using useful apparel.",
+                    ];
+                    break;
+            }
+
+            $post = Post::factory()->create([
+                'title' => $title,
+                'slug' => $slug,
+                'excerpt' => $excerpt,
+                'body' => $content,
+            ]);
+
+            $post->categories()->attach([6, $magazineCategory->id]);
+
             $post->detail()->save(Detail::factory()->make([
                 'seo_meta' => $seoMeta
             ]));
