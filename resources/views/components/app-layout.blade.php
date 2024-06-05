@@ -224,13 +224,13 @@
         <!-- Footer Section Begin -->
         <footer class="footer-section">
             <div class="container">
-                <div class="row justify-center">
+                <div class="row justify-content-center">
                     <div class="col-auto">
                         <div class="footer-about">
                             <div class="fa-logo">
                                 <a href="{{ route('author') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
-                            <div class="d-flex justify-center fa-social fa-social">
+                            <div class="d-flex justify-content-center fa-social fa-social">
                                 <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
@@ -247,7 +247,7 @@
                 <div class="copyright-area">
                     <div class="row">
                         <div class="col-12">
-                            <div class="d-flex justify-center ca-text">
+                            <div class="d-flex justify-content-center ca-text">
                                 <p>
                                     Copyright &copy;
                                     <script>document.write(new Date().getFullYear());</script>
