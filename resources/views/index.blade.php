@@ -35,9 +35,12 @@
                                 href="{{ route('posts.show', ['category' => 'stories-of-mirrors', 'slug' => $firstPostSlug]) }}">
                                 Read the Book</a>
                             </div>
+                            <div>
+                                <a class="secondary-btn border-btn" href="#">Witch Magazine</a>
+                            </div>
                         </div>
                     @else
-                        <p>No posts available.</p>
+                        <p>No book posts exist.</p>
                     @endif
                 </div>
             </div>
