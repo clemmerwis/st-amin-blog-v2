@@ -2,8 +2,9 @@
     <div class="megamenu-wrapper">
         <ul class="mw-nav">
             <li><a href="{{ route('posts.index') }}"><span>All Latest Articles</span></a></li>
+            {{-- subcats from view service provider --}}
             @foreach ($subcats as $subcat)
-                <li><a href="#"><span>{{ $subcat->name }}</span></a></li>
+                <li><a href="{{ route('posts.index', ['category' => $subcat->slug]) }}"><span>{{ $subcat->name }}</span></a></li>
             @endforeach
         </ul>
         <div class="mw-post">

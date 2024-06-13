@@ -3,7 +3,7 @@
     <ul class="dropdown">
         <li><a href="{{ route('posts.index') }}">All Latest Articles</a></li>
         @foreach ($subcats as $subcat)
-            <li><a href="#">{{ $subcat->name }}</a></li>
+            <li><a href="{{ route('posts.index', ['category' => $subcat->slug]) }}">{{ $subcat->name }}</a></li>
         @endforeach
     </ul>
 </li>
