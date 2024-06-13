@@ -22,6 +22,8 @@ class PostSeeder extends Seeder
 
     private function createChapterPosts()
     {
+        $startDate = now()->subMonths(3);
+        
         for ($i = 1; $i <= 4; $i++) {
             $chapterCategory = Category::where('name', "Chapter $i")->firstOrFail();
 
@@ -109,6 +111,9 @@ class PostSeeder extends Seeder
                 'slug' => $slug,
                 'excerpt' => $excerpt,
                 'body' => $content,
+                'published_at' => $startDate->addDays($i),
+                'created_at' => $startDate,
+                'updated_at' => $startDate,
             ]);
 
             $post->categories()->attach([1, $chapterCategory->id]);
@@ -121,6 +126,8 @@ class PostSeeder extends Seeder
 
     private function createMagazinePosts()
     {
+        $startDate = now()->subMonths(2);
+
         $magazineCategories = [
             1 => 'Health & Healing',
             2 => 'Spells & Energy',
@@ -215,6 +222,9 @@ class PostSeeder extends Seeder
                 'slug' => $slug,
                 'excerpt' => $excerpt,
                 'body' => $content,
+                'published_at' => $startDate->addDays($i),
+                'created_at' => $startDate,
+                'updated_at' => $startDate
             ]);
 
             $post->categories()->attach([6, $magazineCategory->id]);

@@ -42,18 +42,17 @@ class CategorySeeder extends Seeder
             'slug' => 'magazine',
         ]);
 
-        // Optionally, create child categories for Magazine
         $magazineCats = [
-            'one' => 'Health & Healing',
-            'two' => 'Spells & Energy',
-            'three' => 'Tech & Web',
-            'four' => 'Useful Apparel',
+            'health-healing' => 'Health & Healing',
+            'spells-energy' => 'Spells & Energy',
+            'tech-web' => 'Tech & Web',
+            'useful-apparel' => 'Useful Apparel',
         ];
 
         foreach ($magazineCats as $slug => $name) {
             Category::factory()->create([
                 'name' => $name,
-                'slug' => 'magazine-article-' . $slug,
+                'slug' => $slug,
                 'parent_id' => $magazine->id,
             ]);
         }

@@ -26,9 +26,6 @@ class PostFactory extends Factory
         $title = $this->faker->sentence;
         $slug = Str::slug($title);
 
-        $createdAt = $this->faker->dateTimeBetween('-1 year', 'now');
-        $updatedAt = $this->faker->dateTimeBetween($createdAt, 'now');
-
         // wrap content in html p tags
         $body = collect($this->faker->paragraphs(rand(5, 15)))
             ->map(function ($item) {
@@ -44,10 +41,6 @@ class PostFactory extends Factory
             'body' => $body,
 
             'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
-            'published_at' => $createdAt,
-
-            'created_at' => $createdAt,
-            'updated_at' => $updatedAt,
         ];
     }
 }
