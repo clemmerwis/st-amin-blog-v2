@@ -26,20 +26,26 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Using class based composers...
-        View::composer('*', function ($view) {
-            $subcats = Category::where('name', 'Magazine')->first()->subcats;
-            $latest = Post::where('active', '1')
-                ->whereDoesntHave('categories', function ($query) {
-                    $query->where('slug', 'stories-of-mirrors');
-                })
-                ->with('media')
-                ->orderBy('published_at', 'desc')
-                ->take(5)
-                ->get();
+        if (!$this->isAdminRoute()) {
+            View::composer('*', function ($view) {
+                $subcats = Category::where('name', 'Magazine')->first()->subcats;
+                $latest = Post::where('active', '1')
+                    ->whereDoesntHave('categories', function ($query) {
+                        $query->where('slug', 'stories-of-mirrors');
+                    })
+                    ->with('media')
+                    ->orderBy('published_at', 'desc')
+                    ->take(5)
+                    ->get();
 
-            $view->with('subcats', $subcats)
-                 ->with('latest', $latest);
-        });
+                $view->with('subcats', $subcats)
+                    ->with('latest', $latest);
+            });
+        }
+    }
+    
+    private function isAdminRoute()
+    {
+        return request()->is('admin/*') || request()->is('admin');
     }
 }
