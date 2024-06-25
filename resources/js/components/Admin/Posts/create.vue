@@ -374,7 +374,6 @@
                 }
             },
 
-            // TODO clear subcategories that don't belong to selectedMainCategory when submitting
             async create() {
                 this.processing = true;
                 // reset validations
