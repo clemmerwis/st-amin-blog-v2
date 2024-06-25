@@ -18,7 +18,6 @@ import Vue3EasyDataTable from 'vue3-easy-data-table';
 import 'vue3-easy-data-table/dist/style.css';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
-
 const app = createApp({});
 app.use(vuetify);
 app.use(CKEditor);
