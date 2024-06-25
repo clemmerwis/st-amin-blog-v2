@@ -264,6 +264,7 @@
         },
         data() {
             return {
+                test: "",
                 editor: ClassicEditor,
                 editorData: "",
                 errors: {},
