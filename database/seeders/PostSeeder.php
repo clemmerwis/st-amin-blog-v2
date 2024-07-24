@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Detail;
 use App\Models\Post;
+use App\Models\Detail;
+use App\Models\Category;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -16,218 +17,210 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        $this->createChapterPosts();
-        $this->createMagazinePosts();
+        $lastChapterDate = $this->createChapterPosts();
+        $this->createMagazinePosts($lastChapterDate);
     }
 
     private function createChapterPosts()
     {
-        $startDate = now()->subMonths(3);
-        
-        for ($i = 1; $i <= 4; $i++) {
-            $chapterCategory = Category::where('name', "Chapter $i")->firstOrFail();
-
-            switch ($i) {
-                case 1:
-                    $title = "The Unsleeping Lamp";
-                    $slug = "the-unsleeping-lamp";
-                    $excerpt = "March Early 90s, Marshfield & Dancy, Wisconsin";
-                    $content = <<<EOT
-                    <p>It was spring break in northern Wisconsin, and my sister and I were getting ready for a field trip...</p>
-                    EOT;
-                    $seoMeta = [
-                        'title' => "The Unsleeping Lamp",
-                        'keywords' => "enchanted forest, adventure, travel, nature",
-                        'description' => "Chapter $i: Stories of Mirrors",
-                        'author' => "Erica Schmoll",
-                        'ogTitle' => "The Unsleeping Lamp",
-                        'ogDescription' => "Chapter $i: Stories of Mirrors",
-                        'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-                        'twitterTitle' => "The Unsleeping Lamp",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
-                    ];
-                    break;
-                case 2:
-                    $title = "Unincorporated";
-                    $slug = "unincorporated";
-                    $excerpt = "Home";
-                    $content = <<<EOT
-                    <p>I was raised in the Northwoods of Wisconsin, in an unincorporated town named Dancy...</p>
-                    EOT;
-                    $seoMeta = [
-                        'title' => "Unincorporated",
-                        'keywords' => "enchanted forest, adventure, travel, nature",
-                        'description' => "Chapter $i: Stories of Mirrors",
-                        'author' => "Erica Schmoll",
-                        'ogTitle' => "Unincorporated",
-                        'ogDescription' => "Chapter $i: Stories of Mirrors",
-                        'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-                        'twitterTitle' => "Unincorporated",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
-                    ];
-                    break;
-                case 3:
-                    $title = "Divining Glass";
-                    $slug = "divining-glass";
-                    $excerpt = "April 1985";
-                    $content = <<<EOT
-                    <p>At the time, my family was renting an old farmhouse on Curve Road, just outside of Mosinee, Wisconsin...</p>
-                    EOT;
-                    $seoMeta = [
-                        'title' => "Divining Glass",
-                        'keywords' => "enchanted forest, adventure, travel, nature",
-                        'description' => "Chapter $i: Stories of Mirrors",
-                        'author' => "Erica Schmoll",
-                        'ogTitle' => "Divining Glass",
-                        'ogDescription' => "Chapter $i: Stories of Mirrors",
-                        'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-                        'twitterTitle' => "Divining Glass",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
-                    ];
-                    break;
-                case 4:
-                    $title = "Fever";
-                    $slug = "fever";
-                    $excerpt = "Memorial Day Weekend, May 1985";
-                    $content = <<<EOT
-                    <p>The timing of our move put us directly in the blossoming of spring...</p>
-                    EOT;
-                    $seoMeta = [
-                        'title' => "Fever",
-                        'keywords' => "enchanted forest, adventure, travel, nature",
-                        'description' => "Chapter $i: Stories of Mirrors",
-                        'author' => "Erica Schmoll",
-                        'ogTitle' => "Fever",
-                        'ogDescription' => "Chapter $i: Stories of Mirrors",
-                        'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/$slug",
-                        'twitterTitle' => "Fever",
-                        'twitterDescription' => "Chapter $i: Stories of Mirrors",
-                    ];
-                    break;
-            }
-
+        $startDate = Carbon::create(2023, 1, 1);  // January 1, 2023
+    
+        $chapters = [
+            [
+                'title' => "The Eerie Tale of The Unsleeping Lamp",
+                'slug' => "the-eerie-tale-of-the-unsleeping-lamp",
+                'excerpt' => "March Early 90s, Dancy, Wisconsin",
+                'content' => "<p>It was spring break in northern Wisconsin, and my sister and I were getting ready for a field trip...</p>",
+            ],
+            [
+                'title' => "The Mysterious Phenomena of Unincorporated",
+                'slug' => "mysterious-phenomena-unincorporated",
+                'excerpt' => "Home",
+                'content' => "<p>I was raised in the Northwoods of Wisconsin, in an unincorporated town named Dancy...</p>",
+            ],
+            [
+                'title' => "Mystical Reflections: The Divining Glass",
+                'slug' => "mystical-reflections-divining-glass",
+                'excerpt' => "April 1985",
+                'content' => "<p>At the time, my family was renting an old farmhouse on Curve Road, just outside of Mosinee, Wisconsin...</p>",
+            ],
+            [
+                'title' => "Paranormal Fever",
+                'slug' => "paranormal-fever",
+                'excerpt' => "Memorial Day Weekend, May 1985",
+                'content' => "<p>The timing of our move put us directly in the blossoming of spring...</p>",
+            ],
+            [
+                'title' => "What's Next in Stories of Mirrors",
+                'slug' => "whats-next-stories-of-mirrors",
+                'excerpt' => "Dear Readers/Listeners",
+                'content' => "<p>Thank you for your interest in Stories of Mirrors. Here's what's coming next...</p>",
+            ],
+        ];
+    
+        $storiesOfMirrorsCategory = Category::where('name', 'Stories of Mirrors')->firstOrFail();
+        $lastDate = $startDate;
+    
+        foreach ($chapters as $index => $chapter) {
+            $chapterCategory = Category::where('name', "Chapter " . ($index + 1))->firstOrFail();
+    
+            $lastDate = $startDate->copy()->addDays($index);
             $post = Post::factory()->create([
-                'title' => $title,
-                'slug' => $slug,
-                'excerpt' => $excerpt,
-                'body' => $content,
-                'published_at' => $startDate->addDays($i),
-                'created_at' => $startDate,
-                'updated_at' => $startDate,
+                'title' => $chapter['title'],
+                'slug' => $chapter['slug'],
+                'excerpt' => $chapter['excerpt'],
+                'body' => $chapter['content'],
+                'published_at' => $lastDate,
+                'created_at' => $lastDate,
+                'updated_at' => $lastDate,
             ]);
-
-            $post->categories()->attach([1, $chapterCategory->id]);
-
+    
+            // Attach categories
+            $post->categories()->attach([$storiesOfMirrorsCategory->id, $chapterCategory->id]);
+    
             $post->detail()->save(Detail::factory()->make([
-                'seo_meta' => $seoMeta
+                'seo_meta' => [
+                    'title' => $chapter['title'],
+                    'keywords' => "Paranormal experiences, haunted artifacts, ghost stories, supernatural encounters, mysterious phenomena, unexplained events, eerie tales, paranormal investigation, supernatural mysteries, haunted objects",
+                    'description' => "Chapter " . ($index + 1) . ": Stories of Mirrors",
+                    'author' => "Erica Schmoll",
+                    'ogTitle' => $chapter['title'],
+                    'ogDescription' => "Chapter " . ($index + 1) . ": Stories of Mirrors",
+                    'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/" . $chapter['slug'],
+                    'twitterTitle' => $chapter['title'],
+                    'twitterDescription' => "Chapter " . ($index + 1) . ": Stories of Mirrors",
+                ]
             ]));
         }
+
+        return $lastDate;
     }
 
-    private function createMagazinePosts()
+    private function createMagazinePosts($startDate)
     {
-        $startDate = now()->subMonths(2);
+        $startDate = $startDate->addDays(1);
 
         $magazineCategories = [
             1 => 'Health & Healing',
             2 => 'Spells & Energy',
             3 => 'Tech & Web',
-            4 => 'Useful Apparel'
+            4 => 'Useful Apparel',
+            5 => 'Paranormal'
         ];
 
-        for ($i = 1; $i <= 4; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $magazineCategory = Category::where('name', $magazineCategories[$i])->firstOrFail();
 
             switch ($i) {
                 case 1:
-                    $title = "Health & Healing Guide";
-                    $slug = "health-healing-guide";
-                    $excerpt = "Explore the best practices for maintaining health and healing.";
+                    $title = "Holistic Health: A Witch's Perspective";
+                    $slug = "holistic-health-a-witchs-perspective";
+                    $excerpt = "Explore the best practices for maintaining health and healing, where the art of holistic wellness and mystical remedies ensures that goodness and beauty will surround you all the days of your life, allowing you to dwell in peace and harmony forever. Delve into ancient healing arts, modern wellness tips, and magical approaches to living a balanced and harmonious life.";
                     $content = <<<EOT
-                    <p>Welcome to the Health & Healing guide. This article will explore the best practices for maintaining health and healing...</p>
+                    <p>Welcome to the Holistic Health: A Witch's Perspective. This article will explore the best practices for maintaining health and healing...</p>
                     EOT;
                     $seoMeta = [
-                        'title' => "Health & Healing Guide",
+                        'title' => "Holistic Health: A Witch's Perspective",
                         'keywords' => "health, healing, wellness, guide",
                         'description' => "Comprehensive guide to health and healing practices.",
                         'author' => "Author Name",
-                        'ogTitle' => "Health & Healing Guide",
+                        'ogTitle' => "Holistic Health: A Witch's Perspective",
                         'ogDescription' => "Comprehensive guide to health and healing practices.",
-                        'ogUrl' => "https://magazine-website.com/posts/health-healing-guide",
-                        'twitterTitle' => "Health & Healing Guide",
+                        'ogUrl' => "https://magazine-website.com/posts/holistic-health-a-witchs-perspective",
+                        'twitterTitle' => "Holistic Health: A Witch's Perspective",
                         'twitterDescription' => "Comprehensive guide to health and healing practices.",
                     ];
                     break;
                 case 2:
-                    $title = "Spells & Energy Techniques";
-                    $slug = "spells-energy-techniques";
-                    $excerpt = "Discover powerful spells and energy techniques.";
+                    $title = "My Journey into the World of Energy & Spells";
+                    $slug = "my-journey-into-the-world-of-energy-and-spells";
+                    $excerpt = "Mirror, mirror, scry for me, mirror, mirror let me see, as I will, so mote it be. Unlock the secrets of mystical energies and powerful spells that shape your reality. Delve into ancient incantations, energy work, and rituals designed to empower and transform. Whether you seek to manifest your desires or protect your spirit, this section offers the knowledge and tools to harness the unseen forces and align them with your will.";
                     $content = <<<EOT
                     <p>This article delves into powerful spells and energy techniques that can enhance your spiritual practices...</p>
                     EOT;
                     $seoMeta = [
-                        'title' => "Spells & Energy Techniques",
+                        'title' => "My Journey into the World of Energy & Spells",
                         'keywords' => "spells, energy, techniques, magic",
                         'description' => "Discover powerful spells and energy techniques for spiritual enhancement.",
                         'author' => "Author Name",
-                        'ogTitle' => "Spells & Energy Techniques",
+                        'ogTitle' => "My Journey into the World of Energy & Spells",
                         'ogDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
-                        'ogUrl' => "https://magazine-website.com/posts/spells-energy-techniques",
-                        'twitterTitle' => "Spells & Energy Techniques",
+                        'ogUrl' => "https://magazine-website.com/posts/magazine/my-journey-into-the-world-of-energy-and-spells",
+                        'twitterTitle' => "My Journey into the World of Energy & Spells",
                         'twitterDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
                     ];
                     break;
                 case 3:
-                    $title = "Latest in Tech & Web";
-                    $slug = "latest-tech-web";
-                    $excerpt = "Stay updated with the latest trends in technology and the web.";
+                    $title = "Bridging the Gap Between Tech and Witchcraft";
+                    $slug = "bridging-the-gap-between-tech-and-witchcraft";
+                    $excerpt = "Code, after all, is simply witchcraft in a digital realm. Explore the intersection of technology and magic, where modern innovations meet ancient wisdom. Discover the latest in web resources, digital tools, and tech advancements that can enhance your mystical practices. Whether you're a tech-savvy witch or a curious novice, this section unveils the secrets of cyber sorcery and the powerful spells of code.";
                     $content = <<<EOT
                     <p>Stay updated with the latest trends and advancements in technology and the web...</p>
                     EOT;
                     $seoMeta = [
-                        'title' => "Latest in Tech & Web",
+                        'title' => "Bridging the Gap Between Tech and Witchcraft",
                         'keywords' => "technology, web, trends, updates",
                         'description' => "The latest trends and advancements in technology and the web.",
                         'author' => "Author Name",
-                        'ogTitle' => "Latest in Tech & Web",
+                        'ogTitle' => "Bridging the Gap Between Tech and Witchcraft",
                         'ogDescription' => "The latest trends and advancements in technology and the web.",
-                        'ogUrl' => "https://magazine-website.com/posts/latest-tech-web",
-                        'twitterTitle' => "Latest in Tech & Web",
+                        'ogUrl' => "https://magazine-website.com/posts/magazine/bridging-the-gap-between-tech-and-witchcraft",
+                        'twitterTitle' => "Bridging the Gap Between Tech and Witchcraft",
                         'twitterDescription' => "The latest trends and advancements in technology and the web.",
                     ];
                     break;
                 case 4:
-                    $title = "Useful Apparel Tips";
-                    $slug = "useful-apparel-tips";
-                    $excerpt = "Find out the best tips and tricks for useful apparel.";
+                    $title = "Embracing Witchy Fashion: More Than Just Clothes";
+                    $slug = "embracing-witchy-fashion-more-than-just-clothes";
+                    $excerpt = 'Useful apparel is one of the greatest tools one can have. Discover the enchanting world of witchy fashion, where practicality meets magical flair. From enchanted hats to spell-bound shoes that echo the magic of "there\'s no place like home," learn how to dress in a way that empowers and protects you. Whether you\'re looking for everyday witchy wear or mystical accessories, this section provides inspiration and guidance on building a wardrobe that reflects your inner magic.';
                     $content = <<<EOT
                     <p>Discover the best tips and tricks for choosing and using useful apparel in your daily life...</p>
                     EOT;
                     $seoMeta = [
-                        'title' => "Useful Apparel Tips",
+                        'title' => "Embracing Witchy Fashion: More Than Just Clothes",
                         'keywords' => "apparel, tips, clothing, fashion",
                         'description' => "Best tips and tricks for choosing and using useful apparel.",
                         'author' => "Author Name",
-                        'ogTitle' => "Useful Apparel Tips",
+                        'ogTitle' => "Embracing Witchy Fashion: More Than Just Clothes",
                         'ogDescription' => "Best tips and tricks for choosing and using useful apparel.",
-                        'ogUrl' => "https://magazine-website.com/posts/useful-apparel-tips",
+                        'ogUrl' => "https://magazine-website.com/posts/magazine/embracing-witchy-fashion-more-than-just-clothes",
+                        'twitterTitle' => "Embracing Witchy Fashion: More Than Just Clothes",
+                        'twitterDescription' => "Best tips and tricks for choosing and using useful apparel.",
+                    ];
+                    break;
+                case 5:
+                    $title = "Exploring the Paranormal";
+                    $slug = "exploring-the-paranormal";
+                    $excerpt = 'In "Stories of Mirrors," I explore the inexplicable encounters that have intertwined with my existence, revealing the intricate dance between the spiritual kingdom and our own. From ghostly reflections to whispered secrets from beyond, these tales offer a glimpse into the unknown that has always captivated my imagination.';
+                    $content = <<<EOT
+                    <p>Discover the best tips and tricks for choosing and using paranormal in your daily life...</p>
+                    EOT;
+                    $seoMeta = [
+                        'title' => "Exploring the Paranormal",
+                        'keywords' => "apparel, tips, clothing, fashion",
+                        'description' => "Best tips and tricks for choosing and using useful apparel.",
+                        'author' => "Author Name",
+                        'ogTitle' => "Exploring the Paranormal",
+                        'ogDescription' => "Best tips and tricks for choosing and using useful apparel.",
+                        'ogUrl' => "https://magazine-website.com/posts/magazine/useful-apparel-tips",
                         'twitterTitle' => "Useful Apparel Tips",
                         'twitterDescription' => "Best tips and tricks for choosing and using useful apparel.",
                     ];
                     break;
             }
 
+            $postDate = $startDate->copy()->addDays($i);
             $post = Post::factory()->create([
                 'title' => $title,
                 'slug' => $slug,
                 'excerpt' => $excerpt,
                 'body' => $content,
-                'published_at' => $startDate->addDays($i),
-                'created_at' => $startDate,
-                'updated_at' => $startDate
+                'published_at' => $postDate,
+                'created_at' => $postDate,
+                'updated_at' => $postDate
             ]);
 
-            $post->categories()->attach([6, $magazineCategory->id]);
+            $post->categories()->attach([7, $magazineCategory->id]);
 
             $post->detail()->save(Detail::factory()->make([
                 'seo_meta' => $seoMeta

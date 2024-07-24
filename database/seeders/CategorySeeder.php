@@ -26,6 +26,7 @@ class CategorySeeder extends Seeder
             'two' => 'Chapter 2',
             'three' => 'Chapter 3',
             'four' => 'Chapter 4',
+            'five' => 'Chapter 5'
         ];
         
         foreach ($chapters as $slug => $name) {
@@ -47,6 +48,7 @@ class CategorySeeder extends Seeder
             'spells-energy' => 'Spells & Energy',
             'tech-web' => 'Tech & Web',
             'useful-apparel' => 'Useful Apparel',
+            'paranormal' => 'Paranormal',
         ];
 
         foreach ($magazineCats as $slug => $name) {

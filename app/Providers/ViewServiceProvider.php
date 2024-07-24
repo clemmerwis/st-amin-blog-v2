@@ -31,7 +31,7 @@ class ViewServiceProvider extends ServiceProvider
                 $subcats = Category::where('name', 'Magazine')->first()->subcats;
                 $latest = Post::where('active', '1')
                     ->whereDoesntHave('categories', function ($query) {
-                        $query->where('slug', 'stories-of-mirrors');
+                        $query->where('slug', 'stories-of-mirrors'); // add boolean to reduce query calls
                     })
                     ->with('media')
                     ->orderBy('published_at', 'desc')
