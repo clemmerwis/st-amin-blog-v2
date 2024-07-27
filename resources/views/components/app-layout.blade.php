@@ -7,8 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @stack('seoMeta')
-
         @isset($active)
             @if($active == 'home')
                 <x-meta-tags
@@ -53,13 +51,15 @@
                     twitterDescription="Explore the latest edition of Stories of Mirrors Magazine"
                 />
             @endif
+        @else
+            @stack('seoMeta')
         @endisset
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/mirrorOwl.jpg">
+        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/smi_3logos.jpg">
 
-        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/mirrorOwl.jpg">
+        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/smi_3logos.jpg">
         <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Schmoll Thoughts">
+        <meta property="og:site_name" content="Stories of Mirrors">
 
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

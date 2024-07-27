@@ -62,6 +62,7 @@ class PostSeeder extends Seeder
         $lastDate = $startDate;
     
         foreach ($chapters as $index => $chapter) {
+            $chapterNumber = $index + 1;
             $chapterCategory = Category::where('name', "Chapter " . ($index + 1))->firstOrFail();
     
             $lastDate = $startDate->copy()->addDays($index);
@@ -74,9 +75,27 @@ class PostSeeder extends Seeder
                 'created_at' => $lastDate,
                 'updated_at' => $lastDate,
             ]);
-    
+
             // Attach categories
             $post->categories()->attach([$storiesOfMirrorsCategory->id, $chapterCategory->id]);
+    
+            // Add featured image
+            $imagePattern = public_path("img/WebsitePicsGifs/SOM_Chapter{$chapterNumber}_*/*.jpg");
+            $imagePaths = glob($imagePattern);
+            if (!empty($imagePaths)) {
+                $post->addMedia($imagePaths[0])
+                    ->preservingOriginal()
+                    ->toMediaCollection('featured-images');
+            }
+
+            // Add featured GIF
+            $gifPattern = public_path("img/WebsitePicsGifs/SOM_Chapter{$chapterNumber}_*/*.gif");
+            $gifPaths = glob($gifPattern);
+            if (!empty($gifPaths)) {
+                $post->addMedia($gifPaths[0])
+                    ->preservingOriginal()
+                    ->toMediaCollection('featured-gifs');
+            }
     
             $post->detail()->save(Detail::factory()->make([
                 'seo_meta' => [
@@ -101,15 +120,15 @@ class PostSeeder extends Seeder
         $startDate = $startDate->addDays(1);
 
         $magazineCategories = [
-            1 => 'Health & Healing',
-            2 => 'Spells & Energy',
-            3 => 'Tech & Web',
-            4 => 'Useful Apparel',
-            5 => 'Paranormal'
+            1 => ['name' => 'Health & Healing', 'folder' => 'HealthHealing'],
+            2 => ['name' => 'Spells & Energy', 'folder' => 'SpellsEnergy'],
+            3 => ['name' => 'Tech & Web', 'folder' => 'TechWeb'],
+            4 => ['name' => 'Useful Apparel', 'folder' => 'UsefulApparel'],
+            5 => ['name' => 'Paranormal', 'folder' => 'Paranormal']
         ];
-
-        for ($i = 1; $i <= 5; $i++) {
-            $magazineCategory = Category::where('name', $magazineCategories[$i])->firstOrFail();
+    
+        foreach ($magazineCategories as $i => $categoryInfo) {
+            $magazineCategory = Category::where('name', $categoryInfo['name'])->firstOrFail();
 
             switch ($i) {
                 case 1:
@@ -221,6 +240,24 @@ class PostSeeder extends Seeder
             ]);
 
             $post->categories()->attach([7, $magazineCategory->id]);
+
+            // Add featured image
+            $imagePattern = public_path("img/WebsitePicsGifs/MAG_{$categoryInfo['folder']}*/*.jpg");
+            $imagePaths = glob($imagePattern);
+            if (!empty($imagePaths)) {
+                $post->addMedia($imagePaths[0])
+                    ->preservingOriginal()
+                    ->toMediaCollection('featured-images');
+            }
+
+            // Add featured GIF
+            $gifPattern = public_path("img/WebsitePicsGifs/MAG_{$categoryInfo['folder']}*/*.gif");
+            $gifPaths = glob($gifPattern);
+            if (!empty($gifPaths)) {
+                $post->addMedia($gifPaths[0])
+                    ->preservingOriginal()
+                    ->toMediaCollection('featured-gifs');
+            }
 
             $post->detail()->save(Detail::factory()->make([
                 'seo_meta' => $seoMeta

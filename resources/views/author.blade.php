@@ -28,20 +28,59 @@
                         Engineer of Software and Dreams: <span>Digital Design and Creative Writing
                         </span>
                     </h3>
+                    <p class="mb3rem">
+                        Welcome to my magical realm! I'm Erica Denise Schmoll, a writer, technical designer, analytical thinker, and energy & spirit organizer. 
+                        With a rich background in digital design, technology, and creative writing, I've woven my diverse experiences into 
+                        "Stories of Mirrors"—a gateway into the paranormal encounters that have shaped my life.
+                    </p>
+
+                    <h3 class="specialh3">Education and Training:</h3>
                     <p>
-                        In the dimly lit corridors of my memory, mirrors have always been more than mere reflectors of reality; they are gateways to a realm beyond our understanding, portals to a world that whispers secrets of the unseen. "Stories of Mirrors" is not just a collection of tales; it's a glimpse into the inexplicable encounters that have intertwined with the fabric of my existence, revealing the intricate dance between the spiritual kingdom and our own.                    
+                        My educational journey has provided me with a profound understanding of the intricate balance between the body, mind, and spirit. I hold certifications in fitness and nutrition and have completed a 15-month intensive development program with a professional trainer, focusing on lifting techniques and nutrition. Additionally, I am a certified Reiki practitioner, integrating this ancient healing art into my holistic practice.
                     </p>
                     <p>
-                        From a tender age, I found myself caught in the reflection of experiences that defied explanation. What I saw in the mirrors, the shadows that moved with intention, and the voices that echoed without a source, led me to question my sanity. But I was not alone. Others too peered into the glass and saw beyond their reflections; they too heard the whispers in the silence.
-                    </p>
-                    <p>
-                        This book is a testament to those encounters, shared not from a place of fear, but of awe and wonder. Each story is a thread in the tapestry of our interaction with the spiritual realm, woven from the moments when the veil thinned and the other side gazed back.
-                    </p>
-                    <p>
-                        This book, released in a blog-style format, is a testament to the power of digital innovation in storytelling. It's designed not just to showcase my skills in writing, design, and technology, but to inspire others to consider how stories can be told in new and exciting ways. In a world where technology constantly reshapes our lives, "Stories of Mirrors" is an invitation to look at the familiar from a fresh perspective, to see not just what is, but what could be.
+                        I also possess extensive training in pharmacy, having completed the pharmacy technician program. This background, combined with my certifications, enables me to understand medications and their interactions deeply, not just from a management perspective but also in terms of their impact on the body and mind.
                     </p>
                     <p class="mb3rem">
-                        I invite you to journey with me through these pages, where the boundaries blur and the mirrors speak. These are not just my stories—they belong to anyone who has ever sensed that there is more to this world than what meets the eye. Let us explore the unexplained together, for in the reflection of our quest for understanding, we may find that we are not so alone after all.
+                        Moreover, I specialize in automation design and consulting within the pharmacy field. With a strong foundation in project management and API development, I seamlessly blend modern technological solutions with ancient practices. Currently, I am pursuing a Ph.D. in Natural Medicine, continuously broadening my knowledge and skills.
+                    </p>
+
+                    <h3 class="specialh3">The Magic of "Stories of Mirrors":</h3>
+                    <p class="mb3rem">
+                        In the dimly lit corridors of my memory, mirrors have always been more than mere reflectors of reality; they are portals to realms beyond our understanding. From a young age, I’ve encountered the inexplicable—shadows that moved with intention and voices without a source. These encounters have intertwined with my existence, revealing the dance between the spiritual kingdom and our own. This book, released in a blog-style format, showcases my skills in writing, design, and technology, offering a fresh perspective on storytelling and inviting readers to explore the unexplained alongside me.
+                    </p>
+
+                    <h3 class="specialh3">Expanding The Witch Magazine:</h3>
+                    <p>
+                        As we continue to explore the multifaceted world of witchcraft, "The Witch Magazine" is expanding to include a broader array of topics. Our goal is to provide a comprehensive and enriching experience for every witch and spiritual seeker with categories such as:
+                    </p>
+
+                    <h3 class="specialh3">Spells & Energy:</h3>
+                    <p>
+                        Explore energy work, from Reiki to spellcraft, and harness these forces for positive change.</p>
+                        <p>
+                        Tech & Web: Discover how modern technology and ancient practices can enhance your spiritual journey.</p>
+                        <p>Health & Healing: Delve into holistic health practices, nutrition, and natural medicine.</p>
+                        <p>Apparel: Embrace witchy fashion with practical tips, DIY guides, and historical context.</p>
+                        <p>Stories of Mirrors: Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.</p>
+                    </p>
+
+                    <p class="mb3rem">
+                        Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
+                    </p>
+
+                    <h3 class="specialh3">The Disney Magic:</h3>
+                    <p class="mb3rem">
+                        Every great story has a good witch, and my journey is no different. Raised in the Wisconsin Northwoods on a property dating back to the late 1880s, my upbringing on a conduit of supernatural energy has profoundly influenced my work. I aim to dispel the stigma around witches by showcasing the beauty and wisdom in our craft—much like the good witches in our favorite fairy tales.
+                    </p>
+
+                    <h3 class="specialh3">Embracing Our Essence:</h3>
+                    <p>
+                        My goal is to further the understanding of our essential nature with class & style. By binding through the power of design, digital communication, and data collection, we can spell out magical energy and provide patterns of vibration that explain our human experiences. This helps us remember who we are, rewrite history, and save our futures.
+                    </p>
+
+                    <p class="mb3rem">
+                        Everyone I meet has a tale to share about something that can't be explained. 'Stories of Mirrors' are my own true interactions with the spiritual kingdom, shared to inspire and enlighten others. The truth is hidden in fairy tales, with clues left for us to identify who we are, where we came from, and how to identify the bad guy, evil in this world. Understanding who you are and where you come from is crucial, which is why "Stories of Mirrors" retraces the steps to find the patterns, review the code, read the language, and find the keywords and numbers associated with these events.
                     </p>
 
                     <a class="btn about-page-btn mb-5" href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">
@@ -58,9 +97,11 @@
                         </a>
                         <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                     </div>
-                    <div class="d-flex flex-column" style="max-width: max-content;">
+
+                    <p style="max-width: 70%; margin-top: 5rem;">Welcome to the journey, and may we explore the unknown together with an open mind and a sense of wonder.</p>
+                    <div class="d-flex flex-column" style="max-width: max-content; margin-left: auto;">
                         <h3 class="specialh3 mb-5" style="margin-top: 5rem">Contact Info:</h3>
-                        <div class="d-flex" style="gap: 1rem">
+                        <div>
                             <p class="notme"><strong>Phone:</strong> <a class="about-page-link" href="tel:715-212-5574">715-212-5574</a></p>
                             <p><strong>Email:</strong> <a class="about-page-link" href="mailto:erica@storiesofmirrors.com">erica@storiesofmirrors.com</a></p>
                         </div>

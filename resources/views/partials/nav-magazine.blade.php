@@ -16,7 +16,7 @@
                     <div class="mw-text">
                         <h6>
                             <a href="{{ route('posts.show', [
-                                'category' => $post->parentcat->slug, 
+                                'category' => $post->parentcat->slug,
                                 'slug' => $post->slug
                             ]) }}">
                             {{ $post->title }}

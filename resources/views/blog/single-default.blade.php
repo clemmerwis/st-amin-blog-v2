@@ -78,7 +78,6 @@
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
-                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
                             </div>
                         </div>
                         

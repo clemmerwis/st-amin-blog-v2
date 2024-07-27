@@ -34,8 +34,15 @@ class PostController extends Controller
             })
             ->orderBy('published_at', 'asc')
             ->paginate(10);
+        
+        // Get the category name if a category is provided
+        $categoryName = null;
+        if ($category) {
+            $categoryObj = Category::where('slug', $category)->first();
+            $categoryName = $categoryObj ? $categoryObj->name : null;
+        }
             
-        return view('blog.index', compact('posts', 'active'));
+        return view('blog.index', compact('posts', 'active', 'category', 'categoryName'));
     }
 
     /**

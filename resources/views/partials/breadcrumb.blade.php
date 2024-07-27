@@ -6,10 +6,18 @@
             <span>Stories of Mirrors: Chapter Selection</span>
         </div>
     @else
-        <h3>Magazine: All Articles</h3>
-        <div class="bt-option">
-            <a href="{{ route('home') }}">Home</a>
-            <span>Magazine</span>
-        </div>
+        @if(isset($category) && $category)
+            <h3>Magazine: {{ $categoryName }}</h3>
+            <div class="bt-option">
+                <a href="{{ route('posts.index') }}">Magazine</a>
+                <span>{{ $categoryName }}</span>
+            </div>
+        @else
+            <h3>Magazine: All Articles</h3>
+            <div class="bt-option">
+                <a href="{{ route('home') }}">Home</a>
+                <span>Magazine</span>
+            </div>
+        @endif
     @endif
 </div>
