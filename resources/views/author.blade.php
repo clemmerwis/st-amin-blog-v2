@@ -50,26 +50,42 @@
                         In the dimly lit corridors of my memory, mirrors have always been more than mere reflectors of reality; they are portals to realms beyond our understanding. From a young age, I’ve encountered the inexplicable—shadows that moved with intention and voices without a source. These encounters have intertwined with my existence, revealing the dance between the spiritual kingdom and our own. This book, released in a blog-style format, showcases my skills in writing, design, and technology, offering a fresh perspective on storytelling and inviting readers to explore the unexplained alongside me.
                     </p>
 
-                    <h3 class="specialh3">Expanding The Witch Magazine:</h3>
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index') }}">Expanding The Witch Magazine:</a>
+                    </h3>
                     <p>
                         As we continue to explore the multifaceted world of witchcraft, "The Witch Magazine" is expanding to include a broader array of topics. Our goal is to provide a comprehensive and enriching experience for every witch and spiritual seeker with categories such as:
                     </p>
 
-                    <h3 class="specialh3">Spells & Energy:</h3>
-                    <p>
-                        Explore energy work, from Reiki to spellcraft, and harness these forces for positive change.</p>
-                        <p>
-                        Tech & Web: Discover how modern technology and ancient practices can enhance your spiritual journey.</p>
-                        <p>Health & Healing: Delve into holistic health practices, nutrition, and natural medicine.</p>
-                        <p>Apparel: Embrace witchy fashion with practical tips, DIY guides, and historical context.</p>
-                        <p>Stories of Mirrors: Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.</p>
-                    </p>
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'spells-energy']) }}">Spells & Energy:</a>
+                    </h3>
+                    <p>Explore energy work, from Reiki to spellcraft, and harness these forces for positive change.</p>
+
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'tech-web']) }}">Tech & Web:</a></h3> 
+                    <p>Discover how modern technology and ancient practices can enhance your spiritual journey.</p>
+
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'health-healing']) }}">Health & Healing:</a>
+                    </h3> 
+                    <p>Delve into holistic health practices, nutrition, and natural medicine.</p>
+
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'useful-apparel']) }}">Apparel:</a>
+                    </h3> 
+                    <p>Embrace witchy fashion with practical tips, DIY guides, and historical context.</p>
+
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors:</a>
+                    </h3> 
+                    <p>Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.</p>
 
                     <p class="mb3rem">
                         Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
                     </p>
 
-                    <h3 class="specialh3">The Disney Magic:</h3>
+                    <h3 class="specialh3">The Magic Touch:</h3>
                     <p class="mb3rem">
                         Every great story has a good witch, and my journey is no different. Raised in the Wisconsin Northwoods on a property dating back to the late 1880s, my upbringing on a conduit of supernatural energy has profoundly influenced my work. I aim to dispel the stigma around witches by showcasing the beauty and wisdom in our craft—much like the good witches in our favorite fairy tales.
                     </p>

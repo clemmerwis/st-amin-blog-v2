@@ -4991,6 +4991,18 @@ ol {
   border-top-left-radius: 5rem;
 }
 
+h3.specialh3.h3mb {
+  margin-top: 2rem;
+}
+
+h3.specialh3.h3mb a {
+  color: inherit;
+}
+
+h3.specialh3.h3mb a:hover {
+  color: #d4983f;
+}
+
 .about-profile-header .specialh3 {
   font-size: 16px;
   text-align: left;
