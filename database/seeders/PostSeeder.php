@@ -125,11 +125,11 @@ class PostSeeder extends Seeder
         $startDate = $startDate->addDays(1);
 
         $magazineCategories = [
-            1 => ['name' => 'Health & Healing', 'folder' => 'HealthHealing'],
-            2 => ['name' => 'Spells & Energy', 'folder' => 'SpellsEnergy'],
-            3 => ['name' => 'Tech & Web', 'folder' => 'TechWeb'],
-            4 => ['name' => 'Useful Apparel', 'folder' => 'UsefulApparel'],
-            5 => ['name' => 'Paranormal', 'folder' => 'Paranormal']
+            1 => ['name' => 'Health & Healing', 'folder' => 'HealthHealing', 'content_file' => 'health_healing.md'],
+            2 => ['name' => 'Spells & Energy', 'folder' => 'SpellsEnergy', 'content_file' => 'spells_energy.md'],
+            3 => ['name' => 'Tech & Web', 'folder' => 'TechWeb', 'content_file' => 'tech_web.md'],
+            4 => ['name' => 'Useful Apparel', 'folder' => 'UsefulApparel', 'content_file' => 'useful_apparel.md'],
+            5 => ['name' => 'Paranormal', 'folder' => 'Paranormal', 'content_file' => 'paranormal.md']
         ];
     
         foreach ($magazineCategories as $i => $categoryInfo) {
@@ -140,9 +140,6 @@ class PostSeeder extends Seeder
                     $title = "Holistic Health: A Witch's Perspective";
                     $slug = "holistic-health-a-witchs-perspective";
                     $excerpt = "Explore the best practices for maintaining health and healing, where the art of holistic wellness and mystical remedies ensures that goodness and beauty will surround you all the days of your life, allowing you to dwell in peace and harmony forever. Delve into ancient healing arts, modern wellness tips, and magical approaches to living a balanced and harmonious life.";
-                    $content = <<<EOT
-                    <p>Welcome to the Holistic Health: A Witch's Perspective. This article will explore the best practices for maintaining health and healing...</p>
-                    EOT;
                     $seoMeta = [
                         'title' => "Holistic Health: A Witch's Perspective",
                         'keywords' => "health, healing, wellness, guide",
@@ -159,9 +156,6 @@ class PostSeeder extends Seeder
                     $title = "My Journey into the World of Energy & Spells";
                     $slug = "my-journey-into-the-world-of-energy-and-spells";
                     $excerpt = "Mirror, mirror, scry for me, mirror, mirror let me see, as I will, so mote it be. Unlock the secrets of mystical energies and powerful spells that shape your reality. Delve into ancient incantations, energy work, and rituals designed to empower and transform. Whether you seek to manifest your desires or protect your spirit, this section offers the knowledge and tools to harness the unseen forces and align them with your will.";
-                    $content = <<<EOT
-                    <p>This article delves into powerful spells and energy techniques that can enhance your spiritual practices...</p>
-                    EOT;
                     $seoMeta = [
                         'title' => "My Journey into the World of Energy & Spells",
                         'keywords' => "spells, energy, techniques, magic",
@@ -178,9 +172,6 @@ class PostSeeder extends Seeder
                     $title = "Bridging the Gap Between Tech and Witchcraft";
                     $slug = "bridging-the-gap-between-tech-and-witchcraft";
                     $excerpt = "Code, after all, is simply witchcraft in a digital realm. Explore the intersection of technology and magic, where modern innovations meet ancient wisdom. Discover the latest in web resources, digital tools, and tech advancements that can enhance your mystical practices. Whether you're a tech-savvy witch or a curious novice, this section unveils the secrets of cyber sorcery and the powerful spells of code.";
-                    $content = <<<EOT
-                    <p>Stay updated with the latest trends and advancements in technology and the web...</p>
-                    EOT;
                     $seoMeta = [
                         'title' => "Bridging the Gap Between Tech and Witchcraft",
                         'keywords' => "technology, web, trends, updates",
@@ -197,9 +188,6 @@ class PostSeeder extends Seeder
                     $title = "Embracing Witchy Fashion: More Than Just Clothes";
                     $slug = "embracing-witchy-fashion-more-than-just-clothes";
                     $excerpt = 'Useful apparel is one of the greatest tools one can have. Discover the enchanting world of witchy fashion, where practicality meets magical flair. From enchanted hats to spell-bound shoes that echo the magic of "there\'s no place like home," learn how to dress in a way that empowers and protects you. Whether you\'re looking for everyday witchy wear or mystical accessories, this section provides inspiration and guidance on building a wardrobe that reflects your inner magic.';
-                    $content = <<<EOT
-                    <p>Discover the best tips and tricks for choosing and using useful apparel in your daily life...</p>
-                    EOT;
                     $seoMeta = [
                         'title' => "Embracing Witchy Fashion: More Than Just Clothes",
                         'keywords' => "apparel, tips, clothing, fashion",
@@ -216,9 +204,6 @@ class PostSeeder extends Seeder
                     $title = "Exploring the Paranormal";
                     $slug = "exploring-the-paranormal";
                     $excerpt = 'In "Stories of Mirrors," I explore the inexplicable encounters that have intertwined with my existence, revealing the intricate dance between the spiritual kingdom and our own. From ghostly reflections to whispered secrets from beyond, these tales offer a glimpse into the unknown that has always captivated my imagination.';
-                    $content = <<<EOT
-                    <p>Discover the best tips and tricks for choosing and using paranormal in your daily life...</p>
-                    EOT;
                     $seoMeta = [
                         'title' => "Exploring the Paranormal",
                         'keywords' => "apparel, tips, clothing, fashion",
@@ -234,6 +219,11 @@ class PostSeeder extends Seeder
             }
 
             $postDate = $startDate->copy()->addDays($i);
+
+            // Read content from file
+            $contentPath = database_path("seeders/content/{$categoryInfo['content_file']}");
+            $content = file_exists($contentPath) ? file_get_contents($contentPath) : "<p>Content not found.</p>";
+            
             $post = Post::factory()->create([
                 'title' => $title,
                 'slug' => $slug,
