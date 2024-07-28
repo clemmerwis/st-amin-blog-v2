@@ -11,7 +11,12 @@
             @foreach ($latest as $post)
                 <div class="mw-post-item">
                     <div class="mw-pic">
-                        <img src="{{ asset($post->featured_image_thumb_url) }}" alt="{{ $post->title }}">
+                        <a href="{{ route('posts.show', [
+                                'category' => $post->parentcat->slug,
+                                'slug' => $post->slug
+                            ]) }}">
+                            <img src="{{ asset($post->featured_image_thumb_url) }}" alt="{{ $post->title }}">
+                        </a>
                     </div>
                     <div class="mw-text">
                         <h6>
@@ -19,7 +24,7 @@
                                 'category' => $post->parentcat->slug,
                                 'slug' => $post->slug
                             ]) }}">
-                            {{ $post->title }}
+                                {{ $post->title }}
                             </a>
                         </h6>
                         <ul>

@@ -32,11 +32,12 @@
                             <div>
                                 <!-- Use the slug in the route -->
                                 <a class="secondary-btn"
-                                href="{{ route('posts.show', ['category' => 'stories-of-mirrors', 'slug' => $firstPostSlug]) }}">
-                                Read the Book</a>
+                                    href="{{ route('posts.show', ['category' => 'stories-of-mirrors', 'slug' => $firstPostSlug]) }}">
+                                    Read the Book
+                                </a>
                             </div>
                             <div>
-                                <a class="secondary-btn border-btn" href="#">Witch Magazine</a>
+                                <a class="secondary-btn border-btn" href="{{ route('posts.index') }}">Witch Magazine</a>
                             </div>
                         </div>
                     @else

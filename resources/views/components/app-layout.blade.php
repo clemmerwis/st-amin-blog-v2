@@ -15,7 +15,7 @@
                     author="schmollthoughts.com"
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
-                    ogTitle="Stories of Mirrors - Home" 
+                    ogTitle="Stories of Mirrors - Home"
                     ogDescription="Click here to embark on the journey within - Read the book: Stories of Mirrors"
                     ogUrl="https://storiesofmirrors.com"
                    

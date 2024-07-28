@@ -30,31 +30,31 @@ class PostSeeder extends Seeder
                 'title' => "The Eerie Tale of The Unsleeping Lamp",
                 'slug' => "the-eerie-tale-of-the-unsleeping-lamp",
                 'excerpt' => "March Early 90s, Dancy, Wisconsin",
-                'content' => "<p>It was spring break in northern Wisconsin, and my sister and I were getting ready for a field trip...</p>",
+                'content_file' => "chapter1.md",
             ],
             [
                 'title' => "The Mysterious Phenomena of Unincorporated",
                 'slug' => "mysterious-phenomena-unincorporated",
                 'excerpt' => "Home",
-                'content' => "<p>I was raised in the Northwoods of Wisconsin, in an unincorporated town named Dancy...</p>",
+                'content_file' => "chapter2.md",
             ],
             [
                 'title' => "Mystical Reflections: The Divining Glass",
                 'slug' => "mystical-reflections-divining-glass",
                 'excerpt' => "April 1985",
-                'content' => "<p>At the time, my family was renting an old farmhouse on Curve Road, just outside of Mosinee, Wisconsin...</p>",
+                'content_file' => "chapter3.md",
             ],
             [
                 'title' => "Paranormal Fever",
                 'slug' => "paranormal-fever",
                 'excerpt' => "Memorial Day Weekend, May 1985",
-                'content' => "<p>The timing of our move put us directly in the blossoming of spring...</p>",
+                'content_file' => "chapter4.md",
             ],
             [
                 'title' => "What's Next in Stories of Mirrors",
                 'slug' => "whats-next-stories-of-mirrors",
                 'excerpt' => "Dear Readers/Listeners",
-                'content' => "<p>Thank you for your interest in Stories of Mirrors. Here's what's coming next...</p>",
+                'content_file' => "chapter5.md",
             ],
         ];
     
@@ -66,11 +66,16 @@ class PostSeeder extends Seeder
             $chapterCategory = Category::where('name', "Chapter " . ($index + 1))->firstOrFail();
     
             $lastDate = $startDate->copy()->addDays($index);
+
+            // Read content from file
+            $contentPath = database_path("seeders/content/{$chapter['content_file']}");
+            $content = file_exists($contentPath) ? file_get_contents($contentPath) : "<p>Content not found.</p>";
+
             $post = Post::factory()->create([
                 'title' => $chapter['title'],
                 'slug' => $chapter['slug'],
                 'excerpt' => $chapter['excerpt'],
-                'body' => $chapter['content'],
+                'body' => $content,
                 'published_at' => $lastDate,
                 'created_at' => $lastDate,
                 'updated_at' => $lastDate,

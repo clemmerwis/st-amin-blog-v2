@@ -42,22 +42,40 @@
         if ($('#failedRegisterMessage').length) {
             $('.signup-switch').click();
         }
+
+        // Add this block for the book cover animation
+        const bookCover = document.querySelector('.book-cover');
+        const triggerPoint = 0.92; // 85% down the page
+        const resetPoint = 0.1; // 10% down the page
+
+        function checkScroll() {
+            if (bookCover) {
+                let scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+
+                if (scrollPercentage > triggerPoint && !bookCover.classList.contains('activated')) {
+                    bookCover.classList.add('activated');
+                } else if (scrollPercentage <= resetPoint && bookCover.classList.contains('activated')) {
+                    bookCover.classList.remove('activated');
+                }
+            }
+        }
+
+        $(window).on('scroll', checkScroll);
+        checkScroll();
     });
 
 
-    $(document).ready(function () {
-        // $('#dataTables-example').dataTable();
-        console.log('test');
 
-        /*------------------
-            Background Set
-        --------------------*/
-        $('.set-bg').each(function () {
-            var bg = $(this).data('setbg');
-            $(this).css('background-image', 'url(' + bg + ')');
-        });
+    // $('#dataTables-example').dataTable();
+    console.log('test');
+
+    /*------------------
+        Background Set
+    --------------------*/
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
     });
-
 
     // Humberger Menu
     $(".humberger-open").on('click', function () {
@@ -344,5 +362,4 @@
             });
         }
     });
-
 })(jQuery);
