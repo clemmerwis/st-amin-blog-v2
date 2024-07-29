@@ -7,17 +7,9 @@
         </div>
     @else
         @if(isset($category) && $category)
-            <h3>Magazine: {{ $categoryName }}</h3>
-            <div class="bt-option">
-                <a href="{{ route('posts.index') }}">Magazine</a>
-                <span>{{ $categoryName }}</span>
-            </div>
+            <h3>{{ $categoryName }}</h3>
         @else
-            <h3>Magazine: All Articles</h3>
-            <div class="bt-option">
-                <a href="{{ route('home') }}">Home</a>
-                <span>Magazine</span>
-            </div>
+            <h3>All Articles</h3>
         @endif
     @endif
 </div>
