@@ -2,6 +2,7 @@
     <!-- Extract SEO Data -->
     @php
         $seoMeta = $post->detail->seo_meta ?? [];
+        $parentCategory = $post->parentcat;
     @endphp
 
     <!-- SEO Meta Tags -->
@@ -57,8 +58,8 @@
     <section class="details-post-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-0">
-                    <div class="details-text">
+                <div class="col-lg-8 p-lg-0">
+                    <div class="details-text px-sm-5 px-md-0 px-lg-5">
                         <div class="dt-desc">
                             <p>{{ $post->excerpt }}</p>
                         </div>
@@ -80,11 +81,10 @@
                                 </a>
                             </div>
                         </div>
-                        
                         <div class="dt-related-post">
                             <div class="row">
                                 @if($prevNext['prev']['url'])
-                                    <div class="col-lg-6">
+                                    <div class="col-sm-6">
                                         <a href="{{ $prevNext['prev']['url'] }}" class="rp-prev">
                                             <span>Prev</span>
                                             <div class="rp-pic">
@@ -97,7 +97,7 @@
                                     </div>
                                 @endif
                                 @if($prevNext['next']['url'])
-                                    <div class="col-lg-6">
+                                    <div class="col-sm-6">
                                         <a href="{{ $prevNext['next']['url'] }}" class="rp-next">
                                             <span>Next</span>
                                             <div class="rp-pic">
@@ -113,8 +113,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-7">
-                    <div class="sidebar-option">
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="sidebar-option px-sm-5 px-md-0 {{ $post->parentcat && $post->parentcat->slug !== 'stories-of-mirrors' ? 'd-none' : '' }}">
                         <div class="book-cover">
                             <div class="section-title">
                                 <h5>Buy the Book</h5>

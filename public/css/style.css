@@ -1856,7 +1856,6 @@ ol {
 }
 
 .sidebar-option {
-  padding-left: 30px;
   position: relative;
   height: 100%;
 }
@@ -3306,6 +3305,14 @@ ol {
   position: relative;
 }
 
+.col-lg-6:has(.rp-next) {
+    margin-left: auto;
+}
+
+.col-lg-6:has(.rp-prev) {
+    margin-right: auto;
+}
+
 .rp-next::before {
   content: "";
   position: absolute;
@@ -4317,7 +4324,6 @@ ol {
 }
 
 /* Tablet Device = 768px */
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .nav-options {
     text-align: center;
@@ -4340,7 +4346,6 @@ ol {
     padding-top: 50px;
   }
   .sidebar-option {
-    padding-left: 0;
     padding-top: 40px;
   }
   .details-text .dt-pic-item .dp-pic,
@@ -5056,16 +5061,30 @@ h3.specialh3.h3mb a:hover {
 .book-cover {
   opacity: 0.5;
   transition: opacity 0.3s ease, bottom 0.7s ease;
-  position: absolute;
-  bottom: 100%;
-  transform: translateY(100%);
 }
 
 .book-cover:hover {
   opacity: 1;
 }
 
-.book-cover.activated {
-  bottom: 0%;
-  transform: translateY(0);
+.book-cover img {
+    max-width: 400px;
+    width: 100%;
+}
+
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+    .book-cover {
+      opacity: 0.5;
+      transition: opacity 0.3s ease, bottom 0.7s ease;
+      position: absolute;
+      bottom: 100%;
+      transform: translateY(100%);
+    }
+  
+    .book-cover.activated {
+      bottom: 0%;
+      transform: translateY(0);
+    }
 }

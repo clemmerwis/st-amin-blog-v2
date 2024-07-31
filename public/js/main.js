@@ -45,8 +45,8 @@
 
         // Add this block for the book cover animation
         const bookCover = document.querySelector('.book-cover');
-        const triggerPoint = 0.92; // 85% down the page
-        const resetPoint = 0.1; // 10% down the page
+        const triggerPoint = 0.85; // 85% down the page
+        const resetPoint = 0.15; // 10% down the page
 
         function checkScroll() {
             if (bookCover) {

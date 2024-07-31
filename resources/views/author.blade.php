@@ -28,32 +28,33 @@
                         Engineer of Software and Dreams: <span>Digital Design and Creative Writing
                         </span>
                     </h3>
-                    <p class="mb3rem">
-                        Welcome to my magical realm! I'm Erica Denise Schmoll, a writer, technical designer, analytical thinker, and energy & spirit organizer. 
-                        With a rich background in digital design, technology, and creative writing, I've woven my diverse experiences into 
-                        "Stories of Mirrors"—a gateway into the paranormal encounters that have shaped my life.
-                    </p>
-
-                    <h3 class="specialh3">Education and Training:</h3>
                     <p>
-                        My educational journey has provided me with a profound understanding of the intricate balance between the body, mind, and spirit. I hold certifications in fitness and nutrition and have completed a 15-month intensive development program with a professional trainer, focusing on lifting techniques and nutrition. Additionally, I am a certified Reiki practitioner, integrating this ancient healing art into my holistic practice.
+                        Welcome to my magical realm! I'm Erica Denise Schmoll, a writer, technical designer, analytical thinker, and energy & spirit organizer. My journey is rooted in a diverse background that combines deep knowledge in pharmacy, health, and cutting-edge technology.
                     </p>
                     <p>
-                        I also possess extensive training in pharmacy, having completed the pharmacy technician program. This background, combined with my certifications, enables me to understand medications and their interactions deeply, not just from a management perspective but also in terms of their impact on the body and mind.
-                    </p>
-                    <p class="mb3rem">
-                        Moreover, I specialize in automation design and consulting within the pharmacy field. With a strong foundation in project management and API development, I seamlessly blend modern technological solutions with ancient practices. Currently, I am pursuing a Ph.D. in Natural Medicine, continuously broadening my knowledge and skills.
+                        With extensive training in pharmacy, I have completed the pharmacy technician program, providing me with a robust understanding of medications, their interactions, and their impacts on the body and mind. This expertise is not just limited to pharmaceutical management but extends to holistic health practices. I hold certifications in fitness and nutrition and have completed a rigorous 15-month intensive development program with a professional trainer, focusing on advanced lifting techniques and nutrition. Additionally, as a certified Reiki practitioner, I integrate ancient healing arts into my holistic approach to health and wellness.
                     </p>
 
-                    <h3 class="specialh3">The Magic of "Stories of Mirrors":</h3>
+                    <p>
+                        In the realm of technology, my skills span from automation design and consulting within the pharmacy field to project management and API development. I have a strong foundation in creating modern technological solutions that seamlessly blend with ancient practices. Currently, I am pursuing a Ph.D. in Natural Medicine, continuously expanding my knowledge and expertise.
+                    </p>
+
+                    <p>
+                        My work, particularly through "Stories of Mirrors" and The Witch Magazine, aims to inspire and educate by offering insights drawn from my personal journey and professional background. Whether you're delving into the mysteries of the paranormal, exploring holistic health practices, or seeking modern tech solutions, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
+                    </p>
+
+                    <h3 class="specialh3">Schmoll Thoughts and The Witch Magazine</h3>
+                    <p class="mb3rem">
+                        This website and magazine, Schmoll Thoughts, are multifaceted platforms encompassing marketing, writing, and technical design. Along with my dedicated team, we offer fully serviceable web design, marketing advertising, talent management, and publishing services. Our goal is to bring your visions to life, combining modern technology with timeless creativity.
+                    </p>
+                    
+                    <h3 class="specialh3">The Magic of "Stories of Mirrors"</h3>
                     <p class="mb3rem">
                         In the dimly lit corridors of my memory, mirrors have always been more than mere reflectors of reality; they are portals to realms beyond our understanding. From a young age, I’ve encountered the inexplicable—shadows that moved with intention and voices without a source. These encounters have intertwined with my existence, revealing the dance between the spiritual kingdom and our own. This book, released in a blog-style format, showcases my skills in writing, design, and technology, offering a fresh perspective on storytelling and inviting readers to explore the unexplained alongside me.
                     </p>
 
-                    <h3 class="specialh3 h3mb">
-                        <a href="{{ route('posts.index') }}">Expanding The Witch Magazine:</a>
-                    </h3>
-                    <p>
+                    <h3 class="specialh3">Expanding The Witch Magazine</h3>
+                    <p class="mb3rem">
                         As we continue to explore the multifaceted world of witchcraft, "The Witch Magazine" is expanding to include a broader array of topics. Our goal is to provide a comprehensive and enriching experience for every witch and spiritual seeker with categories such as:
                     </p>
 
@@ -79,7 +80,10 @@
                     <h3 class="specialh3 h3mb">
                         <a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors:</a>
                     </h3> 
-                    <p>Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.</p>
+                    <p>
+                        Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.
+                        Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
+                    </p>
 
                     <p class="mb3rem">
                         Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
