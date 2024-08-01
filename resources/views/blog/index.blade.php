@@ -1,6 +1,6 @@
 <x-app-layout :active="$active" :posts="$posts">
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg spad {{ $active != 'SoM' ? 'magazine-breadcrumb-section' : '' }}" data-setbg="{{ $active == 'SoM' ? 'img/bg/gradient-about.png' : 'img/stories-of-mirrors/ImageGirlRedDress_HouseBackground.jpg' }}">
+    <section class="breadcrumb-section set-bg spad {{ $active != 'SoM' ? 'magazine-breadcrumb-section' : '' }}" data-setbg="{{ $active == 'SoM' ? 'img/bg/gradient-about.png' : 'img/stories-of-mirrors/greenall.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

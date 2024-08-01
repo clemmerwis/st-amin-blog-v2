@@ -39,7 +39,7 @@
                         In the realm of technology, my skills span from automation design and consulting within the pharmacy field to project management and API development. I have a strong foundation in creating modern technological solutions that seamlessly blend with ancient practices. Currently, I am pursuing a Ph.D. in Natural Medicine, continuously expanding my knowledge and expertise.
                     </p>
 
-                    <p>
+                    <p class="mb3rem">
                         My work, particularly through "Stories of Mirrors" and The Witch Magazine, aims to inspire and educate by offering insights drawn from my personal journey and professional background. Whether you're delving into the mysteries of the paranormal, exploring holistic health practices, or seeking modern tech solutions, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
                     </p>
 
