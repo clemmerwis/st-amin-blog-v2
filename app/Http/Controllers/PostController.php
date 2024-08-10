@@ -50,37 +50,28 @@ class PostController extends Controller
      */
     public function show($category, $slug)
     {
-        // Fetch the main post with all necessary relationships in a single query
-        $post = Post::with([
-            'media', 
-            'detail', 
-            'author', 
-            'categories' => function($query) {
-                $query->with('subcats');
-            }
-        ])
-        ->where('slug', $slug)
-        ->whereHas('categories', function ($q) use ($category) {
-            $q->where('slug', $category);
-        })
-        ->firstOrFail();
+        // Find the current post
+        $post = Post::whereHas('categories', function ($query) use ($category) {
+            $query->where('slug', $category);
+        })->where('slug', $slug)->firstOrFail();
+
+        // Find the category
+        $category = Category::where('slug', $category)->firstOrFail();
+
+        // Get all posts in the same category, ordered by published_at
+        $posts = $category->posts()
+            ->where('active', true)
+            ->orderBy('published_at')
+            ->get(['id', 'slug', 'title', 'published_at', 'author_id']);
     
-        // Fetch adjacent posts in a single query
-        $adjacentPosts = Post::select('id', 'slug', 'title', 'published_at', 'author_id')
-            ->with('author:id,name')
-            ->whereHas('categories', function ($q) use ($category) {
-                $q->where('slug', $category);
-            })
-            ->where('published_at', '!=', $post->published_at)
-            ->orderBy('published_at', 'desc')
-            ->when($post->published_at, function ($query, $publishedAt) {
-                return $query->where(function ($q) use ($publishedAt) {
-                    $q->where('published_at', '>', $publishedAt)
-                      ->orWhere('published_at', '<', $publishedAt);
-                });
-            })
-            ->limit(2)
-            ->get();
+        // Find the index of the current post
+        $currentIndex = $posts->search(function ($item) use ($post) {
+            return $item->id === $post->id;
+        });
+
+        // Get previous and next posts
+        $prevPost = $currentIndex > 0 ? $posts[$currentIndex - 1] : null;
+        $nextPost = $currentIndex < $posts->count() - 1 ? $posts[$currentIndex + 1] : null;
     
         // Prepare the prevNext array
         $prevNext = [
@@ -88,14 +79,19 @@ class PostController extends Controller
             'next' => ['url' => null, 'title' => null, 'author' => null]
         ];
     
-        foreach ($adjacentPosts as $adjacentPost) {
-            $key = $adjacentPost->published_at < $post->published_at ? 'prev' : 'next';
-            $prevNext[$key] = [
-                'url' => route('posts.show', ['category' => $category, 'slug' => $adjacentPost->slug]),
-                'title' => $adjacentPost->title,
-                'author' => $adjacentPost->author->name
-            ];
-        }
+        // Prepare the prevNext array
+        $prevNext = [
+            'prev' => $prevPost ? [
+                'url' => route('posts.show', ['category' => $category->slug, 'slug' => $prevPost->slug]),
+                'title' => $prevPost->title,
+                'author' => $prevPost->author->name
+            ] : ['url' => null, 'title' => null, 'author' => null],
+            'next' => $nextPost ? [
+                'url' => route('posts.show', ['category' => $category->slug, 'slug' => $nextPost->slug]),
+                'title' => $nextPost->title,
+                'author' => $nextPost->author->name
+            ] : ['url' => null, 'title' => null, 'author' => null]
+        ];
     
         // Determine the template
         $template = 'blog.single-' . $post->detail->template_name;

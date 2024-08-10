@@ -3121,6 +3121,14 @@ ol {
   font-size: 14px;
 }
 
+.dt-related-post .col-sm-6:has(.rp-prev) {
+    margin-right: auto;
+}
+
+.dt-related-post .col-sm-6:has(.rp-next) {
+    margin-left: auto;
+}
+
 .details-text .dt-related-post,
 .contact-form .dt-related-post {
   margin-bottom: 55px;
