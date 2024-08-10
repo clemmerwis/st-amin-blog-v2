@@ -110,7 +110,7 @@ class PostSeeder extends Seeder
                     'author' => "Erica Schmoll",
                     'ogTitle' => $chapter['title'],
                     'ogDescription' => "Chapter " . ($index + 1) . ": Stories of Mirrors",
-                    'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/" . $chapter['slug'],
+                    'ogUrl' => "https://storiesofmirrors.com/posts/stories-of-mirrors/" . $chapter['slug'],
                     'twitterTitle' => $chapter['title'],
                     'twitterDescription' => "Chapter " . ($index + 1) . ": Stories of Mirrors",
                 ]

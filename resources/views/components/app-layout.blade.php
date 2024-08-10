@@ -29,8 +29,8 @@
                     author="schmollthoughts.com"
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
-                    ogTitle="Stories of Mirrors - Chapter Selection"
-                    ogDescription="Read Stories of Mirrors"
+                    ogTitle="Stories of Mirrors - All Chapters"
+                    ogDescription="Read Stories of Mirrors - Chapter Selection"
                     ogUrl="https://storiesofmirrors.com/posts?category=stories-of-mirrors"
                  
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"

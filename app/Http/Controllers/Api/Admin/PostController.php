@@ -162,7 +162,7 @@ class PostController extends Controller
 
             'ogTitle' => $seoData["seo_title"] ?? '',
             'ogDescription' => $seoData["seo_description"] ?? '',
-            'ogUrl' => "https://stories-of-mirrors.com/posts/stories-of-mirrors/" . ($payload['slug']),
+            'ogUrl' => "https://storiesofmirrors.com/posts/stories-of-mirrors/" . ($payload['slug']),
             
             'twitterTitle' => $seoData["seo_title"] ?? '',
             'twitterDescription' => $seoData["seo_description"] ?? '',
