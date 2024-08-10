@@ -117,7 +117,7 @@
                     <div class="sidebar-option px-sm-5 px-md-0 {{ $post->parentcat && $post->parentcat->slug !== 'stories-of-mirrors' ? 'd-none' : '' }}">
                         <div class="book-cover">
                             <div class="section-title">
-                                <h5>Buy the Book</h5>
+                                <h5><a href="https://www.amazon.com/gp/product/B0D4JRSDS4?ref_=dbs_m_mng_rwt_calw_tkin_0&storeType=ebooks&qid=1716474459&sr=8-1&asin=B0D4JRSDS4&revisionId=&format=4&depth=1">Buy the Book</a></h5>
                             </div>
                             <a href="https://www.amazon.com/gp/product/B0D4JRSDS4?ref_=dbs_m_mng_rwt_calw_tkin_0&storeType=ebooks&qid=1716474459&sr=8-1&asin=B0D4JRSDS4&revisionId=&format=4&depth=1">
                                 <img src="{{ asset('img/WebsitePicsGifs/SOM_Chapter5_ID6/CopyofChrisCoverv4.jpg') }}" alt="Book Cover" class="img-fluid">

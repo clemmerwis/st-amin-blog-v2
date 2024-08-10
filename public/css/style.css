@@ -148,6 +148,14 @@ ol {
   transform: skewX(-15deg);
 }
 
+.book-cover .section-title h5 a {
+    color: inherit;
+}
+
+.book-cover .section-title h5 a:hover {
+    color: #d4983f;
+}
+
 .set-bg {
   background-repeat: no-repeat;
   background-size: cover;
