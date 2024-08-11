@@ -147,7 +147,7 @@ class PostSeeder extends Seeder
                         'author' => "Author Name",
                         'ogTitle' => "Holistic Health: A Witch's Perspective",
                         'ogDescription' => "Comprehensive guide to health and healing practices.",
-                        'ogUrl' => "https://magazine-website.com/posts/holistic-health-a-witchs-perspective",
+                        'ogUrl' => "https://storiesofmirrors.com/posts/holistic-health-a-witchs-perspective",
                         'twitterTitle' => "Holistic Health: A Witch's Perspective",
                         'twitterDescription' => "Comprehensive guide to health and healing practices.",
                     ];
@@ -163,7 +163,7 @@ class PostSeeder extends Seeder
                         'author' => "Author Name",
                         'ogTitle' => "My Journey into the World of Energy & Spells",
                         'ogDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
-                        'ogUrl' => "https://magazine-website.com/posts/magazine/my-journey-into-the-world-of-energy-and-spells",
+                        'ogUrl' => "https://storiesofmirrors.com/posts/magazine/my-journey-into-the-world-of-energy-and-spells",
                         'twitterTitle' => "My Journey into the World of Energy & Spells",
                         'twitterDescription' => "Discover powerful spells and energy techniques for spiritual enhancement.",
                     ];
@@ -179,7 +179,7 @@ class PostSeeder extends Seeder
                         'author' => "Author Name",
                         'ogTitle' => "Bridging the Gap Between Tech and Witchcraft",
                         'ogDescription' => "The latest trends and advancements in technology and the web.",
-                        'ogUrl' => "https://magazine-website.com/posts/magazine/bridging-the-gap-between-tech-and-witchcraft",
+                        'ogUrl' => "https://storiesofmirrors.com/posts/magazine/bridging-the-gap-between-tech-and-witchcraft",
                         'twitterTitle' => "Bridging the Gap Between Tech and Witchcraft",
                         'twitterDescription' => "The latest trends and advancements in technology and the web.",
                     ];
@@ -195,7 +195,7 @@ class PostSeeder extends Seeder
                         'author' => "Author Name",
                         'ogTitle' => "Embracing Witchy Fashion: More Than Just Clothes",
                         'ogDescription' => "Best tips and tricks for choosing and using useful apparel.",
-                        'ogUrl' => "https://magazine-website.com/posts/magazine/embracing-witchy-fashion-more-than-just-clothes",
+                        'ogUrl' => "https://storiesofmirrors.com/posts/magazine/embracing-witchy-fashion-more-than-just-clothes",
                         'twitterTitle' => "Embracing Witchy Fashion: More Than Just Clothes",
                         'twitterDescription' => "Best tips and tricks for choosing and using useful apparel.",
                     ];
@@ -211,7 +211,7 @@ class PostSeeder extends Seeder
                         'author' => "Author Name",
                         'ogTitle' => "Exploring the Paranormal",
                         'ogDescription' => "Best tips and tricks for choosing and using useful apparel.",
-                        'ogUrl' => "https://magazine-website.com/posts/magazine/useful-apparel-tips",
+                        'ogUrl' => "https://storiesofmirrors.com/posts/magazine/useful-apparel-tips",
                         'twitterTitle' => "Useful Apparel Tips",
                         'twitterDescription' => "Best tips and tricks for choosing and using useful apparel.",
                     ];
