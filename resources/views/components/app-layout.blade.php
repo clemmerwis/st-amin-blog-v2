@@ -11,16 +11,16 @@
             @if($active == 'home')
                 <x-meta-tags
                     title="Stories of Mirrors - Home"
-                    description="Click here to embark on the journey within - Read the book: Stories of Mirrors"
+                    description="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
                     author="schmollthoughts.com"
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
                     ogTitle="Stories of Mirrors - Home"
-                    ogDescription="Click here to embark on the journey within - Read the book: Stories of Mirrors"
+                    ogDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
                     ogUrl="https://storiesofmirrors.com"
                    
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
-                    twitterDescription="Click here to embark on the journey within - Read the book: Stories of Mirrors"
+                    twitterDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
                 />
             @elseif($active == 'SoM')
                 <x-meta-tags
@@ -55,9 +55,9 @@
             @stack('seoMeta')
         @endisset
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/smi_3logos.jpg">
+        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/ssGirlHouseLogo.jpg">
 
-        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/smi_3logos.jpg">
+        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/ssGirlHouseLogo.jpg">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Stories of Mirrors">
 
