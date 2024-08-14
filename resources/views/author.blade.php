@@ -48,9 +48,12 @@
                         This website and magazine, Schmoll Thoughts, are multifaceted platforms encompassing marketing, writing, and technical design. Along with my dedicated team, we offer fully serviceable web design, marketing advertising, talent management, and publishing services. Our goal is to bring your visions to life, combining modern technology with timeless creativity.
                     </p>
                     
-                    <h3 class="specialh3">The Magic of "Stories of Mirrors"</h3>
+                    <h3 class="specialh3 h3mb">
+                        <a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors</a>
+                        <p><i>Where magic meets reality</i></p>
+                    </h3> 
                     <p class="mb3rem">
-                        In the dimly lit corridors of my memory, mirrors have always been more than mere reflectors of reality; they are portals to realms beyond our understanding. From a young age, I’ve encountered the inexplicable—shadows that moved with intention and voices without a source. These encounters have intertwined with my existence, revealing the dance between the spiritual kingdom and our own. This book, released in a blog-style format, showcases my skills in writing, design, and technology, offering a fresh perspective on storytelling and inviting readers to explore the unexplained alongside me.
+                        Step into a world where mirrors are portals to the unexplained and supernatural encounters challenge our understanding of reality. Through "The Witch Magazine," I share tales drawn from my own journey, blending personal insights with professional expertise to inspire and educate. Whether you're a seasoned practitioner or new to the path, join our growing community where magic meets the modern world, and explore the mysteries that lie just beyond the reflection.
                     </p>
 
                     <h3 class="specialh3">Expanding The Witch Magazine</h3>
@@ -75,19 +78,7 @@
                     <h3 class="specialh3 h3mb">
                         <a href="{{ route('posts.index', ['category' => 'useful-apparel']) }}">Apparel:</a>
                     </h3> 
-                    <p>Embrace witchy fashion with practical tips, DIY guides, and historical context.</p>
-
-                    <h3 class="specialh3 h3mb">
-                        <a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors:</a>
-                    </h3> 
-                    <p>
-                        Join me in exploring true tales of supernatural encounters that challenge our understanding of reality.
-                        Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
-                    </p>
-
-                    <p class="mb3rem">
-                        Through "The Witch Magazine," I aim to inspire and educate, offering insights drawn from my personal journey and professional expertise. Whether you're a seasoned practitioner or new to the path, there's something here for everyone. Welcome to our growing community, where magic meets the modern world.
-                    </p>
+                    <p class="mb3rem">Embrace witchy fashion with practical tips, DIY guides, and historical context.</p>
 
                     <h3 class="specialh3">The Magic Touch:</h3>
                     <p class="mb3rem">

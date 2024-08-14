@@ -5017,11 +5017,11 @@ h3.specialh3.h3mb {
 }
 
 h3.specialh3.h3mb a {
-  color: inherit;
+  color: coral;
 }
 
 h3.specialh3.h3mb a:hover {
-  color: #d4983f;
+  color: hsla(0deg, 100%, 83.94%, 1);
 }
 
 .about-profile-header .specialh3 {
