@@ -263,7 +263,7 @@
         <!-- Footer Section End -->
 
         <!-- Register Section Begin -->
-        <div class="signup-section">
+        {{-- <div class="signup-section">
             <div class="signup-close"><i class="fa fa-close"></i></div>
             <div class="signup-text">
                 <div class="container">
@@ -294,7 +294,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Register Section End -->
 
         <!-- Login Begin -->
