@@ -7,19 +7,21 @@
 
     <!-- SEO Meta Tags -->
     @push('seoMeta')
-        <!-- SEO Meta Tags -->
         <x-meta-tags 
-            title="{{ $seoMeta['title'] ?? 'Default Title' }}" 
-            description="{{ $seoMeta['description'] ?? 'Default Description' }}" 
-            author="{{ $seoMeta['author'] ?? 'Default Author' }}"
-            keywords="{{ $seoMeta['keywords'] ?? 'default,keywords' }}"
+            title="{{ $seoMeta['title'] ?? $post->title }}" 
+            description="{{ $seoMeta['description'] ?? $post->excerpt }}" 
+            author="{{ $seoMeta['author'] ?? $post->author->name }}"
+            keywords="{{ $seoMeta['keywords'] ?? 'stories of mirrors, witchcraft, supernatural' }}"
 
-            ogTitle="{{ $seoMeta['ogTitle'] ?? 'Default OG Title' }}"
-            ogDescription="{{ $seoMeta['ogDescription'] ?? 'Default OG Description' }}" 
-            ogUrl="{{ $seoMeta['ogUrl'] ?? 'https://defaultogurl.com' }}"
+            ogTitle="{{ $seoMeta['ogTitle'] ?? $post->title }}"
+            ogDescription="{{ $seoMeta['ogDescription'] ?? $post->excerpt }}" 
+            ogUrl="{{ $seoMeta['ogUrl'] ?? url()->current() }}"
+            ogImage="{{ $seoMeta['ogImage'] ?? $post->featured_image_url }}"
+            ogType="article"
 
-            twitterTitle="{{ $seoMeta['twitterTitle'] ?? 'Default Twitter Title' }}" 
-            twitterDescription="{{ $seoMeta['twitterDescription'] ?? 'Default Twitter Description' }}"
+            twitterTitle="{{ $seoMeta['twitterTitle'] ?? $post->title }}" 
+            twitterDescription="{{ $seoMeta['twitterDescription'] ?? $post->excerpt }}"
+            twitterImage="{{ $seoMeta['twitterImage'] ?? $post->featured_image_url }}"
         />
     @endpush
     

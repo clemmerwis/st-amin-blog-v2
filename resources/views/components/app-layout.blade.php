@@ -4,7 +4,6 @@
         <link rel="icon" href="{{ asset('/img/hero/owlx400.png') }}" type="image/x-icon">
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @isset($active)
@@ -17,10 +16,13 @@
 
                     ogTitle="Stories of Mirrors - Home"
                     ogDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
-                    ogUrl="https://storiesofmirrors.com"
+                    ogUrl="{{ url('/') }}"
+                    ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+                    ogType="website"
                    
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
+                    twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                 />
             @elseif($active == 'SoM')
                 <x-meta-tags
@@ -31,10 +33,13 @@
 
                     ogTitle="Stories of Mirrors - All Chapters"
                     ogDescription="Read Stories of Mirrors - Chapter Selection"
-                    ogUrl="https://storiesofmirrors.com/posts?category=stories-of-mirrors"
+                    ogUrl="{{ url('/posts?category=stories-of-mirrors') }}"
+                    ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+                    ogType="website"
                  
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
                     twitterDescription="Read Stories of Mirrors"
+                    twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                 />
             @elseif($active == 'magazine')
                 <x-meta-tags
@@ -45,21 +50,18 @@
 
                     ogTitle="Stories of Mirrors | Witch Magazine of Wellness & Healing"
                     ogDescription="Explore the latest edition of Stories of Mirrors Magazine"
-                    ogUrl="https://storiesofmirrors.com/posts"
+                    ogUrl="{{ url('/posts') }}"
+                    ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+                    ogType="website"
 
                     twitterTitle="Stories of Mirrors | Witch Magazine of Wellness & Healing"
                     twitterDescription="Explore the latest edition of Stories of Mirrors Magazine"
+                    twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                 />
             @endif
         @else
             @stack('seoMeta')
         @endisset
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/ssGirlHouseLogo.jpg">
-
-        <meta property="og:image" content="https://storiesofmirrors.com/img/stories-of-mirrors/ssGirlHouseLogo.jpg">
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Stories of Mirrors">
 
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
