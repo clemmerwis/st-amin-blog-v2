@@ -19,9 +19,15 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
 
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable()->index();
 
             $table->timestamps();
+
+            // Add foreign key constraint
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('set null'); // or 'set null' or 'restrict' based on your needs
         });
     }
 

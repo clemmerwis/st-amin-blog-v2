@@ -14,6 +14,8 @@ class CreateCategoryPost extends Migration
     public function up()
     {
         Schema::create('category_post', function (Blueprint $table) {
+            $table->id();
+            
             $table->foreignId('post_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -23,6 +25,8 @@ class CreateCategoryPost extends Migration
                 ->onDelete('cascade');
 
             $table->timestamps();
+
+            $table->unique(['post_id', 'category_id']);
         });
     }
 
