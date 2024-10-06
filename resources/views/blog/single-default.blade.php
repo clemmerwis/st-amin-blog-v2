@@ -73,13 +73,28 @@
                         <div class="dt-share mt-3">
                             <div class="ds-title">Share</div>
                             <div class="ds-links">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoMeta['ogUrl']) }}" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                <!-- Facebook Share Link -->
+                                <a href="{{ $shareUrls['facebook'] }}" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
                                 </a>
-                                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+
+                                <!-- Twitter Share Link -->
+                                <a href="{{ $shareUrls['twitter'] }}" target="_blank" aria-label="Share on Twitter" rel="noopener noreferrer">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+
+                                <!-- Instagram Profile Link -->
+                                <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
+                                </a>
+
+                                <!-- Email Share Link -->
+                                <a href="{{ $shareUrls['email'] }}" aria-label="Share via Email">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="sr-only">Email</span>
                                 </a>
                             </div>
                         </div>

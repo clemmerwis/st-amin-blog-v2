@@ -92,10 +92,20 @@ class PostController extends Controller
                 'author' => $nextPost->author->name
             ] : ['url' => null, 'title' => null, 'author' => null]
         ];
+
+        // Get SEO meta information for sharing
+        $seoMeta = $post->detail->seo_meta;
+
+        // Generate share URLs
+        $shareUrls = [
+            'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($seoMeta['ogUrl']),
+            'twitter' => 'https://twitter.com/intent/tweet?text=' . urlencode($seoMeta['twitterTitle']) . '&url=' . urlencode($seoMeta['ogUrl']),
+            'email' => 'mailto:?subject=' . urlencode($seoMeta['title']) . '&body=' . urlencode($seoMeta['description'] . ' ' . $seoMeta['ogUrl'])
+        ];
     
         // Determine the template
         $template = 'blog.single-' . $post->detail->template_name;
     
-        return view($template, compact('post', 'prevNext'));
+        return view($template, compact('post', 'prevNext', 'shareUrls'));
     }
 }

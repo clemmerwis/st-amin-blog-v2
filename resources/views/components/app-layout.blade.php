@@ -122,15 +122,21 @@
                 <a class="about-page-link" href="{{ route('author') }}">Schmoll Thoughts Productions</a>
             </div>
             <div class="hw-social">
-                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/stories.of.mirrors/" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer" class="px-2 py-1">
                     <i class="fa fa-facebook"></i>
                     <span class="sr-only">Facebook</span>
                 </a>
-                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer" class="px-2 py-1">
                     <i class="fa fa-instagram" aria-hidden="true"></i>
                     <span class="sr-only">Instagram</span>
                 </a>
-                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
+                <a href="https://x.com/SchmollThoughts" target="_blank" aria-label="Follow us on X (formerly Twitter)" rel="noopener noreferrer" class="px-2 py-1">
+                    <i class="fa fa-twitter"></i>
+                    <span class="sr-only">X</span>
+                </a>
+                <a href="mailto:erica@storiesofmirrors.com" class="px-2 py-1">
+                    <i class="fa fa-envelope-o"></i>
+                </a>
             </div>
         </div>
         <!-- Humberger Menu End -->
@@ -174,15 +180,22 @@
 
                         <div class="col-lg-6 col-md-4">
                             <div class="ht-social">
-                                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                <h6 style="display: inline-block; color: white;" class="mr-4">Follow Us: </h6>
+                                <a href="https://www.facebook.com/stories.of.mirrors/" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer" class="px-2 py-1">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
                                 </a>
-                                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer" class="px-2 py-1">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
-                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
+                                <a href="https://x.com/SchmollThoughts" target="_blank" aria-label="Follow us on X (formerly Twitter)" rel="noopener noreferrer" class="px-2 py-1">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="sr-only">X</span>
+                                </a>
+                                <a href="mailto:erica@storiesofmirrors.com" class="px-2 py-1">
+                                    <i class="fa fa-envelope-o"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -233,15 +246,21 @@
                                 <a href="{{ route('author') }}"><img src="/img/logos/schmoll-thoughts-rose-behind-x300.png" alt=""></a>
                             </div>
                             <div class="d-flex justify-content-center fa-social fa-social">
-                                <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/stories.of.mirrors/" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer" class="px-2">
                                     <i class="fa fa-facebook"></i>
                                     <span class="sr-only">Facebook</span>
                                 </a>
-                                <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer" class="px-2">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                     <span class="sr-only">Instagram</span>
                                 </a>
-                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
+                                <a href="https://x.com/SchmollThoughts" target="_blank" aria-label="Follow us on X (formerly Twitter)" rel="noopener noreferrer" class="px-2">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="sr-only">X</span>
+                                </a>
+                                <a href="mailto:erica@storiesofmirrors.com" class="px-2">
+                                    <i class="fa fa-envelope-o"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

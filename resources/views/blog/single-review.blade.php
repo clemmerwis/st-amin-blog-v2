@@ -98,10 +98,29 @@
                         <div class="dt-share">
                             <div class="ds-title">Share</div>
                             <div class="ds-links">
-                                <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
+                                <!-- Facebook Share Link -->
+                                <a href="{{ $shareUrls['facebook'] }}" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                                    <i class="fa fa-facebook"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+
+                                <!-- Twitter Share Link -->
+                                <a href="{{ $shareUrls['twitter'] }}" target="_blank" aria-label="Share on Twitter" rel="noopener noreferrer">
+                                    <i class="fa fa-twitter"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+
+                                <!-- Instagram Profile Link -->
+                                <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
+
+                                <!-- Email Share Link -->
+                                <a href="{{ $shareUrls['email'] }}" aria-label="Share via Email">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="sr-only">Email</span>
+                                </a>
                             </div>
                         </div>
                         <div class="dt-related-post">

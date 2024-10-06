@@ -100,15 +100,21 @@
                         <span>Read Stories of Mirrors</span>
                     </a>
                     <div class="ht-social d-flex justify-content-center">
-                        <a href="https://www.facebook.com/erica.schmoll" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/stories.of.mirrors/" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer" class="px-2 py-1">
                             <i class="fa fa-facebook"></i>
                             <span class="sr-only">Facebook</span>
                         </a>
-                        <a href="https://www.instagram.com/schmoll_thoughts" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/storiesofmirrors/" target="_blank" aria-label="Visit our Instagram" rel="noopener noreferrer" class="px-2 py-1">
                             <i class="fa fa-instagram" aria-hidden="true"></i>
                             <span class="sr-only">Instagram</span>
                         </a>
-                        <a href="mailto:erica@storiesofmirrors.com"><i class="fa fa-envelope-o"></i></a>
+                        <a href="https://x.com/SchmollThoughts" target="_blank" aria-label="Follow us on X (formerly Twitter)" rel="noopener noreferrer" class="px-2 py-1">
+                            <i class="fa fa-twitter"></i>
+                            <span class="sr-only">X</span>
+                        </a>
+                        <a href="mailto:erica@storiesofmirrors.com" class="px-2 py-1">
+                            <i class="fa fa-envelope-o"></i>
+                        </a>
                     </div>
 
                     <p style="max-width: 70%; margin-top: 5rem;">Welcome to the journey, and may we explore the unknown together with an open mind and a sense of wonder.</p>
