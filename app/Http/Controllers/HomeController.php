@@ -11,16 +11,24 @@ class HomeController extends Controller
     public function index()
     {
         $active = "home";
-
-        // Fetch posts where category slug is 'stories-of-mirrors'
-        $posts = Post::where('active', '1')
-            ->whereHas('categories', function ($query) {
-                $query->where('slug', 'stories-of-mirrors');
-            })
-            ->with('media')  // eager load media !!this is not the images collection name e.g., 'featured-image'
-            ->orderBy('published_at', 'asc')
-            ->get();
-        
+    
+        // Fetch posts with required relationships and select only necessary columns
+        $posts = Post::with([
+            'categories' => function ($query) {
+                $query->select('id', 'name', 'slug', 'parent_id'); // Only load necessary columns
+            },
+            'categories.parent', // Eager load parent categories
+            'media' // Eager load media for featured images
+        ])
+        ->select('id', 'title', 'slug', 'published_at') // Only fetch required columns
+        ->where('active', true)
+        ->whereHas('categories', function ($query) {
+            $query->where('slug', 'stories-of-mirrors'); // Filter posts by category slug
+        })
+        ->orderBy('published_at', 'asc')
+        ->get();
+    
         return view('index', compact('posts', 'active'));
     }
+    
 }

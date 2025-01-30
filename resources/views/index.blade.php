@@ -68,14 +68,8 @@
                     @foreach($posts as $post)
                         <div class="col-lg-3">
                             @php
-                                // get the subcat-- which will be the one that has a parent_id
-                                $subcat = $post->categories->first(function ($category) {
-                                    return $category->parent_id !== null;
-                                });
-                                // get the parent category
-                                $parentCat = $post->categories->first(function ($category) {
-                                    return $category->parent_id === null;
-                                });
+                                $subcat = $post->categories->first(fn($category) => $category->parent_id !== null);
+                                $parentCat = $post->categories->first(fn($category) => $category->parent_id === null);
                             @endphp
                             <a href="{{ route('posts.show', ['category' => $parentCat->slug, 'slug' => $post->slug]) }}">
                                 <div class="lp-item">

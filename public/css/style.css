@@ -1067,7 +1067,7 @@ ol {
 }
 
 .nav-options .nav-menu ul li .megamenu-wrapper .mw-nav li a:hover {
-  color: #c20000;
+  color: hsla(0deg, 100%, 83%, 1);
   text-shadow: none;
 }
 
@@ -1143,6 +1143,10 @@ ol {
     top: 0;
     content: "/";
     color: #666666;
+}
+
+.nav-options .nav-menu ul li .megamenu-wrapper .mw-post .mw-post-item:hover h6 a {
+    color: hsla(0deg, 100%, 83.94%, 1);
 }
 
 .nav-options .nav-menu ul li .dropdown {
@@ -1614,6 +1618,15 @@ ol {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+.lp-item .lp-text h6 span {
+    transition: 0.2s;
+}
+
+.lp-item:hover .lp-text h6 span {
+  color: hsla(0deg, 100%, 83.94%, 1) !important;
+}
+
 
 .lp-item .lp-text ul li {
   font-size: 12px;
@@ -2551,6 +2564,19 @@ ol {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 16px;
+  position: relative;
+}
+
+.breadcrumb-text h3::after {
+  content: '';
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  height: 0.2rem;
+  background: linear-gradient(35deg, rgba(194, 0, 0, 0.2), hsla(0deg, 100%, 83.94%, 1));
+  width: 50%;
+  border-radius: 50%;
+  transform: translateX(50%);
 }
 
 .breadcrumb-text h3 span {
@@ -2649,6 +2675,11 @@ ol {
   font-weight: 700;
   text-transform: uppercase;
   line-height: 28px;
+  transition: 0.2s;
+}
+
+.cg-item:hover .cg-text h5 a {
+  color: hsla(0deg, 100%, 83.94%, 1);
 }
 
 .cg-item .cg-text ul {

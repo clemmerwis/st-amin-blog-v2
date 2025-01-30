@@ -20,7 +20,7 @@ class Post extends Model implements HasMedia
         'active' => 'boolean'
     ];
 
-    protected $with = ['author', 'categories', 'detail'];
+    //protected $with = ['author', 'categories', 'detail'];
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -31,8 +31,13 @@ class Post extends Model implements HasMedia
     // how to use accessors example: $post->featured_image_url
     public function getFeaturedImageUrlAttribute()
     {
-        return $this->getFirstMediaUrl('featured-images') ? 
-            asset($this->getFirstMediaUrl('featured-images')) : asset('img/categories-list/cl-1.jpg');
+        if (!$this->relationLoaded('media')) {
+            $this->load('media');
+        }
+    
+        return $this->getFirstMedia('featured-images')
+            ? $this->getFirstMedia('featured-images')->getUrl('thumb')
+            : asset('img/categories-list/cl-1.jpg');
     }
 
     public function getFeaturedImageThumbUrlAttribute()

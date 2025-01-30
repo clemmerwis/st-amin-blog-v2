@@ -24,7 +24,10 @@
                             @foreach ($posts as $post)
                                 <div class="col-lg-6">
                                     <div class="cg-item">
-                                        <a href="{{ route('posts.show', ['category' => $post->parentcat->slug, 'slug' => $post->slug]) }}">
+                                        <a href="{{ route('posts.show', [
+                                                'category' => $post->parentcat->slug, 
+                                                'slug' => $post->slug
+                                            ]) }}">
                                             <div class="cg-pic set-bg" data-setbg="{{ $post->featured_image_url }}">
                                                 <div class="label label1"><span>{{ $post->parentcat->name }}</span></div>
                                                 @foreach($post->categories as $category)

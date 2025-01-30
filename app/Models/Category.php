@@ -17,7 +17,7 @@ class Category extends Model
         'parent_id',
     ];
 
-    protected $with = ['subcats'];
+    //protected $with = ['subcats'];
 
     
     public function parent()

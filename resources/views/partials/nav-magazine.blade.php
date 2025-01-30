@@ -12,7 +12,7 @@
                 <div class="mw-post-item">
                     <div class="mw-pic">
                         <a href="{{ route('posts.show', [
-                                'category' => $post->parentcat->slug,
+                                'category' => $post->parentcat?->slug,
                                 'slug' => $post->slug
                             ]) }}">
                             <img src="{{ asset($post->featured_image_thumb_url) }}" alt="{{ $post->title }}">
@@ -28,7 +28,7 @@
                             </a>
                         </h6>
                         <ul>
-                            <li><i class="fa fa-clock-o"></i> {{ $post->published_at->format('M d, Y') }}</li>
+                            <li><i class="fa fa-clock-o"></i> {{ $post->published_at?->format('M d, Y') }}</li>
                         </ul>
                     </div>
                 </div>
