@@ -69,6 +69,10 @@ Route::post('/contact', ContactController::class)->name('contact.submit');
 ////////// API SEction //////////
 //  api in web routes so it has access to user session. Move these to api if refactor to use sanctum.
 //////////
+// These are in web.php (not api.php) because:
+// 1. Admin area uses session-based auth, not tokens
+// 2. Leverages existing middleware (isAdmin, auth)
+// 3. Simplifies Vue.js integration in admin components
 Route::prefix('api')->middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->names([
@@ -88,6 +92,7 @@ Route::prefix('api')->middleware('auth')->group(function () {
         ]);
     });
 
+    // Utility APIs used by admin components
     Route::get('featured-image/{post}', [\App\Http\Controllers\Api\PostController::class, 'getFeaturedImage'])->name('api.posts.featured-image');
     Route::get('featured-gif/{post}', [\App\Http\Controllers\Api\PostController::class, 'getFeaturedGif'])->name('api.posts.featured-gif');
 
