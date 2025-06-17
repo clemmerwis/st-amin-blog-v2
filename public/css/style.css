@@ -784,6 +784,12 @@ ol {
   display: block !important;
 }
 
+.slicknav_menu img[src*="icon6-ankh.png"] {
+  width: 65%;
+  height: auto;
+  transform: translateX(3px);
+}
+
 .humberger-menu-wrapper .hw-copyright {
   font-size: 15px;
   color: #c4c4c4;
@@ -4372,6 +4378,10 @@ ol {
   .cl-item .cl-pic {
     max-width: 300px;
   }
+
+  .humberger-menu.humberger-open {
+    display: none;
+  }
 }
 
 /* Tablet Device = 768px */
@@ -4965,6 +4975,64 @@ ol {
   100% {
     transform: rotateY(360deg);
   }
+}
+
+.nav-options .nav-menu ul li.witchs-picks:after {
+  content: "";
+  background: url(../img/icons/icon6-ankh.png) no-repeat;
+  height: 100%;
+  width: var(--icon-width);
+  position: absolute;
+  left: 40%;
+  background-size: auto 60%;
+  background-position: center;
+  top: -53px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-9px) scale(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: translateY(0px) scale(1);
+    top: -53px;
+  }
+  100% {
+    transform: translateY(0px) scale(1.35);
+    top: -58px;
+  }
+}
+
+@keyframes ungrow {
+  0% {
+    transform: translateY(0px) scale(1.35);
+    top: -58px;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    top: -53px;
+  }
+}
+
+/* Default floating animation for witch's picks */
+.nav-options .nav-menu ul li.witchs-picks:after {
+  animation: float var(--time) infinite ease-in-out;
+}
+
+/* On hover, switch to grow animation */
+.nav-options .nav-menu ul li.witchs-picks:hover:after {
+  animation: grow 0.4s ease forwards;
+}
+
+/* Class for ungrow animation */
+.nav-options .nav-menu ul li.witchs-picks.ungrowing:after {
+  animation: ungrow 0.4s ease forwards;
 }
 
 .breadcrumb > .active {

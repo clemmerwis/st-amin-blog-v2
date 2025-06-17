@@ -63,6 +63,11 @@ Route::get('/author', function () {
     return view('author');
 })->name('author');
 
+// featured products page
+Route::get('/witchs-picks', function () {
+    return view('featured-products');
+})->name('witchs-picks');
+
 // contact page form submitted
 Route::post('/contact', ContactController::class)->name('contact.submit');
 

@@ -34,6 +34,23 @@
             );
         })
 
+        // Handle witch's picks hover ungrow - ADD THIS HERE
+        $(".nav-options .nav-menu ul li.witchs-picks").hover(
+            function () {
+                // On hover in - remove ungrow class if it exists
+                $(this).removeClass('ungrowing');
+            },
+            function () {
+                // On hover out - add ungrow class, then remove it after animation
+                var $this = $(this);
+                $this.addClass('ungrowing');
+
+                setTimeout(() => {
+                    $this.removeClass('ungrowing');
+                }, 400); // Match the ungrow animation duration
+            }
+        );
+
         // if login fails, click sign up modal again
         if ($('#failedLoginMessage').length) {
             $('.signup-switch-login').click();
