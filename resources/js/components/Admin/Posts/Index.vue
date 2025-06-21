@@ -24,6 +24,7 @@
                     item-value="name"
                     item-text="name"
                     label="Filter by Category"
+                    @change="onCategoryChange"
                 ></v-select>
             </v-toolbar>
         </div>
@@ -137,9 +138,12 @@
         computed: {
             filteredPosts() {
                 if (this.selectedCategory && this.selectedCategory !== "All") {
-                    return this.posts.filter((post) => {
-                        return post.category === this.selectedCategory;
+                    const filtered = this.posts.filter((post) => {
+                        const matches = post.category === this.selectedCategory;
+                        return matches;
                     });
+
+                    return filtered;
                 } else {
                     return this.posts;
                 }
@@ -157,7 +161,7 @@
             },
             convertedTime(time) {
                 if (!time) {
-                    return "N/A"; // Return a placeholder or any indication for not available dates
+                    return "N/A";
                 }
 
                 // Split the date and time
@@ -172,12 +176,11 @@
 
                 const period = hour >= 12 ? "PM" : "AM";
                 const convertedHour = hour % 12 === 0 ? 12 : hour % 12;
-                const convertedTime = `${convertedHour}:${minute
-                    .toString()
-                    .padStart(2, "0")}${period}`;
 
                 // Combine the formatted date and converted time with separator
-                return `${datePart} @ ${convertedTime}`;
+                return `${datePart} ${convertedHour}:${minute
+                    .toString()
+                    .padStart(2, "0")} ${period}`;
             },
         },
     };

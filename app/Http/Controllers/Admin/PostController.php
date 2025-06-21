@@ -20,8 +20,9 @@ class PostController extends Controller
     {
         $active = 'Posts';
 
-        // all records
-        $posts = Post::all();
+        // Load posts with categories relationship
+        $posts = Post::with('categories')->get();
+        
         // parent categories
         $parentCategories = Category::whereNull('parent_id')->pluck('name')->toArray();
 
@@ -62,6 +63,7 @@ class PostController extends Controller
     {
         $active = 'PostEdit';
 
+        $post->load('categories', 'detail');
         $post = new PostDetailResource($post);
 
         // parent categories
