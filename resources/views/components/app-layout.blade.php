@@ -105,6 +105,15 @@
             <div class="hw-logo">
                 <a href="{{ route('home') }}"><img src="{{ asset('/img/logos/schmoll-thoughts-rose-behind-x300.png') }}" alt=""></a>
             </div>
+            <div class="hw-menu mobile-menu">
+                <ul>
+                    <li class="active"><a href="{{ route('home') }}">Home</a><span><img src="{{ asset('img/icons/icon1-air.png') }}" alt=""></span></li>
+                    <li><a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors</a><span><img src="{{ asset('img/icons/icon7-yinyang.png') }}" alt=""></span></li>
+                    @include('partials.nav-mobile-magazine')
+                    <li><a href="{{ route('author') }}">The Author</a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
+                    <li><a href="{{ route('contact') }}">contact</a><span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span></li>Add commentMore actions
+                </ul>
+            </div>
             <div id="mobile-menu-wrap"></div>
             <div class="hw-copyright">
                 Copyright &copy;
