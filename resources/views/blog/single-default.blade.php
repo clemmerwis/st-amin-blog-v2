@@ -49,6 +49,15 @@
                         <ul>
                             <li>Published <br> <i class="ml-5 fa fa-clock-o"></i> {{ $post->published_at->format('F jS, Y') }}</li>
                         </ul>
+
+                        @if($post->featured)
+                            <div class="buy-now-section" style="margin-top: 20px;">
+                                <button class="buy-now-btn" onclick="handleBuyNow('{{ $post->title }}', {{ $post->id }})">
+                                    <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>
+                                    Buy Now
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

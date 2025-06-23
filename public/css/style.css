@@ -2942,6 +2942,47 @@ ol {
   color: #666666;
 }
 
+.buy-now-btn {
+    position: relative;
+    background: linear-gradient(to bottom, #5a3b1e, #d4b85a 91%, #5a3b1e);
+    color: #ffffff;
+    border: 2px solid #774f27;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Cinzel", serif;
+    width: 100%;
+    max-width: 200px;
+    box-shadow: 0 4px 15px rgba(119, 79, 39, 0.3);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.buy-now-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #774f27, #f5da7d 91%, #774f27);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.buy-now-btn:hover::before {
+    opacity: 1;
+}
+
+.buy-now-btn:hover {
+    box-shadow: 0 4px 15px rgba(119, 79, 39, 0.6);
+}
+
 /*---------------------
   Details Post
 -----------------------*/
