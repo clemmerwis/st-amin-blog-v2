@@ -60,25 +60,56 @@
             $('.signup-switch').click();
         }
 
-        // Add this block for the book cover animation
-        const bookCover = document.querySelector('.book-cover');
-        const triggerPoint = 0.85; // 85% down the page
-        const resetPoint = 0.15; // 10% down the page
+        // Simple and efficient scroll calculation with 780px header offset
+        const bookCovers = document.querySelectorAll('.book-cover');
+        const magazineBuyNows = document.querySelectorAll('.magazine-buy-now');
+        const allSidebarElements = [...bookCovers, ...magazineBuyNows];
+
+        const triggerPoint = 0.80; // 85% down the scrollable content
+        const resetPoint = 0.15; // 15% reset point
+        const headerHeight = 780; // details-hero-section height
+
+        // Cache these values to avoid recalculating on every scroll
+        let ticking = false;
 
         function checkScroll() {
-            if (bookCover) {
-                let scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            if (allSidebarElements.length > 0) {
+                const currentScroll = window.scrollY;
 
-                if (scrollPercentage > triggerPoint && !bookCover.classList.contains('activated')) {
-                    bookCover.classList.add('activated');
-                } else if (scrollPercentage <= resetPoint && bookCover.classList.contains('activated')) {
-                    bookCover.classList.remove('activated');
-                }
+                // Only calculate percentage for the area below the 780px header
+                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - headerHeight;
+                const scrollablePosition = Math.max(0, currentScroll - headerHeight);
+
+                // Calculate percentage based only on the scrollable content area
+                let scrollPercentage = scrollablePosition / scrollableHeight;
+
+                // Clamp between 0 and 1
+                scrollPercentage = Math.max(0, Math.min(1, scrollPercentage));
+
+                allSidebarElements.forEach(function (element) {
+                    if (scrollPercentage > triggerPoint && !element.classList.contains('activated')) {
+                        element.classList.add('activated');
+                    } else if (scrollPercentage <= resetPoint && element.classList.contains('activated')) {
+                        element.classList.remove('activated');
+                    }
+                });
+            }
+            ticking = false; // Reset the tick flag
+        }
+
+        // Throttled scroll handler using requestAnimationFrame
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(checkScroll);
+                ticking = true;
             }
         }
 
-        $(window).on('scroll', checkScroll);
-        checkScroll();
+        // Use the throttled function
+        $(window).on('scroll', onScroll);
+
+        // Initial check after a brief delay to ensure DOM is ready
+        setTimeout(checkScroll, 100);
     });
 
 

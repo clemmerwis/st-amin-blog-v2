@@ -5249,33 +5249,109 @@ h3.specialh3.h3mb a:hover {
   color: #d4983f;
 }
 
-.book-cover {
+/* ===== SHARED SIDEBAR PURCHASE ELEMENTS ===== */
+.book-cover,
+.magazine-buy-now {
   opacity: 0.5;
   transition: opacity 0.3s ease, bottom 0.7s ease;
 }
 
-.book-cover:hover {
+.book-cover:hover,
+.magazine-buy-now:hover {
   opacity: 1;
 }
 
-.book-cover img {
-    max-width: 400px;
-    width: 100%;
+.book-cover img,
+.magazine-buy-now img {
+  max-width: 400px;
+  width: 100%;
 }
 
+/* ===== MAGAZINE-SPECIFIC STYLING ===== */
+.book-cover .section-title {
+    margin-bottom: 0;    
+}
 
-/* Media query for larger screens */
+.magazine-buy-now .section-title {
+    margin-bottom: 15px;
+}
+
+.magazine-buy-now .section-title h5 a {
+    color: inherit; /* This will make it white like the book cover */
+}
+
+.magazine-buy-now .section-title h5 a:hover {
+    color: #d4983f; /* Same hover color as book cover */
+}
+
+.magazine-placeholder {
+  max-width: 400px; 
+  width: 100%;
+  background: linear-gradient(135deg, #774f27, #f5da7d 56%, #774f27);
+  border: 2px solid #774f27;
+  border-radius: 10px;
+  padding: 40px 20px;
+  text-align: center;
+  color: #ffffff;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(119, 79, 39, 0.3);
+  transition: all 0.3s ease;
+}
+
+.magazine-placeholder:hover {
+  box-shadow: 0 12px 35px rgba(119, 79, 39, 0.4);
+}
+
+.magazine-placeholder i {
+  margin-bottom: 20px; 
+  opacity: 0.8;
+}
+
+.magazine-placeholder h6 {
+  font-size: 18px; 
+  font-weight: 700; 
+  margin-bottom: 10px; 
+  color: #ffffff; 
+  line-height: 1.3;
+}
+
+.magazine-placeholder p {
+  font-size: 14px; 
+  color: rgba(255, 255, 255, 0.8); 
+  margin: 0; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Large screens - scroll animation */
 @media (min-width: 992px) {
-    .book-cover {
-      opacity: 0.5;
-      transition: opacity 0.3s ease, bottom 0.7s ease;
-      position: absolute;
-      bottom: 100%;
-      transform: translateY(100%);
-    }
+  .book-cover,
+  .magazine-buy-now {
+    position: absolute;
+    bottom: 100%;
+    transform: translateY(100%);
+  }
+
+  .book-cover.activated,
+  .magazine-buy-now.activated {
+    bottom: 0%;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile screens - magazine placeholder adjustments */
+@media only screen and (max-width: 767px) {
+  .magazine-placeholder {
+    min-height: 250px;
+    padding: 30px 15px;
+  }
   
-    .book-cover.activated {
-      bottom: 0%;
-      transform: translateY(0);
-    }
+  .magazine-placeholder h6 {
+    font-size: 16px;
+  }
 }

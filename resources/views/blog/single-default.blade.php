@@ -50,7 +50,7 @@
                             <li>Published <br> <i class="ml-5 fa fa-clock-o"></i> {{ $post->published_at->format('F jS, Y') }}</li>
                         </ul>
 
-                        @if($post->featured)
+                        @if($post->featured && $parentCat && $parentCat->name === 'Magazine')
                             <div class="buy-now-section" style="margin-top: 20px;">
                                 <button class="buy-now-btn" onclick="handleBuyNow('{{ $post->title }}', {{ $post->id }})">
                                     <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>
@@ -140,6 +140,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">
+                    {{-- Buy the Book Section - Stories of Mirrors Articles Only --}}
                     <div class="sidebar-option px-sm-5 px-md-0 {{ $post->parentcat && $post->parentcat->slug !== 'stories-of-mirrors' ? 'd-none' : '' }}">
                         <div class="book-cover">
                             <div class="section-title">
@@ -152,6 +153,32 @@
                             </a>
                         </div>
                     </div>
+
+                    {{-- Buy Now Section - Featured Magazine Articles Only - NEW UNIQUE CLASS --}}
+                    @if($post->featured && $parentCat && $parentCat->name === 'Magazine')
+                        <div class="sidebar-option px-sm-5 px-md-0">
+                            <div class="magazine-buy-now"> {{-- NEW unique class name --}}
+                                <div class="section-title">
+                                    <h5>
+                                        <a href="#" onclick="handleBuyNow('{{ $post->title }}', {{ $post->id }}); return false;">Buy Now</a>
+                                    </h5>
+                                </div>
+                                <a href="#" onclick="handleBuyNow('{{ $post->title }}', {{ $post->id }}); return false;">
+                                    {{-- Conditional image display --}}
+                                    @if(false) {{-- Change this when you add article images to database --}}
+                                        <img src="{{ asset('path/to/article/image.jpg') }}" alt="Article Image" class="img-fluid">
+                                    @else
+                                        {{-- Magazine article placeholder --}}
+                                        <div class="magazine-placeholder">
+                                            <i class="fa fa-shopping-cart fa-3x"></i>
+                                            <h6>{{ $post->title }}</h6>
+                                            <p>Premium Content</p>
+                                        </div>
+                                    @endif
+                                </a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
