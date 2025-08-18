@@ -108,4 +108,20 @@ class PostController extends Controller
     
         return view($template, compact('post', 'prevNext', 'shareUrls'));
     }
+
+    public function featured(Request $request)
+    {
+        $posts = Post::where('active', '1')
+            ->where('featured', '1')
+            ->whereDoesntHave('categories', function ($query) {
+                $query->where('slug', 'stories-of-mirrors');
+            })
+            ->orderBy('published_at', 'desc')
+            ->paginate(10);
+        
+        $active = 'featured';
+        $categoryName = "Witch's Picks: Life Alters";
+            
+        return view('blog.index', compact('posts', 'active', 'categoryName'));
+    }
 }

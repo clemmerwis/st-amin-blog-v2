@@ -111,7 +111,8 @@
                     <li><a href="{{ route('posts.index', ['category' => 'stories-of-mirrors']) }}">Stories of Mirrors</a><span><img src="{{ asset('img/icons/icon7-yinyang.png') }}" alt=""></span></li>
                     @include('partials.nav-mobile-magazine')
                     <li><a href="{{ route('author') }}">The Author</a><span><img src="{{ asset('img/icons/icon5-triquetra.png') }}" alt=""></span></li>
-                    <li><a href="{{ route('contact') }}">contact</a><span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span></li>Add commentMore actions
+                    <li><a href="{{ route('posts.featured') }}">Witch's Picks</a><span><img src="{{ asset('img/icons/icon6-ankh.png') }}" alt=""></span></li>
+                    <li><a href="{{ route('contact') }}">Contact</a><span><img src="{{ asset('img/icons/icon4-water.png') }}" alt=""></span></li>
                 </ul>
             </div>
             <div id="mobile-menu-wrap"></div>
@@ -230,8 +231,8 @@
                             <li class="{{ request()->routeIs('author') ? 'active' : '' }} contact spin mainitem">
                                 <a href="{{ route('author') }}"><span>The Author</span></a>
                             </li>
-                            <li class="{{ request()->routeIs('witchs-picks') ? 'active' : '' }} witchs-picks mainitem">
-                                <a href="{{ route('witchs-picks') }}"><span>Witch's Picks</span></a>
+                            <li class="{{ request()->routeIs('posts.featured') ? 'active' : '' }} witchs-picks mainitem">
+                                <a href="{{ route('posts.featured') }}"><span>Witch's Picks</span></a>
                             </li>
                             <li class="{{ request()->routeIs('contact') ? 'active' : '' }} spin mainitem">
                                 <a class="marketing" href="{{ route('contact') }}"><span>Contact</span></a>

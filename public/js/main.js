@@ -34,7 +34,7 @@
             );
         })
 
-        // Handle witch's picks hover ungrow - ADD THIS HERE
+        // Handle witch's picks hover ungrow
         $(".nav-options .nav-menu ul li.witchs-picks").hover(
             function () {
                 // On hover in - remove ungrow class if it exists
