@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,9 @@ Route::get('witchs-picks', [PostController::class, 'featured'])->name('posts.fea
 
 // contact page form submitted
 Route::post('/contact', ContactController::class)->name('contact.submit');
+
+Route::post('/stripe/checkout/{post}', [StripeController::class, 'checkout']);
+Route::post('/stripe/webhook', [StripeController::class, 'webhook']);
 
 ////////// API SEction //////////
 //  api in web routes so it has access to user session. Move these to api if refactor to use sanctum.

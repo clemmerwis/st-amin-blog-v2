@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('/img/hero/owlx400.png') }}" type="image/x-icon">
 
     <!-- Admin Styles -->
     <link href="{{ asset('css/admin/assets/css/bootstrap.css') }}" rel="stylesheet" />

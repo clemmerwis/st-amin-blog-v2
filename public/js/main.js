@@ -110,12 +110,51 @@
 
         // Initial check after a brief delay to ensure DOM is ready
         setTimeout(checkScroll, 100);
+
+        // Stripe checkout handler
+        async function handleBuyNow(postId) {
+            try {
+                const button = event.target;
+                const originalText = button.innerText || button.textContent;
+                button.innerText = 'Loading...';
+                button.style.pointerEvents = 'none';
+
+                const response = await fetch(`/stripe/checkout/${postId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    button.innerText = originalText;
+                    button.style.pointerEvents = 'auto';
+                    alert('Unable to start checkout. Please try again.');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong. Please try again.');
+                const button = event.target;
+                if (button) {
+                    button.innerText = 'Buy Now';
+                    button.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
+        // Make it globally accessible for onclick handlers
+        window.handleBuyNow = handleBuyNow;
     });
 
 
 
     // $('#dataTables-example').dataTable();
-    console.log('test');
+    console.log('main.js loaded');
 
     /*------------------
         Background Set
