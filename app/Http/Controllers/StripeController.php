@@ -30,9 +30,9 @@ class StripeController extends Controller
                     'price_data' => [
                         'currency' => 'usd',
                         'product_data' => [
-                            'name' => $post->title,
+                            'name' => $post->product_name,
                         ],
-                        'unit_amount' => 2500,
+                        'unit_amount' => $post->price
                     ],
                     'quantity' => 1,
                 ]],
@@ -40,8 +40,8 @@ class StripeController extends Controller
                 'shipping_address_collection' => [
                     'allowed_countries' => ['US'],
                 ],
-                'success_url' => url("/blog/{$post->slug}?purchased=1"),
-                'cancel_url' => url("/blog/{$post->slug}"),
+                'success_url' => url("/posts/magazine/{$post->slug}?purchased=1"),
+                'cancel_url' => url("/posts/magazine/{$post->slug}"),
                 'metadata' => [
                     'post_id' => $post->id,
                 ],

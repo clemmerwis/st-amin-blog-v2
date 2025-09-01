@@ -24,6 +24,13 @@
             twitterImage="{{ $seoMeta['twitterImage'] ?? $post->featured_image_url }}"
         />
     @endpush
+
+    {{-- In single-default.blade.php, add near the top after the hero section --}}
+    @if(request()->get('purchased'))
+        <div class="alert alert-success" style="margin: 20px; padding: 15px; background: #4CAF50; color: white;">
+            Thank you for your purchase! You'll receive an email confirmation shortly.
+        </div>
+    @endif
     
 
     <!-- Details Hero Section Begin -->
