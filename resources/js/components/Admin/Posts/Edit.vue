@@ -257,6 +257,54 @@
                             </div>
                         </div>
 
+                        <div v-if="record.featured" class="col-md-12 mt-3">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="col-md-8 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Product Name
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-text-field
+                                                v-model="record.product_name"
+                                                name="product_name"
+                                                clearable
+                                                placeholder="Product Name"
+                                                hide-details
+                                            ></v-text-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Price
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-text-field
+                                                v-model="formattedPrice"
+                                                name="price"
+                                                prefix="$"
+                                                placeholder="0.00"
+                                                hide-details
+                                                clearable
+                                                @blur="formatPrice"
+                                                @focus="onPriceFocus"
+                                            ></v-text-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="d-md-flex justify-content-md-end gap-md-3">
                             <div class="card flex-basis-0 flex-grow-1">
                                 <div class="card-header">
@@ -421,6 +469,18 @@
                     return resultArray;
                 }, []);
             },
+            formattedPrice: {
+                get() {
+                    if (!this.record.price) return "0.00";
+                    return (this.record.price / 100).toFixed(2);
+                },
+                set(value) {
+                    // Remove $ and convert to cents
+                    const cleaned = value.replace(/[$,]/g, "");
+                    this.record.price = Math.round(parseFloat(cleaned) * 100) || 0;
+                },
+            },
+
             getSeoWidth() {
                 // if panel is set to 0, then make add the css class w-50, else be nothing
                 let width = this.panel === 0 ? "w-100" : "w-25";
@@ -465,6 +525,18 @@
             this.editorData = this.record.body;
         },
         methods: {
+            formatPrice() {
+                // Ensure it's in 0.00 format when blur
+                if (this.formattedPrice && !this.formattedPrice.includes(".")) {
+                    this.formattedPrice = parseFloat(this.formattedPrice).toFixed(
+                        2
+                    );
+                }
+            },
+            onPriceFocus(event) {
+                // Select all text on focus for easy editing
+                event.target.select();
+            },
             convertToHourFormat(dateTimeStr) {
                 // Split the date string to get the time part
                 const timePart = dateTimeStr.split(" ")[1];
@@ -693,6 +765,9 @@
                     excerpt: this.record.excerpt,
                     body: this.editorData,
                     published_at: publishedAt,
+                    // product
+                    product_name: this.record.product_name || "",
+                    price: this.record.price || null,
                     // seo
                     seo_title: seoMeta.title || "",
                     seo_description: seoMeta.description || "",

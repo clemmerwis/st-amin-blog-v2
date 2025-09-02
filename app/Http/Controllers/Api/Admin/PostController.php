@@ -105,6 +105,9 @@ class PostController extends Controller
             'body'       => 'required',
             'categories' => 'required|array',
             'published_at' => 'nullable|date',
+            // product
+            'product_name' => 'nullable|string',
+            'price' => 'nullable|integer',
             // seo
             'seo_title'     => 'nullable|string',
             'seo_description' => 'nullable|string',
@@ -146,6 +149,8 @@ class PostController extends Controller
             'excerpt',
             'body',
             'published_at',
+            'product_name',
+            'price',
         ]);
 
         $seoData = $request->only([
