@@ -471,13 +471,14 @@
             },
             formattedPrice: {
                 get() {
-                    if (!this.record.price) return "0.00";
-                    return (this.record.price / 100).toFixed(2);
+                    if (!this.record.product_price) return "0.00";
+                    return (this.record.product_price / 100).toFixed(2);
                 },
                 set(value) {
                     // Remove $ and convert to cents
                     const cleaned = value.replace(/[$,]/g, "");
-                    this.record.price = Math.round(parseFloat(cleaned) * 100) || 0;
+                    this.record.product_price =
+                        Math.round(parseFloat(cleaned) * 100) || 0;
                 },
             },
 
@@ -767,7 +768,7 @@
                     published_at: publishedAt,
                     // product
                     product_name: this.record.product_name || "",
-                    price: this.record.price || null,
+                    product_price: this.record.product_price || null,
                     // seo
                     seo_title: seoMeta.title || "",
                     seo_description: seoMeta.description || "",

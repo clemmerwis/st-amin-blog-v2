@@ -23,9 +23,9 @@ class PostDetailResource extends JsonResource
             'body'         => $this->body,
             'featured'     => $this->featured,
             'product_name' => $this->product_name,
-            'price'        => $this->price,
+            'product_price'=> $this->product_price,
             'published_at' => optional($this->published_at)->format('M-d-Y H:i'),
-            'categories'     => $this->categories,
+            'categories'   => $this->categories,
             'detail'       => $this->detail     
         ];
     }

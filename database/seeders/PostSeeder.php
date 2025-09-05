@@ -257,6 +257,16 @@ class PostSeeder extends Seeder
             $post->detail()->save(Detail::factory()->make([
                 'seo_meta' => $seoMeta
             ]));
+
+            // PRODUCT UPDATE HERE - RIGHT BEFORE THE LOOP CONTINUES
+            if ($slug === 'holistic-health-a-witchs-perspective') {
+                $post->update([
+                    'featured' => true,
+                    'product_name' => 'Product Name Here!',
+                    'product_price' => 3369,  // $33.69 in cents
+                    'product_image_url' => null
+                ]);
+            }
         }
     }
 }

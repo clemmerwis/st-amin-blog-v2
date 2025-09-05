@@ -107,7 +107,7 @@ class PostController extends Controller
             'published_at' => 'nullable|date',
             // product
             'product_name' => 'nullable|string',
-            'price' => 'nullable|integer',
+            'product_price' => 'nullable|integer',
             // seo
             'seo_title'     => 'nullable|string',
             'seo_description' => 'nullable|string',
@@ -150,7 +150,7 @@ class PostController extends Controller
             'body',
             'published_at',
             'product_name',
-            'price',
+            'product_price',
         ]);
 
         $seoData = $request->only([

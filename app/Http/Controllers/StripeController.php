@@ -32,7 +32,7 @@ class StripeController extends Controller
                         'product_data' => [
                             'name' => $post->product_name,
                         ],
-                        'unit_amount' => $post->price
+                        'unit_amount' => $post->product_price
                     ],
                     'quantity' => 1,
                 ]],
