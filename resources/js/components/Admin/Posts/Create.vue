@@ -252,6 +252,9 @@
 
 <script>
     import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+    import { useFeaturedMedia } from "@/composables/useFeaturedMedia";
+    import { useCategories } from "@/composables/useCategories";
+
     export default {
         props: {
             cats: {
@@ -261,6 +264,21 @@
                     return {};
                 },
             },
+        },
+        setup(props) {
+            // Use composables
+            const media = useFeaturedMedia();
+            const categories = useCategories(props.cats);
+
+            // Initialize subcategories
+            categories.loadAllSubCategories();
+
+            return {
+                // Media composable
+                ...media,
+                // Categories composable
+                ...categories,
+            };
         },
         data() {
             return {
@@ -279,65 +297,23 @@
                     featured: false,
                     category: [],
                 },
-                featuredImg: [],
-                urlFeaturedImg: null,
-                featuredGif: [],
-                urlFeaturedGif: null,
                 rules: {
                     required: (value) => !!value || "Required",
                 },
                 payload: null,
-
-                // for category selector dropdown
-                selectedMainCategory: "",
-                selectedSubCategories: [""],
-                mainCategories: [],
-                subCategories: [],
             };
         },
         computed: {
             isProcessing() {
-                return this.processing;
+                return this.processing || this.categoriesLoading;
             },
             isPublished() {
                 return this.record.published_at !== null;
             },
-            subCategoriesApiUrl() {
-                return `/api/categories/${this.selectedMainCategory}/children`;
-            },
-            subCategoriesChunks() {
-                if (!Array.isArray(this.subCategories)) {
-                    return [];
-                }
-
-                const chunkSize = 4;
-                return this.subCategories.reduce((resultArray, item, index) => {
-                    const chunkIndex = Math.floor(index / chunkSize);
-
-                    if (!resultArray[chunkIndex]) {
-                        resultArray[chunkIndex] = [];
-                    }
-
-                    resultArray[chunkIndex].push(item);
-
-                    return resultArray;
-                }, []);
-            },
-        },
-        watch: {
-            subCategoriesApiUrl(newUrl) {
-                this.fetchSubCategories(newUrl);
-            },
-        },
-        created() {
-            this.mainCategories = ["All", ...this.cats];
-
-            this.subCategories = this.getSubCategories();
         },
         methods: {
             async validate() {
                 const { valid } = await this.$refs.form.validate();
-
                 return valid;
             },
             reset() {
@@ -347,45 +323,14 @@
                 this.$refs.form.resetValidation();
             },
 
-            handleMainCategoryChange() {
-                this.fetchSubCategories(this.subCategoriesApiUrl);
-            },
-
-            async fetchSubCategories(url) {
-                this.processing = true;
-
-                try {
-                    const response = await axios.get(url);
-                    this.subCategories = response.data;
-                } catch (error) {
-                    console.error("Failed to fetch subcategories:", error);
-                } finally {
-                    this.processing = false;
-                }
-            },
-
-            async getSubCategories() {
-                try {
-                    const response = await axios.get("/api/categories/sub");
-                    return response.data;
-                } catch (error) {
-                    console.error("Failed to fetch subcategories:", error);
-                    return [];
-                }
-            },
-
             async create() {
                 this.processing = true;
-                // reset validations
                 this.errors = {};
                 this.alert = {};
 
-                // check form
                 if (await this.validate()) {
-                    // build payload
                     this.payload = await this.getPayload();
 
-                    // submit form
                     return axios
                         .post(`/api/admin/posts`, this.payload, {
                             headers: {
@@ -394,22 +339,14 @@
                         })
                         .then((response) => {
                             this.processing = false;
-
-                            // alert user
                             this.alert = { message: "Post created successfully" };
-
-                            // Redirect to the edit page
                             const newPostId = response.data.id;
                             window.location.href = `/admin/posts/${newPostId}/edit`;
                         })
                         .catch(({ response }) => {
                             if (response) {
                                 this.processing = false;
-
-                                // field validation errors (server-side)
                                 this.errors = response.data?.errors;
-
-                                // alert user
                                 this.alert = {
                                     title: "Validation Errors",
                                     ...response?.data,
@@ -417,25 +354,19 @@
                             }
                         });
                 } else {
-                    // trigger alert
                     this.alert = {
                         title: "Validation Errors",
                         message: "Form Errors are Present",
                         errors: true,
                     };
-
                     this.processing = false;
-
                     return false;
                 }
             },
-            async getPayload() {
-                let combinedCategories = [
-                    this.selectedMainCategory,
-                    ...this.selectedSubCategories,
-                ];
 
-                // limit payload fields
+            async getPayload() {
+                const combinedCategories = this.getCombinedCategories();
+
                 const payload = {
                     title: this.record.title,
                     slug: this.record.slug,
@@ -445,75 +376,27 @@
                     body: this.editorData,
                 };
 
-                // set image_featured to clear so the backend will clear the media on the model
-                if (!this.urlFeaturedImg && this.featuredImg.length === 0) {
-                    payload.image_featured = "clear";
-                }
-
-                // new image
-                if (!this.urlFeaturedImg && this.featuredImg.length !== 0) {
-                    payload.image_featured = this.featuredImg;
-                }
-
-                // set gif_featured to clear so the backend will clear the media on the model
-                if (!this.urlFeaturedGif && this.featuredGif.length === 0) {
-                    payload.gif_featured = "clear";
-                }
-
-                // new gif
-                if (!this.urlFeaturedGif && this.featuredGif.length !== 0) {
-                    payload.gif_featured = this.featuredGif;
-                }
+                // Apply media fields from composable
+                this.applyMediaToPayload(payload);
 
                 let formData = new FormData();
 
-                // populate formData
+                // Populate formData with non-media fields
                 for (let key in payload) {
-                    // append image_featured
-                    if (key === "image_featured" && payload[key]) {
-                        if (payload[key] !== "clear") {
-                            formData.append(key, payload[key][0]);
-                        } else {
-                            formData.append(key, payload[key]);
-                        }
-                    }
-                    // append gif_featured
-                    else if (key === "gif_featured" && payload[key]) {
-                        if (payload[key] !== "clear") {
-                            formData.append(key, payload[key][0]);
-                        } else {
-                            formData.append(key, payload[key]);
-                        }
-                    } else {
-                        // append other properties
+                    if (key !== "image_featured" && key !== "gif_featured") {
                         formData.append(key, payload[key]);
                     }
                 }
 
-                // append array of category names to formData
+                // Append media using composable helper
+                this.appendMediaToFormData(formData, payload);
+
+                // Append categories
                 for (let i = 0; i < combinedCategories.length; i++) {
                     formData.append("categories[]", combinedCategories[i]);
                 }
 
                 return formData;
-            },
-
-            updateFeaturedImage(event) {
-                this.urlFeaturedImg = null;
-                this.featuredImg = Array.from(event.target.files);
-            },
-            clearFileInput() {
-                this.urlFeaturedImg = null;
-                this.featuredImg = [];
-            },
-
-            updateFeaturedGif(event) {
-                this.urlFeaturedGif = null;
-                this.featuredGif = Array.from(event.target.files);
-            },
-            clearGifInput() {
-                this.urlFeaturedGif = null;
-                this.featuredGif = [];
             },
         },
     };

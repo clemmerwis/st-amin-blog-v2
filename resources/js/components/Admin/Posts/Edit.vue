@@ -361,6 +361,9 @@
 
 <script>
     import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+    import { useFeaturedMedia } from "@/composables/useFeaturedMedia";
+    import { useCategories } from "@/composables/useCategories";
+
     export default {
         props: {
             post: {
@@ -377,6 +380,26 @@
                     return {};
                 },
             },
+        },
+        setup(props) {
+            // Use composables
+            const media = useFeaturedMedia();
+            const categories = useCategories(props.cats);
+
+            // Initialize categories from post data
+            if (props.post && props.post.categories) {
+                categories.initFromPost(props.post.categories);
+            }
+
+            // Load all subcategories
+            categories.loadAllSubCategories();
+
+            return {
+                // Media composable
+                ...media,
+                // Categories composable
+                ...categories,
+            };
         },
         data() {
             return {
@@ -415,50 +438,19 @@
                 valid: false,
                 processing: false,
                 record: this.post || {},
-                featuredImg: [],
-                urlFeaturedImg: null,
-                featuredGif: [],
-                urlFeaturedGif: null,
                 rules: {
                     required: (value) => !!value || "Required",
                 },
                 payload: null,
                 panel: [],
-
-                // for category selector dropdown
-                selectedMainCategory: "",
-                selectedSubCategories: [""],
-                mainCategories: [],
-                subCategories: [],
             };
         },
         computed: {
             isProcessing() {
-                return this.processing;
+                return this.processing || this.categoriesLoading;
             },
             isPublished() {
                 return this.record.published_at !== null;
-            },
-            subCategoriesApiUrl() {
-                return `/api/categories/${this.selectedMainCategory}/children`;
-            },
-            subCategoriesChunks() {
-                if (!Array.isArray(this.subCategories)) {
-                    return [];
-                }
-
-                const chunkSize = 4;
-                return this.subCategories.reduce((resultArray, item, index) => {
-                    const chunkIndex = Math.floor(index / chunkSize);
-
-                    if (!resultArray[chunkIndex]) {
-                        resultArray[chunkIndex] = [];
-                    }
-
-                    resultArray[chunkIndex].push(item);
-
-                    return resultArray;
-                }, []);
             },
             formattedPrice: {
                 get() {
@@ -487,29 +479,12 @@
                 };
             },
         },
-        watch: {
-            subCategoriesApiUrl(newUrl) {
-                this.fetchSubCategories(newUrl);
-            },
-        },
         created() {
             this.publishDate = this.convertToDatePickerFormat(
                 this.record.published_at
             );
 
             this.publishHour = this.convertToHourFormat(this.record.published_at);
-
-            this.mainCategories = ["All", ...this.cats];
-
-            this.subCategories = this.getSubCategories();
-
-            this.selectedMainCategory = this.record.categories.find(
-                (category) => category.parent_id === null
-            ).name;
-
-            this.selectedSubCategories = this.record.categories
-                .filter((category) => category.parent_id !== null)
-                .map((category) => category.name);
 
             this.getFeaturedImage();
             this.getFeaturedGif();
@@ -600,33 +575,6 @@
                 event.editor.setData(content);
             },
 
-            handleMainCategoryChange() {
-                this.fetchSubCategories(this.subCategoriesApiUrl);
-            },
-
-            async fetchSubCategories(url) {
-                this.processing = true;
-
-                try {
-                    const response = await axios.get(url);
-                    this.subCategories = response.data;
-                } catch (error) {
-                    console.error("Failed to fetch subcategories:", error);
-                } finally {
-                    this.processing = false;
-                }
-            },
-
-            async getSubCategories() {
-                try {
-                    const response = await axios.get("/api/categories/sub");
-                    return response.data;
-                } catch (error) {
-                    console.error("Failed to fetch subcategories:", error);
-                    return [];
-                }
-            },
-
             convertTo24Hour(hour12) {
                 if (!hour12) return "";
 
@@ -707,7 +655,7 @@
                                 this.processing = false;
 
                                 // field validation errors (server-side)
-                                this.errors = this.errors?.errors;
+                                this.errors = response.data?.errors;
 
                                 // alert user
                                 this.alert = {
@@ -730,10 +678,7 @@
                 }
             },
             async getPayload() {
-                let combinedCategories = [
-                    this.selectedMainCategory,
-                    ...this.selectedSubCategories,
-                ];
+                const combinedCategories = this.getCombinedCategories();
 
                 // Convert 12-hour format to 24-hour format
                 const hour24 = this.convertTo24Hour(this.publishHour);
@@ -769,78 +714,30 @@
 
                 this.formatDateForCarbon(payload.published_at);
 
-                // set image_featured to clear so the backend will clear the media on the model
-                if (!this.urlFeaturedImg && this.featuredImg.length === 0) {
-                    payload.image_featured = "clear";
-                }
-
-                // new image
-                if (!this.urlFeaturedImg && this.featuredImg.length !== 0) {
-                    payload.image_featured = this.featuredImg;
-                }
-
-                // set gif_featured to clear so the backend will clear the media on the model
-                if (!this.urlFeaturedGif && this.featuredGif.length === 0) {
-                    payload.gif_featured = "clear";
-                }
-
-                // new gif
-                if (!this.urlFeaturedGif && this.featuredGif.length !== 0) {
-                    payload.gif_featured = this.featuredGif;
-                }
+                // Apply media fields from composable
+                this.applyMediaToPayload(payload);
 
                 let formData = new FormData();
 
                 // Add method spoofing for PUT request
                 formData.append("_method", "PUT");
 
-                // populate formData
+                // Populate formData with non-media fields
                 for (let key in payload) {
-                    // append image_featured
-                    if (key === "image_featured" && payload[key]) {
-                        if (payload[key] !== "clear") {
-                            formData.append(key, payload[key][0]);
-                        } else {
-                            formData.append(key, payload[key]);
-                        }
-                    }
-                    // append gif_featured
-                    else if (key === "gif_featured" && payload[key]) {
-                        if (payload[key] !== "clear") {
-                            formData.append(key, payload[key][0]);
-                        } else {
-                            formData.append(key, payload[key]);
-                        }
-                    } else {
-                        // append other properties
+                    if (key !== "image_featured" && key !== "gif_featured") {
                         formData.append(key, payload[key]);
                     }
                 }
 
-                // append array of category names to formData
+                // Append media using composable helper
+                this.appendMediaToFormData(formData, payload);
+
+                // Append categories
                 for (let i = 0; i < combinedCategories.length; i++) {
                     formData.append("categories[]", combinedCategories[i]);
                 }
 
                 return formData;
-            },
-
-            updateFeaturedImage(event) {
-                this.urlFeaturedImg = null;
-                this.featuredImg = Array.from(event.target.files);
-            },
-            clearFileInput() {
-                this.urlFeaturedImg = null;
-                this.featuredImg = [];
-            },
-
-            updateFeaturedGif(event) {
-                this.urlFeaturedGif = null;
-                this.featuredGif = Array.from(event.target.files);
-            },
-            clearGifInput() {
-                this.urlFeaturedGif = null;
-                this.featuredGif = [];
             },
 
             getFeaturedImage() {
@@ -873,7 +770,7 @@
                         this.processing = false;
 
                         // field validation errors (server-side)
-                        this.errors = this.errors?.errors;
+                        this.errors = response?.data?.errors;
 
                         // alert user
                         this.alert = {
@@ -913,11 +810,11 @@
                         this.processing = false;
 
                         // field validation errors (server-side)
-                        this.errors = this.errors?.errors;
+                        this.errors = response?.data?.errors;
 
                         // alert user
                         this.alert = {
-                            title: "Featured Image Error",
+                            title: "Featured GIF Error",
                             ...response?.data,
                         };
                     });
