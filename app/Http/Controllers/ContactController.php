@@ -23,7 +23,7 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
         
-        Mail::to('erica@storiesofmirrors.com')->send(new ContactFormSubmitted($formData));
+        Mail::to(config('mail.contact.address'))->send(new ContactFormSubmitted($formData));
 
         // Redirect back with a success message
         return back()->with('success', 'Your message has been sent successfully!');

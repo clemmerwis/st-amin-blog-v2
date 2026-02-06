@@ -39,9 +39,9 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name'      => 'required',
-            'slug'      => 'required',
-            'parent_id' => 'nullable',
+            'name'      => 'required|string|max:255|unique:categories,name,' . $category->id,
+            'slug'      => 'required|string|max:255|unique:categories,slug,' . $category->id,
+            'parent_id' => 'nullable|integer|exists:categories,id',
         ]);
 
         // If the category is being converted from a parent (parent_id === null) to a child (parent_id !== null), 
