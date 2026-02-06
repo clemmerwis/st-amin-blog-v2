@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function getChildCategories(string $category_name)
     {
-        $subCategories = Category::where('name', $category_name)?->first()->subcats;
+        $subCategories = Category::where('name', $category_name)->first()?->subcats;
 
         return response()->json($subCategories ?? []);
     }

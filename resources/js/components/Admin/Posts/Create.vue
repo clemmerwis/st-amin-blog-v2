@@ -407,7 +407,7 @@
                                 this.processing = false;
 
                                 // field validation errors (server-side)
-                                this.errors = this.errors?.errors;
+                                this.errors = response.data?.errors;
 
                                 // alert user
                                 this.alert = {

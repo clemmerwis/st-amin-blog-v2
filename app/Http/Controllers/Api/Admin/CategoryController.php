@@ -17,7 +17,7 @@ class CategoryController extends Controller
         $rowsPerPage = $request->query('limit', 10);
 
         return CategoryIndexResource::collection(
-            Post::orderBy('id', 'desc')
+            Category::orderBy('id', 'desc')
                 ->paginate(request('page') ? $rowsPerPage : 10000)
         );
     }
