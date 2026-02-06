@@ -43,4 +43,20 @@ class PostFactory extends Factory
             'excerpt' => $this->faker->text($this->faker->numberBetween(200, 300)),
         ];
     }
+
+    /**
+     * Indicate that the post is featured with product info.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function featured()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'featured' => true,
+                'product_name' => 'Test Magazine',
+                'product_price' => 1999,
+            ];
+        });
+    }
 }
