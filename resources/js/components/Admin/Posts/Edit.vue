@@ -259,7 +259,7 @@
 
                         <div v-if="record.featured" class="col-md-12 mt-3">
                             <div class="row d-flex align-items-stretch">
-                                <div class="col-md-6 d-flex">
+                                <div class="col-md-8 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -279,7 +279,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 d-flex">
+                                <div class="col-md-4 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -305,23 +305,26 @@
                             </div>
                         </div>
 
-                        <div class="d-md-flex justify-content-md-end gap-md-3">
-                            <div class="card flex-basis-0 flex-grow-1">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">
-                                        Main Category
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <v-select
-                                        v-model="selectedMainCategory"
-                                        :items="mainCategories"
-                                        item-value="id"
-                                        item-text="name"
-                                        label="Main Category"
-                                        @change="handleMainCategoryChange"
-                                    ></v-select>
-                                </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">
+                                    Main Category
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <v-select
+                                    v-model="selectedMainCategory"
+                                    :items="mainCategories"
+                                    item-value="id"
+                                    item-text="name"
+                                    label="Main Category"
+                                    @change="handleMainCategoryChange"
+                                ></v-select>
                             </div>
                         </div>
 
