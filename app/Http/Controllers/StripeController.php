@@ -14,16 +14,17 @@ class StripeController extends Controller
 {
     public function __construct()
     {
-        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        Stripe::setApiKey(config('services.stripe.secret'));
     }
-    
+
     /**
      * Create checkout session for a post
      */
     public function checkout(Post $post)
     {
         abort_unless($post->featured, 404);
-        
+        abort_unless($post->product_name && $post->product_price, 400, 'Product not configured');
+
         try {
             $session = Session::create([
                 'line_items' => [[
@@ -46,15 +47,15 @@ class StripeController extends Controller
                     'post_id' => $post->id,
                 ],
             ]);
-            
+
             return response()->json(['url' => $session->url]);
-            
+
         } catch (\Exception $e) {
-            Log::error('Stripe error: ' . $e->getMessage());
+            Log::error('Stripe checkout error: ' . $e->getMessage());
             return response()->json(['error' => 'Unable to create checkout'], 500);
         }
     }
-    
+
     /**
      * Handle Stripe webhooks
      */
@@ -62,30 +63,77 @@ class StripeController extends Controller
     {
         $payload = $request->getContent();
         $sig_header = $request->header('Stripe-Signature');
-        
+
         try {
             $event = Webhook::constructEvent(
                 $payload,
                 $sig_header,
-                env('STRIPE_WEBHOOK_SECRET')
+                config('services.stripe.webhook_secret')
             );
         } catch(\Exception $e) {
+            Log::warning('Stripe webhook: Invalid signature', [
+                'error' => $e->getMessage()
+            ]);
             return response('', 400);
         }
-        
+
         if ($event->type === 'checkout.session.completed') {
             $session = $event->data->object;
-            
-            Order::create([
-                'post_id' => $session->metadata->post_id,
-                'stripe_session_id' => $session->id,
-                'customer_email' => $session->customer_details->email,
-                'customer_name' => $session->customer_details->name,
-                'shipping_address' => $session->shipping_details->address,
-                'amount' => $session->amount_total,
-            ]);
+
+            // Validate required metadata
+            $postId = $session->metadata->post_id ?? null;
+            if (!$postId) {
+                Log::error('Stripe webhook: Missing post_id in metadata', [
+                    'session_id' => $session->id
+                ]);
+                return response('', 400);
+            }
+
+            // Validate post exists
+            $post = Post::find($postId);
+            if (!$post) {
+                Log::error('Stripe webhook: Post not found', [
+                    'post_id' => $postId,
+                    'session_id' => $session->id
+                ]);
+                return response('', 400);
+            }
+
+            // Idempotency check - prevent duplicate orders
+            if (Order::where('stripe_session_id', $session->id)->exists()) {
+                Log::info('Stripe webhook: Duplicate session, skipping', [
+                    'session_id' => $session->id
+                ]);
+                return response('', 200);
+            }
+
+            // Create order with null-safe property access
+            try {
+                Order::create([
+                    'post_id' => $postId,
+                    'stripe_session_id' => $session->id,
+                    'customer_email' => $session->customer_details->email ?? null,
+                    'customer_name' => $session->customer_details->name ?? null,
+                    'shipping_address' => $session->shipping_details->address ?? null,
+                    'amount' => $session->amount_total,
+                ]);
+
+                Log::info('Stripe webhook: Order created', [
+                    'post_id' => $postId,
+                    'session_id' => $session->id,
+                    'amount' => $session->amount_total
+                ]);
+            } catch (\Exception $e) {
+                Log::error('Stripe webhook: Failed to create order', [
+                    'error' => $e->getMessage(),
+                    'post_id' => $postId,
+                    'session_id' => $session->id
+                ]);
+                // Return 200 to prevent Stripe retries for DB errors
+                // Manual intervention needed - check logs
+            }
         }
-        
+
         return response('', 200);
     }
 }
