@@ -202,7 +202,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 offset-md-1">
+                    <div class="col-md-7">
                         <div class="d-md-flex justify-content-md-end gap-md-3">
                             <div class="card flex-basis-0 flex-grow-1">
                                 <div class="card-body">
@@ -259,7 +259,7 @@
 
                         <div v-if="record.featured" class="col-md-12 mt-3">
                             <div class="row d-flex align-items-stretch">
-                                <div class="col-md-8 d-flex">
+                                <div class="col-md-6 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -279,7 +279,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 d-flex">
+                                <div class="col-md-6 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -325,7 +325,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card sub-categories">
                             <div
                                 class="card-header d-flex flex-row w-100 justify-content-between"
                             >
@@ -336,28 +336,16 @@
                                 Loading...
                             </div>
 
-                            <div v-else>
+                            <div v-else class="sub-categories-grid">
                                 <div
-                                    v-for="(
-                                        chunk, chunkIndex
-                                    ) in subCategoriesChunks"
-                                    :key="chunkIndex"
+                                    v-for="subCategory in subCategories"
+                                    :key="subCategory.id"
                                 >
-                                    <div
-                                        class="d-md-flex flex-row justify-content-md-end gap-md-3"
-                                    >
-                                        <div
-                                            v-for="subCategory in chunk"
-                                            :key="subCategory.id"
-                                            class="flex-basis-0 flex-grow-1"
-                                        >
-                                            <v-checkbox
-                                                v-model="selectedSubCategories"
-                                                :label="subCategory.name"
-                                                :value="subCategory.name"
-                                            ></v-checkbox>
-                                        </div>
-                                    </div>
+                                    <v-checkbox
+                                        v-model="selectedSubCategories"
+                                        :label="subCategory.name"
+                                        :value="subCategory.name"
+                                    ></v-checkbox>
                                 </div>
                             </div>
                         </div>
@@ -973,6 +961,26 @@
 
     .vuetify-switch .card-body {
         padding: 0 1.2em;
+    }
+
+    .sub-categories-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        text-align: center;
+        row-gap: 1rem;
+    }
+
+    .sub-categories :deep(.v-selection-control.v-selection-control--inline) {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .sub-categories :deep(.v-label) {
+        white-space: normal;
+        text-align: center;
+        max-width: 10ch;
     }
 
     @media (max-width: 768px) {
