@@ -107,15 +107,14 @@ class StripeController extends Controller
                 return response('', 200);
             }
 
-            // Create order — these fields are guaranteed by Stripe for completed
-            // checkout sessions with shipping collection enabled
+            // Create order with null-safe property access
             try {
                 Order::create([
                     'post_id' => $postId,
                     'stripe_session_id' => $session->id,
-                    'customer_email' => $session->customer_details->email,
-                    'customer_name' => $session->customer_details->name,
-                    'shipping_address' => $session->shipping_details->address,
+                    'customer_email' => $session->customer_details->email ?? null,
+                    'customer_name' => $session->customer_details->name ?? null,
+                    'shipping_address' => $session->shipping_details->address ?? null,
                     'amount' => $session->amount_total,
                 ]);
 
