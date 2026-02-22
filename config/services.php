@@ -35,4 +35,8 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     ],
 
+    'facebook' => [
+        'app_id' => env('FACEBOOK_APP_ID'),
+    ],
+
 ];

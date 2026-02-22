@@ -59,7 +59,23 @@ class PostController extends Controller
         $post->published_at = now();
         $post->save();
 
+        $parentCategory = Category::whereIn('id', $categoryIds)
+            ->whereNull('parent_id')
+            ->first();
+        $categorySlug = $parentCategory ? $parentCategory->slug : 'uncategorized';
+
         $detail = new Detail();
+        $detail->seo_meta = [
+            'title' => $request->input('title', ''),
+            'keywords' => '',
+            'description' => $request->input('excerpt', ''),
+            'author' => auth()->user()->name,
+            'ogTitle' => $request->input('title', ''),
+            'ogDescription' => $request->input('excerpt', ''),
+            'ogUrl' => "https://storiesofmirrors.com/posts/{$categorySlug}/" . $request->input('slug'),
+            'twitterTitle' => $request->input('title', ''),
+            'twitterDescription' => $request->input('excerpt', ''),
+        ];
         $post->detail()->save($detail);
 
         // Sync categories to the new post
@@ -159,6 +175,9 @@ class PostController extends Controller
             'seo_keywords',
             'seo_author',
         ]);
+        $parentCategory = $post->categories->firstWhere('parent_id', null);
+        $categorySlug = $parentCategory ? $parentCategory->slug : 'uncategorized';
+
         $seoMeta = [
             'title' => $seoData["seo_title"] ?? '',
             'keywords' => $seoData["seo_keywords"] ?? '',
@@ -167,8 +186,8 @@ class PostController extends Controller
 
             'ogTitle' => $seoData["seo_title"] ?? '',
             'ogDescription' => $seoData["seo_description"] ?? '',
-            'ogUrl' => "https://storiesofmirrors.com/posts/stories-of-mirrors/" . ($payload['slug']),
-            
+            'ogUrl' => "https://storiesofmirrors.com/posts/{$categorySlug}/" . ($payload['slug']),
+
             'twitterTitle' => $seoData["seo_title"] ?? '',
             'twitterDescription' => $seoData["seo_description"] ?? '',
         ];

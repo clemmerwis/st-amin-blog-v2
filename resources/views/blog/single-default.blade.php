@@ -16,12 +16,12 @@
             ogTitle="{{ $seoMeta['ogTitle'] ?? $post->title }}"
             ogDescription="{{ $seoMeta['ogDescription'] ?? $post->excerpt }}" 
             ogUrl="{{ $seoMeta['ogUrl'] ?? url()->current() }}"
-            ogImage="{{ $seoMeta['ogImage'] ?? $post->featured_image_url }}"
+            ogImage="{{ $seoMeta['ogImage'] ?? $post->social_image_url }}"
             ogType="article"
 
-            twitterTitle="{{ $seoMeta['twitterTitle'] ?? $post->title }}" 
+            twitterTitle="{{ $seoMeta['twitterTitle'] ?? $post->title }}"
             twitterDescription="{{ $seoMeta['twitterDescription'] ?? $post->excerpt }}"
-            twitterImage="{{ $seoMeta['twitterImage'] ?? $post->featured_image_url }}"
+            twitterImage="{{ $seoMeta['twitterImage'] ?? $post->social_image_url }}"
         />
     @endpush
 

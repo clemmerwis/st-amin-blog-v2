@@ -26,6 +26,11 @@ class Post extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->width(400);
+
+        $this->addMediaConversion('social')
+            ->width(1200)
+            ->height(630)
+            ->fit('crop', 1200, 630);
     }
 
     // how to use accessors example: $post->featured_image_url
@@ -34,10 +39,27 @@ class Post extends Model implements HasMedia
         if (!$this->relationLoaded('media')) {
             $this->load('media');
         }
-    
+
         return $this->getFirstMedia('featured-images')
             ? $this->getFirstMedia('featured-images')->getUrl('thumb')
             : asset('img/categories-list/cl-1.jpg');
+    }
+
+    public function getSocialImageUrlAttribute()
+    {
+        if (!$this->relationLoaded('media')) {
+            $this->load('media');
+        }
+
+        $media = $this->getFirstMedia('featured-images');
+        if (!$media) {
+            return asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg');
+        }
+
+        // Use the social conversion if it exists, otherwise fall back to the original
+        return $media->hasGeneratedConversion('social')
+            ? $media->getUrl('social')
+            : $media->getUrl();
     }
 
     public function getFeaturedImageThumbUrlAttribute()

@@ -94,13 +94,14 @@ class PostController extends Controller
         ];
 
         // Get SEO meta information for sharing
-        $seoMeta = $post->detail->seo_meta;
+        $seoMeta = $post->detail->seo_meta ?? [];
+        $currentUrl = url()->current();
 
         // Generate share URLs
         $shareUrls = [
-            'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($seoMeta['ogUrl']),
-            'twitter' => 'https://twitter.com/intent/tweet?text=' . urlencode($seoMeta['twitterTitle']) . '&url=' . urlencode($seoMeta['ogUrl']),
-            'email' => 'mailto:?subject=' . urlencode($seoMeta['title']) . '&body=' . urlencode($seoMeta['description'] . ' ' . $seoMeta['ogUrl'])
+            'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($seoMeta['ogUrl'] ?? $currentUrl),
+            'twitter' => 'https://twitter.com/intent/tweet?text=' . urlencode($seoMeta['twitterTitle'] ?? $post->title) . '&url=' . urlencode($seoMeta['ogUrl'] ?? $currentUrl),
+            'email' => 'mailto:?subject=' . urlencode($seoMeta['title'] ?? $post->title) . '&body=' . urlencode(($seoMeta['description'] ?? $post->excerpt) . ' ' . ($seoMeta['ogUrl'] ?? $currentUrl))
         ];
     
         // Determine the template
