@@ -8,7 +8,9 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic test to verify the application responds.
+     *
+     * The root route (/) redirects to /home.
      *
      * @return void
      */
@@ -16,6 +18,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $response->assertRedirect(route('home'));
     }
 }
