@@ -12,6 +12,9 @@ class MiddlewareTest extends TestCase
 
     /**
      * Test isAdminMiddleware allows admin users.
+     *
+     * Note: /admin/dashboard redirects to admin.posts.index (302), so
+     * a successful admin request still produces a redirect response.
      */
     public function test_is_admin_middleware_allows_admin()
     {
@@ -19,7 +22,8 @@ class MiddlewareTest extends TestCase
 
         $response = $this->actingAs($admin)->get('/admin/dashboard');
 
-        $response->assertStatus(200);
+        // Admin passes the isAdmin middleware; dashboard redirects to posts index
+        $response->assertRedirect(route('admin.posts.index'));
     }
 
     /**
@@ -37,13 +41,16 @@ class MiddlewareTest extends TestCase
 
     /**
      * Test isAdminMiddleware blocks guests.
+     *
+     * Note: isAdmin middleware runs before auth middleware on admin routes,
+     * so guests are redirected to home (not login) with 'not_admin' session key.
      */
     public function test_is_admin_middleware_blocks_guest()
     {
         $response = $this->get('/admin/dashboard');
 
-        // Guest should be redirected to login
-        $response->assertRedirect(route('login'));
+        // isAdmin middleware redirects unauthenticated users to home
+        $response->assertRedirect(route('home'));
     }
 
     /**
@@ -53,13 +60,11 @@ class MiddlewareTest extends TestCase
     {
         $user = User::factory()->create(['is_admin' => 0]);
 
-        // Use a route protected by isUserMiddleware
-        // Since we may not have such a route, we'll test the middleware directly
-        $response = $this->actingAs($user)->get('/user/dashboard');
+        // /user/profile is protected by isUser middleware
+        $response = $this->actingAs($user)->get('/user/profile');
 
-        // If route doesn't exist, this will 404, but middleware would have passed
-        // For now, just verify the user can make authenticated requests
-        $this->assertTrue($user->is_admin == 0);
+        // Regular users pass the isUser middleware (200 from profile view)
+        $response->assertStatus(200);
     }
 
     /**
@@ -69,8 +74,11 @@ class MiddlewareTest extends TestCase
     {
         $admin = User::factory()->admin()->create();
 
-        // Test that admin flag is set correctly
-        $this->assertEquals(1, $admin->is_admin);
+        $response = $this->actingAs($admin)->get('/user/profile');
+
+        // Admin is redirected away from user routes
+        $response->assertRedirect(route('home'));
+        $response->assertSessionHas('not_user');
     }
 
     /**
@@ -78,7 +86,9 @@ class MiddlewareTest extends TestCase
      */
     public function test_is_user_middleware_blocks_guest()
     {
-        // Guest user should not be authenticated
-        $this->assertFalse(auth()->check());
+        $response = $this->get('/user/profile');
+
+        // isUser middleware redirects unauthenticated users to home
+        $response->assertRedirect(route('home'));
     }
 }
