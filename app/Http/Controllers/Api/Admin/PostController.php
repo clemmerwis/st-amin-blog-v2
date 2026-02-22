@@ -192,8 +192,10 @@ class PostController extends Controller
             'twitterDescription' => $seoData["seo_description"] ?? '',
         ];
 
-        $post->detail->seo_meta = $seoMeta;
-        $post->detail->save();
+        if ($post->detail) {
+            $post->detail->seo_meta = $seoMeta;
+            $post->detail->save();
+        }
         $post->update($payload);
 
         if ($request->input('image_featured') === "clear") {
@@ -223,5 +225,24 @@ class PostController extends Controller
         }
 
         return response()->json(['ok' => true], 201);
+    }
+
+    public function destroy(Post $post)
+    {
+        // Detach all categories before deleting
+        $post->categories()->detach();
+
+        // Clear all media collections
+        $post->clearMediaCollection('featured-images');
+        $post->clearMediaCollection('featured-gifs');
+
+        // Delete associated detail record if exists
+        if ($post->detail) {
+            $post->detail->delete();
+        }
+
+        $post->delete();
+
+        return response()->json(['ok' => true]);
     }
 }
