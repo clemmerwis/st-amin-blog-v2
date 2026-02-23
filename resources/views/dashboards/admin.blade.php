@@ -153,11 +153,19 @@
                 <x-admin.footerscripts-posts />
             @break
 
+            @case('PostCreate')
+                <x-admin.footerscripts-posts />
+            @break
+
             @case('Categories')
                 <x-admin.footerscripts-posts />
             @break
 
             @case('CategoryEdit')
+                <x-admin.footerscripts-posts />
+            @break
+
+            @case('CategoryCreate')
                 <x-admin.footerscripts-posts />
             @break
 
