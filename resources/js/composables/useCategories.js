@@ -76,12 +76,19 @@ export function useCategories(initialCats = []) {
 
     /**
      * Get combined categories array for payload
+     * Filters subcategories to only include those belonging to the current main category
      * @returns {Array} - Combined main and sub categories
      */
     function getCombinedCategories() {
+        // Filter subcategories to only include those belonging to the current main category
+        const validSubCatNames = subCategories.value.map(cat => cat.name);
+        const filteredSubs = selectedSubCategories.value.filter(
+            name => validSubCatNames.includes(name)
+        );
+
         return [
             selectedMainCategory.value,
-            ...selectedSubCategories.value,
+            ...filteredSubs,
         ];
     }
 

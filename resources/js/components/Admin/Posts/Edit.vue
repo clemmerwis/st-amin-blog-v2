@@ -505,6 +505,7 @@
                 event.target.select();
             },
             convertToHourFormat(dateTimeStr) {
+                if (!dateTimeStr) return null;
                 // Split the date string to get the time part
                 const timePart = dateTimeStr.split(" ")[1];
                 if (!timePart) return "";
@@ -520,6 +521,7 @@
                 return `${hour}${isPM ? "pm" : "am"}`;
             },
             convertToDatePickerFormat(dateTimeStr) {
+                if (!dateTimeStr) return null;
                 // Parse the date string and create a Date object
                 const months = {
                     Jan: "01",
@@ -615,7 +617,6 @@
                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
             },
 
-            // TODO clear subcategories that don't belong to selectedMainCategory when submitting
             async update() {
                 this.processing = true;
                 // reset validations
