@@ -80,7 +80,7 @@ Route::post('/stripe/webhook', [StripeController::class, 'webhook']);
 // 2. Leverages existing middleware (isAdmin, auth)
 // 3. Simplifies Vue.js integration in admin components
 Route::prefix('api')->middleware('auth')->group(function () {
-    Route::prefix('admin')->group(function () {
+    Route::prefix('admin')->middleware('isAdmin')->group(function () {
         Route::apiResource('posts', \App\Http\Controllers\Api\Admin\PostController::class)->names([
             'index'   => 'api.admin.posts.index',
             'store'   => 'api.admin.posts.store',

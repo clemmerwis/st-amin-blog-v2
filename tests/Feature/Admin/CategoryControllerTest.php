@@ -25,20 +25,18 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * Test non-admin can access categories API.
+     * Test non-admin cannot access categories API.
      *
-     * Note: The /api/admin/* routes only use 'auth' middleware (not isAdmin).
-     * Any authenticated user can access them. This is by design — the admin
-     * UI itself is protected by isAdmin middleware at the page level.
+     * The /api/admin/* routes now enforce isAdmin middleware. Non-admin
+     * authenticated users are redirected to home, not granted API access.
      */
     public function test_non_admin_cannot_access_categories()
     {
         $user = User::factory()->create(['is_admin' => 0]);
 
-        $response = $this->actingAs($user)->getJson('/api/admin/categories');
+        $response = $this->actingAs($user)->get('/api/admin/categories');
 
-        // API routes only require auth, not admin role — regular users get 200
-        $response->assertStatus(200);
+        $response->assertRedirect(route('home'));
     }
 
     /**
