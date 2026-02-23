@@ -107,6 +107,7 @@ return [
 
     'contact' => [
         'address' => env('CONTACT_EMAIL', 'contact@example.com'),
+        'sender' => env('CONTACT_SENDER_EMAIL', 'noreply@example.com'),
     ],
 
     /*
