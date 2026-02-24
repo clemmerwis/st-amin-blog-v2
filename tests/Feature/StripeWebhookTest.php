@@ -2,11 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Mail\OrderPlaced;
 use App\Models\Order;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class StripeWebhookTest extends TestCase
@@ -184,5 +186,102 @@ class StripeWebhookTest extends TestCase
         // Should return 200 (success) but not create duplicate
         $response->assertStatus(200);
         $this->assertEquals(1, Order::where('stripe_session_id', 'cs_duplicate_test')->count());
+    }
+
+    /**
+     * Test webhook sends admin notification email on valid order (populated customer).
+     */
+    public function test_webhook_sends_admin_email_on_valid_order()
+    {
+        Mail::fake();
+        Config::set('mail.order.address', 'admin@example.com');
+
+        $admin = User::factory()->admin()->create();
+        $post = Post::factory()->featured()->create(['author_id' => $admin->id]);
+
+        $payload = $this->createCheckoutSessionPayload($post->id, 'cs_mail_test_' . time());
+        $signature = $this->generateStripeSignature($payload);
+
+        $response = $this->call('POST', '/stripe/webhook', [], [], [], [
+            'HTTP_STRIPE_SIGNATURE' => $signature,
+            'CONTENT_TYPE' => 'application/json',
+        ], $payload);
+
+        $response->assertStatus(200);
+
+        Mail::assertSent(OrderPlaced::class, function ($mail) use ($post) {
+            return $mail->hasTo('admin@example.com')
+                && $mail->order->post_id === $post->id;
+        });
+    }
+
+    /**
+     * Test webhook sends admin email even when customer fields are null.
+     */
+    public function test_webhook_sends_admin_email_with_null_customer_fields()
+    {
+        Mail::fake();
+        Config::set('mail.order.address', 'admin@example.com');
+
+        $admin = User::factory()->admin()->create();
+        $post = Post::factory()->featured()->create(['author_id' => $admin->id]);
+
+        $payload = json_encode([
+            'id' => 'evt_null_customer_test',
+            'type' => 'checkout.session.completed',
+            'data' => [
+                'object' => [
+                    'id' => 'cs_null_customer_' . time(),
+                    'metadata' => [
+                        'post_id' => $post->id,
+                    ],
+                    'customer_details' => null,
+                    'shipping_details' => null,
+                    'amount_total' => 2500,
+                ],
+            ],
+        ]);
+
+        $signature = $this->generateStripeSignature($payload);
+
+        $response = $this->call('POST', '/stripe/webhook', [], [], [], [
+            'HTTP_STRIPE_SIGNATURE' => $signature,
+            'CONTENT_TYPE' => 'application/json',
+        ], $payload);
+
+        $response->assertStatus(200);
+
+        Mail::assertSent(OrderPlaced::class);
+
+        $this->assertDatabaseHas('orders', [
+            'post_id' => $post->id,
+            'customer_email' => null,
+        ]);
+    }
+
+    /**
+     * Test webhook returns 200 and creates order even when admin email is not configured.
+     */
+    public function test_webhook_returns_200_when_admin_email_not_configured()
+    {
+        Mail::fake();
+        Config::set('mail.order.address', null);
+
+        $admin = User::factory()->admin()->create();
+        $post = Post::factory()->featured()->create(['author_id' => $admin->id]);
+
+        $payload = $this->createCheckoutSessionPayload($post->id, 'cs_no_email_' . time());
+        $signature = $this->generateStripeSignature($payload);
+
+        $response = $this->call('POST', '/stripe/webhook', [], [], [], [
+            'HTTP_STRIPE_SIGNATURE' => $signature,
+            'CONTENT_TYPE' => 'application/json',
+        ], $payload);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('orders', ['post_id' => $post->id]);
+
+        Mail::assertNotSent(OrderPlaced::class);
     }
 }
