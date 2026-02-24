@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isAdmin',
     Route::get('dashboard', [Admin\AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('posts', Admin\PostController::class)->only(['index', 'create', 'edit']);
     Route::resource('categories', Admin\CategoryController::class)->only(['index', 'create', 'edit']);
+    Route::get('orders', [Admin\OrderController::class, 'index'])->name('orders.index');
 });
 
 // user pages
@@ -96,6 +97,10 @@ Route::prefix('api')->middleware('auth')->group(function () {
             'update'  => 'api.admin.categories.update',
             'destroy' => 'api.admin.categories.destroy',
         ]);
+
+        Route::get('orders', [\App\Http\Controllers\Api\Admin\OrderController::class, 'index'])->name('api.admin.orders.index');
+        Route::get('orders/{order}', [\App\Http\Controllers\Api\Admin\OrderController::class, 'show'])->name('api.admin.orders.show');
+        Route::patch('orders/{order}', [\App\Http\Controllers\Api\Admin\OrderController::class, 'update'])->name('api.admin.orders.update');
     });
 
     // Utility APIs used by admin components

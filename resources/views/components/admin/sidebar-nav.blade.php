@@ -43,6 +43,12 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Categories</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ request()->is('admin/orders*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.orders.index') }}">
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Orders</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -100,6 +100,10 @@
                                     <admin-category-create></admin-category-create>
                                 @break
 
+                                @case('Orders')
+                                    <admin-orders></admin-orders>
+                                @break
+
                                 @default
                                     <x-admin.innerpage />
                             @endswitch
@@ -166,6 +170,10 @@
             @break
 
             @case('CategoryCreate')
+                <x-admin.footerscripts-posts />
+            @break
+
+            @case('Orders')
                 <x-admin.footerscripts-posts />
             @break
 

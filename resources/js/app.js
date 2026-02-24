@@ -14,6 +14,7 @@ import adminPostCreate from './components/Admin/Posts/Create';
 import innerpageCategory from './components/Admin/Category/Index';
 import adminCategoryEdit from './components/Admin/Category/Edit';
 import adminCategoryCreate from './components/Admin/Category/Create';
+import adminOrders from './components/Admin/Orders/Index';
 import Vue3EasyDataTable from 'vue3-easy-data-table';
 import 'vue3-easy-data-table/dist/style.css';
 import CKEditor from '@ckeditor/ckeditor5-vue';
@@ -29,5 +30,6 @@ app.component('EasyDataTable', Vue3EasyDataTable);
 app.component('InnerpageCategory', innerpageCategory);
 app.component('AdminCategoryEdit', adminCategoryEdit);
 app.component('AdminCategoryCreate', adminCategoryCreate);
+app.component('admin-orders', adminOrders);
 
 app.mount('#app');
