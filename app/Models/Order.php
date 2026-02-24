@@ -18,6 +18,7 @@ class Order extends Model
         'amount',
         'fulfillment_status',
         'tracking_number',
+        'notes',
     ];
     
     protected $casts = [
