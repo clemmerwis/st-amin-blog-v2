@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Stripe\Stripe;
 use Stripe\Webhook;
+use App\Mail\OrderPlaced;
 use App\Models\Post;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class StripeController extends Controller
 {
@@ -22,8 +24,7 @@ class StripeController extends Controller
      */
     public function checkout(Post $post)
     {
-        abort_unless($post->featured, 404);
-        abort_unless($post->product_name && $post->product_price, 400, 'Product not configured');
+        abort_unless($post->is_purchasable, 404);
 
         try {
             $session = Session::create([
@@ -109,7 +110,7 @@ class StripeController extends Controller
 
             // Create order with null-safe property access
             try {
-                Order::create([
+                $order = Order::create([
                     'post_id' => $postId,
                     'stripe_session_id' => $session->id,
                     'customer_email' => $session->customer_details->email ?? null,
@@ -123,6 +124,25 @@ class StripeController extends Controller
                     'session_id' => $session->id,
                     'amount' => $session->amount_total
                 ]);
+
+                // Send admin notification email
+                $adminEmail = config('mail.order.address');
+                if ($adminEmail) {
+                    try {
+                        $order->loadMissing('post');
+                        Mail::to($adminEmail)->send(new OrderPlaced($order));
+                        Log::info('OrderPlaced mail sent', ['order_id' => $order->id]);
+                    } catch (\Exception $e) {
+                        Log::error('OrderPlaced mail failed', [
+                            'order_id' => $order->id,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
+                } else {
+                    Log::warning('ADMIN_ORDER_EMAIL not configured — order notification skipped', [
+                        'order_id' => $order->id,
+                    ]);
+                }
             } catch (\Exception $e) {
                 Log::error('Stripe webhook: Failed to create order', [
                     'error' => $e->getMessage(),
