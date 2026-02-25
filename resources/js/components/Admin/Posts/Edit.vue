@@ -259,7 +259,7 @@
 
                         <div v-if="record.featured" class="col-md-12 mt-3">
                             <div class="row d-flex align-items-stretch">
-                                <div class="col-md-8 d-flex">
+                                <div class="col-md-5 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -280,6 +280,23 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Product Type
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-radio-group v-model="record.product_type" inline hide-details>
+                                                <v-radio label="Physical" value="physical"></v-radio>
+                                                <v-radio label="Digital" value="digital"></v-radio>
+                                            </v-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -477,6 +494,13 @@
                     "mb-8": true,
                     "w-50": !this.panel.includes(0),
                 };
+            },
+        },
+        watch: {
+            'record.featured'(newVal) {
+                if (newVal && !this.record.product_type) {
+                    this.record.product_type = 'physical';
+                }
             },
         },
         created() {
@@ -706,6 +730,7 @@
                     // product
                     product_name: this.record.product_name || "",
                     product_price: this.record.product_price || null,
+                    product_type: this.record.product_type || null,
                     // seo
                     seo_title: seoMeta.title || "",
                     seo_description: seoMeta.description || "",

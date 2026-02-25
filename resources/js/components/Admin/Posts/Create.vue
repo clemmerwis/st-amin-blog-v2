@@ -187,6 +187,69 @@
                             </div>
                         </div>
 
+                        <div v-if="record.featured" class="mt-3">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="col-md-5 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Product Name
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-text-field
+                                                v-model="record.product_name"
+                                                name="product_name"
+                                                clearable
+                                                placeholder="Product Name"
+                                                hide-details
+                                            ></v-text-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Product Type
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-radio-group v-model="record.product_type" inline hide-details>
+                                                <v-radio label="Physical" value="physical"></v-radio>
+                                                <v-radio label="Digital" value="digital"></v-radio>
+                                            </v-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex">
+                                    <div class="card flex-fill">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                Price
+                                            </h5>
+                                        </div>
+                                        <div
+                                            class="card-body d-flex align-items-center"
+                                        >
+                                            <v-text-field
+                                                v-model="formattedPrice"
+                                                name="price"
+                                                prefix="$"
+                                                placeholder="0.00"
+                                                hide-details
+                                                clearable
+                                            ></v-text-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="d-md-flex justify-content-md-end gap-md-3">
                             <div class="card flex-basis-0 flex-grow-1">
                                 <div class="card-header">
@@ -296,6 +359,9 @@
                     active: true,
                     featured: false,
                     category: [],
+                    product_name: "",
+                    product_price: null,
+                    product_type: null,
                 },
                 rules: {
                     required: (value) => !!value || "Required",
@@ -309,6 +375,25 @@
             },
             isPublished() {
                 return this.record.published_at !== null;
+            },
+            formattedPrice: {
+                get() {
+                    if (!this.record.product_price) return "0.00";
+                    return (this.record.product_price / 100).toFixed(2);
+                },
+                set(value) {
+                    // Remove $ and convert to cents
+                    const cleaned = value.replace(/[$,]/g, "");
+                    this.record.product_price =
+                        Math.round(parseFloat(cleaned) * 100) || 0;
+                },
+            },
+        },
+        watch: {
+            'record.featured'(newVal) {
+                if (newVal && !this.record.product_type) {
+                    this.record.product_type = 'physical';
+                }
             },
         },
         methods: {
@@ -374,6 +459,10 @@
                     featured: this.record.featured ? 1 : 0,
                     excerpt: this.record.excerpt,
                     body: this.editorData,
+                    // product
+                    product_name: this.record.product_name || "",
+                    product_price: this.record.product_price || null,
+                    product_type: this.record.product_type || null,
                 };
 
                 // Apply media fields from composable
