@@ -90,6 +90,11 @@ class Post extends Model implements HasMedia
         return $this->categories->firstWhere('parent_id', null);
     }
 
+    public function getIsPurchasableAttribute()
+    {
+        return $this->featured && $this->product_name && $this->product_price;
+    }
+
     public function detail()
     {
         return $this->hasOne(Detail::class);

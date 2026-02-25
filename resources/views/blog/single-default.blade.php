@@ -57,7 +57,7 @@
                             <li>Published <br> <i class="ml-5 fa fa-clock-o"></i> {{ $post->published_at->format('F jS, Y') }}</li>
                         </ul>
 
-                        @if($post->featured)
+                        @if($post->is_purchasable)
                             <div class="buy-now-section" style="margin-top: 20px;">
                                 <button class="buy-now-btn" onclick="handleBuyNow({{ $post->id }}); return false;">
                                     <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>
@@ -162,7 +162,7 @@
                     </div>
 
                     {{-- Buy Now Section - Featured Magazine Articles Only - NEW UNIQUE CLASS --}}
-                    @if($post->featured)
+                    @if($post->is_purchasable)
                         <div class="sidebar-option px-sm-5 px-md-0">
                             <div class="magazine-buy-now"> {{-- NEW unique class name --}}
                                 <div class="section-title">
