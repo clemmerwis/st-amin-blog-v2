@@ -62,7 +62,7 @@
                             <h5 class="card-title mb-0">Order Info</h5>
                         </div>
                         <div class="card-body">
-                            <table class="table table-borderless mb-0">
+                            <table class="table table-borderless mb-0 order-info-table">
                                 <tbody>
                                     <tr>
                                         <th scope="row" class="w-25">Order #</th>
@@ -90,7 +90,15 @@
                                     </tr>
                                     <tr>
                                         <th scope="row" class="w-25">Shipping Address</th>
-                                        <td>{{ selectedOrder.shipping_address || 'Not provided' }}</td>
+                                        <td>
+                                            <template v-if="selectedOrder.shipping_address && typeof selectedOrder.shipping_address === 'object'">
+                                                <div>{{ selectedOrder.shipping_address.line1 }}</div>
+                                                <div v-if="selectedOrder.shipping_address.line2">{{ selectedOrder.shipping_address.line2 }}</div>
+                                                <div>{{ selectedOrder.shipping_address.city }}, {{ selectedOrder.shipping_address.state }} {{ selectedOrder.shipping_address.postal_code }}</div>
+                                                <div>{{ selectedOrder.shipping_address.country }}</div>
+                                            </template>
+                                            <template v-else>Not provided</template>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -110,10 +118,12 @@
                                 item-title="title"
                                 item-value="value"
                                 label="Status"
+                                class="mb-8"
                             ></v-select>
                             <v-text-field
                                 v-model="editForm.tracking_number"
                                 label="Tracking Number"
+                                class="mb-8"
                             ></v-text-field>
                             <v-textarea
                                 v-model="editForm.notes"
@@ -121,8 +131,8 @@
                                 rows="3"
                             ></v-textarea>
                             <v-btn
-                                color="primary"
-                                class="mt-2"
+                                color="info"
+                                class="mt-8"
                                 :loading="processing"
                                 @click="saveChanges"
                             >
@@ -255,4 +265,10 @@
 }
 .dot-green { background-color: #28a745; }
 .dot-red { background-color: #dc3545; }
+.order-info-table th,
+.order-info-table td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    cursor: default;
+}
 </style>
