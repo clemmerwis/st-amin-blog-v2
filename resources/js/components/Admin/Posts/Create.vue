@@ -185,11 +185,34 @@
                                     ></v-switch>
                                 </div>
                             </div>
+
+                            <div
+                                v-if="record.featured"
+                                class="card flex-basis-0 flex-grow-1 vuetify-switch product-type-switch"
+                                :class="record.product_type === 'digital' ? 'digital' : 'physical'"
+                            >
+                                <div class="card-body">
+                                    <v-switch
+                                        v-model="record.product_type"
+                                        true-value="digital"
+                                        false-value="physical"
+                                        color="secondary"
+                                        hide-details
+                                    >
+                                        <template #prepend>
+                                            <span class="product-type-label physical-label" :class="{ active: record.product_type !== 'digital' }">Physical</span>
+                                        </template>
+                                        <template #label>
+                                            <span class="product-type-label digital-label" :class="{ active: record.product_type === 'digital' }">Digital</span>
+                                        </template>
+                                    </v-switch>
+                                </div>
+                            </div>
                         </div>
 
                         <div v-if="record.featured" class="mt-3">
                             <div class="row d-flex align-items-stretch">
-                                <div class="col-md-5 d-flex">
+                                <div class="col-md-8 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -210,23 +233,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex">
-                                    <div class="card flex-fill">
-                                        <div class="card-header">
-                                            <h5 class="card-title mb-0">
-                                                Product Type
-                                            </h5>
-                                        </div>
-                                        <div
-                                            class="card-body d-flex align-items-center"
-                                        >
-                                            <v-radio-group v-model="record.product_type" inline hide-details>
-                                                <v-radio label="Physical" value="physical"></v-radio>
-                                                <v-radio label="Digital" value="digital"></v-radio>
-                                            </v-radio-group>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -526,6 +532,46 @@
 
     .vuetify-switch .card-body {
         padding: 0 1.2em;
+    }
+
+    .area-two .product-type-switch {
+        max-width: 250px;
+    }
+
+    .product-type-switch :deep(.v-switch__track) {
+        opacity: 0.5 !important;
+    }
+
+    .product-type-switch.physical :deep(.v-switch__track) {
+        background-color: #CC8833 !important;
+    }
+
+    .product-type-switch.physical :deep(.v-switch__thumb) {
+        color: #CC8833 !important;
+    }
+
+    .product-type-switch.digital :deep(.v-switch__track) {
+        background-color: #B044A0 !important;
+    }
+
+    .product-type-switch.digital :deep(.v-switch__thumb) {
+        color: #B044A0 !important;
+    }
+
+    .product-type-label {
+        white-space: nowrap;
+        color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .product-type-label.active {
+    }
+
+    .product-type-label.active.physical-label {
+        color: #CC8833 !important;
+    }
+
+    .product-type-label.active.digital-label {
+        color: #B044A0 !important;
     }
 
     @media (max-width: 768px) {

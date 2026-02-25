@@ -1,6 +1,20 @@
 <template>
-    <h6 v-if="isPublished" class="small">(published)</h6>
-    <h1 class="h3 mb-3">Posts / Detail: {{ record.title }}</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h6 v-if="isPublished" class="small mb-0">(published)</h6>
+            <h1 class="h3 mb-0">Posts / Detail: {{ record.title }}</h1>
+        </div>
+        <v-btn
+            v-if="postUrl"
+            class="no-underline"
+            :href="postUrl"
+            target="_blank"
+            color="info"
+            size="small"
+        >
+            View Post
+        </v-btn>
+    </div>
 
     <my-alert :setup="alert" @clear="() => (alert = {})"></my-alert>
 
@@ -255,11 +269,34 @@
                                     ></v-switch>
                                 </div>
                             </div>
+
+                            <div
+                                v-if="record.featured"
+                                class="card flex-basis-0 flex-grow-1 vuetify-switch product-type-switch"
+                                :class="record.product_type === 'digital' ? 'digital' : 'physical'"
+                            >
+                                <div class="card-body">
+                                    <v-switch
+                                        v-model="record.product_type"
+                                        true-value="digital"
+                                        false-value="physical"
+                                        color="secondary"
+                                        hide-details
+                                    >
+                                        <template #prepend>
+                                            <span class="product-type-label physical-label" :class="{ active: record.product_type !== 'digital' }">Physical</span>
+                                        </template>
+                                        <template #label>
+                                            <span class="product-type-label digital-label" :class="{ active: record.product_type === 'digital' }">Digital</span>
+                                        </template>
+                                    </v-switch>
+                                </div>
+                            </div>
                         </div>
 
                         <div v-if="record.featured" class="col-md-12 mt-3">
                             <div class="row d-flex align-items-stretch">
-                                <div class="col-md-5 d-flex">
+                                <div class="col-md-8 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -280,23 +317,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex">
-                                    <div class="card flex-fill">
-                                        <div class="card-header">
-                                            <h5 class="card-title mb-0">
-                                                Product Type
-                                            </h5>
-                                        </div>
-                                        <div
-                                            class="card-body d-flex align-items-center"
-                                        >
-                                            <v-radio-group v-model="record.product_type" inline hide-details>
-                                                <v-radio label="Physical" value="physical"></v-radio>
-                                                <v-radio label="Digital" value="digital"></v-radio>
-                                            </v-radio-group>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 d-flex">
                                     <div class="card flex-fill">
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">
@@ -468,6 +488,13 @@
             },
             isPublished() {
                 return this.record.published_at !== null;
+            },
+            postUrl() {
+                const parentCat = this.record.categories?.find(c => c.parent_id === null);
+                if (parentCat && this.record.slug) {
+                    return `/posts/${parentCat.slug}/${this.record.slug}`;
+                }
+                return null;
             },
             formattedPrice: {
                 get() {
@@ -887,6 +914,46 @@
 
     .vuetify-switch .card-body {
         padding: 0 1.2em;
+    }
+
+    .area-two .product-type-switch {
+        max-width: 250px;
+    }
+
+    .product-type-switch :deep(.v-switch__track) {
+        opacity: 0.5 !important;
+    }
+
+    .product-type-switch.physical :deep(.v-switch__track) {
+        background-color: #CC8833 !important;
+    }
+
+    .product-type-switch.physical :deep(.v-switch__thumb) {
+        color: #CC8833 !important;
+    }
+
+    .product-type-switch.digital :deep(.v-switch__track) {
+        background-color: #B044A0 !important;
+    }
+
+    .product-type-switch.digital :deep(.v-switch__thumb) {
+        color: #B044A0 !important;
+    }
+
+    .product-type-label {
+        white-space: nowrap;
+        color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .product-type-label.active {
+    }
+
+    .product-type-label.active.physical-label {
+        color: #CC8833 !important;
+    }
+
+    .product-type-label.active.digital-label {
+        color: #B044A0 !important;
     }
 
     .sub-categories-grid {
