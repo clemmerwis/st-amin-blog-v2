@@ -14,12 +14,14 @@ class RenameIdFromCategoryPostTable extends Migration
      */
     public function up()
     {
-        Schema::table('category_post', function (Blueprint $table) {
-            DB::statement("
-                ALTER TABLE `category_post`
-                CHANGE `id` `pivot_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
-            ");
-        });
+        if (Schema::hasColumn('category_post', 'id')) {
+            Schema::table('category_post', function (Blueprint $table) {
+                DB::statement("
+                    ALTER TABLE `category_post`
+                    CHANGE `id` `pivot_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+                ");
+            });
+        }
     }
 
     /**
@@ -29,11 +31,13 @@ class RenameIdFromCategoryPostTable extends Migration
      */
     public function down()
     {
-        Schema::table('category_post', function (Blueprint $table) {
-            DB::statement("
-                ALTER TABLE `category_post`
-                CHANGE `pivot_id` `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
-            ");
-        });
+        if (Schema::hasColumn('category_post', 'pivot_id')) {
+            Schema::table('category_post', function (Blueprint $table) {
+                DB::statement("
+                    ALTER TABLE `category_post`
+                    CHANGE `pivot_id` `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
+                ");
+            });
+        }
     }
 }
