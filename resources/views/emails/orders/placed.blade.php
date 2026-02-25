@@ -15,6 +15,10 @@
             <td style="padding: 8px 0;">{{ $order->post->title }}</td>
         </tr>
         <tr>
+            <td style="padding: 8px 0; font-weight: bold; width: 160px;">Product Type:</td>
+            <td style="padding: 8px 0;">{{ optional($order->post)->product_type === 'digital' ? 'Digital' : 'Physical' }}</td>
+        </tr>
+        <tr>
             <td style="padding: 8px 0; font-weight: bold;">Amount:</td>
             <td style="padding: 8px 0;">${{ number_format($order->amount / 100, 2) }}</td>
         </tr>
