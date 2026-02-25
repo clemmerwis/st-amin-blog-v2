@@ -30,6 +30,9 @@
                                 alternating
                                 @click-row="rowClick"
                             >
+                                <template #item-product_type="item">
+                                    {{ item.product_type === 'digital' ? 'Digital' : 'Physical' }}
+                                </template>
                                 <template #item-fulfillment_status="item">
                                     <span
                                         class="status-dot"
@@ -83,6 +86,10 @@
                                     <tr>
                                         <th scope="row" class="w-25">Post</th>
                                         <td>{{ selectedOrder.post_title || 'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="w-25">Product Type</th>
+                                        <td>{{ selectedOrder.product_type === 'digital' ? 'Digital' : 'Physical' }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row" class="w-25">Amount</th>
@@ -173,6 +180,7 @@
                     { text: '#', value: 'id', sortable: true },
                     { text: 'Customer', value: 'customer_name', sortable: true },
                     { text: 'Post', value: 'post_title', sortable: true },
+                    { text: 'Type', value: 'product_type', sortable: false },
                     { text: 'Amount', value: 'amount', sortable: true },
                     { text: 'Status', value: 'fulfillment_status', sortable: true },
                     { text: 'Date', value: 'created_at', sortable: true },

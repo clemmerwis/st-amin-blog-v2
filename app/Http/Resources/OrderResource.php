@@ -19,6 +19,7 @@ class OrderResource extends JsonResource
             'customer_name'      => $this->customer_name,
             'customer_email'     => $this->customer_email,
             'post_title'         => optional($this->post)->title,
+            'product_type'       => optional($this->post)->product_type,
             'amount'             => '$' . number_format($this->amount / 100, 2),
             'fulfillment_status' => $this->fulfillment_status,
             'tracking_number'    => $this->tracking_number,
