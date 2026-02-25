@@ -33,6 +33,10 @@ class PostController extends Controller
             'slug'       => 'required',
             'body'       => 'required',
             'categories' => 'required|array',
+            // product
+            'product_name' => 'nullable|string',
+            'product_price' => 'nullable|integer',
+            'product_type' => 'nullable|in:digital,physical',
         ]);
 
         // Extract categories from the request and ensure they're in an array format
@@ -54,6 +58,9 @@ class PostController extends Controller
             'slug',
             'excerpt',
             'body',
+            'product_name',
+            'product_price',
+            'product_type',
         ]));
         $post->author_id = auth()->user()->id;
         $post->published_at = now();
@@ -124,6 +131,7 @@ class PostController extends Controller
             // product
             'product_name' => 'nullable|string',
             'product_price' => 'nullable|integer',
+            'product_type' => 'nullable|in:digital,physical',
             // seo
             'seo_title'     => 'nullable|string',
             'seo_description' => 'nullable|string',
@@ -167,6 +175,7 @@ class PostController extends Controller
             'published_at',
             'product_name',
             'product_price',
+            'product_type',
         ]);
 
         $seoData = $request->only([
