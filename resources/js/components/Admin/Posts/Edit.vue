@@ -527,6 +527,8 @@
             'record.featured'(newVal) {
                 if (newVal && !this.record.product_type) {
                     this.record.product_type = 'physical';
+                } else if (!newVal) {
+                    this.record.product_type = null;
                 }
             },
         },
