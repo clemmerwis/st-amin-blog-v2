@@ -106,8 +106,8 @@ return [
     */
 
     'contact' => [
-        'address' => env('CONTACT_EMAIL', 'contact@example.com'),
-        'sender' => env('CONTACT_SENDER_EMAIL', 'noreply@example.com'),
+        'address' => env('CONTACT_EMAIL', 'erica@storiesofmirrors.com'),
+        'sender' => env('CONTACT_SENDER_EMAIL', 'noreply@storiesofmirrors.com'),
     ],
 
     /*
@@ -120,7 +120,7 @@ return [
     */
 
     'order' => [
-        'address' => env('ADMIN_ORDER_EMAIL'),
+        'address' => env('ADMIN_ORDER_EMAIL', 'erica@storiesofmirrors.com'),
     ],
 
     /*
