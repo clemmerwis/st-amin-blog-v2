@@ -1,4 +1,23 @@
 <x-app-layout>
+    @push('seoMeta')
+        <x-meta-tags
+            title="The Author | Stories of Mirrors"
+            description="Meet Erica Schmoll, the author behind Stories of Mirrors - a captivating blend of reflective narratives and visual storytelling."
+            author="schmollthoughts.com"
+            keywords="erica schmoll, stories of mirrors author, witchcraft, supernatural"
+
+            ogTitle="The Author | Stories of Mirrors"
+            ogDescription="Meet Erica Schmoll, the author behind Stories of Mirrors."
+            ogUrl="{{ url()->current() }}"
+            ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+            ogType="website"
+
+            twitterTitle="The Author | Stories of Mirrors"
+            twitterDescription="Meet Erica Schmoll, the author behind Stories of Mirrors."
+            twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+        />
+    @endpush
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg spad" data-setbg="img/bg/gradient-about.png">
         <div class="container">

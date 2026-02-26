@@ -58,6 +58,23 @@
                     twitterDescription="Explore the latest edition of Stories of Mirrors Magazine"
                     twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                 />
+            @elseif($active == 'featured')
+                <x-meta-tags
+                    title="Witch's Picks: Life Alters | Stories of Mirrors"
+                    description="Curated featured articles from Stories of Mirrors - the witch's top picks for wellness, healing, and self-discovery."
+                    author="schmollthoughts.com"
+                    keywords="witch's picks, featured articles, stories of mirrors, wellness, healing"
+
+                    ogTitle="Witch's Picks: Life Alters | Stories of Mirrors"
+                    ogDescription="Curated featured articles from Stories of Mirrors - the witch's top picks for wellness, healing, and self-discovery."
+                    ogUrl="{{ url('/witchs-picks') }}"
+                    ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+                    ogType="website"
+
+                    twitterTitle="Witch's Picks: Life Alters | Stories of Mirrors"
+                    twitterDescription="Curated featured articles - the witch's top picks for wellness, healing, and self-discovery."
+                    twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+                />
             @endif
         @else
             @stack('seoMeta')

@@ -9,6 +9,8 @@
 <meta property="og:description" content="{{ $ogDescription }}">
 <meta property="og:url" content="{{ $ogUrl }}">
 <meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="{{ $ogImageWidth ?? '1200' }}">
+<meta property="og:image:height" content="{{ $ogImageHeight ?? '630' }}">
 <meta property="og:type" content="{{ $ogType ?? 'website' }}">
 <meta property="og:site_name" content="Stories of Mirrors">
 @if(config('services.facebook.app_id'))

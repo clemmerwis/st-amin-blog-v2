@@ -1,4 +1,23 @@
 <x-app-layout>
+    @push('seoMeta')
+        <x-meta-tags
+            title="Contact | Stories of Mirrors"
+            description="Get in touch with Stories of Mirrors. Reach out for inquiries, collaborations, or just to say hello."
+            author="schmollthoughts.com"
+            keywords="contact stories of mirrors, erica schmoll contact"
+
+            ogTitle="Contact | Stories of Mirrors"
+            ogDescription="Get in touch with Stories of Mirrors."
+            ogUrl="{{ url()->current() }}"
+            ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+            ogType="website"
+
+            twitterTitle="Contact | Stories of Mirrors"
+            twitterDescription="Get in touch with Stories of Mirrors."
+            twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
+        />
+    @endpush
+
     <!-- Flash Message Display Begin -->
     @if(session('success'))
     <div class="container mt-4">
