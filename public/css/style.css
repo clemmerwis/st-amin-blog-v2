@@ -5213,6 +5213,14 @@ h3.specialh3.h3mb a:hover {
   margin-bottom: 5rem;
 }
 
+.text-gradient-accent {
+  background: linear-gradient(135deg, hsla(0, 100%, 83.94%, 1), hsla(0, 100%, 70%, 1));
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text;
+  color: transparent;
+}
+
 .mb2rem {
   margin-bottom: 1.5rem !important;
 }
