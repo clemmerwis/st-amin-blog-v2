@@ -10,18 +10,18 @@
             @if($active == 'home')
                 <x-meta-tags
                     title="Stories of Mirrors - Home"
-                    description="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
+                    description="Stories of Mirrors features true paranormal experiences, wellness, beauty, and modern mysticism from Erica Denise Schmoll — The Witch of the Wisconsin Northwoods."
                     author="schmollthoughts.com"
                     keywords="stories of mirrors book, witchcraft, supernatural, ghost stories"
 
                     ogTitle="Stories of Mirrors - Home"
-                    ogDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
+                    ogDescription="True paranormal stories, hidden knowledge, wellness, and modern mysticism. Enter Stories of Mirrors."
                     ogUrl="{{ url('/') }}"
                     ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                     ogType="website"
                    
                     twitterTitle="Stories of Mirrors | Author: Erica Schmoll"
-                    twitterDescription="Discover Stories of Mirrors, a captivating blend of a book and a magazine, offering a unique collection of reflective narratives, insightful articles, and visual storytelling. Immerse yourself in thought-provoking stories that mirror the complexities of life, culture, and self-discovery. Explore our pages for a rich reading experience that combines the depth of a book with the dynamic format of a magazine. Whether you’re a literature enthusiast or seeking inspiration, Stories of Mirrors is your gateway to profound insights and engaging content."
+                    twitterDescription="True paranormal stories, hidden knowledge, wellness, and modern mysticism. Enter Stories of Mirrors."
                     twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
                 />
             @elseif($active == 'SoM')

@@ -2,18 +2,18 @@
     @push('seoMeta')
         <x-meta-tags
             title="The Author | Stories of Mirrors"
-            description="Meet Erica Schmoll, the author behind Stories of Mirrors - a captivating blend of reflective narratives and visual storytelling."
+            description="Meet Erica Denise Schmoll — The Witch of the Wisconsin Northwoods, author of Stories of Mirrors, where true paranormal experiences, wellness, hidden knowledge, and modern mysticism meet."
             author="schmollthoughts.com"
             keywords="erica schmoll, stories of mirrors author, witchcraft, supernatural"
 
             ogTitle="The Author | Stories of Mirrors"
-            ogDescription="Meet Erica Schmoll, the author behind Stories of Mirrors."
+            ogDescription="Erica Denise Schmoll — The Witch of the Wisconsin Northwoods. True paranormal stories, wellness, hidden knowledge, and modern mysticism."
             ogUrl="{{ url()->current() }}"
             ogImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
             ogType="website"
 
             twitterTitle="The Author | Stories of Mirrors"
-            twitterDescription="Meet Erica Schmoll, the author behind Stories of Mirrors."
+            twitterDescription="Erica Denise Schmoll — The Witch of the Wisconsin Northwoods. True paranormal stories, wellness, hidden knowledge, and modern mysticism."
             twitterImage="{{ asset('img/stories-of-mirrors/ssGirlHouseLogo.jpg') }}"
         />
     @endpush
@@ -40,12 +40,11 @@
         <div class="container">
             <div class="row d-flex justify-center pb-10">
                 <div class="col-lg-8">                  
-                    <img src="img/erica.jpg" alt="Profile Image" class="profile-image rounded-circle">
+                    <img src="img/author-erica.png" alt="Profile Image" class="profile-image rounded-circle">
                     <h2 class="mt-4 mb-2">About Erica Denise Schmoll</h2>
                     
                     <h3 class="smallh3 mb2rem">
-                        Engineer of Software and Dreams: <span>Digital Design and Creative Writing
-                        </span>
+                        The Witch of the Wisconsin Northwoods
                     </h3>
                     <p>
                         Welcome to my magical realm! I'm Erica Denise Schmoll, a writer, technical designer, analytical thinker, and energy & spirit organizer. My journey is rooted in a diverse background that combines deep knowledge in pharmacy, health, and cutting-edge technology.
